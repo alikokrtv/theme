@@ -6,6 +6,27 @@
 {%- render 'section-spacing-collapsing' -%}
 
 <style>
+#shopify-section-template--21033853255933__corporate_hero_Fz4FbE .corporate-hero__logo-image{
+  margin: 0 auto 1rem;
+  display:flex;
+  justify-content:center;
+}
+
+#shopify-section-template--21033853255933__corporate_hero_Fz4FbE .corporate-hero__logo-image > img{
+  width: min(100%, 600px);
+  height:auto;
+  display:block;
+  filter: drop-shadow(0 0 18px rgba(255,255,255,0.18))
+          drop-shadow(0 0 26px rgba(0,188,212,0.25));
+}
+
+@media (max-width: 768px){
+  #shopify-section-template--21033853255933__corporate_hero_Fz4FbE .corporate-hero__logo-image > img{
+    width: min(86vw, 350px);
+  }
+}
+
+
   /* --- Mobile / responsive fixes --- */
 
 /* iOS/Android dynamic viewport fix */
