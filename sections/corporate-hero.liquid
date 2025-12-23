@@ -278,6 +278,17 @@
   .corporate-hero[data-parallax] .corporate-hero__content {
     will-change: transform;
   }
+  /* Fix broken logo on mobile */
+@media (max-width: 768px) {
+  .corporate-hero__logo {
+    letter-spacing: 0.04em;
+    word-break: normal;
+    overflow-wrap: normal;
+    white-space: normal;
+    line-height: 1.05;
+  }
+}
+
 </style>
 
 <div class="corporate-hero" data-parallax>
