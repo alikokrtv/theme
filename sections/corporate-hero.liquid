@@ -278,7 +278,62 @@
   .corporate-hero[data-parallax] .corporate-hero__content {
     will-change: transform;
   }
-  
+  /* =========================
+   DESKTOP (default)
+   ========================= */
+
+.corporate-hero__logo,
+.corporate-hero__logo span {
+  color: #fff;
+  text-shadow: 1px 1px 2px black, 0 0 1em white, 0 0 0.2em cyan;
+  font-family: "Trade Gothic LT Std Extended Bold", sans-serif;
+}
+
+/* Senin mevcut h1 stilin dursun (istersen buna gerek yok ama uyum için bıraktım) */
+.corporate-hero h1 {
+  color: #fff;
+  text-shadow: 1px 1px 2px black, 0 0 1em white, 0 0 0.2em cyan;
+  font-family: "Trade Gothic LT Std Extended Bold", sans-serif;
+}
+
+/* =========================
+   MOBILE FIX (broken word wrap)
+   ========================= */
+@media (max-width: 768px) {
+  /* Harf harf kırılmayı engelle */
+  .corporate-hero__logo {
+    letter-spacing: 0.04em !important;
+    word-break: keep-all !important;
+    overflow-wrap: normal !important;
+    white-space: normal !important;
+    line-height: 1.05 !important;
+
+    /* Mobilde iki satıra bilinçli indir: TECHNO / FASHION */
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 0.2em !important;
+
+    /* Mobilde fontu güvenli ölçekle */
+    font-size: clamp(2.6rem, 12vw, 4.1rem) !important;
+  }
+
+  .corporate-hero__logo span {
+    display: block !important;
+  }
+
+  /* İstersen mobilde glow biraz yumuşasın */
+  .corporate-hero__logo,
+  .corporate-hero__logo span {
+    text-shadow: 1px 1px 2px black, 0 0 0.7em white, 0 0 0.18em cyan !important;
+  }
+}
+
+/* Extra small phones */
+@media (max-width: 420px) {
+  .corporate-hero__logo {
+    font
+
 </style>
 
 <div class="corporate-hero" data-parallax>
