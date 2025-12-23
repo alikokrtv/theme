@@ -1,6 +1,6 @@
 .country-flags {
-  background: -webkit-image-set(url("//technofashion.com/cdn/shop/t/39/assets/country-flags.png?v=37230036826556269641764867332") 1x, url("//technofashion.com/cdn/shop/t/39/assets/country-flags-2x.png?v=119388446682176363021764867331") 2x) no-repeat top left;
-  background: image-set(url("//technofashion.com/cdn/shop/t/39/assets/country-flags.png?v=37230036826556269641764867332") 1x, url("//technofashion.com/cdn/shop/t/39/assets/country-flags-2x.png?v=119388446682176363021764867331") 2x) no-repeat top left;
+  background: -webkit-image-set(url("//technofashion.com/cdn/shop/t/41/assets/country-flags.png?v=37230036826556269641766473615") 1x, url("//technofashion.com/cdn/shop/t/41/assets/country-flags-2x.png?v=119388446682176363021766473614") 2x) no-repeat top left;
+  background: image-set(url("//technofashion.com/cdn/shop/t/41/assets/country-flags.png?v=37230036826556269641766473615") 1x, url("//technofashion.com/cdn/shop/t/41/assets/country-flags-2x.png?v=119388446682176363021766473614") 2x) no-repeat top left;
   width: 20px;
   height: 20px;
   flex-shrink: 0;
