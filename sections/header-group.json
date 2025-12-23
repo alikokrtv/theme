@@ -281,7 +281,7 @@
         "mega_menu_BPwMPw"
       ],
       "custom_css": [
-        "{background-color: transparent; z-index: 99}"
+        "{background-color: transparent; z-index: 99;}"
       ],
       "settings": {
         "enable_sticky": true,
