@@ -308,7 +308,10 @@
     },
     "corporate_hero_EPHVNd": {
       "type": "corporate-hero",
-      "custom_css": [],
+      "custom_css": [
+        "@media (min-width: 800px) {.corporate-hero__logo-img {min-width: 800px; }}",
+        "@media (max-width: 789px) {.corporate-hero__logo-img {width: 400px; }}"
+      ],
       "name": "Corporate Hero",
       "settings": {
         "hero_height": 100,
