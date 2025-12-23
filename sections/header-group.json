@@ -431,7 +431,7 @@
         "brand_Dp9nXL"
       ],
       "custom_css": [
-        "img {min-width: 250px;}"
+        "logo{min-width: 250px;}"
       ],
       "name": "Corporate Brands",
       "settings": {
