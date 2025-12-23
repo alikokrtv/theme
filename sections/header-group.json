@@ -376,10 +376,11 @@
       "name": "Corporate Story",
       "settings": {
         "reverse_layout": false,
+        "image": "shopify://shop_images/technofashion-square-logo_2000.png",
         "badge_number": "10+",
         "badge_text": "Years",
         "label": "Our Story",
-        "title": "Crafting <span>Innovative Harmonies</span> for a Unique Lifestyle",
+        "title": "Crafting Innovative Harmonies for a Unique Lifestyle",
         "text": "<p>TechnoFashion is the authorized licensee of Nautica, bringing you premium audio equipment, mobile accessories, and smart lifestyle products. We believe in merging technology with fashion to create products that enhance your everyday life.</p><p>Our commitment to quality and innovation drives everything we do, from product design to customer experience.</p>",
         "button_text": "Learn More About Us",
         "button_url": "",
