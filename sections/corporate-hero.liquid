@@ -6,6 +6,96 @@
 {%- render 'section-spacing-collapsing' -%}
 
 <style>
+  /* --- Mobile / responsive fixes --- */
+
+/* iOS/Android dynamic viewport fix */
+#shopify-section-{{ section.id }} {
+  --hero-height-dvh: calc({{ section.settings.hero_height }} * 1dvh);
+}
+
+.corporate-hero {
+  min-height: var(--hero-height);            /* fallback */
+  min-height: var(--hero-height-dvh);        /* modern browsers */
+}
+
+@media (max-width: 768px) {
+  .corporate-hero__content {
+    padding: 1.25rem;
+    max-width: 92vw;
+  }
+
+  .corporate-hero__logo {
+    letter-spacing: 0.06em;
+    line-height: 1.05;
+    word-break: break-word;
+    text-wrap: balance;
+  }
+
+  .corporate-hero__tagline {
+    margin-bottom: 1.25rem;
+    text-wrap: balance;
+  }
+
+  .corporate-hero__divider {
+    margin: 0 auto 1.25rem;
+    width: 72px;
+  }
+
+  .corporate-hero__description {
+    font-size: 1rem;
+    line-height: 1.65;
+    margin: 0 auto 1.75rem;
+    max-width: 36rem;
+    text-wrap: pretty;
+  }
+
+  .corporate-hero__cta {
+    gap: 0.75rem;
+  }
+
+  .corporate-hero__btn {
+    padding: 0.9rem 1.4rem;
+    font-size: 0.95rem;
+    width: 100%;
+    max-width: 360px; /* tek kolon, ama çok uzamasın */
+    justify-content: center;
+  }
+
+  .corporate-hero__scroll {
+    bottom: 1rem;
+  }
+}
+
+@media (max-width: 420px) {
+  .corporate-hero__content {
+    padding: 1rem;
+  }
+
+  .corporate-hero__btn {
+    max-width: 100%;
+  }
+
+  .corporate-hero__scroll svg {
+    width: 26px;
+    height: 26px;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .corporate-hero__particle,
+  .corporate-hero__scroll,
+  .corporate-hero__logo,
+  .corporate-hero__tagline,
+  .corporate-hero__divider,
+  .corporate-hero__description,
+  .corporate-hero__cta {
+    animation: none !important;
+    transform: none !important;
+    opacity: 1 !important;
+  }
+}
+
   #shopify-section-{{ section.id }} {
     --hero-height: {{ section.settings.hero_height }}vh;
   }
