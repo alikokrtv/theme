@@ -1,0 +1,312 @@
+{%- comment -%}
+  Nautica Hero Video Section
+  Full-screen video hero with Nautica branding
+{%- endcomment -%}
+
+{%- render 'section-spacing-collapsing' -%}
+
+<style>
+  #shopify-section-{{ section.id }} {
+    --content-over-media-overlay: {{ section.settings.overlay_color.rgb }} / {{ section.settings.overlay_opacity | divided_by: 100.0 }};
+
+    {%- if section.settings.allow_transparent_header -%}
+      margin-block-start: calc(-1 * var(--header-height) * var(--section-is-first));
+    {%- endif -%}
+  }
+
+  .nautica-hero-video {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  .nautica-hero-video__content {
+    position: relative;
+    z-index: 10;
+    text-align: center;
+    padding: 2rem;
+    max-width: 1000px;
+  }
+
+  .nautica-hero-video__logo {
+    font-size: clamp(4rem, 10vw, 8rem);
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    color: #ffffff;
+    margin-bottom: 1.5rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    opacity: 0;
+    transform: translateY(30px);
+    animation: nautica-reveal 1s ease forwards 0.3s;
+  }
+
+  .nautica-hero-video__subtitle {
+    font-size: clamp(0.9rem, 2vw, 1.2rem);
+    color: rgba(255, 255, 255, 0.95);
+    margin-bottom: 2.5rem;
+    font-weight: 400;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    opacity: 0;
+    transform: translateY(30px);
+    animation: nautica-reveal 1s ease forwards 0.6s;
+  }
+
+  .nautica-hero-video__button {
+    padding: 1rem 2.5rem;
+    font-size: 1rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    border-radius: 50px;
+    background: #0b233f;
+    color: #fff;
+    border: 2px solid #0b233f;
+    text-decoration: none;
+    display: inline-block;
+    transition: all 0.3s ease;
+    opacity: 0;
+    transform: translateY(30px);
+    animation: nautica-reveal 1s ease forwards 0.9s;
+  }
+
+  .nautica-hero-video__button:hover {
+    background: transparent;
+    color: #fff;
+    border-color: #fff;
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(255, 255, 255, 0.2);
+  }
+
+  @keyframes nautica-reveal {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @media (max-width: 768px) {
+    .nautica-hero-video {
+      min-height: 80vh;
+    }
+
+    .nautica-hero-video__content {
+      padding: 1.5rem;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .nautica-hero-video__logo,
+    .nautica-hero-video__subtitle,
+    .nautica-hero-video__button {
+      animation: none !important;
+      opacity: 1 !important;
+      transform: none !important;
+    }
+  }
+</style>
+
+<div {% render 'section-properties' %} {% if section.settings.allow_transparent_header %}allow-transparent-header{% endif %}>
+  {%- capture class -%}content-over-media {% if section.settings.video_size != 'auto' %}content-over-media--{{ section.settings.video_size }}{% endif %} nautica-hero-video {% if section.settings.full_width %}full-bleed{% else %}shadow-block rounded-lg{% endif %}{%- endcapture -%}
+
+  <div {% render 'surface', class: class, text_color: section.settings.text_color %}>
+    {%- capture poster -%}
+      {%- assign poster_image = section.settings.poster | default: section.settings.video.preview_image -%}
+
+      {%- if section.settings.autoplay == false and poster_image != blank -%}
+        {%- capture sizes -%}{% if section.settings.full_width %}100vw{% else %}(max-width: 740px) calc(100vw - 40px), (max-width: 999px) calc(100vw - 64px), min({{ settings.page_width }}px, 100vw - 96px){% endif %}{%- endcapture -%}
+        {{- poster_image | image_url: width: poster_image.width | image_tag: sizes: sizes, widths: '200,300,400,500,600,700,800,900,1000,1200,1400,1600,1800,2000,2200,2400,2600,2800,3000,3200' -}}
+      {%- endif -%}
+    {%- endcapture -%}
+
+    {%- if section.settings.video -%}
+      {%- if section.settings.autoplay -%}
+        {%- assign show_controls = false -%}
+      {%- else -%}
+        {%- assign show_controls = true -%}
+      {%- endif -%}
+
+      {%- if section.settings.mobile_video != blank -%}
+        {%- assign poster_image = section.settings.poster | default: section.settings.mobile_video.preview_image -%}
+  
+        <video-media {% if section.settings.autoplay %}autoplay{% endif %} class="sm:hidden" {% if section.settings.video_size == 'auto' %}style="--aspect-ratio: {{ section.settings.mobile_video.aspect_ratio }}"{% endif %}>
+          {{- section.settings.mobile_video | video_tag: class: 'object-cover sm:hidden', controls: show_controls, playsinline: true, muted: section.settings.autoplay, loop: section.settings.autoplay, preload: 'metadata', image_size: '400x' -}}
+          {{- poster_image | image_url: width: poster_image.width | image_tag: sizes: '100vw', widths: '200,300,400,500,600,700,800,900,1000,1200' -}}
+        </video-media>
+      {%- endif -%}
+
+      <video-media {% if section.settings.autoplay %}autoplay{% endif %} {% if section.settings.mobile_video != blank %}class="hidden sm:block"{% endif %} {% if section.settings.video_size == 'auto' %}style="--aspect-ratio: {{ section.settings.video.aspect_ratio }}"{% endif %}>
+        {{- section.settings.video | video_tag: playsinline: true, preload: 'metadata', muted: section.settings.autoplay, loop: section.settings.autoplay, controls: show_controls, image_size: '800x' -}}
+        {{- poster -}}
+      </video-media>
+    {%- else -%}
+      <video-media host="{{ section.settings.external_video_url.type }}" {% if section.settings.autoplay %}autoplay class="pointer-events-none"{% endif %}>
+        {{- poster -}}
+
+        <template>
+          {%- if section.settings.external_video_url.type == 'youtube' -%}
+            <iframe src="https://www.youtube.com/embed/{{ section.settings.external_video_url.id }}?playsinline=1&{% if section.settings.autoplay %}autoplay=1&controls=0&mute=1&loop=1&{% endif %}playlist={{ section.settings.external_video_url.id }}&enablejsapi=1&rel=0&modestbranding=1&origin={{ 'https://' | append: request.host | url_encode }}" allow="autoplay; encrypted-media" allowfullscreen="allowfullscreen"></iframe>
+          {%- elsif section.settings.external_video_url.type == 'vimeo' -%}
+            <iframe src="https://player.vimeo.com/video/{{ section.settings.external_video_url.id }}?autopause=1&{% if section.settings.autoplay %}background=1&autoplay=1&loop=1&muted=1&{% endif %}transparent=0&responsive=1&portrait=0&title=0&byline=0&color={{ settings.text_color | remove_first: '#' }}" allow="autoplay; encrypted-media;" allowfullscreen="allowfullscreen"></iframe>
+          {%- endif -%}
+        </template>
+      </video-media>
+    {%- endif -%}
+
+    <div class="nautica-hero-video__content">
+      {%- if section.settings.heading != blank -%}
+        <h1 class="nautica-hero-video__logo">{{ section.settings.heading }}</h1>
+      {%- endif -%}
+
+      {%- if section.settings.subtitle != blank -%}
+        <p class="nautica-hero-video__subtitle">{{ section.settings.subtitle }}</p>
+      {%- endif -%}
+
+      {%- if section.settings.button_text != blank and section.settings.button_url != blank -%}
+        <a href="{{ section.settings.button_url }}" class="nautica-hero-video__button">
+          {{ section.settings.button_text }}
+        </a>
+      {%- endif -%}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Nautica Hero Video",
+  "class": "shopify-section--nautica-hero-video",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "full_width",
+      "label": "Full width",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "allow_transparent_header",
+      "label": "Allow transparent header",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "Video"
+    },
+    {
+      "type": "video",
+      "id": "video",
+      "label": "Video"
+    },
+    {
+      "type": "video",
+      "id": "mobile_video",
+      "label": "Mobile video"
+    },
+    {
+      "type": "image_picker",
+      "id": "poster",
+      "label": "Poster image"
+    },
+    {
+      "type": "checkbox",
+      "id": "autoplay",
+      "label": "Autoplay",
+      "default": false
+    },
+    {
+      "type": "select",
+      "id": "video_size",
+      "label": "Video size",
+      "options": [
+        {
+          "value": "auto",
+          "label": "Auto"
+        },
+        {
+          "value": "sm",
+          "label": "Small"
+        },
+        {
+          "value": "md",
+          "label": "Medium"
+        },
+        {
+          "value": "lg",
+          "label": "Large"
+        }
+      ],
+      "default": "auto"
+    },
+    {
+      "type": "url",
+      "id": "external_video_url",
+      "label": "External video URL",
+      "info": "YouTube or Vimeo URL"
+    },
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "NAUTICA"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "TECHNOFASHION IS AN AUTHORIZED LICENSEE OF NAUTICA"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button text",
+      "default": "About Us"
+    },
+    {
+      "type": "url",
+      "id": "button_url",
+      "label": "Button link"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "overlay_color",
+      "label": "Overlay",
+      "default": "#000000"
+    },
+    {
+      "type": "range",
+      "id": "overlay_opacity",
+      "label": "Overlay opacity",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "default": 30,
+      "unit": "%"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Nautica Hero Video",
+      "category": "Nautica"
+    }
+  ]
+}
+{% endschema %}
+
