@@ -1,0 +1,347 @@
+{%- comment -%}
+  TechnoFashion Corporate Hero Section
+  Anker-style full-screen hero with gradient and parallax effect
+{%- endcomment -%}
+
+{%- render 'section-spacing-collapsing' -%}
+
+<style>
+  #shopify-section-{{ section.id }} {
+    --hero-height: {{ section.settings.hero_height }}vh;
+  }
+
+  .corporate-hero {
+    position: relative;
+    min-height: var(--hero-height);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    background: {{ section.settings.background_color | default: '#0a1628' }};
+  }
+
+  .corporate-hero__gradient {
+    position: absolute;
+    inset: 0;
+    background: {{ section.settings.gradient | default: 'linear-gradient(135deg, #0a1628 0%, #1e3a5f 50%, #00bcd4 100%)' }};
+    opacity: 0.95;
+  }
+
+  .corporate-hero__particles {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+  }
+
+  .corporate-hero__particle {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    animation: float-particle 15s infinite ease-in-out;
+  }
+
+  .corporate-hero__particle:nth-child(1) { left: 10%; top: 20%; animation-delay: 0s; }
+  .corporate-hero__particle:nth-child(2) { left: 20%; top: 80%; animation-delay: 2s; }
+  .corporate-hero__particle:nth-child(3) { left: 30%; top: 40%; animation-delay: 4s; }
+  .corporate-hero__particle:nth-child(4) { left: 50%; top: 60%; animation-delay: 1s; }
+  .corporate-hero__particle:nth-child(5) { left: 70%; top: 30%; animation-delay: 3s; }
+  .corporate-hero__particle:nth-child(6) { left: 80%; top: 70%; animation-delay: 5s; }
+  .corporate-hero__particle:nth-child(7) { left: 90%; top: 50%; animation-delay: 2.5s; }
+  .corporate-hero__particle:nth-child(8) { left: 15%; top: 60%; animation-delay: 3.5s; }
+
+  @keyframes float-particle {
+    0%, 100% { transform: translateY(0) scale(1); opacity: 0.3; }
+    50% { transform: translateY(-100px) scale(1.5); opacity: 0.8; }
+  }
+
+  .corporate-hero__content {
+    position: relative;
+    z-index: 10;
+    text-align: center;
+    padding: 2rem;
+    max-width: 1000px;
+  }
+
+  .corporate-hero__logo {
+    font-size: clamp(3rem, 8vw, 6rem);
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    color: #fff;
+    margin-bottom: 1rem;
+    opacity: 0;
+    transform: translateY(30px);
+    animation: hero-reveal 1s ease forwards 0.3s;
+  }
+
+  .corporate-hero__logo span {
+    color: {{ section.settings.accent_color | default: '#00bcd4' }};
+  }
+
+  .corporate-hero__tagline {
+    font-size: clamp(1.2rem, 3vw, 2rem);
+    color: rgba(255, 255, 255, 0.9);
+    margin-bottom: 2rem;
+    font-weight: 300;
+    letter-spacing: 0.05em;
+    opacity: 0;
+    transform: translateY(30px);
+    animation: hero-reveal 1s ease forwards 0.6s;
+  }
+
+  .corporate-hero__divider {
+    width: 100px;
+    height: 3px;
+    background: {{ section.settings.accent_color | default: '#00bcd4' }};
+    margin: 0 auto 2rem;
+    opacity: 0;
+    transform: scaleX(0);
+    animation: divider-reveal 0.8s ease forwards 0.9s;
+  }
+
+  .corporate-hero__description {
+    font-size: 1.1rem;
+    color: rgba(255, 255, 255, 0.7);
+    max-width: 600px;
+    margin: 0 auto 2.5rem;
+    line-height: 1.8;
+    opacity: 0;
+    transform: translateY(30px);
+    animation: hero-reveal 1s ease forwards 1.2s;
+  }
+
+  .corporate-hero__cta {
+    display: inline-flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    justify-content: center;
+    opacity: 0;
+    transform: translateY(30px);
+    animation: hero-reveal 1s ease forwards 1.5s;
+  }
+
+  .corporate-hero__btn {
+    padding: 1rem 2.5rem;
+    font-size: 1rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    border-radius: 50px;
+    transition: all 0.3s ease;
+    text-decoration: none;
+  }
+
+  .corporate-hero__btn--primary {
+    background: {{ section.settings.accent_color | default: '#00bcd4' }};
+    color: #fff;
+    border: 2px solid {{ section.settings.accent_color | default: '#00bcd4' }};
+  }
+
+  .corporate-hero__btn--primary:hover {
+    background: transparent;
+    color: {{ section.settings.accent_color | default: '#00bcd4' }};
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(0, 188, 212, 0.3);
+  }
+
+  .corporate-hero__btn--secondary {
+    background: transparent;
+    color: #fff;
+    border: 2px solid rgba(255, 255, 255, 0.5);
+  }
+
+  .corporate-hero__btn--secondary:hover {
+    border-color: #fff;
+    transform: translateY(-3px);
+  }
+
+  .corporate-hero__scroll {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    color: rgba(255, 255, 255, 0.6);
+    animation: bounce 2s infinite;
+  }
+
+  .corporate-hero__scroll svg {
+    width: 30px;
+    height: 30px;
+  }
+
+  @keyframes hero-reveal {
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes divider-reveal {
+    to { opacity: 1; transform: scaleX(1); }
+  }
+
+  @keyframes bounce {
+    0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
+    40% { transform: translateX(-50%) translateY(-10px); }
+    60% { transform: translateX(-50%) translateY(-5px); }
+  }
+
+  /* Parallax effect on scroll */
+  .corporate-hero[data-parallax] .corporate-hero__content {
+    will-change: transform;
+  }
+</style>
+
+<div class="corporate-hero" data-parallax>
+  <div class="corporate-hero__gradient"></div>
+  
+  <div class="corporate-hero__particles">
+    <span class="corporate-hero__particle"></span>
+    <span class="corporate-hero__particle"></span>
+    <span class="corporate-hero__particle"></span>
+    <span class="corporate-hero__particle"></span>
+    <span class="corporate-hero__particle"></span>
+    <span class="corporate-hero__particle"></span>
+    <span class="corporate-hero__particle"></span>
+    <span class="corporate-hero__particle"></span>
+  </div>
+
+  <div class="corporate-hero__content">
+    <h1 class="corporate-hero__logo">
+      {{ section.settings.logo_text_1 | default: 'TECHNO' }}<span>{{ section.settings.logo_text_2 | default: 'FASHION' }}</span>
+    </h1>
+    
+    <p class="corporate-hero__tagline">{{ section.settings.tagline | default: 'Powering Your Lifestyle' }}</p>
+    
+    <div class="corporate-hero__divider"></div>
+    
+    {%- if section.settings.description != blank -%}
+      <p class="corporate-hero__description">{{ section.settings.description }}</p>
+    {%- endif -%}
+
+    <div class="corporate-hero__cta">
+      {%- if section.settings.button_1_text != blank -%}
+        <a href="{{ section.settings.button_1_url }}" class="corporate-hero__btn corporate-hero__btn--primary">
+          {{ section.settings.button_1_text }}
+        </a>
+      {%- endif -%}
+      
+      {%- if section.settings.button_2_text != blank -%}
+        <a href="{{ section.settings.button_2_url }}" class="corporate-hero__btn corporate-hero__btn--secondary">
+          {{ section.settings.button_2_text }}
+        </a>
+      {%- endif -%}
+    </div>
+  </div>
+
+  <div class="corporate-hero__scroll">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M12 5v14M19 12l-7 7-7-7"/>
+    </svg>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Corporate Hero",
+  "class": "shopify-section--corporate-hero",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "range",
+      "id": "hero_height",
+      "label": "Hero height",
+      "min": 50,
+      "max": 100,
+      "step": 5,
+      "default": 100,
+      "unit": "vh"
+    },
+    {
+      "type": "header",
+      "content": "Logo"
+    },
+    {
+      "type": "text",
+      "id": "logo_text_1",
+      "label": "Logo text (part 1)",
+      "default": "TECHNO"
+    },
+    {
+      "type": "text",
+      "id": "logo_text_2",
+      "label": "Logo text (part 2 - accent)",
+      "default": "FASHION"
+    },
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "text",
+      "id": "tagline",
+      "label": "Tagline",
+      "default": "Powering Your Lifestyle"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description",
+      "default": "Authorized licensee of Nautica, bringing premium audio, mobile accessories, and smart lifestyle products worldwide."
+    },
+    {
+      "type": "header",
+      "content": "Buttons"
+    },
+    {
+      "type": "text",
+      "id": "button_1_text",
+      "label": "Button 1 text",
+      "default": "Explore Products"
+    },
+    {
+      "type": "url",
+      "id": "button_1_url",
+      "label": "Button 1 link"
+    },
+    {
+      "type": "text",
+      "id": "button_2_text",
+      "label": "Button 2 text",
+      "default": "Our Story"
+    },
+    {
+      "type": "url",
+      "id": "button_2_url",
+      "label": "Button 2 link"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background color",
+      "default": "#0a1628"
+    },
+    {
+      "type": "color",
+      "id": "accent_color",
+      "label": "Accent color",
+      "default": "#00bcd4"
+    },
+    {
+      "type": "color_background",
+      "id": "gradient",
+      "label": "Background gradient",
+      "default": "linear-gradient(135deg, #0a1628 0%, #1e3a5f 50%, #00bcd4 100%)"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Corporate Hero",
+      "category": "Corporate"
+    }
+  ]
+}
+{% endschema %}
+

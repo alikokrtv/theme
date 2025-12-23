@@ -1,0 +1,445 @@
+{%- comment -%}
+  TechnoFashion Corporate Brands Section
+  Animated brand showcase with hover effects
+{%- endcomment -%}
+
+{%- render 'section-spacing-collapsing' -%}
+
+<style>
+  .corporate-brands {
+    background: {{ section.settings.background_color | default: '#f8f9fa' }};
+    padding: 6rem 2rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .corporate-brands::before,
+  .corporate-brands::after {
+    content: '';
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    background: {{ section.settings.accent_color | default: '#00bcd4' }};
+    opacity: 0.03;
+  }
+
+  .corporate-brands::before {
+    top: -150px;
+    left: -150px;
+  }
+
+  .corporate-brands::after {
+    bottom: -150px;
+    right: -150px;
+  }
+
+  .corporate-brands__container {
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+  }
+
+  .corporate-brands__heading {
+    text-align: center;
+    margin-bottom: 4rem;
+  }
+
+  .corporate-brands__badge {
+    display: inline-block;
+    padding: 0.5rem 1.5rem;
+    background: {{ section.settings.accent_color | default: '#00bcd4' }}15;
+    color: {{ section.settings.accent_color | default: '#00bcd4' }};
+    border-radius: 50px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 1.5rem;
+  }
+
+  .corporate-brands__title {
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 700;
+    color: {{ section.settings.text_color | default: '#0a1628' }};
+    margin-bottom: 1rem;
+  }
+
+  .corporate-brands__subtitle {
+    font-size: 1.1rem;
+    color: {{ section.settings.text_color | default: '#0a1628' }};
+    opacity: 0.7;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .corporate-brands__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+  }
+
+  .corporate-brands__item {
+    background: #fff;
+    border-radius: 20px;
+    padding: 3rem 2rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.05);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    opacity: 0;
+    transform: translateY(40px);
+  }
+
+  .corporate-brands__item.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .corporate-brands__item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: {{ section.settings.accent_color | default: '#00bcd4' }};
+    transform: scaleX(0);
+    transition: transform 0.4s ease;
+  }
+
+  .corporate-brands__item:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+  }
+
+  .corporate-brands__item:hover::before {
+    transform: scaleX(1);
+  }
+
+  .corporate-brands__logo-wrapper {
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+  }
+
+  .corporate-brands__logo {
+    max-width: 180px;
+    max-height: 70px;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    filter: grayscale(100%);
+    opacity: 0.7;
+    transition: all 0.4s ease;
+  }
+
+  .corporate-brands__item:hover .corporate-brands__logo {
+    filter: grayscale(0%);
+    opacity: 1;
+  }
+
+  .corporate-brands__name {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: {{ section.settings.text_color | default: '#0a1628' }};
+    margin-bottom: 0.75rem;
+  }
+
+  .corporate-brands__description {
+    font-size: 0.95rem;
+    color: {{ section.settings.text_color | default: '#0a1628' }};
+    opacity: 0.6;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+  }
+
+  .corporate-brands__link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: {{ section.settings.accent_color | default: '#00bcd4' }};
+    font-weight: 600;
+    font-size: 0.9rem;
+    text-decoration: none;
+    transition: gap 0.3s ease;
+  }
+
+  .corporate-brands__link:hover {
+    gap: 0.75rem;
+  }
+
+  .corporate-brands__link svg {
+    width: 16px;
+    height: 16px;
+    transition: transform 0.3s ease;
+  }
+
+  .corporate-brands__link:hover svg {
+    transform: translateX(3px);
+  }
+
+  .corporate-brands__featured {
+    grid-column: span 2;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    align-items: center;
+    text-align: left;
+    padding: 3rem;
+  }
+
+  @media (max-width: 900px) {
+    .corporate-brands__featured {
+      grid-column: span 1;
+      grid-template-columns: 1fr;
+      text-align: center;
+    }
+  }
+
+  .corporate-brands__featured-content {
+    order: 1;
+  }
+
+  .corporate-brands__featured-image {
+    order: 2;
+  }
+
+  .corporate-brands__featured-image img {
+    width: 100%;
+    height: auto;
+    border-radius: 15px;
+  }
+
+  .corporate-brands__featured .corporate-brands__name {
+    font-size: 1.8rem;
+  }
+</style>
+
+<div class="corporate-brands">
+  <div class="corporate-brands__container">
+    <div class="corporate-brands__heading">
+      {%- if section.settings.badge != blank -%}
+        <span class="corporate-brands__badge">{{ section.settings.badge }}</span>
+      {%- endif -%}
+      {%- if section.settings.title != blank -%}
+        <h2 class="corporate-brands__title">{{ section.settings.title }}</h2>
+      {%- endif -%}
+      {%- if section.settings.subtitle != blank -%}
+        <p class="corporate-brands__subtitle">{{ section.settings.subtitle }}</p>
+      {%- endif -%}
+    </div>
+
+    <div class="corporate-brands__grid">
+      {%- for block in section.blocks -%}
+        <div class="corporate-brands__item {% if block.settings.featured %}corporate-brands__featured{% endif %}" 
+             data-brand-item 
+             style="transition-delay: {{ forloop.index | times: 100 }}ms"
+             {{ block.shopify_attributes }}>
+          
+          {%- if block.settings.featured and block.settings.featured_image != blank -%}
+            <div class="corporate-brands__featured-image">
+              {{ block.settings.featured_image | image_url: width: 600 | image_tag }}
+            </div>
+          {%- endif -%}
+
+          <div class="{% if block.settings.featured %}corporate-brands__featured-content{% endif %}">
+            <div class="corporate-brands__logo-wrapper">
+              {%- if block.settings.logo != blank -%}
+                {{ block.settings.logo | image_url: width: 360 | image_tag: class: 'corporate-brands__logo' }}
+              {%- else -%}
+                <span class="corporate-brands__name" style="font-size: 2rem;">{{ block.settings.name }}</span>
+              {%- endif -%}
+            </div>
+
+            {%- unless block.settings.logo != blank -%}
+              {%- if block.settings.name != blank -%}
+                <h3 class="corporate-brands__name">{{ block.settings.name }}</h3>
+              {%- endif -%}
+            {%- endunless -%}
+
+            {%- if block.settings.logo != blank and block.settings.name != blank -%}
+              <h3 class="corporate-brands__name">{{ block.settings.name }}</h3>
+            {%- endif -%}
+
+            {%- if block.settings.description != blank -%}
+              <p class="corporate-brands__description">{{ block.settings.description }}</p>
+            {%- endif -%}
+
+            {%- if block.settings.link_text != blank and block.settings.link_url != blank -%}
+              <a href="{{ block.settings.link_url }}" class="corporate-brands__link">
+                {{ block.settings.link_text }}
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M5 12h14M12 5l7 7-7 7"/>
+                </svg>
+              </a>
+            {%- endif -%}
+          </div>
+        </div>
+      {%- endfor -%}
+    </div>
+  </div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const brandItems = document.querySelectorAll('[data-brand-item]');
+    
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+        }
+      });
+    }, { threshold: 0.2 });
+
+    brandItems.forEach(item => observer.observe(item));
+  });
+</script>
+
+{% schema %}
+{
+  "name": "Corporate Brands",
+  "class": "shopify-section--corporate-brands",
+  "tag": "section",
+  "max_blocks": 8,
+  "settings": [
+    {
+      "type": "text",
+      "id": "badge",
+      "label": "Badge text",
+      "default": "Our Portfolio"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "Brands Under Our Umbrella"
+    },
+    {
+      "type": "textarea",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "We proudly represent and distribute premium lifestyle brands"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background",
+      "default": "#f8f9fa"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text color",
+      "default": "#0a1628"
+    },
+    {
+      "type": "color",
+      "id": "accent_color",
+      "label": "Accent color",
+      "default": "#00bcd4"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "brand",
+      "name": "Brand",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "logo",
+          "label": "Brand logo"
+        },
+        {
+          "type": "text",
+          "id": "name",
+          "label": "Brand name",
+          "default": "Brand Name"
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Description",
+          "default": "Short description of the brand and what it offers."
+        },
+        {
+          "type": "text",
+          "id": "link_text",
+          "label": "Link text",
+          "default": "Explore Brand"
+        },
+        {
+          "type": "url",
+          "id": "link_url",
+          "label": "Link URL"
+        },
+        {
+          "type": "header",
+          "content": "Featured brand"
+        },
+        {
+          "type": "checkbox",
+          "id": "featured",
+          "label": "Make this a featured brand",
+          "default": false
+        },
+        {
+          "type": "image_picker",
+          "id": "featured_image",
+          "label": "Featured image"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Corporate Brands",
+      "category": "Corporate",
+      "blocks": [
+        {
+          "type": "brand",
+          "settings": {
+            "name": "Nautica",
+            "description": "Premium lifestyle brand bringing nautical-inspired products for modern living.",
+            "link_text": "Explore Nautica"
+          }
+        },
+        {
+          "type": "brand",
+          "settings": {
+            "name": "Turan",
+            "description": "Innovative mobile accessories designed for the tech-savvy consumer.",
+            "link_text": "Discover Turan"
+          }
+        },
+        {
+          "type": "brand",
+          "settings": {
+            "name": "Nayman",
+            "description": "Premium audio products delivering exceptional sound quality.",
+            "link_text": "Shop Nayman"
+          }
+        },
+        {
+          "type": "brand",
+          "settings": {
+            "name": "Western Mobile",
+            "description": "Quality mobile solutions for everyday connectivity needs.",
+            "link_text": "View Products"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
+

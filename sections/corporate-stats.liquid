@@ -1,0 +1,371 @@
+{%- comment -%}
+  TechnoFashion Corporate Stats Section
+  Animated counters with impressive numbers
+{%- endcomment -%}
+
+{%- render 'section-spacing-collapsing' -%}
+
+<style>
+  .corporate-stats {
+    background: {{ section.settings.background_color | default: '#fff' }};
+    padding: 5rem 2rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .corporate-stats::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, {{ section.settings.accent_color | default: '#00bcd4' }}, transparent);
+  }
+
+  .corporate-stats__container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .corporate-stats__heading {
+    text-align: center;
+    margin-bottom: 4rem;
+  }
+
+  .corporate-stats__title {
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 700;
+    color: {{ section.settings.text_color | default: '#0a1628' }};
+    margin-bottom: 1rem;
+  }
+
+  .corporate-stats__subtitle {
+    font-size: 1.1rem;
+    color: {{ section.settings.text_color | default: '#0a1628' }};
+    opacity: 0.7;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .corporate-stats__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 3rem;
+  }
+
+  .corporate-stats__item {
+    text-align: center;
+    padding: 2rem;
+    position: relative;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.6s ease;
+  }
+
+  .corporate-stats__item.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .corporate-stats__item:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 1px;
+    height: 60%;
+    background: linear-gradient(180deg, transparent, {{ section.settings.accent_color | default: '#00bcd4' }}33, transparent);
+  }
+
+  @media (max-width: 700px) {
+    .corporate-stats__item::after {
+      display: none;
+    }
+  }
+
+  .corporate-stats__number {
+    font-size: clamp(3rem, 8vw, 5rem);
+    font-weight: 800;
+    color: {{ section.settings.accent_color | default: '#00bcd4' }};
+    line-height: 1;
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+    gap: 0.1em;
+  }
+
+  .corporate-stats__number-value {
+    font-variant-numeric: tabular-nums;
+  }
+
+  .corporate-stats__number-suffix {
+    font-size: 0.5em;
+    opacity: 0.8;
+  }
+
+  .corporate-stats__label {
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: {{ section.settings.text_color | default: '#0a1628' }};
+    opacity: 0.7;
+    font-weight: 600;
+  }
+
+  .corporate-stats__icon {
+    width: 60px;
+    height: 60px;
+    margin: 0 auto 1.5rem;
+    border-radius: 50%;
+    background: {{ section.settings.accent_color | default: '#00bcd4' }}15;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: {{ section.settings.accent_color | default: '#00bcd4' }};
+  }
+
+  .corporate-stats__icon svg {
+    width: 28px;
+    height: 28px;
+  }
+</style>
+
+<div class="corporate-stats">
+  <div class="corporate-stats__container">
+    {%- if section.settings.title != blank or section.settings.subtitle != blank -%}
+      <div class="corporate-stats__heading">
+        {%- if section.settings.title != blank -%}
+          <h2 class="corporate-stats__title">{{ section.settings.title }}</h2>
+        {%- endif -%}
+        {%- if section.settings.subtitle != blank -%}
+          <p class="corporate-stats__subtitle">{{ section.settings.subtitle }}</p>
+        {%- endif -%}
+      </div>
+    {%- endif -%}
+
+    <div class="corporate-stats__grid">
+      {%- for block in section.blocks -%}
+        <div class="corporate-stats__item" data-stat-item style="transition-delay: {{ forloop.index | times: 150 }}ms" {{ block.shopify_attributes }}>
+          {%- if block.settings.icon != 'none' -%}
+            <div class="corporate-stats__icon">
+              {%- case block.settings.icon -%}
+                {%- when 'globe' -%}
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                {%- when 'users' -%}
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                {%- when 'package' -%}
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="16.5" y1="9.4" x2="7.5" y2="4.21"/><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
+                {%- when 'award' -%}
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></svg>
+                {%- when 'star' -%}
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                {%- when 'heart' -%}
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+              {%- endcase -%}
+            </div>
+          {%- endif -%}
+          
+          <div class="corporate-stats__number">
+            <span class="corporate-stats__number-value" data-count-to="{{ block.settings.number }}">0</span>
+            <span class="corporate-stats__number-suffix">{{ block.settings.suffix }}</span>
+          </div>
+          <div class="corporate-stats__label">{{ block.settings.label }}</div>
+        </div>
+      {%- endfor -%}
+    </div>
+  </div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const statItems = document.querySelectorAll('[data-stat-item]');
+    const counters = document.querySelectorAll('[data-count-to]');
+    
+    const observerOptions = {
+      threshold: 0.3,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          
+          const counter = entry.target.querySelector('[data-count-to]');
+          if (counter && !counter.dataset.counted) {
+            counter.dataset.counted = 'true';
+            animateCounter(counter);
+          }
+        }
+      });
+    }, observerOptions);
+
+    statItems.forEach(item => observer.observe(item));
+
+    function animateCounter(element) {
+      const target = parseFloat(element.dataset.countTo);
+      const duration = 2000;
+      const start = performance.now();
+      const isDecimal = target % 1 !== 0;
+
+      function update(currentTime) {
+        const elapsed = currentTime - start;
+        const progress = Math.min(elapsed / duration, 1);
+        const easeOut = 1 - Math.pow(1 - progress, 3);
+        const current = target * easeOut;
+
+        if (isDecimal) {
+          element.textContent = current.toFixed(1);
+        } else {
+          element.textContent = Math.floor(current).toLocaleString();
+        }
+
+        if (progress < 1) {
+          requestAnimationFrame(update);
+        } else {
+          if (isDecimal) {
+            element.textContent = target.toFixed(1);
+          } else {
+            element.textContent = target.toLocaleString();
+          }
+        }
+      }
+
+      requestAnimationFrame(update);
+    }
+  });
+</script>
+
+{% schema %}
+{
+  "name": "Corporate Stats",
+  "class": "shopify-section--corporate-stats",
+  "tag": "section",
+  "max_blocks": 6,
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "Our Impact in Numbers"
+    },
+    {
+      "type": "textarea",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "Delivering quality and innovation worldwide"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text color",
+      "default": "#0a1628"
+    },
+    {
+      "type": "color",
+      "id": "accent_color",
+      "label": "Accent color",
+      "default": "#00bcd4"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "stat",
+      "name": "Statistic",
+      "settings": [
+        {
+          "type": "select",
+          "id": "icon",
+          "label": "Icon",
+          "options": [
+            { "value": "none", "label": "None" },
+            { "value": "globe", "label": "Globe" },
+            { "value": "users", "label": "Users" },
+            { "value": "package", "label": "Package" },
+            { "value": "award", "label": "Award" },
+            { "value": "star", "label": "Star" },
+            { "value": "heart", "label": "Heart" }
+          ],
+          "default": "globe"
+        },
+        {
+          "type": "text",
+          "id": "number",
+          "label": "Number",
+          "default": "100"
+        },
+        {
+          "type": "text",
+          "id": "suffix",
+          "label": "Suffix (e.g., +, M, K)",
+          "default": "+"
+        },
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Label",
+          "default": "Countries"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Corporate Stats",
+      "category": "Corporate",
+      "blocks": [
+        {
+          "type": "stat",
+          "settings": {
+            "icon": "globe",
+            "number": "100",
+            "suffix": "+",
+            "label": "Countries Worldwide"
+          }
+        },
+        {
+          "type": "stat",
+          "settings": {
+            "icon": "package",
+            "number": "1",
+            "suffix": "M+",
+            "label": "Products Sold"
+          }
+        },
+        {
+          "type": "stat",
+          "settings": {
+            "icon": "award",
+            "number": "5",
+            "suffix": "+",
+            "label": "Premium Brands"
+          }
+        },
+        {
+          "type": "stat",
+          "settings": {
+            "icon": "heart",
+            "number": "500",
+            "suffix": "K+",
+            "label": "Happy Customers"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
+

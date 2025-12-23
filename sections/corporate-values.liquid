@@ -1,0 +1,371 @@
+{%- comment -%}
+  TechnoFashion Corporate Values Section
+  Mission, Vision, and Core Values with animations
+{%- endcomment -%}
+
+{%- render 'section-spacing-collapsing' -%}
+
+<style>
+  .corporate-values {
+    background: {{ section.settings.background_color | default: '#0a1628' }};
+    padding: 6rem 2rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .corporate-values__bg-pattern {
+    position: absolute;
+    inset: 0;
+    background-image: 
+      radial-gradient(circle at 20% 50%, {{ section.settings.accent_color | default: '#00bcd4' }}10 0%, transparent 50%),
+      radial-gradient(circle at 80% 50%, {{ section.settings.accent_color | default: '#00bcd4' }}10 0%, transparent 50%);
+  }
+
+  .corporate-values__container {
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+  }
+
+  .corporate-values__heading {
+    text-align: center;
+    margin-bottom: 5rem;
+  }
+
+  .corporate-values__title {
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 1rem;
+  }
+
+  .corporate-values__subtitle {
+    font-size: 1.2rem;
+    color: rgba(255, 255, 255, 0.7);
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .corporate-values__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2.5rem;
+  }
+
+  .corporate-values__card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 24px;
+    padding: 3rem 2rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    backdrop-filter: blur(10px);
+    opacity: 0;
+    transform: translateY(40px) scale(0.95);
+    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .corporate-values__card.is-visible {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+
+  .corporate-values__card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 3px;
+    background: {{ section.settings.accent_color | default: '#00bcd4' }};
+    border-radius: 0 0 3px 3px;
+  }
+
+  .corporate-values__card:hover {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: {{ section.settings.accent_color | default: '#00bcd4' }}50;
+    transform: translateY(-5px) scale(1);
+  }
+
+  .corporate-values__icon {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 2rem;
+    border-radius: 50%;
+    background: linear-gradient(135deg, {{ section.settings.accent_color | default: '#00bcd4' }}30, {{ section.settings.accent_color | default: '#00bcd4' }}10);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+
+  .corporate-values__icon::after {
+    content: '';
+    position: absolute;
+    inset: -5px;
+    border-radius: 50%;
+    border: 2px dashed {{ section.settings.accent_color | default: '#00bcd4' }}30;
+    animation: rotate-slow 20s linear infinite;
+  }
+
+  @keyframes rotate-slow {
+    to { transform: rotate(360deg); }
+  }
+
+  .corporate-values__icon svg {
+    width: 36px;
+    height: 36px;
+    color: {{ section.settings.accent_color | default: '#00bcd4' }};
+  }
+
+  .corporate-values__card-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 1rem;
+  }
+
+  .corporate-values__card-text {
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.7);
+    line-height: 1.8;
+  }
+
+  /* Mission Statement - Full Width */
+  .corporate-values__mission {
+    margin-top: 4rem;
+    text-align: center;
+    padding: 4rem;
+    background: linear-gradient(135deg, {{ section.settings.accent_color | default: '#00bcd4' }}15, transparent);
+    border-radius: 24px;
+    border: 1px solid {{ section.settings.accent_color | default: '#00bcd4' }}20;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s ease;
+  }
+
+  .corporate-values__mission.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .corporate-values__mission-label {
+    display: inline-block;
+    padding: 0.5rem 1.5rem;
+    background: {{ section.settings.accent_color | default: '#00bcd4' }};
+    color: #fff;
+    border-radius: 50px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 1.5rem;
+  }
+
+  .corporate-values__mission-text {
+    font-size: clamp(1.3rem, 3vw, 1.8rem);
+    color: #fff;
+    line-height: 1.6;
+    font-weight: 300;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .corporate-values__mission-text strong {
+    color: {{ section.settings.accent_color | default: '#00bcd4' }};
+    font-weight: 600;
+  }
+</style>
+
+<div class="corporate-values">
+  <div class="corporate-values__bg-pattern"></div>
+  
+  <div class="corporate-values__container">
+    <div class="corporate-values__heading">
+      {%- if section.settings.title != blank -%}
+        <h2 class="corporate-values__title">{{ section.settings.title }}</h2>
+      {%- endif -%}
+      {%- if section.settings.subtitle != blank -%}
+        <p class="corporate-values__subtitle">{{ section.settings.subtitle }}</p>
+      {%- endif -%}
+    </div>
+
+    <div class="corporate-values__grid">
+      {%- for block in section.blocks -%}
+        {%- if block.type == 'value' -%}
+          <div class="corporate-values__card" data-value-card style="transition-delay: {{ forloop.index | times: 150 }}ms" {{ block.shopify_attributes }}>
+            <div class="corporate-values__icon">
+              {%- case block.settings.icon -%}
+                {%- when 'innovation' -%}
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg>
+                {%- when 'quality' -%}
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                {%- when 'design' -%}
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
+                {%- when 'trust' -%}
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                {%- when 'sustainability' -%}
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/><path d="M12 6v6l4 2"/></svg>
+                {%- when 'customer' -%}
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+              {%- endcase -%}
+            </div>
+            
+            <h3 class="corporate-values__card-title">{{ block.settings.title }}</h3>
+            <p class="corporate-values__card-text">{{ block.settings.description }}</p>
+          </div>
+        {%- endif -%}
+      {%- endfor -%}
+    </div>
+
+    {%- if section.settings.mission_text != blank -%}
+      <div class="corporate-values__mission" data-mission>
+        <span class="corporate-values__mission-label">{{ section.settings.mission_label | default: 'Our Mission' }}</span>
+        <p class="corporate-values__mission-text">{{ section.settings.mission_text }}</p>
+      </div>
+    {%- endif -%}
+  </div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const valueCards = document.querySelectorAll('[data-value-card]');
+    const mission = document.querySelector('[data-mission]');
+    
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+        }
+      });
+    }, { threshold: 0.2 });
+
+    valueCards.forEach(card => observer.observe(card));
+    if (mission) observer.observe(mission);
+  });
+</script>
+
+{% schema %}
+{
+  "name": "Corporate Values",
+  "class": "shopify-section--corporate-values",
+  "tag": "section",
+  "max_blocks": 6,
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "What Drives Us"
+    },
+    {
+      "type": "textarea",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "Our core values shape everything we do"
+    },
+    {
+      "type": "header",
+      "content": "Mission Statement"
+    },
+    {
+      "type": "text",
+      "id": "mission_label",
+      "label": "Mission label",
+      "default": "Our Mission"
+    },
+    {
+      "type": "textarea",
+      "id": "mission_text",
+      "label": "Mission text",
+      "default": "To empower modern lifestyles through <strong>innovative technology</strong> and <strong>premium design</strong>, making quality accessible to everyone, everywhere."
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background",
+      "default": "#0a1628"
+    },
+    {
+      "type": "color",
+      "id": "accent_color",
+      "label": "Accent color",
+      "default": "#00bcd4"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "value",
+      "name": "Value",
+      "settings": [
+        {
+          "type": "select",
+          "id": "icon",
+          "label": "Icon",
+          "options": [
+            { "value": "innovation", "label": "Innovation" },
+            { "value": "quality", "label": "Quality" },
+            { "value": "design", "label": "Design" },
+            { "value": "trust", "label": "Trust" },
+            { "value": "sustainability", "label": "Sustainability" },
+            { "value": "customer", "label": "Customer Love" }
+          ],
+          "default": "innovation"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Innovation"
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Description",
+          "default": "We constantly push boundaries to bring you the latest in technology and design."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Corporate Values",
+      "category": "Corporate",
+      "blocks": [
+        {
+          "type": "value",
+          "settings": {
+            "icon": "innovation",
+            "title": "Innovation",
+            "description": "We constantly push boundaries to bring you the latest in technology and design."
+          }
+        },
+        {
+          "type": "value",
+          "settings": {
+            "icon": "quality",
+            "title": "Quality",
+            "description": "Premium materials and rigorous testing ensure products that last."
+          }
+        },
+        {
+          "type": "value",
+          "settings": {
+            "icon": "design",
+            "title": "Design",
+            "description": "Aesthetics meet functionality in every product we create."
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
+
