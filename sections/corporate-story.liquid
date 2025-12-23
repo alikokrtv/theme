@@ -5,6 +5,31 @@
 
 {%- render 'section-spacing-collapsing' -%}
 
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  const scrollButtons = document.querySelectorAll('[data-scroll-target]');
+
+  scrollButtons.forEach(btn => {
+    btn.addEventListener('click', function (e) {
+      e.preventDefault();
+
+      const targetSelector = this.dataset.scrollTarget;
+      const target = document.querySelector(targetSelector);
+
+      if (!target) return;
+
+      const headerOffset = 120; // sticky header yüksekliği
+      const elementPosition = target.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      });
+    });
+  });
+});
+</script>
 <style>
   .corporate-story {
     background: {{ section.settings.background_color | default: '#ffffff' }};
@@ -502,6 +527,9 @@
       ]
     }
   ]
+  
 }
+
 {% endschema %}
+
 
