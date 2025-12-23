@@ -6,28 +6,6 @@
 {%- render 'section-spacing-collapsing' -%}
 
 <style>
-  .corporate-hero__logo-image {
-  margin: 0 auto 1rem;
-  display: flex;
-  justify-content: center;
-}
-
-.corporate-hero__logo-img {
-  width: min(100%, {{  }}px);
-  height: auto;
-  display: block;
-
-  /* Eğer PNG şeffafsa ve parlak görünmesini istiyorsan */
-  filter: drop-shadow(0 0 18px rgba(255,255,255,0.18))
-          drop-shadow(0 0 26px rgba(0,188,212,0.25));
-}
-
-@media (max-width: 768px) {
-  .corporate-hero__logo-img {
-    width: min(90vw, {{ section.settings.logo_max_width_mobile }}px);
-  }
-}
-
   /* --- Mobile / responsive fixes --- */
 
 /* iOS/Android dynamic viewport fix */
