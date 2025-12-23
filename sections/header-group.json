@@ -413,7 +413,7 @@
         "stat_CCNeEk": {
           "type": "stat",
           "settings": {
-            "icon": "package",
+            "icon": "heart",
             "number": "95",
             "suffix": "%",
             "label": "Positive Feedback"
@@ -422,7 +422,7 @@
         "stat_y7ayiK": {
           "type": "stat",
           "settings": {
-            "icon": "heart",
+            "icon": "users",
             "number": "5",
             "suffix": "+",
             "label": "Active Collections"
