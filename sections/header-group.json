@@ -552,7 +552,7 @@
         "value_tYV7Bp"
       ],
       "custom_css": [
-        "h1{color: white;}"
+        "span {color: white;}"
       ],
       "name": "Corporate Values",
       "settings": {
