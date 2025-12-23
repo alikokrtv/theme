@@ -1,1 +1,274 @@
-{"sections":{"main":{"type":"main-page","disabled":true,"settings":{"content_width":"80ch"}},"d67527a4-87c7-42da-b727-357325a966bd":{"type":"impact-text","blocks":{"template--17127404962045__d67527a4-87c7-42da-b727-357325a966bd-item-1":{"type":"item","settings":{"title":"NAUTICA","subheading":"TECHNOFASHION IS AN AUTHORIZED LICENSEE OF NAUTICA","content":"","button_text":"About Us","button_url":"shopify:\/\/pages\/technofashion-corporate","animate_impact_text":true,"animate_impact_text_duration":2}}},"block_order":["template--17127404962045__d67527a4-87c7-42da-b727-357325a966bd-item-1"],"settings":{"full_width":true,"stack_mobile":true,"text_alignment":"center","impact_text_style":"fill","text_divider":"none","impact_text_size_ratio":0.6,"background":"","background_gradient":"","heading_text_color":"","heading_gradient":"","text_color":"","button_background":"","button_text_color":""}},"e79918f4-81de-49f9-9abd-6a3d494d065a":{"type":"video","blocks":{"template--17127404962045__e79918f4-81de-49f9-9abd-6a3d494d065a-play-1":{"type":"play","settings":{}},"template--17127404962045__e79918f4-81de-49f9-9abd-6a3d494d065a-heading-1":{"type":"heading","settings":{"text":"","heading_tag":"h1"}}},"block_order":["template--17127404962045__e79918f4-81de-49f9-9abd-6a3d494d065a-play-1","template--17127404962045__e79918f4-81de-49f9-9abd-6a3d494d065a-heading-1"],"settings":{"full_width":true,"allow_transparent_header":false,"autoplay":true,"video_size":"auto","video":"shopify:\/\/files\/videos\/NAU_Holiday23_Halo_Family_1920x1080_15sec.mov","external_video_url":"","text_color":"#ffffff","overlay_color":"#000000","overlay_opacity":30}},"cb446868-9aad-46b8-a2b1-4cad5c947152":{"type":"rich-text","blocks":{"template--17127404962045__cb446868-9aad-46b8-a2b1-4cad5c947152-heading-1":{"type":"heading","settings":{"text":"CELEBRATING 40 YEARS","heading_tag":"h1","text_color":"","gradient":""}},"template--17127404962045__cb446868-9aad-46b8-a2b1-4cad5c947152-richtext-1":{"type":"richtext","settings":{"content":"<p>For our 40th Anniversary, we celebrate the ethos that was established by founder and designer David Chu in 1983: to create nautical-<br\/>inspired, quality pieces that allow people across the world to realize and experience the joy of the water. Starting with only six outerwear<br\/>styles, Chu grew Nautica into a renowned global lifestyle brand with over 35 categories in more than 65 countries.<\/p>"}}},"block_order":["template--17127404962045__cb446868-9aad-46b8-a2b1-4cad5c947152-heading-1","template--17127404962045__cb446868-9aad-46b8-a2b1-4cad5c947152-richtext-1"],"settings":{"full_width":true,"content_width":"small","text_position":"center","background":"","background_gradient":"","text_color":""}},"5fefd135-949e-4d3b-96d7-b4c7b5a7f7d4":{"type":"timeline","blocks":{"template--17127404962045__5fefd135-949e-4d3b-96d7-b4c7b5a7f7d4-slide-1":{"type":"slide","settings":{"image":"shopify:\/\/shop_images\/1025_DT_B-Spot_2x-min_1.jpg","navigation_label":"1983","subheading":"1983","title":"NAUTICA","content":"<p>With just 6 outerwear pieces, Nautica is founded by designer David Chu in New York City.<\/p>"}},"template--17127404962045__5fefd135-949e-4d3b-96d7-b4c7b5a7f7d4-slide-2":{"type":"slide","settings":{"image":"shopify:\/\/shop_images\/1025_DT_B-Spot_2x-min_1.jpg","navigation_label":"1993","subheading":"1993","title":"NAUTICA","content":"<p>Nautica becomes the official brand of the US Sailing Team in the Olympic Games.<\/p>"}},"template--17127404962045__5fefd135-949e-4d3b-96d7-b4c7b5a7f7d4-slide-3":{"type":"slide","settings":{"image":"shopify:\/\/shop_images\/1025_DT_B-Spot_2x-min_1.jpg","navigation_label":"1996","subheading":"1996","title":"NAUTICA","content":"<p>Nautica Competition is launched, a bold activewear brand that solidifies Nautica's iconic status in '90s fashion.<\/p>"}},"293e64b6-6e7b-4702-8d0c-3df715a4b971":{"type":"slide","settings":{"image":"shopify:\/\/shop_images\/1025_DT_B-Spot_2x-min_1.jpg","navigation_label":"1999","subheading":"1999","title":"NAUTICA","content":"<p>Nautica Jeans Co. is introduced, a more casual take on sportswear focusing on premium denim.<\/p>"}},"ec681d22-6d9e-456b-9b63-bde8c75ea966":{"type":"slide","settings":{"image":"shopify:\/\/shop_images\/1025_DT_B-Spot_2x-min_1.jpg","navigation_label":"2009","subheading":"2009","title":"NAUTICA","content":"<p>Nautica becomes a corporate sponsor of Oceana.<\/p>"}},"89cbed36-2f04-4dad-a4db-5ef8578ac2ed":{"type":"slide","settings":{"image":"shopify:\/\/shop_images\/1025_DT_B-Spot_2x-min_1.jpg","navigation_label":"2013","subheading":"2013","title":"NAUTICA","content":"<p>Nautica celebrates 30 years at New York Fashion Week with the launch of Black Sail.<\/p>"}},"d88e338f-9ea8-4ab5-8ac1-277a5c89ba44":{"type":"slide","settings":{"image":"shopify:\/\/shop_images\/1025_DT_B-Spot_2x-min_1.jpg","navigation_label":"2020","subheading":"2020","title":"NAUTICA","content":"<p>Nautica introduces Wavemakers, a series that spotlights people making positive change in the world. <\/p><p>Nautica launches Sustainably Crafted, a collection of environmentally-conscious styles designed with a bluer world in mind.<\/p>"}}},"block_order":["template--17127404962045__5fefd135-949e-4d3b-96d7-b4c7b5a7f7d4-slide-1","template--17127404962045__5fefd135-949e-4d3b-96d7-b4c7b5a7f7d4-slide-2","template--17127404962045__5fefd135-949e-4d3b-96d7-b4c7b5a7f7d4-slide-3","293e64b6-6e7b-4702-8d0c-3df715a4b971","ec681d22-6d9e-456b-9b63-bde8c75ea966","89cbed36-2f04-4dad-a4db-5ef8578ac2ed","d88e338f-9ea8-4ab5-8ac1-277a5c89ba44"],"settings":{"full_width":true,"background":"","background_gradient":"","text_color":""}},"edbc3e66-49ea-430c-8fa4-c399164941c7":{"type":"images-with-text-scrolling","blocks":{"template--17127404962045__edbc3e66-49ea-430c-8fa4-c399164941c7-item-1":{"type":"item","settings":{"image":"shopify:\/\/shop_images\/nautica.png","icon":"none","custom_icon":"shopify:\/\/shop_images\/a60190a254854bc034baabbf3b71374c_1.jpg","icon_width":120,"title":"NAUTICA TODAY","content":"<p>We have always been defined by our original vision of reimagined nautical style. Now, as we look towards the future of Nautica, we strive to be more reflective of the rapidly changing world around us, and connect with it in new ways: through sustainability, social responsibility, and smart functional design you want to live your life in.<\/p>"}}},"block_order":["template--17127404962045__edbc3e66-49ea-430c-8fa4-c399164941c7-item-1"],"settings":{"full_width":true,"stack_on_mobile":false,"show_counter":false,"desktop_image_effect":"reveal","image_position":"end","background":"","background_gradient":"","text_color":"","heading_color":"","heading_gradient":""}}},"order":["main","d67527a4-87c7-42da-b727-357325a966bd","e79918f4-81de-49f9-9abd-6a3d494d065a","cb446868-9aad-46b8-a2b1-4cad5c947152","5fefd135-949e-4d3b-96d7-b4c7b5a7f7d4","edbc3e66-49ea-430c-8fa4-c399164941c7"]}
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "content_width": "80ch"
+      }
+    },
+    "e79918f4-81de-49f9-9abd-6a3d494d065a": {
+      "type": "video",
+      "blocks": {
+        "template--17127404962045__e79918f4-81de-49f9-9abd-6a3d494d065a-play-1": {
+          "type": "play",
+          "settings": {}
+        },
+        "template--17127404962045__e79918f4-81de-49f9-9abd-6a3d494d065a-heading-1": {
+          "type": "heading",
+          "settings": {
+            "text": "",
+            "heading_tag": "h1"
+          }
+        }
+      },
+      "block_order": [
+        "template--17127404962045__e79918f4-81de-49f9-9abd-6a3d494d065a-play-1",
+        "template--17127404962045__e79918f4-81de-49f9-9abd-6a3d494d065a-heading-1"
+      ],
+      "settings": {
+        "full_width": true,
+        "allow_transparent_header": false,
+        "autoplay": true,
+        "video_size": "lg",
+        "video": "shopify://files/videos/NAU_Holiday23_Halo_Family_1920x1080_15sec.mov",
+        "external_video_url": "",
+        "text_color": "#ffffff",
+        "overlay_color": "#000000",
+        "overlay_opacity": 30
+      }
+    },
+    "d67527a4-87c7-42da-b727-357325a966bd": {
+      "type": "impact-text",
+      "blocks": {
+        "template--17127404962045__d67527a4-87c7-42da-b727-357325a966bd-item-1": {
+          "type": "item",
+          "settings": {
+            "title": "NAUTICA",
+            "subheading": "TECHNOFASHION IS AN AUTHORIZED LICENSEE OF NAUTICA",
+            "content": "",
+            "button_text": "About Us",
+            "button_url": "shopify://pages/technofashion-corporate",
+            "animate_impact_text": true,
+            "animate_impact_text_duration": 2
+          }
+        }
+      },
+      "block_order": [
+        "template--17127404962045__d67527a4-87c7-42da-b727-357325a966bd-item-1"
+      ],
+      "settings": {
+        "full_width": true,
+        "stack_mobile": true,
+        "text_alignment": "center",
+        "impact_text_style": "fill",
+        "text_divider": "none",
+        "impact_text_size_ratio": 0.6,
+        "background": "",
+        "background_gradient": "",
+        "heading_text_color": "",
+        "heading_gradient": "",
+        "text_color": "",
+        "button_background": "",
+        "button_text_color": ""
+      }
+    },
+    "nautica_40_years_nNWaXe": {
+      "type": "nautica-40-years",
+      "name": "Nautica 40 Years",
+      "settings": {
+        "full_width": true,
+        "heading": "CELEBRATING 40 YEARS",
+        "content": "<p>For our 40th Anniversary, we celebrate the ethos that was established by founder and designer David Chu in 1983: to create nautical-inspired, quality pieces that allow people across the world to realize and experience the joy of the water.</p><p>Starting with only six outerwear styles, Chu grew Nautica into a renowned global lifestyle brand with over 35 categories in more than 65 countries. Today, Nautica continues to embody the spirit of the sea through innovative design, quality craftsmanship, and a commitment to sustainability.</p>",
+        "background_color": "#ffffff",
+        "text_color": "#0b233f"
+      }
+    },
+    "nautica_today_cPjCNX": {
+      "type": "nautica-today",
+      "disabled": true,
+      "name": "Nautica Today",
+      "settings": {
+        "full_width": true,
+        "reverse_layout": false,
+        "heading": "NAUTICA TODAY",
+        "content": "<p>We have always been defined by our original vision of reimagined nautical style. Now, as we look towards the future of Nautica, we strive to be more reflective of the rapidly changing world around us, and connect with it in new ways: through sustainability, social responsibility, and smart functional design you want to live your life in.</p><p>As an authorized licensee, TechnoFashion proudly brings Nautica's premium audio equipment, mobile accessories, and smart lifestyle products to customers worldwide, maintaining the brand's commitment to quality and innovation.</p>",
+        "background_color": "#ffffff",
+        "text_color": "#0b233f"
+      }
+    },
+    "cb446868-9aad-46b8-a2b1-4cad5c947152": {
+      "type": "rich-text",
+      "blocks": {
+        "template--17127404962045__cb446868-9aad-46b8-a2b1-4cad5c947152-heading-1": {
+          "type": "heading",
+          "settings": {
+            "text": "CELEBRATING 40 YEARS",
+            "heading_tag": "h1",
+            "text_color": "",
+            "gradient": ""
+          }
+        },
+        "template--17127404962045__cb446868-9aad-46b8-a2b1-4cad5c947152-richtext-1": {
+          "type": "richtext",
+          "settings": {
+            "content": "<p>For our 40th Anniversary, we celebrate the ethos that was established by founder and designer David Chu in 1983: to create nautical-<br/>inspired, quality pieces that allow people across the world to realize and experience the joy of the water. Starting with only six outerwear<br/>styles, Chu grew Nautica into a renowned global lifestyle brand with over 35 categories in more than 65 countries.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "template--17127404962045__cb446868-9aad-46b8-a2b1-4cad5c947152-heading-1",
+        "template--17127404962045__cb446868-9aad-46b8-a2b1-4cad5c947152-richtext-1"
+      ],
+      "disabled": true,
+      "settings": {
+        "full_width": true,
+        "content_width": "small",
+        "text_position": "center",
+        "background": "",
+        "background_gradient": "",
+        "text_color": ""
+      }
+    },
+    "5fefd135-949e-4d3b-96d7-b4c7b5a7f7d4": {
+      "type": "timeline",
+      "blocks": {
+        "template--17127404962045__5fefd135-949e-4d3b-96d7-b4c7b5a7f7d4-slide-1": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/1025_DT_B-Spot_2x-min_1.jpg",
+            "navigation_label": "1983",
+            "subheading": "1983",
+            "title": "NAUTICA",
+            "content": "<p>With just 6 outerwear pieces, Nautica is founded by designer David Chu in New York City.</p>"
+          }
+        },
+        "template--17127404962045__5fefd135-949e-4d3b-96d7-b4c7b5a7f7d4-slide-2": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/1025_DT_B-Spot_2x-min_1.jpg",
+            "navigation_label": "1993",
+            "subheading": "1993",
+            "title": "NAUTICA",
+            "content": "<p>Nautica becomes the official brand of the US Sailing Team in the Olympic Games.</p>"
+          }
+        },
+        "template--17127404962045__5fefd135-949e-4d3b-96d7-b4c7b5a7f7d4-slide-3": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/1025_DT_B-Spot_2x-min_1.jpg",
+            "navigation_label": "1996",
+            "subheading": "1996",
+            "title": "NAUTICA",
+            "content": "<p>Nautica Competition is launched, a bold activewear brand that solidifies Nautica's iconic status in '90s fashion.</p>"
+          }
+        },
+        "293e64b6-6e7b-4702-8d0c-3df715a4b971": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/1025_DT_B-Spot_2x-min_1.jpg",
+            "navigation_label": "1999",
+            "subheading": "1999",
+            "title": "NAUTICA",
+            "content": "<p>Nautica Jeans Co. is introduced, a more casual take on sportswear focusing on premium denim.</p>"
+          }
+        },
+        "ec681d22-6d9e-456b-9b63-bde8c75ea966": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/1025_DT_B-Spot_2x-min_1.jpg",
+            "navigation_label": "2009",
+            "subheading": "2009",
+            "title": "NAUTICA",
+            "content": "<p>Nautica becomes a corporate sponsor of Oceana.</p>"
+          }
+        },
+        "89cbed36-2f04-4dad-a4db-5ef8578ac2ed": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/1025_DT_B-Spot_2x-min_1.jpg",
+            "navigation_label": "2013",
+            "subheading": "2013",
+            "title": "NAUTICA",
+            "content": "<p>Nautica celebrates 30 years at New York Fashion Week with the launch of Black Sail.</p>"
+          }
+        },
+        "d88e338f-9ea8-4ab5-8ac1-277a5c89ba44": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/1025_DT_B-Spot_2x-min_1.jpg",
+            "navigation_label": "2020",
+            "subheading": "2020",
+            "title": "NAUTICA",
+            "content": "<p>Nautica introduces Wavemakers, a series that spotlights people making positive change in the world. </p><p>Nautica launches Sustainably Crafted, a collection of environmentally-conscious styles designed with a bluer world in mind.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "template--17127404962045__5fefd135-949e-4d3b-96d7-b4c7b5a7f7d4-slide-1",
+        "template--17127404962045__5fefd135-949e-4d3b-96d7-b4c7b5a7f7d4-slide-2",
+        "template--17127404962045__5fefd135-949e-4d3b-96d7-b4c7b5a7f7d4-slide-3",
+        "293e64b6-6e7b-4702-8d0c-3df715a4b971",
+        "ec681d22-6d9e-456b-9b63-bde8c75ea966",
+        "89cbed36-2f04-4dad-a4db-5ef8578ac2ed",
+        "d88e338f-9ea8-4ab5-8ac1-277a5c89ba44"
+      ],
+      "settings": {
+        "full_width": true,
+        "background": "",
+        "background_gradient": "",
+        "text_color": ""
+      }
+    },
+    "edbc3e66-49ea-430c-8fa4-c399164941c7": {
+      "type": "images-with-text-scrolling",
+      "blocks": {
+        "template--17127404962045__edbc3e66-49ea-430c-8fa4-c399164941c7-item-1": {
+          "type": "item",
+          "settings": {
+            "image": "shopify://shop_images/nautica.png",
+            "icon": "none",
+            "custom_icon": "shopify://shop_images/a60190a254854bc034baabbf3b71374c_1.jpg",
+            "icon_width": 120,
+            "title": "NAUTICA TODAY",
+            "content": "<p>We have always been defined by our original vision of reimagined nautical style. Now, as we look towards the future of Nautica, we strive to be more reflective of the rapidly changing world around us, and connect with it in new ways: through sustainability, social responsibility, and smart functional design you want to live your life in.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "template--17127404962045__edbc3e66-49ea-430c-8fa4-c399164941c7-item-1"
+      ],
+      "settings": {
+        "full_width": true,
+        "stack_on_mobile": false,
+        "show_counter": false,
+        "desktop_image_effect": "reveal",
+        "image_position": "end",
+        "background": "",
+        "background_gradient": "",
+        "text_color": "",
+        "heading_color": "",
+        "heading_gradient": ""
+      }
+    }
+  },
+  "order": [
+    "main",
+    "e79918f4-81de-49f9-9abd-6a3d494d065a",
+    "d67527a4-87c7-42da-b727-357325a966bd",
+    "nautica_40_years_nNWaXe",
+    "nautica_today_cPjCNX",
+    "cb446868-9aad-46b8-a2b1-4cad5c947152",
+    "5fefd135-949e-4d3b-96d7-b4c7b5a7f7d4",
+    "edbc3e66-49ea-430c-8fa4-c399164941c7"
+  ]
+}
