@@ -16,6 +16,201 @@
         "content_width": "80ch"
       }
     },
+    "corporate_hero_nY6UfV": {
+      "type": "corporate-hero",
+      "name": "Corporate Hero",
+      "settings": {
+        "hero_height": 100,
+        "logo_image": "shopify://shop_images/TECHNOFASHION_SVG_LOGO.svg",
+        "logo_max_width": 320,
+        "logo_max_width_mobile": 240,
+        "logo_text_1": "TECHNO",
+        "logo_text_2": "FASHION",
+        "tagline": "Powering Your Lifestyle",
+        "description": "Authorized licensee of Nautica, bringing premium audio, mobile accessories, and smart lifestyle products worldwide.",
+        "button_1_text": "Explore Products",
+        "button_1_url": "",
+        "button_2_text": "Our Story",
+        "button_2_url": "",
+        "background_color": "#0a1628",
+        "accent_color": "#00bcd4",
+        "gradient": "linear-gradient(135deg, rgba(10, 22, 40, 1), rgba(30, 58, 95, 1) 50%, rgba(0, 188, 212, 1) 100%)"
+      }
+    },
+    "corporate_stats_9Q9L7i": {
+      "type": "corporate-stats",
+      "blocks": {
+        "stat_zwWdzt": {
+          "type": "stat",
+          "settings": {
+            "icon": "award",
+            "number": "5",
+            "suffix": "+",
+            "label": "Premium Brands"
+          }
+        },
+        "stat_QgGw7b": {
+          "type": "stat",
+          "settings": {
+            "icon": "globe",
+            "number": "9",
+            "suffix": "K+",
+            "label": "Orders"
+          }
+        },
+        "stat_bHDep7": {
+          "type": "stat",
+          "settings": {
+            "icon": "heart",
+            "number": "95",
+            "suffix": "%",
+            "label": "Positive Feedback"
+          }
+        },
+        "stat_rnWcWV": {
+          "type": "stat",
+          "settings": {
+            "icon": "package",
+            "number": "5",
+            "suffix": "+",
+            "label": "Active Collections"
+          }
+        }
+      },
+      "block_order": [
+        "stat_zwWdzt",
+        "stat_QgGw7b",
+        "stat_bHDep7",
+        "stat_rnWcWV"
+      ],
+      "name": "Corporate Stats",
+      "settings": {
+        "title": "Our Impact in Numbers",
+        "subtitle": "Delivering quality and innovation worldwide",
+        "background_color": "#ffffff",
+        "text_color": "#0e2041",
+        "accent_color": "#0e2041"
+      }
+    },
+    "corporate_brands_VXR9aW": {
+      "type": "corporate-brands",
+      "blocks": {
+        "brand_M8wfBk": {
+          "type": "brand",
+          "settings": {
+            "logo": "shopify://shop_images/nautica-2.svg",
+            "name": "",
+            "description": "Premium lifestyle brand bringing nautical inspired products for modern living.",
+            "link_text": "Explore Nautica",
+            "link_url": "",
+            "featured": true,
+            "featured_image": "shopify://shop_images/Nautica_Blanks.jpg"
+          }
+        },
+        "brand_iEjUiq": {
+          "type": "brand",
+          "settings": {
+            "name": "Turan",
+            "description": "Innovative mobile accessories designed for the tech-savvy consumer.",
+            "link_text": "Discover Turan",
+            "link_url": "",
+            "featured": false
+          }
+        },
+        "brand_EaHVJy": {
+          "type": "brand",
+          "settings": {
+            "name": "Nayman",
+            "description": "Premium audio products delivering exceptional sound quality.",
+            "link_text": "Shop Nayman",
+            "link_url": "",
+            "featured": false
+          }
+        },
+        "brand_NrFT3j": {
+          "type": "brand",
+          "settings": {
+            "name": "Aqita",
+            "description": "Smart accessories designed for modern, connected lifestyles.",
+            "link_text": "Explore Brand",
+            "link_url": "",
+            "featured": false
+          }
+        },
+        "brand_g7KBqE": {
+          "type": "brand",
+          "settings": {
+            "name": "Western Mobile",
+            "description": "Quality mobile solutions for everyday connectivity needs.",
+            "link_text": "View Products",
+            "link_url": "",
+            "featured": false
+          }
+        }
+      },
+      "block_order": [
+        "brand_M8wfBk",
+        "brand_iEjUiq",
+        "brand_EaHVJy",
+        "brand_NrFT3j",
+        "brand_g7KBqE"
+      ],
+      "name": "Corporate Brands",
+      "settings": {
+        "badge": "Our Portfolio",
+        "title": "Brands Under Our Umbrella",
+        "subtitle": "We proudly represent and distribute premium lifestyle brands",
+        "background_color": "#f8f9fa",
+        "text_color": "#0e2041",
+        "accent_color": "#0e2041"
+      }
+    },
+    "corporate_values_gbFkG8": {
+      "type": "corporate-values",
+      "blocks": {
+        "value_KArpKc": {
+          "type": "value",
+          "settings": {
+            "icon": "innovation",
+            "title": "Innovation",
+            "description": "We constantly push boundaries to bring you the latest in technology and design."
+          }
+        },
+        "value_KQbwyz": {
+          "type": "value",
+          "settings": {
+            "icon": "quality",
+            "title": "Quality",
+            "description": "Premium materials and rigorous testing ensure products that last."
+          }
+        },
+        "value_wRCgU6": {
+          "type": "value",
+          "settings": {
+            "icon": "design",
+            "title": "Design",
+            "description": "Aesthetics meet functionality in every product we create."
+          }
+        }
+      },
+      "block_order": [
+        "value_KArpKc",
+        "value_KQbwyz",
+        "value_wRCgU6"
+      ],
+      "custom_css": [
+        "span {color:#0E2041;}"
+      ],
+      "name": "Corporate Values",
+      "settings": {
+        "title": "What Drives Us",
+        "subtitle": "Our core values shape everything we do",
+        "mission_label": "Our Mission",
+        "mission_text": "To empower modern lifestyles through <strong>innovative technology</strong> and <strong>premium design</strong>, making quality accessible to everyone, everywhere.",
+        "background_color": "#0e2041",
+        "accent_color": "#ffffff"
+      }
+    },
     "fd1af2b0-4f22-4216-b561-c2c4e6e0e0be": {
       "type": "image-with-text-overlay",
       "blocks": {
@@ -254,6 +449,10 @@
   },
   "order": [
     "main",
+    "corporate_hero_nY6UfV",
+    "corporate_stats_9Q9L7i",
+    "corporate_brands_VXR9aW",
+    "corporate_values_gbFkG8",
     "fd1af2b0-4f22-4216-b561-c2c4e6e0e0be",
     "04fb2b7f-229f-4f6d-944a-303e13e31e40",
     "9b47e40d-55b9-4777-aef8-28a2f750736f",
