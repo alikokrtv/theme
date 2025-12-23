@@ -6,27 +6,26 @@
 {%- render 'section-spacing-collapsing' -%}
 
 <style>
-  .corporate-hero__logo-image {
+#shopify-section-template--21033853255933__corporate_hero_Fz4FbE .corporate-hero__logo-image{
   margin: 0 auto 1rem;
-  display: flex;
-  justify-content: center;
+  display:flex;
+  justify-content:center;
 }
 
-.corporate-hero__logo-img {
-  width: min(100%, {{ section.settings.logo_max_width }}px);
-  height: auto;
-  display: block;
-
-  /* Eğer PNG şeffafsa ve parlak görünmesini istiyorsan */
+#shopify-section-template--21033853255933__corporate_hero_Fz4FbE .corporate-hero__logo-image > img{
+  width: min(100%, 320px);
+  height:auto;
+  display:block;
   filter: drop-shadow(0 0 18px rgba(255,255,255,0.18))
           drop-shadow(0 0 26px rgba(0,188,212,0.25));
 }
 
-@media (max-width: 768px) {
-  .corporate-hero__logo-img {
-    width: min(86vw, {{ section.settings.logo_max_width_mobile }}px);
+@media (max-width: 768px){
+  #shopify-section-template--21033853255933__corporate_hero_Fz4FbE .corporate-hero__logo-image > img{
+    width: min(86vw, 240px);
   }
 }
+
 
   /* --- Mobile / responsive fixes --- */
 
