@@ -395,10 +395,10 @@
         "stat_qwzR7D": {
           "type": "stat",
           "settings": {
-            "icon": "package",
-            "number": "5",
-            "suffix": "M+",
-            "label": "Package"
+            "icon": "globe",
+            "number": "9",
+            "suffix": "K+",
+            "label": "Orders"
           }
         },
         "stat_CCNeEk": {
@@ -552,7 +552,7 @@
         "value_tYV7Bp"
       ],
       "custom_css": [
-        "span {color: #0E2041;}"
+        "span {color: #0e2041;}"
       ],
       "name": "Corporate Values",
       "settings": {
