@@ -331,10 +331,10 @@
         "gradient": "linear-gradient(135deg, rgba(10, 22, 40, 1), rgba(30, 58, 95, 1) 50%, rgba(0, 188, 212, 1) 100%)"
       }
     },
-    "corporate_story_Vzwhzr": {
+    "corporate_story_Xyqcga": {
       "type": "corporate-story",
       "blocks": {
-        "highlight_hMXFP4": {
+        "highlight_EfqUjR": {
           "type": "highlight",
           "settings": {
             "icon": "award",
@@ -342,15 +342,15 @@
             "text": "Official Nautica partner"
           }
         },
-        "highlight_bcXPx8": {
+        "highlight_Khph6y": {
           "type": "highlight",
           "settings": {
             "icon": "globe",
-            "title": "Global Reach",
-            "text": "Shipping to 100+ countries"
+            "title": "USA Based",
+            "text": "Proudly serving all 50 states"
           }
         },
-        "highlight_CjwThR": {
+        "highlight_rbeRTA": {
           "type": "highlight",
           "settings": {
             "icon": "shield",
@@ -358,7 +358,7 @@
             "text": "Premium materials only"
           }
         },
-        "highlight_qDHzaR": {
+        "highlight_P3kcEw": {
           "type": "highlight",
           "settings": {
             "icon": "heart",
@@ -368,10 +368,10 @@
         }
       },
       "block_order": [
-        "highlight_hMXFP4",
-        "highlight_bcXPx8",
-        "highlight_CjwThR",
-        "highlight_qDHzaR"
+        "highlight_EfqUjR",
+        "highlight_Khph6y",
+        "highlight_rbeRTA",
+        "highlight_P3kcEw"
       ],
       "name": "Corporate Story",
       "settings": {
@@ -577,7 +577,7 @@
     "announcement-bar",
     "header",
     "corporate_hero_EPHVNd",
-    "corporate_story_Vzwhzr",
+    "corporate_story_Xyqcga",
     "corporate_stats_cQicRW",
     "corporate_brands_w8UjjB",
     "corporate_values_gVJiPf",
