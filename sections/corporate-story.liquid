@@ -1,0 +1,501 @@
+{%- comment -%}
+  TechnoFashion Corporate Story Section
+  About Us / Our Story with image and text
+{%- endcomment -%}
+
+{%- render 'section-spacing-collapsing' -%}
+
+<style>
+  .corporate-story {
+    background: {{ section.settings.background_color | default: '#ffffff' }};
+    padding: 6rem 2rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .corporate-story__container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .corporate-story__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+  }
+
+  @media (max-width: 900px) {
+    .corporate-story__grid {
+      grid-template-columns: 1fr;
+      gap: 3rem;
+    }
+  }
+
+  .corporate-story__image-wrapper {
+    position: relative;
+    opacity: 0;
+    transform: translateX(-50px);
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .corporate-story__image-wrapper.is-visible {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  .corporate-story__image {
+    width: 100%;
+    height: auto;
+    border-radius: 20px;
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.15);
+  }
+
+  .corporate-story__image-accent {
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    border: 3px solid {{ section.settings.accent_color | default: '#00bcd4' }};
+    border-radius: 20px;
+    z-index: -1;
+  }
+
+  .corporate-story__image-accent--top {
+    top: -20px;
+    right: -20px;
+  }
+
+  .corporate-story__image-accent--bottom {
+    bottom: -20px;
+    left: -20px;
+  }
+
+  .corporate-story__badge {
+    position: absolute;
+    bottom: -30px;
+    right: 30px;
+    background: {{ section.settings.accent_color | default: '#00bcd4' }};
+    color: #fff;
+    padding: 1.5rem 2rem;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 15px 40px {{ section.settings.accent_color | default: '#00bcd4' }}40;
+  }
+
+  .corporate-story__badge-number {
+    font-size: 2.5rem;
+    font-weight: 800;
+    line-height: 1;
+  }
+
+  .corporate-story__badge-text {
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    opacity: 0.9;
+  }
+
+  .corporate-story__content {
+    opacity: 0;
+    transform: translateX(50px);
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0.2s;
+  }
+
+  .corporate-story__content.is-visible {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  .corporate-story__label {
+    display: inline-block;
+    padding: 0.5rem 1.5rem;
+    background: {{ section.settings.accent_color | default: '#00bcd4' }}15;
+    color: {{ section.settings.accent_color | default: '#00bcd4' }};
+    border-radius: 50px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 1.5rem;
+  }
+
+  .corporate-story__title {
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 700;
+    color: {{ section.settings.text_color | default: '#0a1628' }};
+    margin-bottom: 1.5rem;
+    line-height: 1.2;
+  }
+
+  .corporate-story__title span {
+    color: {{ section.settings.accent_color | default: '#00bcd4' }};
+  }
+
+  .corporate-story__text {
+    font-size: 1.1rem;
+    color: {{ section.settings.text_color | default: '#0a1628' }};
+    opacity: 0.7;
+    line-height: 1.9;
+    margin-bottom: 2rem;
+  }
+
+  .corporate-story__highlights {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .corporate-story__highlight {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .corporate-story__highlight-icon {
+    width: 50px;
+    height: 50px;
+    min-width: 50px;
+    border-radius: 12px;
+    background: {{ section.settings.accent_color | default: '#00bcd4' }}10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: {{ section.settings.accent_color | default: '#00bcd4' }};
+  }
+
+  .corporate-story__highlight-icon svg {
+    width: 24px;
+    height: 24px;
+  }
+
+  .corporate-story__highlight-text h4 {
+    font-size: 1rem;
+    font-weight: 700;
+    color: {{ section.settings.text_color | default: '#0a1628' }};
+    margin-bottom: 0.25rem;
+  }
+
+  .corporate-story__highlight-text p {
+    font-size: 0.9rem;
+    color: {{ section.settings.text_color | default: '#0a1628' }};
+    opacity: 0.6;
+    line-height: 1.5;
+  }
+
+  .corporate-story__cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 1rem 2rem;
+    background: {{ section.settings.accent_color | default: '#00bcd4' }};
+    color: #fff;
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: 50px;
+    transition: all 0.3s ease;
+  }
+
+  .corporate-story__cta:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px {{ section.settings.accent_color | default: '#00bcd4' }}40;
+  }
+
+  .corporate-story__cta svg {
+    width: 20px;
+    height: 20px;
+    transition: transform 0.3s ease;
+  }
+
+  .corporate-story__cta:hover svg {
+    transform: translateX(5px);
+  }
+
+  /* Reverse layout option */
+  .corporate-story--reverse .corporate-story__grid {
+    direction: rtl;
+  }
+
+  .corporate-story--reverse .corporate-story__grid > * {
+    direction: ltr;
+  }
+
+  .corporate-story--reverse .corporate-story__image-accent--top {
+    right: auto;
+    left: -20px;
+  }
+
+  .corporate-story--reverse .corporate-story__image-accent--bottom {
+    left: auto;
+    right: -20px;
+  }
+
+  .corporate-story--reverse .corporate-story__badge {
+    right: auto;
+    left: 30px;
+  }
+</style>
+
+<div class="corporate-story {% if section.settings.reverse_layout %}corporate-story--reverse{% endif %}">
+  <div class="corporate-story__container">
+    <div class="corporate-story__grid">
+      <div class="corporate-story__image-wrapper" data-story-animate>
+        {%- if section.settings.image != blank -%}
+          {{ section.settings.image | image_url: width: 800 | image_tag: class: 'corporate-story__image' }}
+        {%- else -%}
+          <div class="corporate-story__image" style="background: linear-gradient(135deg, #1e3a5f, #00bcd4); aspect-ratio: 4/3; border-radius: 20px;"></div>
+        {%- endif -%}
+        
+        <div class="corporate-story__image-accent corporate-story__image-accent--top"></div>
+        <div class="corporate-story__image-accent corporate-story__image-accent--bottom"></div>
+        
+        {%- if section.settings.badge_number != blank -%}
+          <div class="corporate-story__badge">
+            <div class="corporate-story__badge-number">{{ section.settings.badge_number }}</div>
+            <div class="corporate-story__badge-text">{{ section.settings.badge_text }}</div>
+          </div>
+        {%- endif -%}
+      </div>
+
+      <div class="corporate-story__content" data-story-animate>
+        {%- if section.settings.label != blank -%}
+          <span class="corporate-story__label">{{ section.settings.label }}</span>
+        {%- endif -%}
+        
+        {%- if section.settings.title != blank -%}
+          <h2 class="corporate-story__title">{{ section.settings.title }}</h2>
+        {%- endif -%}
+        
+        {%- if section.settings.text != blank -%}
+          <div class="corporate-story__text">{{ section.settings.text }}</div>
+        {%- endif -%}
+
+        {%- if section.blocks.size > 0 -%}
+          <div class="corporate-story__highlights">
+            {%- for block in section.blocks -%}
+              <div class="corporate-story__highlight" {{ block.shopify_attributes }}>
+                <div class="corporate-story__highlight-icon">
+                  {%- case block.settings.icon -%}
+                    {%- when 'check' -%}
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                    {%- when 'star' -%}
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                    {%- when 'shield' -%}
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                    {%- when 'award' -%}
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></svg>
+                    {%- when 'globe' -%}
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                    {%- when 'heart' -%}
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+                  {%- endcase -%}
+                </div>
+                <div class="corporate-story__highlight-text">
+                  <h4>{{ block.settings.title }}</h4>
+                  <p>{{ block.settings.text }}</p>
+                </div>
+              </div>
+            {%- endfor -%}
+          </div>
+        {%- endif -%}
+
+        {%- if section.settings.button_text != blank -%}
+          <a href="{{ section.settings.button_url }}" class="corporate-story__cta">
+            {{ section.settings.button_text }}
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+          </a>
+        {%- endif -%}
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const storyElements = document.querySelectorAll('[data-story-animate]');
+    
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+        }
+      });
+    }, { threshold: 0.2 });
+
+    storyElements.forEach(el => observer.observe(el));
+  });
+</script>
+
+{% schema %}
+{
+  "name": "Corporate Story",
+  "class": "shopify-section--corporate-story",
+  "tag": "section",
+  "max_blocks": 4,
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "reverse_layout",
+      "label": "Reverse layout (image on right)",
+      "default": false
+    },
+    {
+      "type": "header",
+      "content": "Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image"
+    },
+    {
+      "type": "text",
+      "id": "badge_number",
+      "label": "Badge number",
+      "default": "10+"
+    },
+    {
+      "type": "text",
+      "id": "badge_text",
+      "label": "Badge text",
+      "default": "Years"
+    },
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "text",
+      "id": "label",
+      "label": "Label",
+      "default": "Our Story"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "Crafting <span>Innovative Harmonies</span> for a Unique Lifestyle"
+    },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "Text",
+      "default": "<p>TechnoFashion is the authorized licensee of Nautica, bringing you premium audio equipment, mobile accessories, and smart lifestyle products. We believe in merging technology with fashion to create products that enhance your everyday life.</p><p>Our commitment to quality and innovation drives everything we do, from product design to customer experience.</p>"
+    },
+    {
+      "type": "header",
+      "content": "Button"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button text",
+      "default": "Learn More About Us"
+    },
+    {
+      "type": "url",
+      "id": "button_url",
+      "label": "Button link"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text color",
+      "default": "#0a1628"
+    },
+    {
+      "type": "color",
+      "id": "accent_color",
+      "label": "Accent color",
+      "default": "#00bcd4"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "highlight",
+      "name": "Highlight",
+      "settings": [
+        {
+          "type": "select",
+          "id": "icon",
+          "label": "Icon",
+          "options": [
+            { "value": "check", "label": "Checkmark" },
+            { "value": "star", "label": "Star" },
+            { "value": "shield", "label": "Shield" },
+            { "value": "award", "label": "Award" },
+            { "value": "globe", "label": "Globe" },
+            { "value": "heart", "label": "Heart" }
+          ],
+          "default": "check"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Authorized Licensee"
+        },
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Description",
+          "default": "Official Nautica partner"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Corporate Story",
+      "category": "Corporate",
+      "blocks": [
+        {
+          "type": "highlight",
+          "settings": {
+            "icon": "award",
+            "title": "Authorized Licensee",
+            "text": "Official Nautica partner"
+          }
+        },
+        {
+          "type": "highlight",
+          "settings": {
+            "icon": "globe",
+            "title": "Global Reach",
+            "text": "Shipping to 100+ countries"
+          }
+        },
+        {
+          "type": "highlight",
+          "settings": {
+            "icon": "shield",
+            "title": "Quality Assured",
+            "text": "Premium materials only"
+          }
+        },
+        {
+          "type": "highlight",
+          "settings": {
+            "icon": "heart",
+            "title": "Customer First",
+            "text": "30-day money back"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
+
