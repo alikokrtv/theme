@@ -1,26 +1,5 @@
 {%- if link.links.size > 0 -%}
   <style>
-    /* Smooth transitions for mega menu */
-    #mega-menu-{{ mega_menu_block.id }} {
-      transition: opacity 0.3s ease, transform 0.3s ease;
-    }
-    
-    #mega-menu-{{ mega_menu_block.id }} .mega-menu__nav > li > a {
-      transition: opacity 0.2s ease, color 0.2s ease;
-    }
-    
-    #mega-menu-{{ mega_menu_block.id }} .mega-menu__nav > li > a:hover {
-      opacity: 0.8;
-    }
-    
-    /* Responsive adjustments */
-    @media screen and (min-width: 900px) and (max-width: 1149px) {
-      #mega-menu-{{ mega_menu_block.id }} {
-        --mega-menu-nav-column-max-width: {% if mega_menu_block.settings.submenu_style == 'bold_text' %}{% if link.links.size <= 2 %}200px{% else %}160px{% endif %}{% else %}{% if link.links.size <= 2 %}150px{% else %}130px{% endif %}{% endif %};
-        --mega-menu-nav-gap: var(--spacing-4);
-      }
-    }
-    
     @media screen and (min-width: 1150px) {
       #mega-menu-{{ mega_menu_block.id }} {
         --mega-menu-nav-column-max-width: {% if mega_menu_block.settings.submenu_style == 'bold_text' %}{% if link.links.size <= 2 %}240px{% else %}200px{% endif %}{% else %}{% if link.links.size <= 2 %}180px{% else %}160px{% endif %}{% endif %};
