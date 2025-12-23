@@ -9,6 +9,59 @@
  */
 {
   "sections": {
+    "17652861600b86d453": {
+      "type": "_blocks",
+      "blocks": {
+        "ai_gen_block_ea35d1e_3PdkCn": {
+          "type": "ai_gen_block_ea35d1e",
+          "settings": {
+            "show_badge": true,
+            "badge_text": "NEW ARRIVAL",
+            "badge_background": "#0e2041",
+            "badge_text_color": "#ffffff",
+            "badge_font_size": 12,
+            "badge_font_weight": "700",
+            "badge_text_transform": "uppercase",
+            "badge_letter_spacing": 1,
+            "badge_padding_vertical": 6,
+            "badge_padding_horizontal": 12,
+            "badge_border_radius": 20,
+            "banner_text": "Discover our latest collection",
+            "text_color": "#1a1a1a",
+            "text_font_size": 14,
+            "text_font_weight": "400",
+            "link_text": "Shop now",
+            "link_url": "shopify://collections/new-arrival",
+            "link_color": "#1a1a1a",
+            "link_font_size": 14,
+            "link_font_weight": "600",
+            "link_text_decoration": "underline",
+            "background_gradient": "linear-gradient(135deg, rgba(255, 145, 128, 1), rgba(255, 219, 88, 1) 100%)",
+            "show_sparkles": true,
+            "sparkle_color": "#ffffff",
+            "sparkle_size": 12,
+            "sparkle_opacity": 0.5,
+            "padding_vertical": 16,
+            "padding_horizontal": 32,
+            "content_gap": 16
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "ai_gen_block_ea35d1e_3PdkCn"
+      ],
+      "custom_css": [],
+      "settings": {
+        "full_width": true,
+        "remove_vertical_spacing": true,
+        "remove_horizontal_spacing": true,
+        "content_alignment": "center",
+        "background": "",
+        "background_gradient": "",
+        "text_color": ""
+      }
+    },
     "image_with_text_overlay_9N8UHY": {
       "type": "image-with-text-overlay",
       "blocks": {
@@ -269,13 +322,12 @@
       "custom_css": [
         "img {transform: scale(0.7);}",
         " {font-size: 16px; font-family: manrope;}",
-        "@media (min-width: 768px) {img {transform: scale(1); box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px; border-radius: 10px; padding: 10px; }}",
-        " {}"
+        "@media (min-width: 768px) {img {transform: scale(1); box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px; border-radius: 10px; padding: 10px; }}"
       ],
       "settings": {
         "products_per_page": 23,
         "products_per_row_mobile": "2",
-        "products_per_row_desktop": 5,
+        "products_per_row_desktop": 4,
         "filter_layout": "sidebar",
         "show_sort_by": false,
         "show_filters": false,
@@ -294,7 +346,7 @@
       ],
       "name": "Featured collection",
       "settings": {
-        "collection": "sale",
+        "collection": "best-selling-products",
         "products": [],
         "full_width": true,
         "stack_products": true,
@@ -441,6 +493,7 @@
     }
   },
   "order": [
+    "17652861600b86d453",
     "image_with_text_overlay_9N8UHY",
     "image_with_text_overlay_bGPGWr",
     "rich_text_GkWxNz",
