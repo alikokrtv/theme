@@ -320,7 +320,7 @@
         "button_2_text": "Our Story",
         "button_2_url": "",
         "background_color": "#0a1628",
-        "accent_color": "#00bcd4",
+        "accent_color": "#0e2041",
         "gradient": "linear-gradient(135deg, rgba(10, 22, 40, 1), rgba(30, 58, 95, 1) 50%, rgba(0, 188, 212, 1) 100%)"
       }
     },
@@ -414,6 +414,16 @@
             "featured": false
           }
         },
+        "brand_aHekWM": {
+          "type": "brand",
+          "settings": {
+            "name": "Brand Name",
+            "description": "Short description of the brand and what it offers.",
+            "link_text": "Explore Brand",
+            "link_url": "",
+            "featured": false
+          }
+        },
         "brand_Dp9nXL": {
           "type": "brand",
           "settings": {
@@ -429,6 +439,7 @@
         "brand_hNqReA",
         "brand_A7HfrN",
         "brand_9QQmtT",
+        "brand_aHekWM",
         "brand_Dp9nXL"
       ],
       "custom_css": [],
