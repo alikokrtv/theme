@@ -331,8 +331,8 @@
           "type": "stat",
           "settings": {
             "icon": "package",
-            "number": "5M",
-            "suffix": "+",
+            "number": "5",
+            "suffix": "M+",
             "label": "Package Delivered"
           }
         },
