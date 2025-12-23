@@ -376,7 +376,7 @@
         "subtitle": "Delivering quality and innovation worldwide",
         "background_color": "#ffffff",
         "text_color": "#0a1628",
-        "accent_color": "#00bcd4"
+        "accent_color": "#0e2041"
       }
     },
     "corporate_brands_w8UjjB": {
@@ -389,7 +389,7 @@
             "description": "Premium lifestyle brand bringing nautical-inspired products for modern living.",
             "link_text": "Explore Nautica",
             "link_url": "",
-            "featured": false
+            "featured": true
           }
         },
         "brand_A7HfrN": {
