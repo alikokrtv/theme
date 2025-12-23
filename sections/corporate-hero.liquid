@@ -319,9 +319,28 @@
 }
 
 /* Extra small phones */
-@media (max-width: 420px) {
-  .corporate-hero__logo {
-    font
+.corporate-hero__logo-image {
+  margin: 0 auto 1rem;
+  display: flex;
+  justify-content: center;
+}
+
+.corporate-hero__logo-img {
+  width: min(100%, {{ section.settings.logo_max_width }}px);
+  height: auto;
+  display: block;
+
+  /* Eğer PNG şeffafsa ve parlak görünmesini istiyorsan */
+  filter: drop-shadow(0 0 18px rgba(255,255,255,0.18))
+          drop-shadow(0 0 26px rgba(0,188,212,0.25));
+}
+
+@media (max-width: 768px) {
+  .corporate-hero__logo-img {
+    width: min(86vw, {{ section.settings.logo_max_width_mobile }}px);
+  }
+}
+
 
 </style>
 
@@ -340,9 +359,21 @@
   </div>
 
   <div class="corporate-hero__content">
-    <h1 class="corporate-hero__logo">
-      {{ section.settings.logo_text_1 | default: 'TECHNO' }}<span>{{ section.settings.logo_text_2 | default: 'FASHION' }}</span>
-    </h1>
+    {%- if section.settings.logo_image != blank -%}
+  <div class="corporate-hero__logo-image">
+    {{ section.settings.logo_image | image_url: width: 1200 | image_tag:
+      class: 'corporate-hero__logo-img',
+      loading: 'eager',
+      fetchpriority: 'high',
+      alt: 'TechnoFashion'
+    }}
+  </div>
+{%- else -%}
+  <h1 class="corporate-hero__logo">
+    {{ section.settings.logo_text_1 | default: 'TECHNO' }}<span>{{ section.settings.logo_text_2 | default: 'FASHION' }}</span>
+  </h1>
+{%- endif -%}
+
     
     <p class="corporate-hero__tagline">{{ section.settings.tagline | default: 'Powering Your Lifestyle' }}</p>
     
