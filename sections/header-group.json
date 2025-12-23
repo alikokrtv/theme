@@ -392,6 +392,15 @@
     "corporate_stats_cQicRW": {
       "type": "corporate-stats",
       "blocks": {
+        "stat_VXi6pb": {
+          "type": "stat",
+          "settings": {
+            "icon": "award",
+            "number": "5",
+            "suffix": "+",
+            "label": "Premium Brands"
+          }
+        },
         "stat_qwzR7D": {
           "type": "stat",
           "settings": {
@@ -410,15 +419,6 @@
             "label": "Positive Feedback"
           }
         },
-        "stat_VXi6pb": {
-          "type": "stat",
-          "settings": {
-            "icon": "award",
-            "number": "5",
-            "suffix": "+",
-            "label": "Premium Brands"
-          }
-        },
         "stat_y7ayiK": {
           "type": "stat",
           "settings": {
@@ -430,9 +430,9 @@
         }
       },
       "block_order": [
+        "stat_VXi6pb",
         "stat_qwzR7D",
         "stat_CCNeEk",
-        "stat_VXi6pb",
         "stat_y7ayiK"
       ],
       "name": "Corporate Stats",
