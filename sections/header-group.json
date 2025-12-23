@@ -331,6 +331,63 @@
         "gradient": "linear-gradient(135deg, rgba(10, 22, 40, 1), rgba(30, 58, 95, 1) 50%, rgba(0, 188, 212, 1) 100%)"
       }
     },
+    "corporate_story_Vzwhzr": {
+      "type": "corporate-story",
+      "blocks": {
+        "highlight_hMXFP4": {
+          "type": "highlight",
+          "settings": {
+            "icon": "award",
+            "title": "Authorized Licensee",
+            "text": "Official Nautica partner"
+          }
+        },
+        "highlight_bcXPx8": {
+          "type": "highlight",
+          "settings": {
+            "icon": "globe",
+            "title": "Global Reach",
+            "text": "Shipping to 100+ countries"
+          }
+        },
+        "highlight_CjwThR": {
+          "type": "highlight",
+          "settings": {
+            "icon": "shield",
+            "title": "Quality Assured",
+            "text": "Premium materials only"
+          }
+        },
+        "highlight_qDHzaR": {
+          "type": "highlight",
+          "settings": {
+            "icon": "heart",
+            "title": "Customer First",
+            "text": "30-day money back"
+          }
+        }
+      },
+      "block_order": [
+        "highlight_hMXFP4",
+        "highlight_bcXPx8",
+        "highlight_CjwThR",
+        "highlight_qDHzaR"
+      ],
+      "name": "Corporate Story",
+      "settings": {
+        "reverse_layout": false,
+        "badge_number": "10+",
+        "badge_text": "Years",
+        "label": "Our Story",
+        "title": "Crafting <span>Innovative Harmonies</span> for a Unique Lifestyle",
+        "text": "<p>TechnoFashion is the authorized licensee of Nautica, bringing you premium audio equipment, mobile accessories, and smart lifestyle products. We believe in merging technology with fashion to create products that enhance your everyday life.</p><p>Our commitment to quality and innovation drives everything we do, from product design to customer experience.</p>",
+        "button_text": "Learn More About Us",
+        "button_url": "",
+        "background_color": "#ffffff",
+        "text_color": "#0a1628",
+        "accent_color": "#00bcd4"
+      }
+    },
     "corporate_stats_cQicRW": {
       "type": "corporate-stats",
       "blocks": {
@@ -520,6 +577,7 @@
     "announcement-bar",
     "header",
     "corporate_hero_EPHVNd",
+    "corporate_story_Vzwhzr",
     "corporate_stats_cQicRW",
     "corporate_brands_w8UjjB",
     "corporate_values_gVJiPf",
