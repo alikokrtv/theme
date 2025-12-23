@@ -1,0 +1,368 @@
+{% doc %}
+  @prompt
+    Buraya  New Arrival kategorinde olduğumuzu gösteren şlık modern gğzel bi banner
+{% enddoc %}
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+
+{% style %}
+  .ai-new-arrival-banner-{{ ai_gen_id }} {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    background: linear-gradient(135deg, {{ block.settings.gradient_color_1 }} 0%, {{ block.settings.gradient_color_2 }} 100%);
+    padding: {{ block.settings.padding_vertical }}px {{ block.settings.padding_horizontal }}px;
+    border-radius: {{ block.settings.border_radius }}px;
+  }
+
+  .ai-new-arrival-banner__content-{{ ai_gen_id }} {
+    position: relative;
+    z-index: 2;
+    max-width: {{ block.settings.content_max_width }}px;
+    margin: 0 auto;
+    text-align: {{ block.settings.text_alignment }};
+  }
+
+  .ai-new-arrival-banner__badge-{{ ai_gen_id }} {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    background-color: {{ block.settings.badge_background }};
+    color: {{ block.settings.badge_text_color }};
+    border-radius: 50px;
+    font-size: {{ block.settings.badge_font_size }}px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 16px;
+  }
+
+  .ai-new-arrival-banner__badge-icon-{{ ai_gen_id }} {
+    width: 16px;
+    height: 16px;
+  }
+
+  .ai-new-arrival-banner__title-{{ ai_gen_id }} {
+    font-size: {{ block.settings.title_font_size }}px;
+    font-weight: 700;
+    color: {{ block.settings.title_color }};
+    margin: 0 0 12px 0;
+    line-height: 1.2;
+  }
+
+  .ai-new-arrival-banner__subtitle-{{ ai_gen_id }} {
+    font-size: {{ block.settings.subtitle_font_size }}px;
+    color: {{ block.settings.subtitle_color }};
+    margin: 0;
+    line-height: 1.5;
+  }
+
+  .ai-new-arrival-banner__decorative-{{ ai_gen_id }} {
+    position: absolute;
+    pointer-events: none;
+    opacity: {{ block.settings.decoration_opacity | divided_by: 100.0 }};
+  }
+
+  .ai-new-arrival-banner__circle-1-{{ ai_gen_id }} {
+    top: -50px;
+    right: -50px;
+    width: 200px;
+    height: 200px;
+    background: {{ block.settings.decoration_color }};
+    border-radius: 50%;
+    filter: blur(60px);
+  }
+
+  .ai-new-arrival-banner__circle-2-{{ ai_gen_id }} {
+    bottom: -30px;
+    left: -30px;
+    width: 150px;
+    height: 150px;
+    background: {{ block.settings.decoration_color }};
+    border-radius: 50%;
+    filter: blur(50px);
+  }
+
+  .ai-new-arrival-banner__pattern-{{ ai_gen_id }} {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.05;
+    background-image: repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 10px,
+      {{ block.settings.title_color }} 10px,
+      {{ block.settings.title_color }} 11px
+    );
+  }
+
+  @media screen and (max-width: 749px) {
+    .ai-new-arrival-banner-{{ ai_gen_id }} {
+      padding: {{ block.settings.padding_vertical | times: 0.7 }}px {{ block.settings.padding_horizontal | times: 0.7 }}px;
+    }
+
+    .ai-new-arrival-banner__title-{{ ai_gen_id }} {
+      font-size: {{ block.settings.title_font_size | times: 0.7 }}px;
+    }
+
+    .ai-new-arrival-banner__subtitle-{{ ai_gen_id }} {
+      font-size: {{ block.settings.subtitle_font_size | times: 0.9 }}px;
+    }
+
+    .ai-new-arrival-banner__badge-{{ ai_gen_id }} {
+      font-size: {{ block.settings.badge_font_size | times: 0.9 }}px;
+    }
+  }
+{% endstyle %}
+
+<div class="ai-new-arrival-banner-{{ ai_gen_id }}" {{ block.shopify_attributes }}>
+  {% if block.settings.show_pattern %}
+    <div class="ai-new-arrival-banner__pattern-{{ ai_gen_id }}"></div>
+  {% endif %}
+
+  {% if block.settings.show_decorations %}
+    <div class="ai-new-arrival-banner__decorative-{{ ai_gen_id }} ai-new-arrival-banner__circle-1-{{ ai_gen_id }}"></div>
+    <div class="ai-new-arrival-banner__decorative-{{ ai_gen_id }} ai-new-arrival-banner__circle-2-{{ ai_gen_id }}"></div>
+  {% endif %}
+
+  <div class="ai-new-arrival-banner__content-{{ ai_gen_id }}">
+    {% if block.settings.show_badge %}
+      <div class="ai-new-arrival-banner__badge-{{ ai_gen_id }}">
+        <svg class="ai-new-arrival-banner__badge-icon-{{ ai_gen_id }}" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+        </svg>
+        {{ block.settings.badge_text }}
+      </div>
+    {% endif %}
+
+    {% if block.settings.title != blank %}
+      <h1 class="ai-new-arrival-banner__title-{{ ai_gen_id }}">{{ block.settings.title }}</h1>
+    {% endif %}
+
+    {% if block.settings.subtitle != blank %}
+      <p class="ai-new-arrival-banner__subtitle-{{ ai_gen_id }}">{{ block.settings.subtitle }}</p>
+    {% endif %}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "New arrival banner",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_badge",
+      "label": "Show badge",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "badge_text",
+      "label": "Badge text",
+      "default": "New Arrival"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "title",
+      "label": "Title",
+      "default": "Discover Our Latest Collection"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "Fresh styles just landed. Explore the newest additions to our collection."
+    },
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "select",
+      "id": "text_alignment",
+      "label": "Text alignment",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "range",
+      "id": "content_max_width",
+      "min": 400,
+      "max": 1200,
+      "step": 50,
+      "unit": "px",
+      "label": "Content max width",
+      "default": 800
+    },
+    {
+      "type": "range",
+      "id": "padding_vertical",
+      "min": 20,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "label": "Vertical padding",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "padding_horizontal",
+      "min": 10,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "label": "Horizontal padding",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "border_radius",
+      "min": 0,
+      "max": 60,
+      "step": 4,
+      "unit": "px",
+      "label": "Border radius",
+      "default": 24
+    },
+    {
+      "type": "header",
+      "content": "Badge style"
+    },
+    {
+      "type": "range",
+      "id": "badge_font_size",
+      "min": 10,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "label": "Font size",
+      "default": 12
+    },
+    {
+      "type": "color",
+      "id": "badge_background",
+      "label": "Background",
+      "default": "#1a1a1a"
+    },
+    {
+      "type": "color",
+      "id": "badge_text_color",
+      "label": "Text",
+      "default": "#ffffff"
+    },
+    {
+      "type": "header",
+      "content": "Title style"
+    },
+    {
+      "type": "range",
+      "id": "title_font_size",
+      "min": 24,
+      "max": 80,
+      "step": 2,
+      "unit": "px",
+      "label": "Font size",
+      "default": 48
+    },
+    {
+      "type": "color",
+      "id": "title_color",
+      "label": "Color",
+      "default": "#1a1a1a"
+    },
+    {
+      "type": "header",
+      "content": "Subtitle style"
+    },
+    {
+      "type": "range",
+      "id": "subtitle_font_size",
+      "min": 12,
+      "max": 28,
+      "step": 1,
+      "unit": "px",
+      "label": "Font size",
+      "default": 16
+    },
+    {
+      "type": "color",
+      "id": "subtitle_color",
+      "label": "Color",
+      "default": "#666666"
+    },
+    {
+      "type": "header",
+      "content": "Background"
+    },
+    {
+      "type": "color",
+      "id": "gradient_color_1",
+      "label": "Gradient start",
+      "default": "#f0c417"
+    },
+    {
+      "type": "color",
+      "id": "gradient_color_2",
+      "label": "Gradient end",
+      "default": "#ffffff"
+    },
+    {
+      "type": "header",
+      "content": "Decorations"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_decorations",
+      "label": "Show decorative circles",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_pattern",
+      "label": "Show pattern overlay",
+      "default": false
+    },
+    {
+      "type": "color",
+      "id": "decoration_color",
+      "label": "Decoration color",
+      "default": "#803cee"
+    },
+    {
+      "type": "range",
+      "id": "decoration_opacity",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "%",
+      "label": "Decoration opacity",
+      "default": 30
+    }
+  ],
+  "presets": [
+    {
+      "name": "New arrival banner"
+    }
+  ]
+}
+{% endschema %}

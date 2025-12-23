@@ -1,0 +1,589 @@
+<style>
+/* --- Genişlik ve Boşluk Değişkenleri --- */
+:root {
+  --filter-sidebar-width: 260px;
+  --spacing-2: 0.5rem;
+  --spacing-3: 0.75rem;
+  --spacing-4: 1rem;
+  --spacing-6: 1.5rem;
+  --spacing-8: 2rem;
+  --spacing-12: 3rem;
+  --rounded-sm: 0.25rem;
+}
+
+/* --- Genel Konteyner ve Düzen --- */
+.product-listing-wrapper {
+  display: grid;
+  grid-template-columns: var(--filter-sidebar-width) 1fr;
+  gap: var(--spacing-12);
+  max-width: var(--container-max-width, 1200px);
+  margin: 0 auto;
+  padding: 0 var(--spacing-4);
+}
+
+/* --- Üst Sekme Filtreleri --- */
+.product-filters-tabs {
+  display: flex;
+  justify-content: center;
+  gap: var(--spacing-4);
+  margin-bottom: var(--spacing-8);
+  border-bottom: 1px solid var(--border-color, 229 231 235);
+  padding: 0 var(--spacing-4);
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.filter-tab {
+  padding: var(--spacing-3) var(--spacing-4);
+  border-radius: var(--rounded-sm) var(--rounded-sm) 0 0;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  user-select: none;
+  white-space: nowrap;
+}
+
+.filter-tab:hover {
+  background: rgb(var(--background-secondary, 245 245 245));
+}
+
+.filter-tab.active {
+  color: rgb(var(--accent, 56 189 248));
+  border-bottom: 2px solid rgb(var(--accent, 56 189 248));
+  font-weight: 600;
+}
+
+/* --- Yan Panel Filtreleri --- */
+.product-listing-sidebar {
+  border: 1px solid var(--border-color, 229 231 235);
+  border-radius: var(--rounded-sm);
+  padding: var(--spacing-6);
+  background: rgb(var(--background-primary, 255 255 255));
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-6);
+}
+
+.filter-group {
+  border-bottom: 1px solid var(--border-color, 229 231 235);
+  padding-bottom: var(--spacing-4);
+}
+
+.filter-group h4 {
+  font-size: var(--text-base, 1rem);
+  font-weight: 600;
+  margin-bottom: var(--spacing-2);
+}
+
+.filter-option {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  margin-bottom: var(--spacing-2);
+  font-size: var(--text-sm, 0.875rem);
+}
+
+.filter-option input[type="checkbox"] {
+  accent-color: rgb(var(--accent, 56 189 248));
+}
+
+/* --- Fiyat Filtresi İçin Ek Stiller (Geliştirildi) --- */
+.price-filter-container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-4);
+}
+
+.price-slider-wrapper {
+  position: relative;
+  height: 24px;
+}
+
+/* Fiyat çubuğunun ve kaydırıcılarının daha belirgin stilleri */
+.price-slider-wrapper input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 8px;
+  background: transparent;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  padding: 0;
+  margin: 0;
+  z-index: 3;
+}
+
+.price-slider-wrapper input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  background: rgb(var(--accent, 56 189 248));
+  border: 1px solid rgb(var(--accent, 56 189 248));
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+
+.price-slider-wrapper input[type="range"]::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  background: rgb(var(--accent, 56 189 248));
+  border: 1px solid rgb(var(--accent, 56 189 248));
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+
+.price-inputs {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--spacing-4);
+}
+
+.price-inputs input {
+  width: 50%;
+  padding: var(--spacing-2) var(--spacing-3);
+  border: 1px solid var(--border-color, #e5e7eb);
+  border-radius: var(--rounded-sm);
+  text-align: center;
+}
+
+.price-display {
+  text-align: center;
+  font-weight: 600;
+  font-size: var(--text-sm, 0.875rem);
+  margin-bottom: 0;
+}
+
+.price-slider-wrapper::before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 8px;
+  background: var(--border-color, #e5e7eb);
+  border-radius: 5px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 1;
+}
+
+.price-slider-wrapper::after {
+  content: '';
+  position: absolute;
+  height: 8px;
+  background: rgb(var(--accent, 56 189 248));
+  border-radius: 5px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 2;
+  left: var(--min-percent, 0%);
+  width: calc(var(--max-percent, 100%) - var(--min-percent, 0%));
+}
+
+/* --- Ürün Listeleme Alanı --- */
+.product-listing-content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-8);
+}
+
+.product-listing-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: var(--spacing-6);
+}
+
+.product-card {
+  border: 1px solid var(--border-color, 229 231 235);
+  border-radius: var(--rounded-sm);
+  padding: var(--spacing-4);
+  background: rgb(var(--product-card-background, 255 255 255));
+  text-align: center;
+  overflow: hidden;
+  cursor: pointer;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+}
+
+.product-card img {
+  width: 100%;
+  height: 150px;
+  margin-bottom: var(--spacing-3);
+  display: block;
+  object-fit: contain;  /* Görsel bozulmadan kutuya sığar */
+}
+
+
+.product-card h3 {
+  font-size: var(--text-base, 1rem);
+  margin: var(--spacing-2) 0;
+  display: -webkit-box;          /* kutu modeli */
+  -webkit-line-clamp: 2;         /* 2 satırda kes */
+  -webkit-box-orient: vertical;  /* dikey hizala */
+  overflow: hidden;              /* taşanı gizle */
+  text-overflow: ellipsis;       /* ... koy */
+}
+
+.product-card p {
+  font-size: var(--text-sm, 0.875rem);
+  font-weight: 600;
+}
+
+/* --- Sonuç Bulunamadı Mesajı --- */
+.no-results-message {
+  text-align: center;
+  grid-column: 1 / -1;
+  padding: var(--spacing-12);
+  color: rgb(var(--text-secondary, 107 114 128));
+  font-size: var(--text-lg, 1.125rem);
+}
+
+/* --- Mobil İçin Ek Stiller --- */
+@media (max-width: 768px) {
+  .product-listing-wrapper {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-8);
+  }
+
+  .product-listing-sidebar {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow-y: auto;
+    background: rgb(var(--background-primary, 255 255 255));
+    z-index: 100;
+    padding: var(--spacing-6);
+  }
+
+  .product-listing-sidebar.is-open {
+    display: flex;
+  }
+
+  .product-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-4);
+  }
+
+  .product-listing-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--spacing-4);
+  }
+}
+</style>
+
+{% assign selected_collection = collections[section.settings.collection_handle] %}
+
+{% if selected_collection != blank %}
+  <div class="product-filters-tabs">
+    <span class="filter-tab active" data-tab-filter="">All Products</span>
+    {% for tag in selected_collection.all_tags %}
+      <span class="filter-tab" data-tab-filter="{{ tag | downcase }}">{{ tag }}</span>
+    {% endfor %}
+  </div>
+
+  <div class="product-listing-wrapper">
+    <aside class="product-listing-sidebar">
+      <div class="filter-group">
+        <h4>Price</h4>
+        {% assign prices = selected_collection.products | map: 'price' %}
+        {% assign min_price_value = prices | sort | first | divided_by: 100 %}
+        {% assign max_price_value = prices | sort | last | divided_by: 100 %}
+        
+        {% if min_price_value and max_price_value %}
+          <div class="price-filter-container">
+            <div class="price-display">
+              <span id="min-price-display"></span> - <span id="max-price-display"></span>
+            </div>
+            <div class="price-slider-wrapper">
+              <input type="range" id="min-price-slider" min="{{ min_price_value }}" max="{{ max_price_value }}" value="{{ min_price_value }}" step="1" />
+              <input type="range" id="max-price-slider" min="{{ min_price_value }}" max="{{ max_price_value }}" value="{{ max_price_value }}" step="1" />
+            </div>
+            <div class="price-inputs">
+              <input type="number" id="min-price-input" min="{{ min_price_value }}" max="{{ max_price_value }}" value="{{ min_price_value }}" />
+              <input type="number" id="max-price-input" min="{{ min_price_value }}" max="{{ max_price_value }}" value="{{ max_price_value }}" />
+            </div>
+          </div>
+        {% endif %}
+      </div>
+
+      {% assign all_tags = selected_collection.all_tags %}
+      {% assign grouped_tags = all_tags | group_by: 'title' %}
+
+      {% for group in grouped_tags %}
+        {% assign has_underscore = group.first | split: '_' %}
+        {% if has_underscore.size > 1 %}
+          {% assign group_name = has_underscore.first %}
+          <div class="filter-group">
+            <h4>{{ group_name | capitalize }}</h4>
+            {% for tag in group %}
+              {% assign tag_value = tag | split: '_' | last %}
+              <label class="filter-option">
+                <input type="checkbox" data-filter="tag" value="{{ tag | downcase }}"> {{ tag_value }}
+              </label>
+            {% endfor %}
+          </div>
+        {% endif %}
+      {% endfor %}
+    </aside>
+
+    <div class="product-listing-content">
+      <div class="product-listing-header">
+        <select id="sort-by">
+          <option value="recommended">Sort Recommended</option>
+          <option value="price-low-high">Price Low to High</option>
+          <option value="price-high-low">Price High to Low</option>
+        </select>
+      </div>
+
+      <div class="product-grid">
+        {% for product in selected_collection.products %}
+          {% assign product_tags_string = '' %}
+          {% for tag in product.tags %}
+            {% assign product_tags_string = product_tags_string | append: tag | downcase | append: ',' %}
+          {% endfor %}
+          {% assign product_tags_string = product_tags_string | remove_last: ',' %}
+          
+          <div class="product-card" 
+               data-price="{{ product.price | divided_by: 100 }}"
+               data-tags="{{ product_tags_string }}"
+               onclick="window.location.href='{{ product.url }}'">
+            <img src="{{ product.featured_image | image_url: width: 400 }}" alt="{{ product.title }}">
+            <h3>{{ product.title }}</h3>
+            <p>{{ product.price | money }}</p>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+{% else %}
+  <p>Please select a collection from the theme settings to display products.</p>
+{% endif %}
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  const filterCheckboxes = document.querySelectorAll(".filter-option input");
+  const sortBySelect = document.getElementById("sort-by");
+  const productGrid = document.querySelector(".product-grid");
+  const products = Array.from(productGrid.querySelectorAll(".product-card"));
+  const tabFilters = document.querySelectorAll(".filter-tab");
+  
+  if (products.length > 0) {
+    const noResultsMessage = document.createElement("p");
+    noResultsMessage.className = "no-results-message";
+    noResultsMessage.textContent = "No products match your selection.";
+    noResultsMessage.style.display = "none";
+    productGrid.appendChild(noResultsMessage);
+  }
+
+  // Fiyat filtresi için DOM öğelerini al
+  const minPriceSlider = document.getElementById("min-price-slider");
+  const maxPriceSlider = document.getElementById("max-price-slider");
+  const minPriceInput = document.getElementById("min-price-input");
+  const maxPriceInput = document.getElementById("max-price-input");
+  const minPriceDisplay = document.getElementById("min-price-display");
+  const maxPriceDisplay = document.getElementById("max-price-display");
+
+  // Olay Dinleyicileri
+  filterCheckboxes.forEach(cb => {
+    cb.addEventListener("change", updateProducts);
+  });
+
+  sortBySelect.addEventListener("change", updateProducts);
+
+  tabFilters.forEach(tab => {
+    tab.addEventListener("click", () => {
+      tabFilters.forEach(t => t.classList.remove("active"));
+      tab.classList.add("active");
+      
+      filterCheckboxes.forEach(cb => cb.checked = false);
+      
+      updateProducts();
+    });
+  });
+
+  // Fiyat filtresi olay dinleyicileri
+  if (minPriceSlider && maxPriceSlider) {
+    minPriceSlider.addEventListener("input", () => {
+      if (parseInt(minPriceSlider.value) > parseInt(maxPriceSlider.value)) {
+        minPriceSlider.value = maxPriceSlider.value;
+      }
+      minPriceInput.value = minPriceSlider.value;
+      updatePriceDisplay();
+      updatePriceBar();
+      updateProducts();
+    });
+
+    maxPriceSlider.addEventListener("input", () => {
+      if (parseInt(maxPriceSlider.value) < parseInt(minPriceSlider.value)) {
+        maxPriceSlider.value = minPriceSlider.value;
+      }
+      maxPriceInput.value = maxPriceSlider.value;
+      updatePriceDisplay();
+      updatePriceBar();
+      updateProducts();
+    });
+    
+    minPriceInput.addEventListener("change", () => {
+      minPriceSlider.value = minPriceInput.value;
+      updatePriceDisplay();
+      updatePriceBar();
+      updateProducts();
+    });
+
+    maxPriceInput.addEventListener("change", () => {
+      maxPriceSlider.value = maxPriceInput.value;
+      updatePriceDisplay();
+      updatePriceBar();
+      updateProducts();
+    });
+  }
+  
+  function updatePriceDisplay() {
+    if (minPriceSlider && maxPriceSlider) {
+      minPriceDisplay.textContent = `$${minPriceSlider.value}`;
+      maxPriceDisplay.textContent = `$${maxPriceSlider.value}`;
+    }
+  }
+  
+  function updatePriceBar() {
+    if (minPriceSlider && maxPriceSlider) {
+      const minVal = parseInt(minPriceSlider.value);
+      const maxVal = parseInt(maxPriceSlider.value);
+      const min = parseInt(minPriceSlider.min);
+      const max = parseInt(minPriceSlider.max);
+      
+      const range = max - min;
+      const minPercent = ((minVal - min) / range) * 100;
+      const maxPercent = ((maxVal - min) / range) * 100;
+      
+      const priceSliderWrapper = document.querySelector('.price-slider-wrapper');
+      if (priceSliderWrapper) {
+        priceSliderWrapper.style.setProperty('--min-percent', `${minPercent}%`);
+        priceSliderWrapper.style.setProperty('--max-percent', `${maxPercent}%`);
+      }
+    }
+  }
+
+  // Aktif filtreleri al
+  function getActiveFilters() {
+    let activeFilters = {};
+
+    filterCheckboxes.forEach(cb => {
+      if (cb.checked) {
+        const group = cb.getAttribute("data-filter");
+        if (!activeFilters[group]) activeFilters[group] = [];
+        activeFilters[group].push(cb.value.toLowerCase());
+      }
+    });
+
+    const activeTab = document.querySelector(".filter-tab.active");
+    if (activeTab && activeTab.dataset.tabFilter !== "") {
+      if (!activeFilters.tag) activeFilters.tag = [];
+      activeFilters.tag.push(activeTab.dataset.tabFilter.toLowerCase());
+    }
+
+    // Fiyat filtresi değerlerini al
+    if (minPriceSlider && maxPriceSlider) {
+      const minPrice = parseFloat(minPriceSlider.value);
+      const maxPrice = parseFloat(maxPriceSlider.value);
+      activeFilters.price = [minPrice, maxPrice];
+    }
+
+    return activeFilters;
+  }
+
+  // Ürünleri filtrele ve sırala
+  function filterAndSortProducts() {
+    const activeFilters = getActiveFilters();
+    let visibleProducts = products.filter(product => {
+      let isVisible = true;
+
+      // Fiyat filtresi
+      if (activeFilters.price && isVisible) {
+        let productPrice = parseFloat(product.getAttribute("data-price"));
+        if (productPrice < activeFilters.price[0] || productPrice > activeFilters.price[1]) {
+          isVisible = false;
+        }
+      }
+
+      // Etiket filtresi (sekme ve yan panel)
+      if (activeFilters.tag && isVisible) {
+        let productTags = product.getAttribute("data-tags").split(',').map(tag => tag.trim()).filter(Boolean);
+        let hasTagMatch = activeFilters.tag.every(val => productTags.includes(val));
+        if (!hasTagMatch) {
+          isVisible = false;
+        }
+      }
+      return isVisible;
+    });
+
+    const sortBy = sortBySelect.value;
+    if (sortBy === "price-low-high") {
+      visibleProducts.sort((a, b) => parseFloat(a.dataset.price) - parseFloat(b.dataset.price));
+    } else if (sortBy === "price-high-low") {
+      visibleProducts.sort((a, b) => parseFloat(b.dataset.price) - parseFloat(a.dataset.price));
+    }
+    
+    return visibleProducts;
+  }
+
+  // Sayfayı güncelle
+  function updateProducts() {
+    const filteredAndSortedProducts = filterAndSortProducts();
+    
+    productGrid.innerHTML = '';
+    
+    if (filteredAndSortedProducts.length > 0) {
+      filteredAndSortedProducts.forEach(product => productGrid.appendChild(product));
+      const noResultsMessage = productGrid.querySelector('.no-results-message');
+      if (noResultsMessage) noResultsMessage.style.display = "none";
+    } else {
+      const noResultsMessage = productGrid.querySelector('.no-results-message');
+      if (noResultsMessage) noResultsMessage.style.display = "block";
+    }
+    updatePriceBar();
+  }
+  
+  // Sayfa yüklendiğinde fiyat göstergesini ayarla ve ürünleri filtrele
+  if (minPriceSlider && maxPriceSlider) {
+    minPriceDisplay.textContent = `$${minPriceSlider.value}`;
+    maxPriceDisplay.textContent = `$${maxPriceSlider.value}`;
+  }
+  updateProducts();
+});
+</script>
+
+{% schema %}
+{
+  "name": "Dinamik Koleksiyon",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Başlık",
+      "default": "Ürünler"
+    },
+    {
+      "type": "collection",
+      "id": "collection_handle",
+      "label": "Koleksiyon Seçin"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Dinamik Koleksiyon Filtreleri"
+    }
+  ]
+}
+{% endschema %}

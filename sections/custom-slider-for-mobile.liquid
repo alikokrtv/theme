@@ -1,0 +1,110 @@
+{%- render 'section-spacing-collapsing' -%}
+
+<div {% render 'section-properties' %}>
+  <div class="custom-slider-mobile">
+    {% for block in section.blocks %}
+      <div class="custom-slide-mobile" {{ block.shopify_attributes }}>
+        {% if block.settings.image %}
+          <img src="{{ block.settings.image | image_url: width: 1000 }}" alt="{{ block.settings.title }}">
+        {% endif %}
+        <div class="content">
+          <h3>{{ block.settings.title }}</h3>
+          <p>{{ block.settings.subtitle }}</p>
+          {% if block.settings.link %}
+            <a href="{{ block.settings.link }}">Learn More</a>
+          {% endif %}
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</div>
+
+{% style %}
+/* ---- Mobil Slider ---- */
+.custom-slider-mobile {
+  display: none; /* varsayılan: desktop'ta gizle */
+}
+
+@media (max-width: 768px) {
+  .custom-slider-mobile {
+    display: flex;
+    gap: 12px;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x mandatory;
+    padding: 12px 0;
+  }
+
+  .custom-slider-mobile::-webkit-scrollbar {
+    display: none;
+  }
+
+  .custom-slide-mobile {
+    flex: 0 0 80%;
+    scroll-snap-align: center;
+    position: relative;
+    border-radius: 10px;
+    overflow: hidden;
+    background: #000;
+  }
+
+  .custom-slide-mobile img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    display: block;
+  }
+
+  .custom-slide-mobile .content {
+    position: absolute;
+    bottom: 12px;
+    left: 12px;
+    right: 12px;
+    color: #fff;
+  }
+
+  .custom-slide-mobile .content h3 {
+    font-size: 18px;
+    font-weight: 700;
+    margin: 0 0 4px;
+  }
+
+  .custom-slide-mobile .content p {
+    font-size: 14px;
+    margin: 0 0 8px;
+  }
+
+  .custom-slide-mobile .content a {
+    display: inline-block;
+    padding: 6px 12px;
+    border-radius: 4px;
+    background: #000;
+    color: #fff;
+    font-size: 13px;
+    font-weight: 600;
+    text-decoration: none;
+  }
+}
+{% endstyle %}
+
+{% schema %}
+{
+  "name": "Mobile Swipe Slider",
+  "class": "shopify-section--custom-slider-mobile",
+  "settings": [],
+  "blocks": [
+    {
+      "type": "slide",
+      "name": "Slide",
+      "settings": [
+        { "type": "image_picker", "id": "image", "label": "Slide Image" },
+        { "type": "text", "id": "title", "label": "Title", "default": "Slide Title" },
+        { "type": "text", "id": "subtitle", "label": "Subtitle", "default": "Slide Subtitle" },
+        { "type": "url", "id": "link", "label": "Link" }
+      ]
+    }
+  ],
+  "max_blocks": 10,
+  "presets": [{ "name": "Mobile Swipe Slider", "category": "Custom" }]
+}
+{% endschema %}

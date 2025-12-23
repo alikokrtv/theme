@@ -1,0 +1,241 @@
+{%- unless request.page_type == 'captcha' or section.settings.show_only_on_index and request.page_type != 'index' -%}
+  {%- unless section.settings.show_only_for_visitors and customer -%}
+    {%- assign posted_successfully = false -%}
+    {%- assign newsletter_id = 'newsletter-' | append: section.id -%}
+
+    {%- capture _temporary -%}
+      {%- form 'customer', id: newsletter_id, class: 'form' -%}
+        {%- assign posted_successfully = form.posted_successfully? -%}
+      {%- endform -%}
+    {%- endcapture -%}
+
+    <div id="newsletter-overlay" class="newsletter-overlay {% if posted_successfully %}active{% endif %}">
+      <div id="newsletter-modal" class="newsletter-modal">
+        <button type="button" class="newsletter-close" aria-label="{{ 'general.accessibility.close' | t | escape }}">
+          &times;
+        </button>
+
+        {%- if section.settings.image != blank -%}
+          <div class="newsletter-image">
+{{ section.settings.image | image_url: width: 1000 | image_tag: loading: 'lazy', class: 'w-full rounded-xl' }}
+          </div>
+        {%- endif -%}
+
+        <div class="newsletter-content">
+          {%- if section.settings.title != blank -%}
+            <h2 class="newsletter-title">{{ section.settings.title }}</h2>
+          {%- endif -%}
+
+          {%- form 'customer', id: newsletter_id, class: 'form' -%}
+            {%- if form.posted_successfully? -%}
+              {%- capture success_message -%}{{ 'general.newsletter.subscribed_successfully' | t }}{%- endcapture -%}
+              {%- render 'banner', content: success_message, status: 'success' -%}
+
+              <script>
+                localStorage.setItem('theme:popup-filled', 'true');
+              </script>
+            {%- else -%}
+              {%- if form.errors -%}
+                {%- assign content = form.errors | default_errors -%}
+                {%- render 'banner', status: 'error', content: content -%}
+              {%- endif -%}
+
+              <div class="fieldset">
+                <input type="hidden" name="contact[tags]" value="newsletter">
+                {%- assign label = 'blog.comments.email' | t -%}
+                <input type="email" name="contact[email]" placeholder="{{ label }}" value="{{ customer.email }}" required autocomplete="email" class="newsletter-input">
+              </div>
+
+              <button type="submit" class="newsletter-button">
+                {{ section.settings.button_text }}
+              </button>
+            {%- endif -%}
+          {%- endform -%}
+
+          {%- if section.settings.subtext != blank -%}
+            <p class="newsletter-subtext">{{ section.settings.subtext }}</p>
+          {%- endif -%}
+        </div>
+      </div>
+    </div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const overlay = document.getElementById("newsletter-overlay");
+        const closeBtn = document.querySelector(".newsletter-close");
+
+        if (!localStorage.getItem("theme:popup-filled")) {
+          setTimeout(() => {
+            overlay.classList.add("active");
+          }, {{ section.settings.apparition_delay | times: 1000 }});
+        }
+
+        closeBtn.addEventListener("click", () => {
+          overlay.classList.remove("active");
+        });
+
+        overlay.addEventListener("click", (e) => {
+          if (e.target === overlay) overlay.classList.remove("active");
+        });
+      });
+    </script>
+  {%- endunless -%}
+{%- endunless -%}
+
+<style>
+/* Arka plan karartması */
+.newsletter-overlay {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw; height: 100vh;
+  background: rgba(0,0,0,0.5);
+  backdrop-filter: blur(4px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s ease;
+  z-index: 9999;
+}
+.newsletter-overlay.active {
+  opacity: 1;
+  pointer-events: all;
+}
+
+/* Modal kutusu */
+.newsletter-modal {
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.25);
+  width: min(90vw, 440px);
+  padding: 2rem 1.8rem;
+  position: relative;
+  animation: popup-fade 0.4s ease-out;
+  text-align: center;
+}
+
+@keyframes popup-fade {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Kapatma butonu */
+.newsletter-close {
+  position: absolute;
+  top: 0.8rem;
+  right: 1rem;
+  background: transparent;
+  border: none;
+  font-size: 1.8rem;
+  cursor: pointer;
+  color: #333;
+}
+
+/* Görsel */
+.newsletter-image {
+  margin-bottom: 1.2rem;
+}
+
+/* Başlık */
+.newsletter-title {
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+/* Input alanı */
+.newsletter-input {
+  width: 100%;
+  padding: 0.8rem 1rem;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+  font-size: 1rem;
+}
+
+/* Buton */
+.newsletter-button {
+  width: 100%;
+  background: #111;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 0.9rem 1rem;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.newsletter-button:hover {
+  background: #333;
+}
+
+/* Alt açıklama */
+.newsletter-subtext {
+  font-size: 0.8rem;
+  color: #777;
+  margin-top: 1rem;
+}
+</style>
+
+{% schema %}
+{
+  "name": "Modern Newsletter Popup",
+  "class": "shopify-section--popup",
+  "settings": [
+    {
+      "type": "range",
+      "id": "apparition_delay",
+      "min": 0,
+      "max": 15,
+      "step": 1,
+      "unit": "sec",
+      "label": "Delay until popup appears",
+      "default": 5
+    },
+    {
+      "type": "checkbox",
+      "id": "show_only_on_index",
+      "label": "Show only on home page",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_only_for_visitors",
+      "label": "Disable for logged-in customers",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_only_once",
+      "label": "Show only once per visitor",
+      "default": true
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Popup Image",
+      "info": "1000 x 600px .jpg recommended"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "Join our newsletter"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button text",
+      "default": "Subscribe"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "subtext",
+      "label": "Subtext",
+      "default": "Get the latest news, offers, and updates straight to your inbox."
+    }
+  ]
+}
+{% endschema %}

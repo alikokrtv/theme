@@ -1,0 +1,331 @@
+{% comment %}
+  Floating Silent Video - Playlist Mode (Sequential Playback)
+{% endcomment %}
+
+{% style %}
+  /* Widget Temel */
+  #ak-floating-widget {
+    position: fixed;
+    z-index: 2147483000;
+    bottom: var(--akfv-offset);
+    width: var(--akfv-size);
+    height: calc(var(--akfv-size) * 1.78);
+    max-width: 30vw; max-height: 30vh;
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,.25);
+    background: #000;
+    transition: opacity 0.3s ease;
+  }
+
+  /* Konumlar */
+  .akfv--bottom-left { left: var(--akfv-offset); right: auto; }
+  .akfv--bottom-right { right: var(--akfv-offset); left: auto; }
+
+  /* Mobil */
+  .akfv--hide-mobile { display: none; }
+  @media (min-width: 641px) {
+    .akfv--hide-mobile { display: block; }
+  }
+
+  /* İçerik */
+  .akfv__video-wrap { position: relative; width: 100%; height: 100%; cursor: pointer; }
+  .akfv__video { width: 100%; height: 100%; object-fit: cover; display: block; background: #000; }
+
+  /* CTA Butonu */
+  .akfv__cta {
+    position: absolute; left: 12px; bottom: 12px;
+    padding: 10px 14px; background: #111; color: #fff; text-decoration: none; font-weight: 600;
+    border-radius: 999px; line-height: 1; font-size: 13px; opacity: .9;
+    transition: opacity 0.2s;
+    z-index: 2;
+  }
+  .akfv__cta:hover { opacity: 1; }
+  .akfv__cta.is-hidden { display: none; }
+
+  /* Kapat Butonu */
+  .akfv__close {
+    position: absolute; top: 8px; right: 8px;
+    width: 28px; height: 28px; border-radius: 50%;
+    border: 1.5px solid rgba(255,255,255,0.6);
+    background: rgba(0,0,0,0.45); color: #fff; font-size: 16px;
+    cursor: pointer; display: flex; align-items: center; justify-content: center;
+    z-index: 5; transition: background .2s ease, transform .2s ease;
+  }
+  .akfv__close:hover { background: rgba(0,0,0,0.7); transform: scale(1.1); }
+
+  /* --- MODAL STİLLERİ --- */
+  .akfv-modal { position: fixed; inset: 0; z-index: 2147483001; display: none; }
+  .akfv-modal.is-open { display: block; }
+  .akfv-modal__backdrop { position: absolute; inset: 0; background: rgba(0,0,0,.8); }
+
+  .akfv-modal__dialog {
+    position: relative; width: 100%; height: 100%;
+    display: flex; align-items: center; justify-content: center; pointer-events: none;
+  }
+
+  .akfv-modal__video-wrap {
+    position: relative; pointer-events: auto;
+    max-width: 90vw; max-height: 90vh;
+    border-radius: 12px; overflow: hidden;
+    box-shadow: 0 20px 60px rgba(0,0,0,.5); background: #000;
+    display: flex; align-items: center; justify-content: center;
+  }
+
+  .akfv-modal__video {
+    width: auto; height: auto; max-width: 100%; max-height: 85vh;
+    object-fit: contain; display: block;
+  }
+
+  .akfv-modal__cta {
+    position: absolute; left: 20px; bottom: 20px;
+    padding: 12px 20px; background: #fff; color: #000; 
+    text-decoration: none; font-weight: 700; border-radius: 50px; font-size: 14px;
+  }
+  .akfv-modal__close {
+    position: absolute; top: 15px; right: 15px; z-index: 10;
+    width: 40px; height: 40px; border-radius: 50%; border: none;
+    background: rgba(255, 255, 255, 0.2); color: #fff; font-size: 24px;
+    cursor: pointer; backdrop-filter: blur(4px); display: flex; align-items: center; justify-content: center;
+  }
+  .akfv-modal__close:hover { background: rgba(255, 255, 255, 0.4); }
+{% endstyle %}
+
+<div id="ak-floating-widget"
+     class="akfv--{{ section.settings.position }} {% if section.settings.hide_on_mobile %}akfv--hide-mobile{% endif %}"
+     style="--akfv-offset: {{ section.settings.offset }}px; --akfv-size: {{ section.settings.widget_size }}px;">
+
+  <button id="akfv-close-btn" class="akfv__close" aria-label="Kapat">×</button>
+
+  <div class="akfv__video-wrap" id="akfv-trigger">
+    <video
+      id="akfv-small-video"
+      class="akfv__video"
+      playsinline
+      autoplay
+      muted="true"
+      defaultMuted="true"
+      volume="0"
+    ></video>
+
+    <a id="akfv-cta" class="akfv__cta" href="#" target="_blank"></a>
+  </div>
+</div>
+
+<div id="akfv-modal" class="akfv-modal" aria-hidden="true">
+  <div class="akfv-modal__backdrop"></div>
+  <div class="akfv-modal__dialog">
+    <div class="akfv-modal__video-wrap">
+      <button id="akfv-modal-close-btn" class="akfv-modal__close">×</button>
+      <video
+        id="akfv-modal-video"
+        class="akfv-modal__video"
+        playsinline
+        controls
+      ></video>
+      <a id="akfv-modal-cta" class="akfv-modal__cta" href="#" target="_blank"></a>
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+  // --- 1. VERİLERİ JS DİZİSİNE AL ---
+  const playlist = [
+    {% for block in section.blocks %}
+      {
+        id: "{{ block.id }}",
+        videoUrl: "{{ block.settings.video_url }}",
+        poster: "{{ block.settings.poster | image_url: width: 600 }}",
+        posterHigh: "{{ block.settings.poster | image_url: width: 1200 }}",
+        ctaText: "{{ block.settings.cta_text }}",
+        ctaUrl: "{{ block.settings.cta_url }}",
+        ctaNewTab: {{ block.settings.cta_newtab | default: true }}
+      }{% unless forloop.last %},{% endunless %}
+    {% endfor %}
+  ];
+
+  if (playlist.length === 0) {
+    document.getElementById('ak-floating-widget').style.display = 'none';
+    return;
+  }
+
+  // --- ELEMENT SEÇİMLERİ ---
+  const widget = document.getElementById('ak-floating-widget');
+  const smallVid = document.getElementById('akfv-small-video');
+  const smallCta = document.getElementById('akfv-cta');
+  const trigger = document.getElementById('akfv-trigger');
+  const closeBtn = document.getElementById('akfv-close-btn');
+
+  const modal = document.getElementById('akfv-modal');
+  const modalVid = document.getElementById('akfv-modal-video');
+  const modalCta = document.getElementById('akfv-modal-cta');
+  const modalCloseBtn = document.getElementById('akfv-modal-close-btn');
+  const modalBackdrop = document.querySelector('.akfv-modal__backdrop');
+
+  let currentIndex = 0;
+
+  // --- OYNATMA FONKSİYONLARI ---
+
+  // Belirli bir indexteki videoyu küçük oynatıcıya yükle
+  function loadVideo(index) {
+    const data = playlist[index];
+    
+    // Video Kaynağını Değiştir
+    smallVid.src = data.videoUrl;
+    smallVid.poster = data.poster;
+    
+    // CTA Butonunu Güncelle
+    if (data.ctaText && data.ctaUrl) {
+      smallCta.textContent = data.ctaText;
+      smallCta.href = data.ctaUrl;
+      smallCta.target = data.ctaNewTab ? '_blank' : '_self';
+      smallCta.classList.remove('is-hidden');
+    } else {
+      smallCta.classList.add('is-hidden');
+    }
+
+    // Oynat (Sessizce)
+    smallVid.load();
+    const playPromise = smallVid.play();
+    if (playPromise !== undefined) {
+      playPromise.catch(error => {
+        // Otomatik oynatma engellenirse sessize alıp tekrar dene
+        smallVid.muted = true;
+        smallVid.play();
+      });
+    }
+  }
+
+  // Bir sonraki videoya geç
+  function playNext() {
+    currentIndex++;
+    if (currentIndex >= playlist.length) {
+      currentIndex = 0; // Başa dön
+    }
+    loadVideo(currentIndex);
+  }
+
+  // --- MODAL İŞLEMLERİ ---
+
+  function openModal() {
+    const data = playlist[currentIndex]; // Şu an çalan video neyse onu aç
+    
+    modalVid.src = data.videoUrl;
+    modalVid.poster = data.posterHigh;
+    
+    // Modal CTA
+    if (data.ctaText && data.ctaUrl) {
+      modalCta.textContent = data.ctaText;
+      modalCta.href = data.ctaUrl;
+      modalCta.target = data.ctaNewTab ? '_blank' : '_self';
+      modalCta.style.display = 'block';
+    } else {
+      modalCta.style.display = 'none';
+    }
+
+    modal.classList.add('is-open');
+    document.body.style.overflow = 'hidden';
+
+    // Küçük videonun kaldığı yerden devam et
+    modalVid.currentTime = smallVid.currentTime;
+    modalVid.volume = 1;
+    modalVid.muted = false;
+    modalVid.play();
+
+    // Küçük videoyu durdur
+    smallVid.pause();
+  }
+
+  function closeModal() {
+    modal.classList.remove('is-open');
+    document.body.style.overflow = '';
+    
+    // Modal durdur
+    modalVid.pause();
+    
+    // Küçük videoyu kaldığı yerden devam ettir (veya sıradaki videoya geçebilir)
+    // Şimdilik kaldığı yerden devam ettirelim:
+    smallVid.currentTime = modalVid.currentTime;
+    loadVideo(currentIndex); // Tekrar yükleyip oynatmayı garantiye al
+  }
+
+  // --- EVENT LISTENERS ---
+
+  // 1. Video bittiğinde bir sonrakine geç (Sıralı Oynatma Mantığı)
+  smallVid.addEventListener('ended', playNext);
+
+  // 2. Tıklamalar
+  trigger.addEventListener('click', openModal);
+  closeBtn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    widget.style.display = 'none';
+  });
+
+  modalCloseBtn.addEventListener('click', closeModal);
+  modalBackdrop.addEventListener('click', closeModal);
+
+  // 3. Klavye ESC
+  document.addEventListener('keydown', (e) => {
+    if(e.key === 'Escape') closeModal();
+  });
+
+  // 4. Mute Koruması (Video sesi açılırsa kapat)
+  function enforceMute() {
+    if(!smallVid.paused && (smallVid.muted === false || smallVid.volume > 0)) {
+       smallVid.muted = true;
+       smallVid.volume = 0;
+    }
+    requestAnimationFrame(enforceMute);
+  }
+  
+  // BAŞLAT
+  window.addEventListener('load', () => {
+    loadVideo(0); // İlk videoyu yükle
+    requestAnimationFrame(enforceMute);
+  });
+  
+  // Shopify editöründe blok eklenip çıkarılınca reload yapsın diye:
+  document.addEventListener('shopify:section:load', () => loadVideo(0));
+
+})();
+</script>
+
+{% schema %}
+{
+  "name": "Floating Video Playlist",
+  "tag": "section",
+  "class": "ak-video-playlist-section",
+  "settings": [
+    { "type": "header", "content": "Görünüm Ayarları" },
+    { "type": "select", "id": "position", "label": "Konum", "default": "bottom-left",
+      "options": [
+        { "value": "bottom-right", "label": "Sağ Alt" },
+        { "value": "bottom-left", "label": "Sol Alt" }
+      ]
+    },
+    { "type": "range", "id": "widget_size", "label": "Video Genişliği (px)", "min": 150, "max": 400, "step": 10, "default": 200 },
+    { "type": "range", "id": "offset", "label": "Kenardan Uzaklık (px)", "min": 0, "max": 100, "step": 1, "default": 20 },
+    { "type": "checkbox", "id": "hide_on_mobile", "label": "Mobilde Gizle", "default": false }
+  ],
+  "blocks": [
+    {
+      "type": "video",
+      "name": "Video Ekle",
+      "settings": [
+        { "type": "url", "id": "video_url", "label": "Video URL (mp4)" },
+        { "type": "image_picker", "id": "poster", "label": "Kapak Resmi" },
+        { "type": "text", "id": "cta_text", "label": "Buton Metni", "default": "Ürünü Gör" },
+        { "type": "url", "id": "cta_url", "label": "Buton Linki" },
+        { "type": "checkbox", "id": "cta_newtab", "label": "Yeni sekmede aç", "default": true }
+      ]
+    }
+  ],
+  "presets": [{ 
+    "name": "Floating Video Playlist",
+    "blocks": [
+      { "type": "video" }
+    ]
+  }]
+}
+{% endschema %}

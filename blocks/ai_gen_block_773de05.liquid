@@ -1,0 +1,446 @@
+{% doc %}
+  @prompt
+    breadcrumb
+{% enddoc %}
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+
+{% style %}
+  .ai-breadcrumb-{{ ai_gen_id }} {
+    padding: {{ block.settings.padding_top }}px 0 {{ block.settings.padding_bottom }}px;
+    background-color: {{ block.settings.background_color }};
+  }
+
+  .ai-breadcrumb-nav-{{ ai_gen_id }} {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: {{ block.settings.spacing }}px;
+    font-size: {{ block.settings.font_size }}px;
+    font-family: {{ block.settings.font_family.family }}, {{ block.settings.font_family.fallback_families }};
+    font-weight: {{ block.settings.font_family.weight }};
+    line-height: 1.4;
+  }
+
+  .ai-breadcrumb-item-{{ ai_gen_id }} {
+    display: flex;
+    align-items: center;
+    gap: {{ block.settings.spacing }}px;
+  }
+
+  .ai-breadcrumb-link-{{ ai_gen_id }} {
+    color: {{ block.settings.link_color }};
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+
+  .ai-breadcrumb-link-{{ ai_gen_id }}:hover {
+    color: {{ block.settings.link_hover_color }};
+    text-decoration: {{ block.settings.hover_underline | default: 'underline' }};
+  }
+
+  .ai-breadcrumb-current-{{ ai_gen_id }} {
+    color: {{ block.settings.current_color }};
+    font-weight: {{ block.settings.current_font_weight }};
+  }
+
+  .ai-breadcrumb-separator-{{ ai_gen_id }} {
+    color: {{ block.settings.separator_color }};
+    font-size: {{ block.settings.separator_size }}px;
+    user-select: none;
+  }
+
+  .ai-breadcrumb-home-icon-{{ ai_gen_id }} {
+    width: {{ block.settings.home_icon_size }}px;
+    height: {{ block.settings.home_icon_size }}px;
+    color: {{ block.settings.link_color }};
+    transition: color 0.3s ease;
+  }
+
+  .ai-breadcrumb-link-{{ ai_gen_id }}:hover .ai-breadcrumb-home-icon-{{ ai_gen_id }} {
+    color: {{ block.settings.link_hover_color }};
+  }
+
+  @media screen and (max-width: 749px) {
+    .ai-breadcrumb-nav-{{ ai_gen_id }} {
+      font-size: {{ block.settings.font_size | times: 0.9 }}px;
+    }
+    
+    .ai-breadcrumb-home-icon-{{ ai_gen_id }} {
+      width: {{ block.settings.home_icon_size | times: 0.9 }}px;
+      height: {{ block.settings.home_icon_size | times: 0.9 }}px;
+    }
+  }
+{% endstyle %}
+
+<nav class="ai-breadcrumb-{{ ai_gen_id }}" aria-label="Breadcrumb" {{ block.shopify_attributes }}>
+  <ol class="ai-breadcrumb-nav-{{ ai_gen_id }}">
+    <li class="ai-breadcrumb-item-{{ ai_gen_id }}">
+      <a href="{{ routes.root_url }}" class="ai-breadcrumb-link-{{ ai_gen_id }}" aria-label="Home">
+        {% if block.settings.show_home_icon %}
+          <svg class="ai-breadcrumb-home-icon-{{ ai_gen_id }}" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+            <polyline points="9,22 9,12 15,12 15,22"/>
+          </svg>
+        {% else %}
+          {{ block.settings.home_text }}
+        {% endif %}
+      </a>
+      {% if template.name != 'index' %}
+        <span class="ai-breadcrumb-separator-{{ ai_gen_id }}" aria-hidden="true">{{ block.settings.separator }}</span>
+      {% endif %}
+    </li>
+
+    {% case template.name %}
+      {% when 'collection' %}
+        <li class="ai-breadcrumb-item-{{ ai_gen_id }}">
+          <span class="ai-breadcrumb-current-{{ ai_gen_id }}">{{ collection.title }}</span>
+        </li>
+
+      {% when 'product' %}
+        {% if collection %}
+          <li class="ai-breadcrumb-item-{{ ai_gen_id }}">
+            <a href="{{ collection.url }}" class="ai-breadcrumb-link-{{ ai_gen_id }}">{{ collection.title }}</a>
+            <span class="ai-breadcrumb-separator-{{ ai_gen_id }}" aria-hidden="true">{{ block.settings.separator }}</span>
+          </li>
+        {% endif %}
+        <li class="ai-breadcrumb-item-{{ ai_gen_id }}">
+          <span class="ai-breadcrumb-current-{{ ai_gen_id }}">{{ product.title }}</span>
+        </li>
+
+      {% when 'page' %}
+        <li class="ai-breadcrumb-item-{{ ai_gen_id }}">
+          <span class="ai-breadcrumb-current-{{ ai_gen_id }}">{{ page.title }}</span>
+        </li>
+
+      {% when 'blog' %}
+        <li class="ai-breadcrumb-item-{{ ai_gen_id }}">
+          <span class="ai-breadcrumb-current-{{ ai_gen_id }}">{{ blog.title }}</span>
+        </li>
+
+      {% when 'article' %}
+        <li class="ai-breadcrumb-item-{{ ai_gen_id }}">
+          <a href="{{ blog.url }}" class="ai-breadcrumb-link-{{ ai_gen_id }}">{{ blog.title }}</a>
+          <span class="ai-breadcrumb-separator-{{ ai_gen_id }}" aria-hidden="true">{{ block.settings.separator }}</span>
+        </li>
+        <li class="ai-breadcrumb-item-{{ ai_gen_id }}">
+          <span class="ai-breadcrumb-current-{{ ai_gen_id }}">{{ article.title }}</span>
+        </li>
+
+      {% when 'cart' %}
+        <li class="ai-breadcrumb-item-{{ ai_gen_id }}">
+          <span class="ai-breadcrumb-current-{{ ai_gen_id }}">{{ block.settings.cart_text }}</span>
+        </li>
+
+      {% when 'search' %}
+        <li class="ai-breadcrumb-item-{{ ai_gen_id }}">
+          <span class="ai-breadcrumb-current-{{ ai_gen_id }}">
+            {% if search.performed %}
+              {{ block.settings.search_results_text }}: "{{ search.terms }}"
+            {% else %}
+              {{ block.settings.search_text }}
+            {% endif %}
+          </span>
+        </li>
+
+      {% when '404' %}
+        <li class="ai-breadcrumb-item-{{ ai_gen_id }}">
+          <span class="ai-breadcrumb-current-{{ ai_gen_id }}">{{ block.settings.not_found_text }}</span>
+        </li>
+
+      {% when 'customers/account' %}
+        <li class="ai-breadcrumb-item-{{ ai_gen_id }}">
+          <span class="ai-breadcrumb-current-{{ ai_gen_id }}">{{ block.settings.account_text }}</span>
+        </li>
+
+      {% when 'customers/login' %}
+        <li class="ai-breadcrumb-item-{{ ai_gen_id }}">
+          <span class="ai-breadcrumb-current-{{ ai_gen_id }}">{{ block.settings.login_text }}</span>
+        </li>
+
+      {% when 'customers/register' %}
+        <li class="ai-breadcrumb-item-{{ ai_gen_id }}">
+          <span class="ai-breadcrumb-current-{{ ai_gen_id }}">{{ block.settings.register_text }}</span>
+        </li>
+
+      {% when 'customers/order' %}
+        <li class="ai-breadcrumb-item-{{ ai_gen_id }}">
+          <a href="{{ routes.account_url }}" class="ai-breadcrumb-link-{{ ai_gen_id }}">{{ block.settings.account_text }}</a>
+          <span class="ai-breadcrumb-separator-{{ ai_gen_id }}" aria-hidden="true">{{ block.settings.separator }}</span>
+        </li>
+        <li class="ai-breadcrumb-item-{{ ai_gen_id }}">
+          <span class="ai-breadcrumb-current-{{ ai_gen_id }}">{{ block.settings.order_text }}</span>
+        </li>
+
+      {% when 'customers/addresses' %}
+        <li class="ai-breadcrumb-item-{{ ai_gen_id }}">
+          <a href="{{ routes.account_url }}" class="ai-breadcrumb-link-{{ ai_gen_id }}">{{ block.settings.account_text }}</a>
+          <span class="ai-breadcrumb-separator-{{ ai_gen_id }}" aria-hidden="true">{{ block.settings.separator }}</span>
+        </li>
+        <li class="ai-breadcrumb-item-{{ ai_gen_id }}">
+          <span class="ai-breadcrumb-current-{{ ai_gen_id }}">{{ block.settings.addresses_text }}</span>
+        </li>
+
+      {% when 'list-collections' %}
+        <li class="ai-breadcrumb-item-{{ ai_gen_id }}">
+          <span class="ai-breadcrumb-current-{{ ai_gen_id }}">{{ block.settings.collections_text }}</span>
+        </li>
+    {% endcase %}
+  </ol>
+</nav>
+
+{% schema %}
+{
+  "name": "Breadcrumb navigation",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Home link"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_home_icon",
+      "label": "Show home icon",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "home_text",
+      "label": "Home text",
+      "default": "Home"
+    },
+    {
+      "type": "range",
+      "id": "home_icon_size",
+      "min": 12,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "label": "Home icon size",
+      "default": 16
+    },
+    {
+      "type": "header",
+      "content": "Separator"
+    },
+    {
+      "type": "select",
+      "id": "separator",
+      "label": "Separator style",
+      "options": [
+        {
+          "value": "/",
+          "label": "Slash (/)"
+        },
+        {
+          "value": ">",
+          "label": "Greater than (>)"
+        },
+        {
+          "value": "→",
+          "label": "Arrow (→)"
+        },
+        {
+          "value": "•",
+          "label": "Bullet (•)"
+        },
+        {
+          "value": "|",
+          "label": "Pipe (|)"
+        }
+      ],
+      "default": "/"
+    },
+    {
+      "type": "range",
+      "id": "separator_size",
+      "min": 10,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "label": "Separator size",
+      "default": 14
+    },
+    {
+      "type": "header",
+      "content": "Typography"
+    },
+    {
+      "type": "font_picker",
+      "id": "font_family",
+      "label": "Font",
+      "default": "manrope_n4"
+    },
+    {
+      "type": "range",
+      "id": "font_size",
+      "min": 10,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "label": "Font size",
+      "default": 14
+    },
+    {
+      "type": "select",
+      "id": "current_font_weight",
+      "label": "Current page font weight",
+      "options": [
+        {
+          "value": "400",
+          "label": "Normal"
+        },
+        {
+          "value": "500",
+          "label": "Medium"
+        },
+        {
+          "value": "600",
+          "label": "Semi-bold"
+        },
+        {
+          "value": "700",
+          "label": "Bold"
+        }
+      ],
+      "default": "500"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "link_color",
+      "label": "Link color",
+      "default": "#1a1a1a"
+    },
+    {
+      "type": "color",
+      "id": "link_hover_color",
+      "label": "Link hover color",
+      "default": "#f0c417"
+    },
+    {
+      "type": "color",
+      "id": "current_color",
+      "label": "Current page color",
+      "default": "#677279"
+    },
+    {
+      "type": "color",
+      "id": "separator_color",
+      "label": "Separator color",
+      "default": "#677279"
+    },
+    {
+      "type": "header",
+      "content": "Spacing"
+    },
+    {
+      "type": "range",
+      "id": "spacing",
+      "min": 4,
+      "max": 16,
+      "step": 2,
+      "unit": "px",
+      "label": "Item spacing",
+      "default": 8
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 60,
+      "step": 4,
+      "unit": "px",
+      "label": "Top padding",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 60,
+      "step": 4,
+      "unit": "px",
+      "label": "Bottom padding",
+      "default": 16
+    },
+    {
+      "type": "header",
+      "content": "Page labels"
+    },
+    {
+      "type": "text",
+      "id": "cart_text",
+      "label": "Cart page",
+      "default": "Shopping Cart"
+    },
+    {
+      "type": "text",
+      "id": "search_text",
+      "label": "Search page",
+      "default": "Search"
+    },
+    {
+      "type": "text",
+      "id": "search_results_text",
+      "label": "Search results",
+      "default": "Search results"
+    },
+    {
+      "type": "text",
+      "id": "not_found_text",
+      "label": "404 page",
+      "default": "Page not found"
+    },
+    {
+      "type": "text",
+      "id": "account_text",
+      "label": "Account page",
+      "default": "Account"
+    },
+    {
+      "type": "text",
+      "id": "login_text",
+      "label": "Login page",
+      "default": "Login"
+    },
+    {
+      "type": "text",
+      "id": "register_text",
+      "label": "Register page",
+      "default": "Create Account"
+    },
+    {
+      "type": "text",
+      "id": "order_text",
+      "label": "Order page",
+      "default": "Order Details"
+    },
+    {
+      "type": "text",
+      "id": "addresses_text",
+      "label": "Addresses page",
+      "default": "Addresses"
+    },
+    {
+      "type": "text",
+      "id": "collections_text",
+      "label": "Collections page",
+      "default": "Collections"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Breadcrumb navigation"
+    }
+  ]
+}
+{% endschema %}

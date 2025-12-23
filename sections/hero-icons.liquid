@@ -1,0 +1,90 @@
+{% schema %}
+{
+  "name": "Hero with Icons",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "background_image",
+      "label": "Background Image"
+    },
+    {
+      "type": "color",
+      "id": "background_gradient",
+      "label": "Background Gradient",
+      "default": "#ebf8ff"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "Hubs and Docks"
+    },
+    {
+      "type": "textarea",
+      "id": "subtitle",
+      "label": "Subheading",
+      "default": "Enhance your workspace with Anker's versatile hubs and docks, featuring USB-C and Thunderbolt 4 for essential connectivity and multi-monitor support."
+    },
+    {
+      "type": "range",
+      "id": "title_size",
+      "label": "Title Font Size",
+      "default": 32,
+      "min": 16,
+      "max": 72,
+      "step": 1,
+      "unit": "px"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "icon_text",
+      "name": "Icon + Text",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "icon",
+          "label": "Icon"
+        },
+        {
+          "type": "text",
+          "id": "icon_text",
+          "label": "Text",
+          "default": "Super Fast Charging"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Hero with Icons",
+      "category": "Custom Sections"
+    }
+  ]
+}
+{% endschema %}
+
+<section class="relative w-full">
+  <div 
+    class="relative flex flex-col justify-center items-start p-8 bg-gradient-to-b from-white via-transparent to-{{ section.settings.background_gradient }}"
+    style="background-image:url('{{ section.settings.background_image | img_url: '1920x' }}'); background-size:cover; background-position:center;"
+  >
+    <h1 class="font-bold mb-4" style="font-size:{{ section.settings.title_size }}px;">
+      {{ section.settings.title }}
+    </h1>
+    <p class="max-w-2xl text-lg mb-6">
+      {{ section.settings.subtitle }}
+    </p>
+
+    <div class="grid grid-cols-2 md:flex md:flex-row gap-4 bg-white/50 backdrop-blur-md px-4 py-3 rounded-lg">
+      {% for block in section.blocks %}
+        <div class="flex items-center gap-2">
+          {% if block.settings.icon != blank %}
+            <img src="{{ block.settings.icon | img_url: '64x' }}" class="w-6 h-6" alt="icon" />
+          {% endif %}
+          <span class="text-sm md:text-base">{{ block.settings.icon_text }}</span>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>

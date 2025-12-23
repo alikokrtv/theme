@@ -1,0 +1,329 @@
+{%- render 'section-spacing-collapsing' -%}
+
+<div {% render 'section-properties' %}>
+  <div class="horizontal-scroll-slider" id="scrollSlider">
+    <div class="slider-track" id="sliderTrack">
+      {% for block in section.blocks %}
+        <div class="slide-item" {{ block.shopify_attributes }}>
+          
+          {% if block.settings.video != blank %}
+            {% assign poster_url = block.settings.video_poster | image_url: width: 800 %}
+            {{ block.settings.video | video_tag: 
+              poster: poster_url, 
+              autoplay: false, 
+              loop: true, 
+              muted: true, 
+              controls: false, 
+              class: 'slide-video' 
+            }}
+          
+          {% elsif block.settings.external_video_url != blank %}
+            <iframe
+              class="slide-video"
+              src="{{ block.settings.external_video_url }}"
+              frameborder="0"
+              allow="autoplay; encrypted-media"
+              allowfullscreen></iframe>
+
+          {% elsif block.settings.image %}
+            {% assign image_url = block.settings.image %}
+            {% assign widths = "400,800,1200,1600" | split: "," %}
+            {% capture srcset_values %}
+              {% for width in widths %}
+                {{ image_url | image_url: width: width }} {{ width }}w{% unless forloop.last %},{% endunless %}
+              {% endfor %}
+            {% endcapture %}
+            <img 
+              src="{{ image_url | image_url: width: 800 }}"
+              srcset="{{ srcset_values }}"
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 33vw, 20vw"
+              loading="{% if forloop.index <= 3 %}eager{% else %}lazy{% endif %}"
+              alt="{{ block.settings.title }}">
+          {% endif %}
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+{% style %}
+.horizontal-scroll-slider {
+  width: 100%;
+  max-width: 1800px;
+  margin: 0 auto;
+  overflow: hidden;
+  position: relative;
+}
+
+.slider-track {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  scroll-snap-type: x mandatory; /* 👈 hizalama */
+  scroll-behavior: smooth;
+}
+.slider-track::-webkit-scrollbar {
+  display: none;
+}
+
+.slide-item {
+  flex: 0 0 calc((100% - (8px * 4)) / 5);
+  aspect-ratio: 1 / 1;
+  border-radius: 8px;
+  overflow: hidden;
+  position: relative;
+  cursor: grab;
+  user-select: none;
+  transition: transform 0.25s ease;
+  scroll-snap-align: start; /* 👈 her slide başa hizalanır */
+}
+
+/* Tablet */
+@media (max-width: 1200px) {
+  .slide-item {
+    flex: 0 0 calc((100% - 16px) / 3);
+  }
+}
+
+/* Mobil */
+@media (max-width: 768px) {
+  .slide-item {
+    flex: 0 0 calc((100% - 8px) / 2);
+  }
+}
+
+/* Çok küçük ekran */
+@media (max-width: 480px) {
+  .slide-item {
+    flex: 0 0 100%;
+  }
+}
+
+.slide-item img,
+.slide-item video,
+.slide-item iframe {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  filter: none !important; 
+  image-rendering: -webkit-optimize-contrast;
+  pointer-events: none;
+  user-drag: none;
+  -webkit-user-drag: none;
+  -moz-user-drag: none;
+  -ms-user-drag: none;
+}
+
+.slide-item:hover {
+  transform: scale(1.02);
+}
+
+.slider-track.dragging {
+  cursor: grabbing;
+  cursor: -webkit-grabbing;
+}
+{% endstyle %}
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  const track = document.getElementById('sliderTrack');
+  const slides = track.children;
+  const delay = {{ section.settings.autoplay_delay | default: 3000 }};
+  let index = 0;
+  let interval;
+  let videoPlaying = false;
+
+  // === OTOMATİK KAYDIRMA ===
+  function autoSlide() {
+    if (videoPlaying) return;
+    const visibleCount = window.innerWidth >= 1200 ? 5 : window.innerWidth >= 768 ? 3 : 1;
+    const total = slides.length;
+    if (total <= visibleCount) return;
+
+    index++;
+    if (index > total - visibleCount) index = 0;
+
+    const slideWidth = slides[0].getBoundingClientRect().width + 8; // gap hesaba katıldı
+    track.scrollTo({
+      left: index * slideWidth,
+      behavior: 'smooth'
+    });
+  }
+
+  function startAutoSlide() {
+    stopAutoSlide();
+    if (!videoPlaying) interval = setInterval(autoSlide, delay);
+  }
+
+  function stopAutoSlide() {
+    clearInterval(interval);
+  }
+
+  // === SÜRÜKLEME ===
+  let isDown = false;
+  let startX;
+  let scrollLeft;
+
+  track.addEventListener('mousedown', (e) => {
+    if (videoPlaying) return;
+    isDown = true;
+    track.classList.add('dragging');
+    startX = e.pageX - track.offsetLeft;
+    scrollLeft = track.scrollLeft;
+    stopAutoSlide();
+    track.style.scrollBehavior = 'auto';
+  });
+
+  track.addEventListener('mouseleave', () => {
+    if (isDown) {
+      isDown = false;
+      track.classList.remove('dragging');
+    }
+  });
+
+  track.addEventListener('mouseup', () => {
+    if (videoPlaying) return;
+    isDown = false;
+    track.classList.remove('dragging');
+    startAutoSlide();
+    track.style.scrollBehavior = 'smooth';
+  });
+
+  track.addEventListener('mousemove', (e) => {
+    if (!isDown || videoPlaying) return;
+    e.preventDefault();
+    const x = e.pageX - track.offsetLeft;
+    const walk = (x - startX);
+    track.scrollLeft = scrollLeft - walk;
+  });
+
+  // === DOKUNMATİK (MOBİL) ===
+  let touchStartX = 0;
+  let touchScrollLeft = 0;
+  let touchEndTimer;
+
+  track.addEventListener('touchstart', (e) => {
+    if (videoPlaying) return;
+    stopAutoSlide();
+    clearTimeout(touchEndTimer);
+    isDown = true;
+    track.classList.add('dragging');
+    touchStartX = e.touches[0].pageX - track.offsetLeft;
+    touchScrollLeft = track.scrollLeft;
+    track.style.scrollBehavior = 'auto';
+  });
+
+  track.addEventListener('touchmove', (e) => {
+    if (!isDown || videoPlaying) return;
+    const x = e.touches[0].pageX - track.offsetLeft;
+    const walk = (x - touchStartX);
+    track.scrollLeft = touchScrollLeft - walk;
+  });
+
+  track.addEventListener('touchend', () => {
+    if (videoPlaying) return;
+    isDown = false;
+    track.classList.remove('dragging');
+    track.style.scrollBehavior = 'smooth';
+    touchEndTimer = setTimeout(() => startAutoSlide(), 1000);
+  });
+
+  // === HOVER & VIDEO OYNATMA ===
+  track.addEventListener('mouseover', e => {
+    const slide = e.target.closest('.slide-item');
+    if (!slide) return;
+    stopAutoSlide();
+    const video = slide.querySelector('video');
+    if (video) {
+      videoPlaying = true;
+      video.play();
+      video.addEventListener('pause', () => {
+        videoPlaying = false;
+        startAutoSlide();
+      }, { once: true });
+    }
+  });
+
+  track.addEventListener('mouseout', e => {
+    const slide = e.target.closest('.slide-item');
+    if (!slide) return;
+    const video = slide.querySelector('video');
+    if (video) {
+      video.pause();
+      videoPlaying = false;
+      startAutoSlide();
+    }
+  });
+
+  // === MOBİLDE VIDEO TIKLANINCA ===
+  track.addEventListener('touchstart', e => {
+    const slide = e.target.closest('.slide-item');
+    if (!slide) return;
+    const video = slide.querySelector('video');
+    if (video) {
+      videoPlaying = true;
+      stopAutoSlide();
+      video.play();
+      video.addEventListener('pause', () => {
+        videoPlaying = false;
+        startAutoSlide();
+      }, { once: true });
+    }
+  });
+
+  // === GÖRSEL SÜRÜKLEME ENGELİ ===
+  document.querySelectorAll('.slide-item img, .slide-item video, .slide-item iframe')
+    .forEach(el => el.addEventListener('dragstart', e => e.preventDefault()));
+
+  // === AUTOPLAY'İ BAŞLAT ===
+  startAutoSlide();
+
+  // === PERFORMANS: resize ===
+  let resizeTimer;
+  window.addEventListener('resize', () => {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(() => {
+      index = 0;
+      track.scrollTo({ left: 0, behavior: 'auto' });
+      startAutoSlide();
+    }, 300);
+  });
+});
+</script>
+
+{% schema %}
+{
+  "name": "5li-Slider",
+  "class": "slider5",
+  "settings": [
+    {
+      "type": "range",
+      "id": "autoplay_delay",
+      "label": "Oto Süre (ms)",
+      "default": 3000,
+      "min": 1000,
+      "max": 8000,
+      "step": 500
+    }
+  ],
+  "blocks": [
+    {
+      "type": "slide",
+      "name": "Slide",
+      "settings": [
+        { "type": "image_picker", "id": "image", "label": "Görsel" },
+        { "type": "video", "id": "video", "label": "Video (MP4)" },
+        { "type": "image_picker", "id": "video_poster", "label": "Video Poster" }, 
+        { "type": "url", "id": "external_video_url", "label": "YouTube/Vimeo" },
+        { "type": "text", "id": "title", "label": "Başlık" },
+        { "type": "url", "id": "link", "label": "Bağlantı" }
+      ]
+    }
+  ],
+  "max_blocks": 20,
+  "presets": [{ "name": "5li-Slider" }]
+}
+{% endschema %}

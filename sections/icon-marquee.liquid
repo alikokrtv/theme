@@ -1,0 +1,145 @@
+{%- comment -%}
+Icon + Text Marquee Banner
+Section: sonsuz yatay kayan ikon + yazı bandı
+Tüm ayarlar admin panelden değiştirilebilir.
+{%- endcomment -%}
+
+{%- render 'section-spacing-collapsing' -%}
+
+<section class="icon-marquee w-full overflow-hidden" style="background-color: {{ section.settings.bg_color }};">
+  <div class="page-width">
+    <div class="marquee flex items-center gap-12 whitespace-nowrap py-4">
+
+      {%- comment -%} İlk kopya {%- endcomment -%}
+      {% for block in section.blocks %}
+        <div class="flex items-center gap-2 flex-shrink-0">
+          {% if block.settings.icon != blank %}
+            <span class="icon-marquee__img" style="background-image: url('{{ block.settings.icon | image_url }}')"></span>
+          {% endif %}
+          <span class="text-base font-medium" style="color: {{ section.settings.text_color }}">
+            {{ block.settings.text }}
+          </span>
+        </div>
+      {% endfor %}
+
+      {%- comment -%} İkinci kopya (sonsuz akış için) {%- endcomment -%}
+      {% for block in section.blocks %}
+        <div class="flex items-center gap-2 flex-shrink-0">
+          {% if block.settings.icon != blank %}
+            <span class="icon-marquee__img" style="background-image: url('{{ block.settings.icon | image_url }}')"></span>
+          {% endif %}
+          <span class="text-base font-medium" style="color: {{ section.settings.text_color }}">
+            {{ block.settings.text }}
+          </span>
+        </div>
+      {% endfor %}
+
+    </div>
+  </div>
+</section>
+
+<style>
+  .icon-marquee .marquee {
+    display: flex;
+    min-width: max-content;
+    will-change: transform;
+    animation: icon-marquee-loop {{ section.settings.speed }}s linear infinite;
+  }
+
+  .icon-marquee__img {
+    width: 1.5rem;
+    height: 1.5rem;
+    display: inline-block;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+
+  @keyframes icon-marquee-loop {
+    0%   { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+</style>
+
+<script>
+(function(){
+  var root = document.getElementById('shopify-section-{{ section.id }}');
+  if(!root) return;
+  var clean = function(u){ return (u||'').replace(/`/g,'').trim(); };
+  var fix = function(){
+    root.querySelectorAll('.icon-marquee img').forEach(function(img){
+      var ds = clean(img.getAttribute('data-src'));
+      var s = clean(img.getAttribute('src'));
+      var url = ds || s;
+      if(url && s !== url){ img.setAttribute('src', url); }
+      img.removeAttribute('data-src');
+      img.removeAttribute('data-srcset');
+      img.removeAttribute('srcset');
+      img.classList.remove('showImg');
+      img.setAttribute('loading','eager');
+    });
+  };
+  fix();
+  var mo = new MutationObserver(fix);
+  mo.observe(root, { subtree: true, childList: true, attributes: true, attributeFilter: ['src','data-src','srcset','data-srcset','class'] });
+})();
+</script>
+
+{% schema %}
+{
+  "name": "Icon Marquee Banner",
+  "class": "shopify-section--icon-marquee",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background Color",
+      "default": "#f9f9f9"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text Color",
+      "default": "#1D1D1F"
+    },
+    {
+      "type": "range",
+      "id": "speed",
+      "label": "Scroll Speed (seconds)",
+      "default": 30,
+      "min": 10,
+      "max": 60,
+      "step": 5
+    }
+  ],
+  "blocks": [
+    {
+      "type": "item",
+      "name": "Icon + Text",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "icon",
+          "label": "Icon"
+        },
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Text",
+          "default": "Super Fast Charging"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 10,
+  "presets": [
+    {
+      "name": "Icon Marquee Banner",
+      "category": "Custom"
+    }
+  ]
+}
+{% endschema %}

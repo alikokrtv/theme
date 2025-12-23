@@ -1,0 +1,108 @@
+{%- comment -%}
+Collection with Live Filters + Tabs
+- Shopify'ın built-in collection.filters loop'unu kullanır
+- Apply butonuna gerek yok: input değişince otomatik submit
+- Tabs: üstte kategori linkleri
+{%- endcomment -%}
+
+<section id="shopify-section-{{ section.id }}" class="collection-filters-section">
+  <div class="page-width flex gap-8">
+
+    <!-- Sidebar Filters -->
+    <aside class="filters w-1/5 hidden md:block">
+      <h3 class="font-semibold mb-4">Filter</h3>
+      <form id="CollectionFiltersForm">
+        {% for filter in collection.filters %}
+          <div class="filter mb-6">
+            <h4 class="text-sm font-medium mb-2">{{ filter.label }}</h4>
+            <ul class="space-y-1">
+              {% for value in filter.values %}
+                <li>
+                  <label class="flex items-center gap-2 text-sm">
+                    <input type="checkbox"
+                      name="{{ filter.param_name }}"
+                      value="{{ value.value }}"
+                      {% if value.active %}checked{% endif %}
+                      onchange="this.form.submit()">
+                    {{ value.label }} ({{ value.count }})
+                  </label>
+                </li>
+              {% endfor %}
+            </ul>
+          </div>
+        {% endfor %}
+      </form>
+    </aside>
+
+    <!-- Main Content -->
+    <div class="main w-full md:w-4/5">
+
+      <!-- Tabs -->
+      <div class="tabs flex gap-6 border-b mb-6">
+        {% for block in section.blocks %}
+          <a href="{{ block.settings.link }}"
+             class="pb-2 {% if collection.title contains block.settings.title %}border-b-2 border-blue-600{% endif %}">
+            {{ block.settings.title }}
+          </a>
+        {% endfor %}
+      </div>
+
+      <!-- Products Grid -->
+      <div id="ProductGridContainer" class="grid grid-cols-2 md:grid-cols-3 gap-6">
+        {% for product in collection.products %}
+          <div class="product-card border rounded-lg p-4 relative">
+            <a href="{{ product.url }}">
+              <img src="{{ product.featured_image | img_url: '400x' }}" alt="{{ product.title }}" class="mb-3 w-full object-contain">
+            </a>
+            <h3 class="text-sm font-medium mb-1 line-clamp-2">
+              <a href="{{ product.url }}">{{ product.title }}</a>
+            </h3>
+            <div class="text-base font-semibold mb-2">
+              {{ product.price | money }}
+            </div>
+            {% if product.compare_at_price > product.price %}
+              <span class="badge absolute top-2 left-2 bg-blue-500 text-white text-xs px-2 py-1 rounded">
+                {{ product.compare_at_price | minus: product.price | money }} OFF
+              </span>
+            {% endif %}
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<style>
+  .collection-filters-section { padding: 2rem 0; }
+  .collection-filters-section .tabs a { font-weight: 500; color: #1d1d1f; }
+  .collection-filters-section .product-card img { transition: transform .2s; }
+  .collection-filters-section .product-card:hover img { transform: scale(1.05); }
+</style>
+
+{% schema %}
+{
+  "name": "Live Filters",
+  "tag": "section",
+  "class": "shopify-section--collection-filters",
+  "settings": [],
+  "blocks": [
+    {
+      "type": "tab",
+      "name": "Tab Link",
+      "settings": [
+        { "type": "text", "id": "title", "label": "Tab Title", "default": "All Cables" },
+        { "type": "url", "id": "link", "label": "Tab Link" }
+      ]
+    }
+  ],
+  "max_blocks": 6,
+  "presets": [
+    {
+      "name": "Live Filters",
+      "category": "Custom"
+    }
+  ]
+}
+{% endschema %}
+

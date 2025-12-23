@@ -1,0 +1,140 @@
+{%- comment -%}
+----------------------------------------------------------------------------------------------------------------------
+VARIANT PICKER (Custom Version by Ali & ChatGPT 😎)
+----------------------------------------------------------------------------------------------------------------------
+
+- Stokta olan varyantları en öne alır.
+- Stokta olmayanları sona iter (görünür ama pasif).
+- Shopify Impact temasına %100 uyumludur.
+{%- endcomment -%}
+
+{%- assign color_label_list = 'general.label.color' | t | replace: ', ', ',' | downcase | split: ',' -%}
+{%- assign size_label_list = 'general.label.size' | t | replace: ', ', ',' | downcase | split: ',' -%}
+{%- assign variant_image_options = block.settings.variant_image_options | replace: ', ', ',' | downcase | split: ',' -%}
+
+{%- unless product.has_only_default_variant -%}
+  <variant-picker class="variant-picker" section-id="{{ section.id }}" handle="{{ product.handle }}" form-id="{{ form_id }}" {% if update_url %}update-url{% endif %}>
+    <script data-variant type="application/json">
+      {{- product.selected_or_first_available_variant | json -}}
+    </script>
+
+    {%- for option in product.options_with_values -%}
+      {% liquid
+        assign option_downcase = option.name | downcase
+        assign resolved_option_selector_style = block.settings.selector_style
+        assign swatch_count = option.values | map: 'swatch' | compact | size
+
+        if swatch_count > 0 and block.settings.swatch_selector_style != 'none'
+          assign resolved_option_selector_style = block.settings.swatch_selector_style
+        endif
+
+        if swatch_count == 0 and color_label_list contains option_downcase and block.settings.swatch_selector_style != 'none'
+          assign resolved_option_selector_style = block.settings.swatch_selector_style
+        endif
+
+        if resolved_option_selector_style == 'dropdown' and force_dropdown_as_block
+          assign resolved_option_selector_style = 'block'
+        endif
+
+        if variant_image_options contains option_downcase
+          assign resolved_option_selector_style = 'variant_image'
+        endif
+      %}
+
+      <fieldset class="variant-picker__option">
+        <div class="variant-picker__option-info">
+          <div class="h-stack gap-2">
+            <legend class="text-subdued">{{ option.name }}:</legend>
+            <span>{{ option.selected_value }}</span>
+          </div>
+
+          {%- if hide_size_chart != true and block.settings.size_chart_page != blank and size_label_list contains option_downcase -%}
+            {%- capture drawer_id -%}size-chart-{{ option.position }}-{{ form_id }}{%- endcapture -%}
+
+            <button type="button" class="text-sm text-subdued" aria-controls="{{ drawer_id | escape }}" aria-expanded="false">
+              <span class="link">{{ 'product.general.size_chart' | t }}</span>
+            </button>
+
+            <x-drawer id="{{ drawer_id }}" class="drawer drawer--lg">
+              <span class="h5" slot="header">{{ block.settings.size_chart_page.title }}</span>
+              <div class="prose">
+                {{- block.settings.size_chart_page.content -}}
+              </div>
+            </x-drawer>
+          {%- endif -%}
+        </div>
+
+        {%- if resolved_option_selector_style == 'dropdown' -%}
+          {%- capture popover_id -%}popover-variant-picker-{{ section.id }}-{{ product.id }}-{{ option.position }}{%- endcapture -%}
+
+          <div class="relative">
+            <button type="button" class="select" aria-controls="{{ popover_id }}" aria-expanded="false">
+              <span id="{{ popover_id }}-selected-value">{{- option.selected_value -}}</span>
+              {%- render 'icon' with 'chevron-bottom', class: 'select-chevron' -%}
+            </button>
+
+            <x-popover id="{{ popover_id }}" class="popover" initial-focus="[aria-selected='true']" close-on-listbox-select anchor-horizontal="start" anchor-vertical="end">
+              <p class="h5" slot="title">{{ option.name }}</p>
+
+              {%- assign param_name = form_id | append: '-option' | append: option.position -%}
+
+              <div data-option-selector class="popover-listbox">
+                {%- for option_value in option.values -%}
+                  {%- if hide_sold_out_variants == false or option_value.available or option_value.selected -%}
+                    <label class="popover-listbox__option {% unless option_value.available %}is-disabled{% endunless %}" for="{{ param_name }}-{{ option_value.id }}">
+                      <input class="sr-only" form="{{ form_id }}" type="radio" id="{{ param_name }}-{{ option_value.id }}" name="{{ param_name }}" value="{{ option_value.id }}" data-option-position="{{ option.position }}" {% if option_value.selected %}checked{% endif %}>
+                      {{- option_value.name -}}
+                    </label>
+                  {%- endif -%}
+                {%- endfor -%}
+              </div>
+            </x-popover>
+          </div>
+
+        {%- else -%}
+          <div {% unless block.settings.stack_blocks %}class="scroll-area bleed sm:unbleed"{% endunless %}>
+            <div class="variant-picker__option-values {% if block.settings.stack_blocks %}wrap{% else %}scroll-area bleed sm:unbleed{% endif %} {% if resolved_option_selector_style == 'swatch' and settings.color_swatch_style == 'rectangle' %}variant-picker__option-values--color gap-4{% else %}gap-2{% endif %}">
+
+              {% liquid
+                assign name = form_id | append: '-option' | append: option.position
+
+                # === GÜVENLİ SIRALAMA — STOKTA OLANLAR ÖNE ===
+                assign available_values = ''
+                assign soldout_values = ''
+
+                for value in option.values
+                  if value.available
+                    assign available_values = available_values | append: value.name | append: '||'
+                  else
+                    assign soldout_values = soldout_values | append: value.name | append: '||'
+                  endif
+                endfor
+
+                assign available_values = available_values | split: '||'
+                assign soldout_values = soldout_values | split: '||'
+                assign sorted_values = available_values | concat: soldout_values
+
+                # === VARYANTLARI SIRAYA GÖRE RENDER ET ===
+                for value_name in sorted_values
+                  assign option_value = option.values | where: "name", value_name | first
+                  if option_value
+                    case resolved_option_selector_style
+                      when 'variant_image'
+                        render 'option-value', type: 'thumbnail', form: form_id, option_value: option_value, param_name: name, option_position: option.position, hide_if_disabled: hide_sold_out_variants, reload_page_for_combined_products: update_url, id_prefix: forloop.index, bordered: true
+                      when 'swatch'
+                        render 'option-value', type: 'swatch', form: form_id, option_value: option_value, param_name: name, option_position: option.position, hide_if_disabled: hide_sold_out_variants, reload_page_for_combined_products: update_url, id_prefix: forloop.index
+                      when 'block'
+                        render 'option-value', type: 'block', form: form_id, option_value: option_value, param_name: name, option_position: option.position, hide_if_disabled: hide_sold_out_variants, reload_page_for_combined_products: update_url, id_prefix: forloop.index
+                      when 'block_swatch'
+                        render 'option-value', type: 'block', form: form_id, option_value: option_value, param_name: name, option_position: option.position, show_swatch: true, hide_if_disabled: hide_sold_out_variants, reload_page_for_combined_products: update_url, id_prefix: forloop.index
+                    endcase
+                  endif
+                endfor
+              %}
+            </div>
+          </div>
+        {%- endif -%}
+      </fieldset>
+    {%- endfor -%}
+  </variant-picker>
+{%- endunless -%}

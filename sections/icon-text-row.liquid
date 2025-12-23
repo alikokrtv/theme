@@ -1,0 +1,122 @@
+{%- comment -%}
+Icon + Text Row
+- Her block = 1 ikon + 1 metin
+- Satırda otomatik eşit boşluk (space-between) veya seçtiğin hizalama
+{%- endcomment -%}
+
+{%- render 'section-spacing-collapsing' -%}
+
+{%- assign justify_class = '' -%}
+{%- case section.settings.justify -%}
+  {%- when 'between' -%}{%- assign justify_class = 'justify-between' -%}
+  {%- when 'around'  -%}{%- assign justify_class = 'justify-around'  -%}
+  {%- when 'evenly'  -%}{%- assign justify_class = 'justify-evenly'  -%}
+  {%- when 'center'  -%}{%- assign justify_class = 'justify-center'  -%}
+  {%- when 'start'   -%}{%- assign justify_class = 'justify-start'   -%}
+  {%- when 'end'     -%}{%- assign justify_class = 'justify-end'     -%}
+{%- endcase -%}
+
+<section id="shopify-section-{{ section.id }}" class="icon-row w-full" style="background-color: {{ section.settings.bg_color }};">
+  <div class="{% if section.settings.full_width %}icon-row__inner{% else %}page-width icon-row__inner{% endif %}">
+    <div class="icon-row__wrap flex items-center flex-wrap {{ justify_class }}">
+      {%- for block in section.blocks -%}
+        <div class="icon-row__item flex items-center">
+          {%- if block.settings.icon != blank -%}
+            <img
+              src="{{ block.settings.icon | img_url: '160x' }}"
+              alt=""
+              style="width:{{ section.settings.icon_size }}px;height:{{ section.settings.icon_size }}px;object-fit:contain;"
+              loading="lazy"
+            >
+          {%- endif -%}
+          <span class="icon-row__text" style="
+            color: {{ section.settings.text_color }};
+            font-size: {{ section.settings.text_size }}px;
+            font-weight: {% if section.settings.text_bold %}600{% else %}400{% endif %};
+          ">{{ block.settings.text }}</span>
+        </div>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+<style>
+  #shopify-section-{{ section.id }} .icon-row__inner {
+    padding-top: var(--section-spacing-top, 0);
+    padding-bottom: var(--section-spacing-bottom, 0);
+  }
+
+  #shopify-section-{{ section.id }} .icon-row__wrap {
+    gap: clamp(12px, 3vw, {{ section.settings.gap_desktop }}px);
+    row-gap: clamp(10px, 2.5vw, 24px);
+  }
+
+  #shopify-section-{{ section.id }} .icon-row__item {
+    column-gap: clamp(6px, 1.4vw, 12px);
+    flex: 0 0 auto;
+  }
+
+  #shopify-section-{{ section.id }} .icon-row__text {
+    line-height: 1.25;
+    white-space: nowrap;
+  }
+
+  @media (max-width: 749px) {
+    #shopify-section-{{ section.id }} .icon-row__wrap {
+      {% if section.settings.mobile_center %}justify-content: center;{% endif %}
+      gap: clamp(8px, 4vw, 16px);
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Icon + Text Row",
+  "class": "shopify-section--icon-row",
+  "settings": [
+    { "type": "checkbox", "id": "full_width", "label": "Full width (edge to edge)", "default": false },
+    { "type": "color", "id": "bg_color", "label": "Background color", "default": "#F9F9F9" },
+    { "type": "color", "id": "text_color", "label": "Text color", "default": "#1D1D1F" },
+    { "type": "range", "id": "text_size", "label": "Text size (px)", "min": 12, "max": 22, "step": 1, "default": 16 },
+    { "type": "range", "id": "icon_size", "label": "Icon size (px)", "min": 12, "max": 28, "step": 1, "default": 20 },
+    { "type": "checkbox", "id": "text_bold", "label": "Bold text", "default": false },
+    { "type": "range", "id": "gap_desktop", "label": "Desktop gap between items (px)", "min": 16, "max": 80, "step": 4, "default": 40 },
+    {
+      "type": "select",
+      "id": "justify",
+      "label": "Row alignment",
+      "default": "between",
+      "options": [
+        { "value": "between", "label": "Space between (equal gaps)" },
+        { "value": "around",  "label": "Space around" },
+        { "value": "evenly",  "label": "Space evenly" },
+        { "value": "center",  "label": "Center" },
+        { "value": "start",   "label": "Start (left)" },
+        { "value": "end",     "label": "End (right)" }
+      ]
+    },
+    { "type": "checkbox", "id": "mobile_center", "label": "Center on mobile", "default": true }
+  ],
+  "blocks": [
+    {
+      "type": "item",
+      "name": "Icon + Text",
+      "settings": [
+        { "type": "image_picker", "id": "icon", "label": "Icon (SVG/PNG)" },
+        { "type": "text", "id": "text", "label": "Text", "default": "Super Fast Charging" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Icon + Text Row",
+      "category": "Custom",
+      "blocks": [
+        { "type": "item", "settings": { "text": "Super Fast Charging" } },
+        { "type": "item", "settings": { "text": "Certified Compatibility" } },
+        { "type": "item", "settings": { "text": "Hassle-Free Warranty" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

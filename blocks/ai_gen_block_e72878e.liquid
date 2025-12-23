@@ -1,0 +1,339 @@
+{% doc %}
+  @prompt
+    Create a breadcrumb navigation block for collection pages that shows the navigation path (Home > Collection > Subcollection). The breadcrumb should:
+    - Display on collection and product pages
+    - Show clickable links for each level in the hierarchy
+    - Have a clean, modern design with separators (/ or >)
+    - Be mobile responsive
+    - Support Turkish language
+    - Include proper schema markup for SEO
+    - Style should match a premium, modern aesthetic with subtle colors
+{% enddoc %}
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+
+{% style %}
+  .ai-breadcrumb-{{ ai_gen_id }} {
+    padding: {{ block.settings.vertical_padding }}px 0;
+    font-size: {{ block.settings.font_size }}px;
+    color: {{ block.settings.text_color }};
+  }
+
+  .ai-breadcrumb-container-{{ ai_gen_id }} {
+    max-width: {{ block.settings.container_width }}px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  .ai-breadcrumb-list-{{ ai_gen_id }} {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: {{ block.settings.item_spacing }}px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .ai-breadcrumb-item-{{ ai_gen_id }} {
+    display: flex;
+    align-items: center;
+    gap: {{ block.settings.item_spacing }}px;
+  }
+
+  .ai-breadcrumb-link-{{ ai_gen_id }} {
+    color: {{ block.settings.link_color }};
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+
+  .ai-breadcrumb-link-{{ ai_gen_id }}:hover {
+    color: {{ block.settings.link_hover_color }};
+  }
+
+  .ai-breadcrumb-current-{{ ai_gen_id }} {
+    color: {{ block.settings.current_color }};
+    font-weight: {{ block.settings.current_font_weight }};
+  }
+
+  .ai-breadcrumb-separator-{{ ai_gen_id }} {
+    color: {{ block.settings.separator_color }};
+    opacity: {{ block.settings.separator_opacity | divided_by: 100.0 }};
+    user-select: none;
+  }
+
+  @media screen and (max-width: 749px) {
+    .ai-breadcrumb-{{ ai_gen_id }} {
+      font-size: {{ block.settings.font_size | times: 0.9 }}px;
+      padding: {{ block.settings.vertical_padding | times: 0.8 }}px 0;
+    }
+
+    .ai-breadcrumb-container-{{ ai_gen_id }} {
+      padding: 0 16px;
+    }
+
+    .ai-breadcrumb-list-{{ ai_gen_id }} {
+      gap: {{ block.settings.item_spacing | times: 0.8 }}px;
+    }
+
+    .ai-breadcrumb-item-{{ ai_gen_id }} {
+      gap: {{ block.settings.item_spacing | times: 0.8 }}px;
+    }
+  }
+{% endstyle %}
+
+<nav
+  class="ai-breadcrumb-{{ ai_gen_id }}"
+  aria-label="{% if block.settings.language == 'turkish' %}Sayfa yolu{% else %}Breadcrumb{% endif %}"
+  {{ block.shopify_attributes }}
+>
+  <div class="ai-breadcrumb-container-{{ ai_gen_id }}">
+    <ol
+      class="ai-breadcrumb-list-{{ ai_gen_id }}"
+      itemscope
+      itemtype="https://schema.org/BreadcrumbList"
+    >
+      <li
+        class="ai-breadcrumb-item-{{ ai_gen_id }}"
+        itemprop="itemListElement"
+        itemscope
+        itemtype="https://schema.org/ListItem"
+      >
+        <a
+          href="/"
+          class="ai-breadcrumb-link-{{ ai_gen_id }}"
+          itemprop="item"
+        >
+          <span itemprop="name">
+            {%- if block.settings.language == 'turkish' -%}
+              Ana Sayfa
+            {%- else -%}
+              Home
+            {%- endif -%}
+          </span>
+        </a>
+        <meta itemprop="position" content="1">
+        <span class="ai-breadcrumb-separator-{{ ai_gen_id }}" aria-hidden="true">{{ block.settings.separator }}</span>
+      </li>
+
+      {% if collection %}
+        {% if collection.handle == 'all' %}
+          <li
+            class="ai-breadcrumb-item-{{ ai_gen_id }}"
+            itemprop="itemListElement"
+            itemscope
+            itemtype="https://schema.org/ListItem"
+          >
+            <span class="ai-breadcrumb-current-{{ ai_gen_id }}" itemprop="name">
+              {%- if block.settings.language == 'turkish' -%}
+                Tüm Ürünler
+              {%- else -%}
+                All Products
+              {%- endif -%}
+            </span>
+            <meta itemprop="position" content="2">
+          </li>
+        {% else %}
+          <li
+            class="ai-breadcrumb-item-{{ ai_gen_id }}"
+            itemprop="itemListElement"
+            itemscope
+            itemtype="https://schema.org/ListItem"
+          >
+            <a
+              href="{{ collection.url }}"
+              class="ai-breadcrumb-link-{{ ai_gen_id }}"
+              itemprop="item"
+            >
+              <span itemprop="name">{{ collection.title }}</span>
+            </a>
+            <meta itemprop="position" content="2">
+          </li>
+        {% endif %}
+      {% endif %}
+
+      {% if product %}
+        {% if product.collections.size > 0 %}
+          {% assign product_collection = product.collections.first %}
+          <li
+            class="ai-breadcrumb-item-{{ ai_gen_id }}"
+            itemprop="itemListElement"
+            itemscope
+            itemtype="https://schema.org/ListItem"
+          >
+            <a
+              href="{{ product_collection.url }}"
+              class="ai-breadcrumb-link-{{ ai_gen_id }}"
+              itemprop="item"
+            >
+              <span itemprop="name">{{ product_collection.title }}</span>
+            </a>
+            <meta itemprop="position" content="2">
+            <span class="ai-breadcrumb-separator-{{ ai_gen_id }}" aria-hidden="true">{{ block.settings.separator }}</span>
+          </li>
+        {% endif %}
+
+        <li
+          class="ai-breadcrumb-item-{{ ai_gen_id }}"
+          itemprop="itemListElement"
+          itemscope
+          itemtype="https://schema.org/ListItem"
+        >
+          <span class="ai-breadcrumb-current-{{ ai_gen_id }}" itemprop="name">{{ product.title }}</span>
+          <meta itemprop="position" content="{% if product.collections.size > 0 %}3{% else %}2{% endif %}">
+        </li>
+      {% endif %}
+    </ol>
+  </div>
+</nav>
+
+{% schema %}
+{
+  "name": "Breadcrumb navigation",
+  "tag": null,
+  "settings": [
+    {
+      "type": "header",
+      "content": "General"
+    },
+    {
+      "type": "select",
+      "id": "language",
+      "label": "Language",
+      "options": [
+        {
+          "value": "english",
+          "label": "English"
+        },
+        {
+          "value": "turkish",
+          "label": "Turkish"
+        }
+      ],
+      "default": "english"
+    },
+    {
+      "type": "text",
+      "id": "separator",
+      "label": "Separator",
+      "default": "/"
+    },
+    {
+      "type": "range",
+      "id": "container_width",
+      "min": 1000,
+      "max": 1800,
+      "step": 100,
+      "unit": "px",
+      "label": "Container width",
+      "default": 1600
+    },
+    {
+      "type": "header",
+      "content": "Typography"
+    },
+    {
+      "type": "range",
+      "id": "font_size",
+      "min": 11,
+      "max": 18,
+      "step": 1,
+      "unit": "px",
+      "label": "Font size",
+      "default": 13
+    },
+    {
+      "type": "select",
+      "id": "current_font_weight",
+      "label": "Current page font weight",
+      "options": [
+        {
+          "value": "400",
+          "label": "Normal"
+        },
+        {
+          "value": "500",
+          "label": "Medium"
+        },
+        {
+          "value": "600",
+          "label": "Semi-bold"
+        }
+      ],
+      "default": "500"
+    },
+    {
+      "type": "header",
+      "content": "Spacing"
+    },
+    {
+      "type": "range",
+      "id": "vertical_padding",
+      "min": 0,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "label": "Vertical padding",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "item_spacing",
+      "min": 4,
+      "max": 16,
+      "step": 2,
+      "unit": "px",
+      "label": "Item spacing",
+      "default": 8
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text",
+      "default": "#1a1a1a"
+    },
+    {
+      "type": "color",
+      "id": "link_color",
+      "label": "Link",
+      "default": "#677279"
+    },
+    {
+      "type": "color",
+      "id": "link_hover_color",
+      "label": "Link hover",
+      "default": "#1a1a1a"
+    },
+    {
+      "type": "color",
+      "id": "current_color",
+      "label": "Current page",
+      "default": "#1a1a1a"
+    },
+    {
+      "type": "color",
+      "id": "separator_color",
+      "label": "Separator",
+      "default": "#677279"
+    },
+    {
+      "type": "range",
+      "id": "separator_opacity",
+      "min": 10,
+      "max": 100,
+      "step": 10,
+      "unit": "%",
+      "label": "Separator opacity",
+      "default": 50
+    }
+  ],
+  "presets": [
+    {
+      "name": "Breadcrumb navigation"
+    }
+  ]
+}
+{% endschema %}

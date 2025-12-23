@@ -1,0 +1,167 @@
+{%- comment -%}
+    CUSTOM: Mega Menu Sidebar/Image Layout
+    This snippet implements a custom layout:
+    1. Left: Main links (L1) as a sidebar.
+    2. Center: Sub-links (L2) revealed on hover/click of L1 links.
+    3. Right: Promotional content (Images/Product) is fixed.
+{%- endcomment -%}
+
+{%- if link.links.size > 0 -%}
+  <style>
+    /* --------------------------------------------------------------------------------------------------------------------
+       CUSTOM CSS FOR 3-COLUMN LAYOUT
+    -------------------------------------------------------------------------------------------------------------------- */
+    @media screen and (min-width: 1150px) {
+      /* Ana Menü Kapsayıcısı: Flex/Grid ile 3 Sütuna Ayır */
+      #mega-menu-{{ mega_menu_block.id }}.mega-menu-custom-sidebar {
+        display: grid !important;
+        /* Sütun genişlikleri: SOL (L1 Başlıklar), ORTA (L2 Alt Başlıklar), SAĞ (Görseller) */
+        grid-template-columns: 220px 1fr 300px; /* Bu değerleri ihtiyaca göre ayarlayabilirsiniz */
+        gap: var(--spacing-8); /* Sütunlar arası boşluk */
+        justify-content: flex-start !important;
+        align-items: flex-start; /* İçeriklerin üstten başlamasını sağla */
+        min-height: 400px; /* Menünün yüksekliğini sabit tutmak isteyebilirsiniz */
+      }
+
+      /* Sol Sütun: Ana Başlıklar */
+      .mega-menu-main-links {
+        padding-right: var(--spacing-4);
+        border-right: 1px solid var(--color-border);
+      }
+      
+      /* Ana Başlık (L1) Stili */
+      .mega-menu-main-links .mega-menu-l1-item {
+        display: block;
+        padding: var(--spacing-2) 0;
+        cursor: pointer;
+        font-weight: var(--font-weight-bold);
+        color: var(--color-text);
+        transition: color 0.1s ease;
+      }
+      .mega-menu-main-links .mega-menu-l1-item:hover,
+      .mega-menu-main-links .mega-menu-l1-item.active {
+        color: var(--color-accent); /* Hover ve Aktif renklendirme */
+      }
+
+      /* Orta Sütun: Alt Başlıkların Kapsayıcısı */
+      .mega-menu-sub-links-container {
+        padding-left: var(--spacing-4);
+      }
+
+      /* Alt Başlık Grubu (L2) - Gizleme/Gösterim */
+      .mega-menu-sub-links {
+        display: none;
+      }
+      .mega-menu-sub-links.active {
+        display: block; /* Sadece aktif olan alt menüyü göster */
+      }
+      
+      /* Sağ Sütun: Görseller */
+      .mega-menu-images-column {
+        /* Görsellerin menünün sağında sabit kalmasını sağlar */
+        align-self: stretch; /* Görsel sütununun yüksekliği menü yüksekliğine esnesin */
+      }
+    }
+    
+    /* Temanın varsayılan Mega Menü stillerini bu özel düzende sıfırla */
+    #mega-menu-{{ mega_menu_block.id }}.mega-menu-custom-sidebar .mega-menu__nav {
+      display: none !important; /* Varsayılan ul/li yapısını gizle */
+    }
+  </style>
+{%- endif -%}
+
+<div id="mega-menu-{{ mega_menu_block.id }}" class="mega-menu mega-menu-custom-sidebar">
+  
+  {%- if link.links.size > 0 -%}
+    <div class="mega-menu-main-links">
+      <ul class="v-stack gap-1" role="list">
+        {%- for sub_link in link.links -%}
+          {% comment %} L1 Başlıklarına data-target ile L2 grubunu hedeflemesini sağlıyoruz. {% endcomment %}
+          <li>
+            <a href="{% if sub_link.url != '#' %}{{ sub_link.url }}{% else %}#{% endif %}" 
+               class="mega-menu-l1-item {% if forloop.first %}active{% endif %}" 
+               data-target-id="mega-menu-sub-{{ mega_menu_block.id }}-{{ forloop.index }}"
+               {% if sub_link.current %}aria-current="page"{% endif %}>
+              {{- sub_link.title -}}
+            </a>
+          </li>
+        {%- endfor -%}
+      </ul>
+    </div>
+
+    <div class="mega-menu-sub-links-container">
+      {%- for sub_link in link.links -%}
+        {% comment %} Her bir L1 başlığı için L2 alt başlık grubunu oluşturuyoruz. {% endcomment %}
+        <div id="mega-menu-sub-{{ mega_menu_block.id }}-{{ forloop.index }}" 
+             class="mega-menu-sub-links {% if forloop.first %}active{% endif %}">
+          
+          <ul class="v-stack gap-4 justify-items-start" role="list">
+            {%- for sub_sub_link in sub_link.links -%}
+              <li class="v-stack gap-2 justify-items-start">
+                <a href="{{ sub_sub_link.url }}" class="{% if mega_menu_block.settings.submenu_style == 'bold_text' %}h5{% else %}link-faded{% endif %}">
+                  <span {% if mega_menu_block.settings.submenu_style == 'bold_text' %}class="reversed-link hover:show"{% endif %}>{{- sub_sub_link.title -}}</span>
+                </a>
+
+                {%- comment -%} L3 seviyesi için ekstra destek isterseniz buraya Liquid ekleyebilirsiniz {%- endcomment -%}
+              </li>
+            {%- endfor -%}
+          </ul>
+        </div>
+      {%- endfor -%}
+    </div>
+  {%- endif -%}
+
+  <div class="mega-menu-images-column">
+    {% liquid
+      assign promo_item_count = 0
+      for i in (1..3)
+        assign image_setting = 'image_' | append: i
+        if mega_menu_block.settings[image_setting] != blank
+          assign promo_item_count = promo_item_count | plus: 1
+        endif
+      endfor
+
+      if mega_menu_block.settings.product != blank
+        assign promo_item_count = promo_item_count | plus: 1
+      endif
+    %}
+    
+    {%- comment -%} Impact'in kendi navigation-promo-block snippet'ini kullanarak görselleri render ediyoruz. {%- endcomment -%}
+    {%- render 'navigation-promo-block', mega_menu_block: mega_menu_block, force_carousel_mode: false -%}
+  </div>
+</div>
+
+<script>
+  // DOMContentLoaded: JavaScript'in sadece menü açıldığında çalışması için details elementinin içinde çalışır.
+  (function() {
+    const megamenu = document.getElementById('mega-menu-{{ mega_menu_block.id }}');
+    if (!megamenu) return;
+
+    const mainLinks = megamenu.querySelectorAll('.mega-menu-l1-item');
+    const allSubMenus = megamenu.querySelectorAll('.mega-menu-sub-links');
+    
+    mainLinks.forEach(link => {
+      // Menü tetikleme ayarına göre hover veya click olayını dinle
+      const trigger = '{{ section.settings.menu_open_trigger }}';
+      const eventType = (trigger === 'hover' && !('ontouchstart' in window)) ? 'mouseenter' : 'click';
+      
+      link.addEventListener(eventType, function(event) {
+        event.preventDefault(); // Varsayılan link davranışını engelle
+        
+        const targetId = this.getAttribute('data-target-id');
+        const targetMenu = document.getElementById(targetId);
+
+        // Tüm linklerin 'active' sınıfını kaldır
+        mainLinks.forEach(l => l.classList.remove('active'));
+        // Tüm alt menülerin 'active' sınıfını kaldır (gizle)
+        allSubMenus.forEach(m => m.classList.remove('active'));
+        
+        // Sadece hedeflenen linki ve menüyü aktif et (göster)
+        this.classList.add('active');
+        if (targetMenu) {
+          targetMenu.classList.add('active');
+        }
+      });
+    });
+  })();
+</script>

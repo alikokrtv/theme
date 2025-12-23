@@ -1,0 +1,502 @@
+{% comment %}
+  Shopify Section: Comprehensive Membership & Brand Equity Section
+  Bu bölüm şunları içerir:
+  - Özellik kartları (Feature Cards)
+  - Üyelik seviyeleri (Membership Tiers)
+  - İstatistikler (Stats)
+  - Müşteri yorumları (Testimonials)
+  - Sıkça sorulan sorular (FAQ)
+  - Banner/CTA alanları
+{% endcomment %}
+
+<div class="ipc-mediaplayersticky relative mt-[-200vh]" style="margin-bottom: -868px; z-index: 1;">
+  <div class="sticky top-0 ">
+    <div class="media-cover relative h-screen w-full">
+      {% if section.settings.background_image %}
+        <img src="{{ section.settings.background_image | img_url: 'master' }}" class="z-1 absolute left-0 top-0 size-full object-cover {% if section.settings.bg_position %}object-[{{ section.settings.bg_position }}]{% else %}object-center{% endif %}" alt="" loading="eager">
+      {% endif %}
+      <div class="sticky-cover absolute left-0 top-0 z-10 size-full" style="backdrop-filter: blur({{ section.settings.blur_amount | default: 0 }}px);"></div>
+    </div>
+  </div>
+  <div class="relative h-screen w-full"></div>
+  <div class="relative z-10">
+    <div class="relative z-20 bg-transparent">
+      <div class="!bg-transparent ipc_container relative z-10 w-full">
+        <div class="lg-desktop:max-w-full mx-auto size-full tablet:px-8 laptop:px-16 desktop:px-16 lg-desktop:px-[calc(50%-832px)] px-4 none none none">
+          <div class="laptop:gap-4 grid grid-cols-12 gap-3">
+            <div class="col-span-1"></div>
+            <div class="col-span-10">
+              <div class="brand-equity-wrapper w-full block-style_n0yx10y undefined">
+                <div class="grid grid-cols-1 gap-3 tablet:grid-cols-2 laptop:gap-4 laptop:grid-cols-10">
+                  {% for block in section.blocks %}
+                    {% if block.type == 'card' %}
+                      <div class="brand-equity-item box-border flex w-full flex-col bg-white p-4 desktop:p-6 justify-between lg-desktop:p-8 laptop:h-[192px] lg-desktop:h-[240px] h-[160px] laptop:col-span-{{ block.settings.col_span }} rounded-none">
+                        <div class="lg-desktop:h-[36px] flex h-[30px] items-center justify-between gap-3">
+                          <h3 class="lg-desktop:text-[18px] desktop:text-[16px] text-[14px] font-bold leading-[1.2] tracking-[-0.02em] text-[#1D1D1F]">{{ block.settings.title | escape }}</h3>
+                          {% if block.settings.icon %}
+                            <picture class="block overflow-hidden lg-desktop:size-[36px] size-[30px] shrink-0 object-cover">
+                              {% comment %} İstenen çıktıdaki responsive image yapısı için tüm source'lar eklenmedi, sadece temel img etiketi kullanıldı. {% endcomment %}
+                              <img src="{{ block.settings.icon | img_url: '100x' }}" class="w-full w-full h-full object-cover" loading="lazy" alt="{{ block.settings.title | escape }}">
+                            </picture>
+                          {% endif %}
+                        </div>
+                        <p class="lg-desktop:text-[24px] line-clamp-3 text-[20px] font-bold leading-[1.2] tracking-[-0.04em] text-[#1D1D1F]">{{ block.settings.text | escape }}</p>
+                      </div>
+                    {% endif %}
+                  {% endfor %}
+                </div>
+              </div>
+            </div>
+            <div class="col-span-1"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="ipc_spacer laptop:h-16 desktop:h-[96px] lg-desktop:h-[128px] tablet:h-16 h-16 block-style_6n9pnen !bg-transparent"></div>
+
+    <div class="relative z-20 w-full bg-transparent">
+      <div class="!bg-transparent ipc_container relative z-10 w-full">
+        <div class="lg-desktop:max-w-full mx-auto size-full tablet:px-8 laptop:px-16 desktop:px-16 lg-desktop:px-[calc(50%-832px)] px-4 none none none">
+          <div class="laptop:gap-4 grid grid-cols-12 gap-3">
+            <div class="col-span-1"></div>
+            <div class="col-span-10">
+              {% for block in section.blocks %}
+                {% if block.type == 'banner' %}
+                  <section data-ui-component-id="MemberEquity" class="lg-desktop:aspect-[1384/560] desktop:aspect-[1090/488] laptop:aspect-[774/336] tablet:aspect-[704/480] text-info-primary relative overflow-hidden block-style_xewcy51 w-full aiui-dark">
+                    
+                    {% if block.settings.banner_bg %}
+                      <picture class="block overflow-hidden laptop:block absolute inset-0 hidden size-full object-cover [&amp;_img]:h-full [&amp;_img]:object-cover">
+                        <img src="{{ block.settings.banner_bg | img_url: 'master' }}" class="w-full" loading="lazy" alt="{{ block.settings.banner_title | escape }}">
+                      </picture>
+                    {% endif %}
+                    
+                    {% if block.settings.banner_bg_mobile %}
+                      <picture class="block overflow-hidden laptop:hidden absolute inset-0 size-full object-cover [&amp;_img]:h-full [&amp;_img]:object-cover">
+                        <img src="{{ block.settings.banner_bg_mobile | img_url: 'master' }}" class="w-full" loading="lazy" alt="{{ block.settings.banner_title | escape }}">
+                      </picture>
+                    {% elsif block.settings.banner_bg %}
+                       {% comment %} Mobil görsel ayarlanmamışsa, büyük ekran görselini mobil için kullan. {% endcomment %}
+                       <picture class="block overflow-hidden laptop:hidden absolute inset-0 size-full object-cover [&amp;_img]:h-full [&amp;_img]:object-cover">
+                        <img src="{{ block.settings.banner_bg | img_url: 'master' }}" class="w-full" loading="lazy" alt="{{ block.settings.banner_title | escape }}">
+                      </picture>
+                    {% endif %}
+
+                    <div class="laptop:items-center absolute inset-0 flex w-full items-end py-[16px]">
+                      <div class="tablet:px-6 laptop:px-[76px] desktop:px-[111px] lg-desktop:px-[139px] tablet:gap-5 laptop:gap-4 desktop:gap-6 lg-desktop:gap-8 flex w-full flex-col gap-6 px-4">
+                        <div class="desktop:gap-2 lg-desktop:gap-4 laptop:max-w-[286px] desktop:max-w-[426px] lg-desktop:max-w-[547px] flex flex-col">
+                          <h2 class="text-balance tracking-[-0.04em] desktop:text-[32px] text-[24px] leading-[120%] font-bold member-equity-title">{{ block.settings.banner_title | escape }}</h2>
+                          <span class="text-pretty tracking-[-0.02em] font-bold member-equity-description lg-desktop:text-[18px] desktop:text-[16px] text-[14px]">{{ block.settings.banner_text | escape }}</span>
+                        </div>
+                        {% if block.settings.banner_url != blank %}
+                          <div class="lg-desktop:gap-3 flex items-center gap-2">
+                            <a href="{{ block.settings.banner_url }}" class="rounded-btn inline-flex cursor-pointer items-center justify-center font-bold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:pointer-events-none bg-btn-primary text-btn-primary-foreground hover:text-btn-primary-active-foreground hover:bg-gradient-brand border-none px-5 pb-[10px] pt-[11px] text-[14px] leading-tight member-equity-button-primary lg-desktop:px-7 lg-desktop:pb-[14px] lg-desktop:pt-[15px] lg-desktop:text-[16px]">{{ block.settings.banner_btn | escape }}</a>
+                          </div>
+                        {% endif %}
+                      </div>
+                    </div>
+                  </section>
+                {% endif %}
+              {% endfor %}
+            </div>
+            <div class="col-span-1"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="ipc_spacer laptop:h-16 desktop:h-[96px] lg-desktop:h-[128px] tablet:h-16 h-16 block-style_8gev1xy !bg-transparent"></div>
+
+    {% comment %} Üyelik Seviyeleri (Pricing Tiers) {% endcomment %}
+    {% assign pricing_blocks = section.blocks | where: "type", "pricing_tier" %}
+    {% if pricing_blocks.size > 0 %}
+    <div class="relative z-20 w-full bg-transparent">
+      <div class="!bg-transparent ipc_container relative z-10 w-full">
+        <div class="lg-desktop:max-w-full mx-auto size-full tablet:px-8 laptop:px-16 desktop:px-16 lg-desktop:px-[calc(50%-832px)] px-4 none none none">
+          <div class="laptop:gap-4 grid grid-cols-12 gap-3">
+            <div class="col-span-1"></div>
+            <div class="col-span-10">
+              {% if section.settings.pricing_section_title != blank %}
+                <div class="text-center laptop:mb-8 desktop:mb-10 lg-desktop:mb-12 mb-6">
+                  <h2 class="lg-desktop:text-[48px] desktop:text-[40px] laptop:text-[32px] text-[28px] font-bold leading-[1.2] tracking-[-0.04em] text-[#1D1D1F] mb-3">{{ section.settings.pricing_section_title }}</h2>
+                  {% if section.settings.pricing_section_subtitle != blank %}
+                    <p class="lg-desktop:text-[20px] desktop:text-[18px] text-[16px] text-[#6E6E73] leading-[1.4]">{{ section.settings.pricing_section_subtitle }}</p>
+                  {% endif %}
+                </div>
+              {% endif %}
+              
+              <div class="grid grid-cols-1 gap-3 tablet:grid-cols-2 laptop:grid-cols-3 laptop:gap-4">
+                {% for block in pricing_blocks %}
+                  <div class="pricing-tier-card relative bg-white border {% if block.settings.is_featured %}border-[2px] border-[#1D1D1F]{% else %}border-[#D2D2D7]{% endif %} box-border flex w-full flex-col p-6 desktop:p-8 lg-desktop:p-10 hover:shadow-xl transition-all duration-300 rounded-none {% if block.settings.is_featured %}laptop:scale-[1.02] z-10{% endif %}">
+                    {% if block.settings.is_featured %}
+                      <div class="absolute -top-3 left-1/2 -translate-x-1/2 bg-[#1D1D1F] text-white px-4 py-1 text-[12px] desktop:text-[14px] font-bold tracking-[-0.02em]">{{ block.settings.featured_badge | default: "POPULAR" }}</div>
+                    {% endif %}
+                    
+                    <div class="text-center mb-6 desktop:mb-8">
+                      <h3 class="lg-desktop:text-[28px] desktop:text-[24px] text-[20px] font-bold leading-[1.2] tracking-[-0.02em] text-[#1D1D1F] mb-2">{{ block.settings.tier_name }}</h3>
+                      <p class="text-[#6E6E73] lg-desktop:text-[16px] desktop:text-[14px] text-[13px] mb-4 leading-[1.4]">{{ block.settings.tier_description }}</p>
+                      <div class="flex items-baseline justify-center gap-1">
+                        {% if block.settings.price != blank %}
+                          <span class="lg-desktop:text-[56px] desktop:text-[48px] text-[40px] font-bold leading-[1.1] tracking-[-0.04em] text-[#1D1D1F]">{{ block.settings.price }}</span>
+                          {% if block.settings.price_period != blank %}
+                            <span class="text-[#6E6E73] lg-desktop:text-[18px] desktop:text-[16px] text-[14px]">/{{ block.settings.price_period }}</span>
+                          {% endif %}
+                        {% else %}
+                          <span class="lg-desktop:text-[56px] desktop:text-[48px] text-[40px] font-bold leading-[1.1] tracking-[-0.04em] text-[#1D1D1F]">Free</span>
+                        {% endif %}
+                      </div>
+                    </div>
+                    
+                    {% if block.settings.features != blank %}
+                      <ul class="space-y-3 mb-6 desktop:mb-8 flex-grow">
+                        {% assign features = block.settings.features | newline_to_br | split: '<br />' %}
+                        {% for feature in features %}
+                          {% assign trimmed_feature = feature | strip %}
+                          {% if trimmed_feature != blank %}
+                            <li class="flex items-start gap-2">
+                              <svg class="lg-desktop:w-5 lg-desktop:h-5 w-4 h-4 shrink-0 mt-0.5" fill="none" stroke="#059669" viewBox="0 0 24 24" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path></svg>
+                              <span class="lg-desktop:text-[16px] desktop:text-[14px] text-[13px] text-[#1D1D1F] leading-[1.4]">{{ trimmed_feature }}</span>
+                            </li>
+                          {% endif %}
+                        {% endfor %}
+                      </ul>
+                    {% endif %}
+                    
+                    {% if block.settings.cta_url != blank %}
+                      <a href="{{ block.settings.cta_url }}" class="rounded-btn inline-flex cursor-pointer items-center justify-center font-bold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:pointer-events-none border-none w-full {% if block.settings.is_featured %}bg-[#1D1D1F] text-white hover:bg-[#424245]{% else %}bg-[#F5F5F7] text-[#1D1D1F] hover:bg-[#E8E8ED]{% endif %} lg-desktop:px-7 lg-desktop:pb-[14px] lg-desktop:pt-[15px] lg-desktop:text-[16px] px-5 pb-[10px] pt-[11px] text-[14px] leading-tight transition-all">
+                        {{ block.settings.cta_text | default: "Get Started" }}
+                      </a>
+                    {% endif %}
+                  </div>
+                {% endfor %}
+              </div>
+            </div>
+            <div class="col-span-1"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="ipc_spacer laptop:h-16 desktop:h-[96px] lg-desktop:h-[128px] tablet:h-16 h-16 block-style_pricing !bg-transparent"></div>
+    {% endif %}
+
+    {% comment %} İstatistikler (Stats) {% endcomment %}
+    {% assign stats_blocks = section.blocks | where: "type", "stat" %}
+    {% if stats_blocks.size > 0 %}
+    <div class="relative z-20 w-full bg-[#1D1D1F] text-white laptop:py-12 desktop:py-16 lg-desktop:py-20 py-10">
+      <div class="ipc_container relative z-10 w-full">
+        <div class="lg-desktop:max-w-full mx-auto size-full tablet:px-8 laptop:px-16 desktop:px-16 lg-desktop:px-[calc(50%-832px)] px-4 none none none">
+          <div class="laptop:gap-4 grid grid-cols-12 gap-3">
+            <div class="col-span-1"></div>
+            <div class="col-span-10">
+              {% if section.settings.stats_title != blank %}
+                <h2 class="text-center lg-desktop:text-[48px] desktop:text-[40px] laptop:text-[32px] text-[28px] font-bold leading-[1.2] tracking-[-0.04em] laptop:mb-10 desktop:mb-12 lg-desktop:mb-16 mb-8">{{ section.settings.stats_title }}</h2>
+              {% endif %}
+              
+              <div class="grid grid-cols-2 gap-6 laptop:grid-cols-4 laptop:gap-8 desktop:gap-10 lg-desktop:gap-12">
+                {% for block in stats_blocks %}
+                  <div class="text-center">
+                    <div class="lg-desktop:text-[64px] desktop:text-[56px] laptop:text-[48px] text-[36px] font-bold leading-[1.1] tracking-[-0.04em] mb-2">{{ block.settings.stat_number }}</div>
+                    <div class="lg-desktop:text-[18px] desktop:text-[16px] laptop:text-[15px] text-[14px] text-[#A1A1A6] leading-[1.4]">{{ block.settings.stat_label }}</div>
+                  </div>
+                {% endfor %}
+              </div>
+            </div>
+            <div class="col-span-1"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="ipc_spacer laptop:h-16 desktop:h-[96px] lg-desktop:h-[128px] tablet:h-16 h-16 block-style_stats !bg-transparent"></div>
+    {% endif %}
+
+    {% comment %} Müşteri Yorumları (Testimonials) {% endcomment %}
+    {% assign testimonial_blocks = section.blocks | where: "type", "testimonial" %}
+    {% if testimonial_blocks.size > 0 %}
+    <div class="relative z-20 w-full bg-transparent">
+      <div class="!bg-transparent ipc_container relative z-10 w-full">
+        <div class="lg-desktop:max-w-full mx-auto size-full tablet:px-8 laptop:px-16 desktop:px-16 lg-desktop:px-[calc(50%-832px)] px-4 none none none">
+          <div class="laptop:gap-4 grid grid-cols-12 gap-3">
+            <div class="col-span-1"></div>
+            <div class="col-span-10">
+              {% if section.settings.testimonials_title != blank %}
+                <h2 class="text-center lg-desktop:text-[48px] desktop:text-[40px] laptop:text-[32px] text-[28px] font-bold leading-[1.2] tracking-[-0.04em] text-[#1D1D1F] laptop:mb-10 desktop:mb-12 lg-desktop:mb-16 mb-8">{{ section.settings.testimonials_title }}</h2>
+              {% endif %}
+              
+              <div class="grid grid-cols-1 gap-3 tablet:grid-cols-2 laptop:grid-cols-3 laptop:gap-4">
+                {% for block in testimonial_blocks %}
+                  <div class="bg-white border border-[#D2D2D7] box-border flex w-full flex-col p-4 desktop:p-6 lg-desktop:p-8 hover:shadow-lg transition-all duration-300 rounded-none">
+                    {% if block.settings.rating > 0 %}
+                      <div class="flex gap-1 mb-4">
+                        {% for i in (1..block.settings.rating) %}
+                          <svg class="lg-desktop:w-5 lg-desktop:h-5 w-4 h-4 text-[#FFCC00]" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                        {% endfor %}
+                      </div>
+                    {% endif %}
+                    
+                    <p class="lg-desktop:text-[18px] desktop:text-[16px] text-[15px] text-[#1D1D1F] mb-6 leading-[1.5]">"{{ block.settings.testimonial_text }}"</p>
+                    
+                    <div class="flex items-center gap-3 mt-auto">
+                      {% if block.settings.customer_image %}
+                        <picture class="block overflow-hidden shrink-0">
+                          <img src="{{ block.settings.customer_image | img_url: '96x96' }}" class="lg-desktop:w-12 lg-desktop:h-12 w-10 h-10 rounded-full object-cover" alt="{{ block.settings.customer_name }}" loading="lazy">
+                        </picture>
+                      {% else %}
+                        <div class="lg-desktop:w-12 lg-desktop:h-12 w-10 h-10 rounded-full bg-[#F5F5F7] flex items-center justify-center text-[#1D1D1F] font-bold lg-desktop:text-[18px] text-[16px] shrink-0">{{ block.settings.customer_name | slice: 0 }}</div>
+                      {% endif %}
+                      <div>
+                        <div class="font-bold lg-desktop:text-[16px] desktop:text-[14px] text-[13px] leading-[1.2] tracking-[-0.02em] text-[#1D1D1F]">{{ block.settings.customer_name }}</div>
+                        {% if block.settings.customer_title != blank %}
+                          <div class="lg-desktop:text-[14px] desktop:text-[13px] text-[12px] text-[#6E6E73] leading-[1.4]">{{ block.settings.customer_title }}</div>
+                        {% endif %}
+                      </div>
+                    </div>
+                  </div>
+                {% endfor %}
+              </div>
+            </div>
+            <div class="col-span-1"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="ipc_spacer laptop:h-16 desktop:h-[96px] lg-desktop:h-[128px] tablet:h-16 h-16 block-style_testimonials !bg-transparent"></div>
+    {% endif %}
+
+    {% comment %} FAQ Accordion {% endcomment %}
+    {% assign faq_blocks = section.blocks | where: "type", "faq" %}
+    {% if faq_blocks.size > 0 %}
+    <div class="relative z-20 w-full bg-[#F5F5F7] laptop:py-12 desktop:py-16 lg-desktop:py-20 py-10">
+      <div class="ipc_container relative z-10 w-full">
+        <div class="lg-desktop:max-w-full mx-auto size-full tablet:px-8 laptop:px-16 desktop:px-16 lg-desktop:px-[calc(50%-832px)] px-4 none none none">
+          <div class="laptop:gap-4 grid grid-cols-12 gap-3">
+            <div class="col-span-1"></div>
+            <div class="col-span-10">
+              {% if section.settings.faq_title != blank %}
+                <h2 class="text-center lg-desktop:text-[48px] desktop:text-[40px] laptop:text-[32px] text-[28px] font-bold leading-[1.2] tracking-[-0.04em] text-[#1D1D1F] laptop:mb-10 desktop:mb-12 lg-desktop:mb-16 mb-8">{{ section.settings.faq_title }}</h2>
+              {% endif %}
+              
+              <div class="laptop:max-w-4xl mx-auto">
+                <div class="space-y-3 laptop:space-y-4">
+                  {% for block in faq_blocks %}
+                    <details class="group bg-white border border-[#D2D2D7] overflow-hidden rounded-none">
+                      <summary class="flex items-center justify-between cursor-pointer p-4 desktop:px-6 desktop:py-5 lg-desktop:px-8 lg-desktop:py-6 hover:bg-[#FAFAFA] transition-colors list-none">
+                        <span class="font-bold lg-desktop:text-[18px] desktop:text-[16px] text-[15px] leading-[1.2] tracking-[-0.02em] text-[#1D1D1F] pr-4">{{ block.settings.question }}</span>
+                        <svg class="lg-desktop:w-6 lg-desktop:h-6 w-5 h-5 text-[#6E6E73] transition-transform group-open:rotate-180 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+                          <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                      </summary>
+                      <div class="px-4 pb-4 desktop:px-6 desktop:pb-5 lg-desktop:px-8 lg-desktop:pb-6 lg-desktop:text-[16px] desktop:text-[14px] text-[13px] text-[#1D1D1F] leading-[1.6]">
+                        {{ block.settings.answer }}
+                      </div>
+                    </details>
+                  {% endfor %}
+                </div>
+              </div>
+            </div>
+            <div class="col-span-1"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="ipc_spacer laptop:h-16 desktop:h-[96px] lg-desktop:h-[128px] tablet:h-16 h-16 block-style_faq !bg-transparent"></div>
+    {% endif %}
+
+  </div>
+  <div class="relative h-screen w-full"></div>
+</div>
+
+
+{%- if section.blocks.size > 0 -%}
+  {%- assign has_card_block = false -%}
+  {%- assign has_banner_block = false -%}
+  {% for block in section.blocks %}
+    {% if block.type == 'card' %}{% assign has_card_block = true %}{% endif %}
+    {% if block.type == 'banner' %}{% assign has_banner_block = true %}{% endif %}
+  {% endfor %}
+
+  {%- if has_card_block or has_banner_block -%}
+    {% comment %} Bu bölüm için özel CSS gerekirse buraya ekleyebilirsiniz. {% endcomment %}
+  {%- endif -%}
+{%- endif -%}
+
+
+{% schema %}
+{
+  "name": "Comprehensive Section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Arka Plan Ayarları"
+    },
+    {
+      "type": "image_picker",
+      "id": "background_image",
+      "label": "Arka Plan Görseli"
+    },
+    {
+      "type": "text",
+      "id": "bg_position",
+      "label": "Görsel Pozisyonu",
+      "default": "center",
+      "info": "CSS object-position değeri. Örn: center, top, bottom, 82%, left top"
+    },
+    {
+      "type": "range",
+      "id": "blur_amount",
+      "label": "Blur Miktarı",
+      "min": 0,
+      "max": 20,
+      "step": 1,
+      "default": 0,
+      "unit": "px"
+    },
+    {
+      "type": "header",
+      "content": "Özellik Kartları Ayarları"
+    },
+    {
+      "type": "paragraph",
+      "content": "Kartların toplam kolon sayısı 10'u geçmemelidir (laptop/desktop görünümünde)."
+    },
+    {
+      "type": "header",
+      "content": "Üyelik Seviyeleri Ayarları"
+    },
+    {
+      "type": "text",
+      "id": "pricing_section_title",
+      "label": "Başlık",
+      "default": "Choose Your Membership"
+    },
+    {
+      "type": "textarea",
+      "id": "pricing_section_subtitle",
+      "label": "Alt Başlık"
+    },
+    {
+      "type": "header",
+      "content": "İstatistikler Ayarları"
+    },
+    {
+      "type": "text",
+      "id": "stats_title",
+      "label": "Başlık",
+      "default": "Trusted by Thousands"
+    },
+    {
+      "type": "header",
+      "content": "Müşteri Yorumları Ayarları"
+    },
+    {
+      "type": "text",
+      "id": "testimonials_title",
+      "label": "Başlık",
+      "default": "What Our Members Say"
+    },
+    {
+      "type": "header",
+      "content": "FAQ Ayarları"
+    },
+    {
+      "type": "text",
+      "id": "faq_title",
+      "label": "Başlık",
+      "default": "Frequently Asked Questions"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "card",
+      "name": "Özellik Kartı",
+      "settings": [
+        { "type": "text", "id": "title", "label": "Başlık", "default": "FAST, FREE DELIVERY" },
+        { "type": "textarea", "id": "text", "label": "Açıklama", "default": "Free shipping in 3-7 days on all orders." },
+        { "type": "image_picker", "id": "icon", "label": "İkon" },
+        { "type": "range", "id": "col_span", "label": "Kolon Sayısı (Laptop/Desktop)", "default": 3, "min": 2, "max": 4, "step": 1, "info": "10 kolonlu grid sisteminde ne kadar yer kaplayacağını ayarlar." }
+      ]
+    },
+    {
+      "type": "banner",
+      "name": "Banner",
+      "limit": 1,
+      "settings": [
+        { "type": "text", "id": "banner_title", "label": "Başlık", "default": "BECOME A MEMBER TODAY" },
+        { "type": "textarea", "id": "banner_text", "label": "Açıklama", "default": "Gain early access to new products, exclusive deals, and opportunities to try our products for free." },
+        { "type": "image_picker", "id": "banner_bg", "label": "Arka Plan Görseli (Büyük Ekran)" },
+        { "type": "image_picker", "id": "banner_bg_mobile", "label": "Arka Plan Görseli (Mobil/Tablet)", "info": "Mobil görünümde farklı bir görsel kullanmak isterseniz yükleyin." },
+        { "type": "text", "id": "banner_btn", "label": "Buton Yazısı", "default": "Learn More" },
+        { "type": "url", "id": "banner_url", "label": "Buton Linki" }
+      ]
+    },
+    {
+      "type": "pricing_tier",
+      "name": "Üyelik Seviyesi",
+      "settings": [
+        { "type": "text", "id": "tier_name", "label": "Seviye Adı", "default": "Basic" },
+        { "type": "textarea", "id": "tier_description", "label": "Açıklama", "default": "Perfect for getting started" },
+        { "type": "text", "id": "price", "label": "Fiyat", "default": "$9.99", "info": "Boş bırakırsanız 'Free' olarak gösterilir" },
+        { "type": "text", "id": "price_period", "label": "Periyod", "default": "month", "info": "Örn: month, year, lifetime" },
+        { "type": "textarea", "id": "features", "label": "Özellikler (Her satıra bir özellik)", "default": "Free shipping on all orders\n24/7 customer support\nExclusive member discounts\nEarly access to sales" },
+        { "type": "checkbox", "id": "is_featured", "label": "Öne Çıkan", "default": false, "info": "Bu kartı öne çıkar ve büyütür" },
+        { "type": "text", "id": "featured_badge", "label": "Öne Çıkan Rozet Yazısı", "default": "POPULAR" },
+        { "type": "text", "id": "cta_text", "label": "Buton Yazısı", "default": "Get Started" },
+        { "type": "url", "id": "cta_url", "label": "Buton Linki" }
+      ]
+    },
+    {
+      "type": "stat",
+      "name": "İstatistik",
+      "settings": [
+        { "type": "text", "id": "stat_number", "label": "Sayı", "default": "10K+", "info": "Örn: 10K+, 99%, $1M" },
+        { "type": "text", "id": "stat_label", "label": "Etiket", "default": "Happy Members" }
+      ]
+    },
+    {
+      "type": "testimonial",
+      "name": "Müşteri Yorumu",
+      "settings": [
+        { "type": "textarea", "id": "testimonial_text", "label": "Yorum", "default": "This membership has been a game-changer for me. The exclusive benefits and early access to products are worth every penny!" },
+        { "type": "text", "id": "customer_name", "label": "Müşteri Adı", "default": "John Doe" },
+        { "type": "text", "id": "customer_title", "label": "Müşteri Ünvanı", "default": "Verified Member" },
+        { "type": "image_picker", "id": "customer_image", "label": "Müşteri Fotoğrafı" },
+        { "type": "range", "id": "rating", "label": "Yıldız Sayısı", "default": 5, "min": 0, "max": 5, "step": 1 }
+      ]
+    },
+    {
+      "type": "faq",
+      "name": "Sık Sorulan Soru",
+      "settings": [
+        { "type": "text", "id": "question", "label": "Soru", "default": "How does the membership work?" },
+        { "type": "richtext", "id": "answer", "label": "Cevap", "default": "<p>Our membership is simple. Sign up, choose your plan, and start enjoying exclusive benefits immediately. Cancel anytime without hassle.</p>" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Comprehensive Membership Section",
+      "blocks": [
+        { "type": "card", "settings": { "title": "FAST, FREE DELIVERY", "text": "Free shipping in 3-7 days on all orders.", "col_span": 4 } },
+        { "type": "card", "settings": { "title": "30-DAY MONEY-BACK", "text": "Return within 30 days for a full refund.", "col_span": 3 } },
+        { "type": "card", "settings": { "title": "PAY WITH EASE", "text": "Pay immediately or in installments.", "col_span": 3 } },
+        { "type": "card", "settings": { "title": "WE ARE HERE TO HELP", "text": "Contact our expert team via email or chat.", "col_span": 3 } },
+        { "type": "card", "settings": { "title": "REWARDS PROGRAM", "text": "Buy more, save more, and earn more.", "col_span": 3 } },
+        { "type": "card", "settings": { "title": "WARRANTY", "text": "Comprehensive warranty protection.", "col_span": 4 } },
+        { "type": "banner" },
+        { "type": "pricing_tier", "settings": { "tier_name": "Basic", "price": "", "features": "Free shipping\nBasic support\nMonthly newsletter" } },
+        { "type": "pricing_tier", "settings": { "tier_name": "Pro", "price": "$9.99", "price_period": "month", "is_featured": true, "features": "Everything in Basic\nPriority support\nExclusive discounts\nEarly access to sales" } },
+        { "type": "pricing_tier", "settings": { "tier_name": "Premium", "price": "$19.99", "price_period": "month", "features": "Everything in Pro\n24/7 VIP support\nFree returns\nPersonal shopper\nBirthday gifts" } },
+        { "type": "stat", "settings": { "stat_number": "10K+", "stat_label": "Happy Members" } },
+        { "type": "stat", "settings": { "stat_number": "99%", "stat_label": "Satisfaction Rate" } },
+        { "type": "stat", "settings": { "stat_number": "24/7", "stat_label": "Support Available" } },
+        { "type": "stat", "settings": { "stat_number": "50+", "stat_label": "Exclusive Brands" } },
+        { "type": "testimonial", "settings": { "testimonial_text": "Best decision I ever made! The perks are incredible.", "customer_name": "Sarah Johnson", "rating": 5 } },
+        { "type": "testimonial", "settings": { "testimonial_text": "Amazing value for money. Highly recommend!", "customer_name": "Mike Chen", "rating": 5 } },
+        { "type": "testimonial", "settings": { "testimonial_text": "The customer support alone is worth the membership.", "customer_name": "Emma Wilson", "rating": 5 } },
+        { "type": "faq", "settings": { "question": "How does the membership work?", "answer": "<p>Sign up, choose your plan, and enjoy benefits immediately.</p>" } },
+        { "type": "faq", "settings": { "question": "Can I cancel anytime?", "answer": "<p>Yes! Cancel anytime without any cancellation fees.</p>" } },
+        { "type": "faq", "settings": { "question": "What payment methods do you accept?", "answer": "<p>We accept all major credit cards, PayPal, and Affirm.</p>" } }
+      ]
+    }
+  ]
+}
+{% endschema %}
