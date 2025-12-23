@@ -385,13 +385,13 @@
         "brand_hNqReA": {
           "type": "brand",
           "settings": {
-            "logo": "shopify://shop_images/Nautica_Blanks.jpg",
+            "logo": "shopify://shop_images/nautica-2.svg",
             "name": "",
             "description": "Premium lifestyle brand bringing nautical inspired products for modern living.",
             "link_text": "Explore Nautica",
             "link_url": "",
             "featured": true,
-            "featured_image": "shopify://shop_images/1025_DT_B-Spot_2x-min_1.jpg"
+            "featured_image": "shopify://shop_images/Nautica_Blanks.jpg"
           }
         },
         "brand_A7HfrN": {
