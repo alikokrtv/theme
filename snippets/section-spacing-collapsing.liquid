@@ -37,11 +37,20 @@ but you can override them by manually passing a different value (although this s
   {%- endunless -%}
 {%- endif -%}
 
-{%- assign background_numeric_hash = 0 -%}
+{%- assign background_numeric_hash = background_hash -%}
 
-{%- for item in background_hash -%}
-  {%- assign background_numeric_hash = item | times: 1 | prepend: background_numeric_hash -%}
-{%- endfor -%}
+{%- assign background_numeric_hash = background_numeric_hash
+  | replace: 'a', '0'
+  | replace: 'b', '0'
+  | replace: 'c', '0'
+  | replace: 'd', '0'
+  | replace: 'e', '0'
+  | replace: 'f', '0'
+  | split: ''
+  | reverse
+  | join: ''
+  | append: '0'
+-%}
 
 {%- if block_margin_collapsing == true -%}
   {%- assign background_numeric_hash = 'now' | date: '%N' -%}
