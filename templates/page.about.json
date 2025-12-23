@@ -24,8 +24,8 @@
         "description": "Authorized licensee of Nautica, bringing premium audio, mobile accessories, and smart lifestyle products worldwide.",
         "button_1_text": "Explore Products",
         "button_1_url": "shopify://collections/best-selling-products",
-        "button_2_text": "Our Story",
-        "button_2_url": "https://technofashion.com#TechnoFashion Corporate",
+        "button_2_text": "About nautıca",
+        "button_2_url": "shopify://pages/about-nautica",
         "background_color": "#0a1628",
         "accent_color": "#00bcd4",
         "gradient": "linear-gradient(135deg, rgba(10, 22, 40, 1), rgba(30, 58, 95, 1) 50%, rgba(0, 188, 212, 1) 100%)"
