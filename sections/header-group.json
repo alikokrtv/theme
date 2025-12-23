@@ -390,7 +390,8 @@
             "description": "Premium lifestyle brand bringing nautical inspired products for modern living.",
             "link_text": "Explore Nautica",
             "link_url": "",
-            "featured": true
+            "featured": true,
+            "featured_image": "shopify://shop_images/1025_DT_B-Spot_2x-min_1.jpg"
           }
         },
         "brand_A7HfrN": {
