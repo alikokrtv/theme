@@ -1,1 +1,507 @@
-{"type":"header","name":"Header group","sections":{"announcement-bar":{"type":"announcement-bar","blocks":{"message_fWPDqR":{"type":"message","settings":{"text":"Black Friday is here! Enjoy up to 50% OFF on selected products","url":"shopify:\/\/collections\/sale"}},"message_TwYzNr":{"type":"message","settings":{"text":"Happy Thanksgiving!","url":"shopify:\/\/collections\/sale"}}},"block_order":["message_fWPDqR","message_TwYzNr"],"disabled":true,"custom_css":[],"settings":{"enable_sticky":false,"navigation_mode":"scrolling","autoplay":true,"cycle_speed":6,"scrolling_speed":20,"text_size":"text-base","background":"#0e2041","background_gradient":"","text_color":"#ffffff"}},"header":{"type":"header","blocks":{"50d29dd3-20e0-4e20-875d-9fa0175d67e2":{"type":"mega_menu","settings":{"menu_item":"Audio","layout":"horizontal_center","submenu_style":"bold_heading","image_1":"shopify:\/\/shop_images\/SP600-_34_Red_TWS.jpg","image_heading_1":"","image_link_1":"shopify:\/\/products\/nautica-bluetooth-stereo-headphones-h120","image_text_color_1":"#0e2041","image_2":"shopify:\/\/shop_images\/UCCSP04_SP400_Amazon_2024_Green-Black.jpg","image_heading_2":"","image_link_2":"shopify:\/\/products\/western-mobile-portable-wireless-speaker-urban-sp300","image_text_color_2":"#0e2041","image_3":"shopify:\/\/shop_images\/SP610-Yellow_4_1.webp","image_heading_3":"","image_link_3":"","image_text_color_3":"#0e2041","product":"","product_card_background":"","product_card_text_color":"","promo_content_layout":"grid","stretch_promo":false,"drawer_link_image":"show"}},"2187baa3-2ac4-4d1f-b4c7-105156dba7ee":{"type":"mega_menu","settings":{"menu_item":"Mobile Accessories","layout":"horizontal","submenu_style":"bold_heading","image_1":"shopify:\/\/shop_images\/NTC01-PM14-1.png","image_heading_1":"Cases","image_link_1":"shopify:\/\/collections\/cases","image_text_color_1":"#0e2041","image_heading_2":"","image_link_2":"","image_text_color_2":"#ffffff","image_heading_3":"","image_link_3":"","image_text_color_3":"#ffffff","product":"","product_card_background":"","product_card_text_color":"","promo_content_layout":"grid","stretch_promo":true,"drawer_link_image":"hide"}},"51f2e30b-a835-4cc0-a095-1c05a7e77d51":{"type":"mega_menu","settings":{"menu_item":"Hobby & Outdoors","layout":"horizontal","submenu_style":"bold_heading","image_1":"shopify:\/\/shop_images\/NTDR01_1-removebg-preview.png","image_heading_1":"","image_link_1":"shopify:\/\/products\/nautica-aero-n100","image_text_color_1":"#ffffff","image_2":"shopify:\/\/shop_images\/NTSR01_1-removebg-preview.png","image_heading_2":"","image_link_2":"shopify:\/\/products\/nautica-electric-scooter-sr300","image_text_color_2":"#ffffff","image_heading_3":"","image_link_3":"","image_text_color_3":"#ffffff","product":"","product_card_background":"","product_card_text_color":"","promo_content_layout":"grid","stretch_promo":false,"drawer_link_image":"hide"}},"mega_menu_ppKdHN":{"type":"mega_menu","settings":{"menu_item":"","layout":"horizontal","submenu_style":"bold_heading","image_heading_1":"","image_link_1":"","image_text_color_1":"#ffffff","image_heading_2":"","image_link_2":"","image_text_color_2":"#ffffff","image_heading_3":"","image_link_3":"","image_text_color_3":"#ffffff","product":"","product_card_background":"","product_card_text_color":"","promo_content_layout":"grid","stretch_promo":false,"drawer_link_image":"hide"}},"fef5e7cd-6efb-4ad4-bd3e-47a453061e5b":{"type":"mega_menu","settings":{"menu_item":"Drinkware","layout":"horizontal","submenu_style":"bold_heading","image_1":"shopify:\/\/shop_images\/NTM0101-1_4.jpg","image_heading_1":"","image_link_1":"shopify:\/\/products\/nautica-urban-smart-tumbler-matte","image_text_color_1":"#0e2041","image_2":"shopify:\/\/shop_images\/3copy_d5a7c596-9065-40f7-a78f-d5c5f5985a03.jpg","image_heading_2":"","image_link_2":"shopify:\/\/products\/nautica-urban-smart-tumbler-elegant","image_text_color_2":"#ffffff","image_3":"shopify:\/\/shop_images\/4_b9922c05-918c-4882-85d4-a600371cf2bd.jpg","image_heading_3":"","image_link_3":"","image_text_color_3":"#ffffff","product":"","product_card_background":"rgba(0,0,0,0)","product_card_text_color":"rgba(0,0,0,0)","promo_content_layout":"grid","stretch_promo":true,"drawer_link_image":"show"}},"mega_menu_eDNULW":{"type":"mega_menu","settings":{"menu_item":"","layout":"horizontal","submenu_style":"bold_heading","image_heading_1":"","image_link_1":"","image_text_color_1":"#ffffff","image_heading_2":"","image_link_2":"","image_text_color_2":"#ffffff","image_heading_3":"","image_link_3":"","image_text_color_3":"#ffffff","product":"","product_card_background":"","product_card_text_color":"","promo_content_layout":"grid","stretch_promo":false,"drawer_link_image":"hide"}},"f9aa7ae1-16f1-4a60-a421-6fd103507337":{"type":"mega_menu","settings":{"menu_item":"Personal Care & Beauty","layout":"horizontal","submenu_style":"bold_heading","image_heading_1":"","image_link_1":"shopify:\/\/products\/nautica-smart-body-scale-body-tracker","image_text_color_1":"#ffffff","image_heading_2":"","image_link_2":"shopify:\/\/products\/nautica-body-tracker-plus-smart-scale","image_text_color_2":"#ffffff","image_heading_3":"","image_link_3":"","image_text_color_3":"#ffffff","product":"","product_card_background":"","product_card_text_color":"","promo_content_layout":"grid","stretch_promo":false,"drawer_link_image":"hide"}},"mega_menu_FW4gEW":{"type":"mega_menu","settings":{"menu_item":"","layout":"horizontal","submenu_style":"bold_heading","image_heading_1":"","image_link_1":"","image_text_color_1":"#ffffff","image_heading_2":"","image_link_2":"","image_text_color_2":"#ffffff","image_heading_3":"","image_link_3":"","image_text_color_3":"#ffffff","product":"","product_card_background":"","product_card_text_color":"","promo_content_layout":"grid","stretch_promo":false,"drawer_link_image":"hide"}},"mega_menu_BPwMPw":{"type":"mega_menu","settings":{"menu_item":"Smart Scales","layout":"horizontal","submenu_style":"bold_heading","image_1":"shopify:\/\/shop_images\/NTSC0118-removebg-preview.png","image_heading_1":"","image_link_1":"shopify:\/\/products\/nautica-smart-body-scale-body-tracker","image_text_color_1":"#ffffff","image_2":"shopify:\/\/shop_images\/NTSC0208-removebg-preview.png","image_heading_2":"","image_link_2":"shopify:\/\/products\/nautica-body-tracker-plus-smart-scale","image_text_color_2":"#ffffff","image_heading_3":"","image_link_3":"","image_text_color_3":"#ffffff","product":"","product_card_background":"","product_card_text_color":"","promo_content_layout":"grid","stretch_promo":false,"drawer_link_image":"hide"}}},"block_order":["50d29dd3-20e0-4e20-875d-9fa0175d67e2","2187baa3-2ac4-4d1f-b4c7-105156dba7ee","51f2e30b-a835-4cc0-a095-1c05a7e77d51","mega_menu_ppKdHN","fef5e7cd-6efb-4ad4-bd3e-47a453061e5b","mega_menu_eDNULW","f9aa7ae1-16f1-4a60-a421-6fd103507337","mega_menu_FW4gEW","mega_menu_BPwMPw"],"custom_css":["{background-color: transparent;}"],"settings":{"enable_sticky":true,"hide_on_scroll":true,"logo":"shopify:\/\/shop_images\/technofashion-logo.png","logo_max_width":250,"logo_mobile_max_width":160,"menu":"main-menu","sidebar_menu":"","secondary_menu":"","menu_open_trigger":"hover","opening_from":"bottom","layout":"logo_left_navigation_center","show_social_media":false,"show_locale_selector":false,"show_country_selector":false,"show_country_flag":false,"show_country_name":false,"transparent_header_text_color":"#0e2041","reduce_padding":true,"background_opacity":81,"background_blur_radius":10}},"1759911582b99766ef":{"type":"apps","custom_css":[],"settings":{"full_width":true,"remove_vertical_spacing":false,"remove_horizontal_spacing":false,"background":"","background_gradient":"","text_color":""}}},"order":["announcement-bar","header","1759911582b99766ef"]}
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "type": "header",
+  "name": "Header group",
+  "sections": {
+    "announcement-bar": {
+      "type": "announcement-bar",
+      "blocks": {
+        "message_fWPDqR": {
+          "type": "message",
+          "settings": {
+            "text": "Black Friday is here! Enjoy up to 50% OFF on selected products",
+            "url": "shopify://collections/sale"
+          }
+        },
+        "message_TwYzNr": {
+          "type": "message",
+          "settings": {
+            "text": "Happy Thanksgiving!",
+            "url": "shopify://collections/sale"
+          }
+        }
+      },
+      "block_order": [
+        "message_fWPDqR",
+        "message_TwYzNr"
+      ],
+      "disabled": true,
+      "custom_css": [],
+      "settings": {
+        "enable_sticky": false,
+        "navigation_mode": "scrolling",
+        "autoplay": true,
+        "cycle_speed": 6,
+        "scrolling_speed": 20,
+        "text_size": "text-base",
+        "background": "#0e2041",
+        "background_gradient": "",
+        "text_color": "#ffffff"
+      }
+    },
+    "header": {
+      "type": "header",
+      "blocks": {
+        "50d29dd3-20e0-4e20-875d-9fa0175d67e2": {
+          "type": "mega_menu",
+          "settings": {
+            "menu_item": "Audio",
+            "layout": "horizontal_center",
+            "submenu_style": "bold_heading",
+            "image_1": "shopify://shop_images/SP600-_34_Red_TWS.jpg",
+            "image_heading_1": "",
+            "image_link_1": "shopify://products/nautica-bluetooth-stereo-headphones-h120",
+            "image_text_color_1": "#0e2041",
+            "image_2": "shopify://shop_images/UCCSP04_SP400_Amazon_2024_Green-Black.jpg",
+            "image_heading_2": "",
+            "image_link_2": "shopify://products/western-mobile-portable-wireless-speaker-urban-sp300",
+            "image_text_color_2": "#0e2041",
+            "image_3": "shopify://shop_images/SP610-Yellow_4_1.webp",
+            "image_heading_3": "",
+            "image_link_3": "",
+            "image_text_color_3": "#0e2041",
+            "product": "",
+            "product_card_background": "",
+            "product_card_text_color": "",
+            "promo_content_layout": "grid",
+            "stretch_promo": false,
+            "drawer_link_image": "show"
+          }
+        },
+        "2187baa3-2ac4-4d1f-b4c7-105156dba7ee": {
+          "type": "mega_menu",
+          "settings": {
+            "menu_item": "Mobile Accessories",
+            "layout": "horizontal",
+            "submenu_style": "bold_heading",
+            "image_1": "shopify://shop_images/NTC01-PM14-1.png",
+            "image_heading_1": "Cases",
+            "image_link_1": "shopify://collections/cases",
+            "image_text_color_1": "#0e2041",
+            "image_heading_2": "",
+            "image_link_2": "",
+            "image_text_color_2": "#ffffff",
+            "image_heading_3": "",
+            "image_link_3": "",
+            "image_text_color_3": "#ffffff",
+            "product": "",
+            "product_card_background": "",
+            "product_card_text_color": "",
+            "promo_content_layout": "grid",
+            "stretch_promo": true,
+            "drawer_link_image": "hide"
+          }
+        },
+        "51f2e30b-a835-4cc0-a095-1c05a7e77d51": {
+          "type": "mega_menu",
+          "settings": {
+            "menu_item": "Hobby & Outdoors",
+            "layout": "horizontal",
+            "submenu_style": "bold_heading",
+            "image_1": "shopify://shop_images/NTDR01_1-removebg-preview.png",
+            "image_heading_1": "",
+            "image_link_1": "shopify://products/nautica-aero-n100",
+            "image_text_color_1": "#ffffff",
+            "image_2": "shopify://shop_images/NTSR01_1-removebg-preview.png",
+            "image_heading_2": "",
+            "image_link_2": "shopify://products/nautica-electric-scooter-sr300",
+            "image_text_color_2": "#ffffff",
+            "image_heading_3": "",
+            "image_link_3": "",
+            "image_text_color_3": "#ffffff",
+            "product": "",
+            "product_card_background": "",
+            "product_card_text_color": "",
+            "promo_content_layout": "grid",
+            "stretch_promo": false,
+            "drawer_link_image": "hide"
+          }
+        },
+        "mega_menu_ppKdHN": {
+          "type": "mega_menu",
+          "settings": {
+            "menu_item": "",
+            "layout": "horizontal",
+            "submenu_style": "bold_heading",
+            "image_heading_1": "",
+            "image_link_1": "",
+            "image_text_color_1": "#ffffff",
+            "image_heading_2": "",
+            "image_link_2": "",
+            "image_text_color_2": "#ffffff",
+            "image_heading_3": "",
+            "image_link_3": "",
+            "image_text_color_3": "#ffffff",
+            "product": "",
+            "product_card_background": "",
+            "product_card_text_color": "",
+            "promo_content_layout": "grid",
+            "stretch_promo": false,
+            "drawer_link_image": "hide"
+          }
+        },
+        "fef5e7cd-6efb-4ad4-bd3e-47a453061e5b": {
+          "type": "mega_menu",
+          "settings": {
+            "menu_item": "Drinkware",
+            "layout": "horizontal",
+            "submenu_style": "bold_heading",
+            "image_1": "shopify://shop_images/NTM0101-1_4.jpg",
+            "image_heading_1": "",
+            "image_link_1": "shopify://products/nautica-urban-smart-tumbler-matte",
+            "image_text_color_1": "#0e2041",
+            "image_2": "shopify://shop_images/3copy_d5a7c596-9065-40f7-a78f-d5c5f5985a03.jpg",
+            "image_heading_2": "",
+            "image_link_2": "shopify://products/nautica-urban-smart-tumbler-elegant",
+            "image_text_color_2": "#ffffff",
+            "image_3": "shopify://shop_images/4_b9922c05-918c-4882-85d4-a600371cf2bd.jpg",
+            "image_heading_3": "",
+            "image_link_3": "",
+            "image_text_color_3": "#ffffff",
+            "product": "",
+            "product_card_background": "rgba(0,0,0,0)",
+            "product_card_text_color": "rgba(0,0,0,0)",
+            "promo_content_layout": "grid",
+            "stretch_promo": true,
+            "drawer_link_image": "show"
+          }
+        },
+        "mega_menu_eDNULW": {
+          "type": "mega_menu",
+          "settings": {
+            "menu_item": "",
+            "layout": "horizontal",
+            "submenu_style": "bold_heading",
+            "image_heading_1": "",
+            "image_link_1": "",
+            "image_text_color_1": "#ffffff",
+            "image_heading_2": "",
+            "image_link_2": "",
+            "image_text_color_2": "#ffffff",
+            "image_heading_3": "",
+            "image_link_3": "",
+            "image_text_color_3": "#ffffff",
+            "product": "",
+            "product_card_background": "",
+            "product_card_text_color": "",
+            "promo_content_layout": "grid",
+            "stretch_promo": false,
+            "drawer_link_image": "hide"
+          }
+        },
+        "f9aa7ae1-16f1-4a60-a421-6fd103507337": {
+          "type": "mega_menu",
+          "settings": {
+            "menu_item": "Personal Care & Beauty",
+            "layout": "horizontal",
+            "submenu_style": "bold_heading",
+            "image_heading_1": "",
+            "image_link_1": "shopify://products/nautica-smart-body-scale-body-tracker",
+            "image_text_color_1": "#ffffff",
+            "image_heading_2": "",
+            "image_link_2": "shopify://products/nautica-body-tracker-plus-smart-scale",
+            "image_text_color_2": "#ffffff",
+            "image_heading_3": "",
+            "image_link_3": "",
+            "image_text_color_3": "#ffffff",
+            "product": "",
+            "product_card_background": "",
+            "product_card_text_color": "",
+            "promo_content_layout": "grid",
+            "stretch_promo": false,
+            "drawer_link_image": "hide"
+          }
+        },
+        "mega_menu_FW4gEW": {
+          "type": "mega_menu",
+          "settings": {
+            "menu_item": "",
+            "layout": "horizontal",
+            "submenu_style": "bold_heading",
+            "image_heading_1": "",
+            "image_link_1": "",
+            "image_text_color_1": "#ffffff",
+            "image_heading_2": "",
+            "image_link_2": "",
+            "image_text_color_2": "#ffffff",
+            "image_heading_3": "",
+            "image_link_3": "",
+            "image_text_color_3": "#ffffff",
+            "product": "",
+            "product_card_background": "",
+            "product_card_text_color": "",
+            "promo_content_layout": "grid",
+            "stretch_promo": false,
+            "drawer_link_image": "hide"
+          }
+        },
+        "mega_menu_BPwMPw": {
+          "type": "mega_menu",
+          "settings": {
+            "menu_item": "Smart Scales",
+            "layout": "horizontal",
+            "submenu_style": "bold_heading",
+            "image_1": "shopify://shop_images/NTSC0118-removebg-preview.png",
+            "image_heading_1": "",
+            "image_link_1": "shopify://products/nautica-smart-body-scale-body-tracker",
+            "image_text_color_1": "#ffffff",
+            "image_2": "shopify://shop_images/NTSC0208-removebg-preview.png",
+            "image_heading_2": "",
+            "image_link_2": "shopify://products/nautica-body-tracker-plus-smart-scale",
+            "image_text_color_2": "#ffffff",
+            "image_heading_3": "",
+            "image_link_3": "",
+            "image_text_color_3": "#ffffff",
+            "product": "",
+            "product_card_background": "",
+            "product_card_text_color": "",
+            "promo_content_layout": "grid",
+            "stretch_promo": false,
+            "drawer_link_image": "hide"
+          }
+        }
+      },
+      "block_order": [
+        "50d29dd3-20e0-4e20-875d-9fa0175d67e2",
+        "2187baa3-2ac4-4d1f-b4c7-105156dba7ee",
+        "51f2e30b-a835-4cc0-a095-1c05a7e77d51",
+        "mega_menu_ppKdHN",
+        "fef5e7cd-6efb-4ad4-bd3e-47a453061e5b",
+        "mega_menu_eDNULW",
+        "f9aa7ae1-16f1-4a60-a421-6fd103507337",
+        "mega_menu_FW4gEW",
+        "mega_menu_BPwMPw"
+      ],
+      "custom_css": [
+        "{background-color: transparent;}"
+      ],
+      "settings": {
+        "enable_sticky": true,
+        "hide_on_scroll": true,
+        "logo": "shopify://shop_images/technofashion-logo.png",
+        "logo_max_width": 250,
+        "logo_mobile_max_width": 160,
+        "menu": "main-menu",
+        "sidebar_menu": "",
+        "secondary_menu": "",
+        "menu_open_trigger": "hover",
+        "opening_from": "bottom",
+        "layout": "logo_left_navigation_center",
+        "show_social_media": false,
+        "show_locale_selector": false,
+        "show_country_selector": false,
+        "show_country_flag": false,
+        "show_country_name": false,
+        "transparent_header_text_color": "#0e2041",
+        "reduce_padding": true,
+        "background_opacity": 81,
+        "background_blur_radius": 10
+      }
+    },
+    "corporate_hero_EPHVNd": {
+      "type": "corporate-hero",
+      "name": "Corporate Hero",
+      "settings": {
+        "hero_height": 100,
+        "logo_text_1": "TECHNO",
+        "logo_text_2": "FASHION",
+        "tagline": "Powering Your Lifestyle",
+        "description": "Authorized licensee of Nautica, bringing premium audio, mobile accessories, and smart lifestyle products worldwide.",
+        "button_1_text": "Explore Products",
+        "button_1_url": "",
+        "button_2_text": "Our Story",
+        "button_2_url": "",
+        "background_color": "#0a1628",
+        "accent_color": "#00bcd4",
+        "gradient": "linear-gradient(135deg, rgba(10, 22, 40, 1), rgba(30, 58, 95, 1) 50%, rgba(0, 188, 212, 1) 100%)"
+      }
+    },
+    "corporate_stats_cQicRW": {
+      "type": "corporate-stats",
+      "blocks": {
+        "stat_qwzR7D": {
+          "type": "stat",
+          "settings": {
+            "icon": "globe",
+            "number": "100",
+            "suffix": "+",
+            "label": "Countries Worldwide"
+          }
+        },
+        "stat_CCNeEk": {
+          "type": "stat",
+          "settings": {
+            "icon": "package",
+            "number": "1",
+            "suffix": "M+",
+            "label": "Products Sold"
+          }
+        },
+        "stat_VXi6pb": {
+          "type": "stat",
+          "settings": {
+            "icon": "award",
+            "number": "5",
+            "suffix": "+",
+            "label": "Premium Brands"
+          }
+        },
+        "stat_y7ayiK": {
+          "type": "stat",
+          "settings": {
+            "icon": "heart",
+            "number": "500",
+            "suffix": "K+",
+            "label": "Happy Customers"
+          }
+        }
+      },
+      "block_order": [
+        "stat_qwzR7D",
+        "stat_CCNeEk",
+        "stat_VXi6pb",
+        "stat_y7ayiK"
+      ],
+      "name": "Corporate Stats",
+      "settings": {
+        "title": "Our Impact in Numbers",
+        "subtitle": "Delivering quality and innovation worldwide",
+        "background_color": "#ffffff",
+        "text_color": "#0a1628",
+        "accent_color": "#00bcd4"
+      }
+    },
+    "corporate_brands_w8UjjB": {
+      "type": "corporate-brands",
+      "blocks": {
+        "brand_hNqReA": {
+          "type": "brand",
+          "settings": {
+            "name": "",
+            "description": "Premium lifestyle brand bringing nautical-inspired products for modern living.",
+            "link_text": "Explore Nautica",
+            "link_url": "",
+            "featured": false
+          }
+        },
+        "brand_A7HfrN": {
+          "type": "brand",
+          "settings": {
+            "name": "Turan",
+            "description": "Innovative mobile accessories designed for the tech-savvy consumer.",
+            "link_text": "Discover Turan",
+            "link_url": "",
+            "featured": false
+          }
+        },
+        "brand_9QQmtT": {
+          "type": "brand",
+          "settings": {
+            "name": "Nayman",
+            "description": "Premium audio products delivering exceptional sound quality.",
+            "link_text": "Shop Nayman",
+            "link_url": "",
+            "featured": false
+          }
+        },
+        "brand_Dp9nXL": {
+          "type": "brand",
+          "settings": {
+            "name": "Western Mobile",
+            "description": "Quality mobile solutions for everyday connectivity needs.",
+            "link_text": "View Products",
+            "link_url": "",
+            "featured": false
+          }
+        }
+      },
+      "block_order": [
+        "brand_hNqReA",
+        "brand_A7HfrN",
+        "brand_9QQmtT",
+        "brand_Dp9nXL"
+      ],
+      "name": "Corporate Brands",
+      "settings": {
+        "badge": "Our Portfolio",
+        "title": "Brands Under Our Umbrella",
+        "subtitle": "We proudly represent and distribute premium lifestyle brands",
+        "background_color": "#f8f9fa",
+        "text_color": "#0a1628",
+        "accent_color": "#00bcd4"
+      }
+    },
+    "corporate_values_gVJiPf": {
+      "type": "corporate-values",
+      "blocks": {
+        "value_bmqGpw": {
+          "type": "value",
+          "settings": {
+            "icon": "innovation",
+            "title": "Innovation",
+            "description": "We constantly push boundaries to bring you the latest in technology and design."
+          }
+        },
+        "value_mFGcTW": {
+          "type": "value",
+          "settings": {
+            "icon": "quality",
+            "title": "Quality",
+            "description": "Premium materials and rigorous testing ensure products that last."
+          }
+        },
+        "value_tYV7Bp": {
+          "type": "value",
+          "settings": {
+            "icon": "design",
+            "title": "Design",
+            "description": "Aesthetics meet functionality in every product we create."
+          }
+        }
+      },
+      "block_order": [
+        "value_bmqGpw",
+        "value_mFGcTW",
+        "value_tYV7Bp"
+      ],
+      "name": "Corporate Values",
+      "settings": {
+        "title": "What Drives Us",
+        "subtitle": "Our core values shape everything we do",
+        "mission_label": "Our Mission",
+        "mission_text": "To empower modern lifestyles through <strong>innovative technology</strong> and <strong>premium design</strong>, making quality accessible to everyone, everywhere.",
+        "background_color": "#0e2041",
+        "accent_color": "#00bcd4"
+      }
+    },
+    "1759911582b99766ef": {
+      "type": "apps",
+      "custom_css": [],
+      "settings": {
+        "full_width": true,
+        "remove_vertical_spacing": false,
+        "remove_horizontal_spacing": false,
+        "background": "",
+        "background_gradient": "",
+        "text_color": ""
+      }
+    }
+  },
+  "order": [
+    "announcement-bar",
+    "header",
+    "corporate_hero_EPHVNd",
+    "corporate_stats_cQicRW",
+    "corporate_brands_w8UjjB",
+    "corporate_values_gVJiPf",
+    "1759911582b99766ef"
+  ]
+}
