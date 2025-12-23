@@ -405,9 +405,9 @@
           "type": "stat",
           "settings": {
             "icon": "package",
-            "number": "4.9 / 5",
-            "suffix": "",
-            "label": "Customer Rating"
+            "number": "95",
+            "suffix": "%",
+            "label": "Positive Feedback"
           }
         },
         "stat_VXi6pb": {
