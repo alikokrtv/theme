@@ -422,7 +422,7 @@
         "stat_y7ayiK": {
           "type": "stat",
           "settings": {
-            "icon": "users",
+            "icon": "package",
             "number": "5",
             "suffix": "+",
             "label": "Active Collections"
