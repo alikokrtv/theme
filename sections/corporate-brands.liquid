@@ -258,12 +258,12 @@
 
             {%- unless block.settings.logo != blank -%}
               {%- if block.settings.name != blank -%}
-                <h4 class="corporate-brands__name">{{  }}</h4>
+                <h3 class="corporate-brands__name">{{  }}</h3>
               {%- endif -%}
             {%- endunless -%}
 
             {%- if block.settings.logo != blank and block.settings.name != blank -%}
-              <h3 class="corporate-brands__name">{{ block.settings.name }}</h3>
+              <h4 class="corporate-brands__name">{{ block.settings.name }}</h4>
             {%- endif -%}
 
             {%- if block.settings.description != blank -%}
