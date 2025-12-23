@@ -330,8 +330,8 @@
         "stat_qwzR7D": {
           "type": "stat",
           "settings": {
-            "icon": "globe",
-            "number": "100",
+            "icon": "package",
+            "number": "5M",
             "suffix": "+",
             "label": "Countries Worldwide"
           }
