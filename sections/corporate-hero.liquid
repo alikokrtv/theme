@@ -13,7 +13,7 @@
 }
 
 #shopify-section-template--21033853255933__corporate_hero_Fz4FbE .corporate-hero__logo-image > img{
-  width: min(500%, 600px);
+  width: min(100%, 600px);
   height:auto;
   display:block;
   filter: drop-shadow(0 0 18px rgba(255,255,255,0.18))
@@ -361,6 +361,36 @@
     width: min(86vw, {{ section.settings.logo_max_width_mobile }}px);
   }
 }
+/* ==== BIG SCREEN BOOST (logo + metin + butonlar küçülmesin) ==== */
+
+/* Logo image (PNG) için: 600px tavanını kır, viewport'a göre ölçekle */
+#shopify-section-template--21033853255933__corporate_hero_Fz4FbE .corporate-hero__logo-image > img,
+#shopify-section-template--21033853255933__corporate_hero_Fz4FbE .corporate-hero__logo-img{
+  width: clamp(280px, 34vw, 760px) !important;
+  max-width: none !important;
+}
+
+/* İçerik kutusu geniş ekranlarda daha rahat nefes alsın */
+#shopify-section-template--21033853255933__corporate_hero_Fz4FbE .corporate-hero__content{
+  max-width: min(1200px, 92vw) !important;
+  padding: clamp(1.5rem, 2.2vw, 3rem) !important;
+}
+
+/* Tagline + açıklama + butonlar da biraz “pro” büyüsün */
+#shopify-section-template--21033853255933__corporate_hero_Fz4FbE .corporate-hero__tagline{
+  font-size: clamp(1.2rem, 1.6vw, 2.15rem) !important;
+}
+
+#shopify-section-template--21033853255933__corporate_hero_Fz4FbE .corporate-hero__description{
+  font-size: clamp(1.0rem, 1.05vw, 1.25rem) !important;
+  max-width: min(820px, 92vw) !important;
+}
+
+#shopify-section-template--21033853255933__corporate_hero_Fz4FbE .corporate-hero__btn{
+  padding: clamp(0.95rem, 1.1vw, 1.2rem) clamp(1.7rem, 2vw, 2.8rem) !important;
+  font-size: clamp(0.95rem, 0.9vw, 1.08rem) !important;
+}
+
 
 
 </style>
