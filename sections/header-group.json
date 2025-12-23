@@ -308,9 +308,7 @@
     },
     "corporate_hero_EPHVNd": {
       "type": "corporate-hero",
-      "custom_css": [
-        "h1 {text-shadow: 1px 1px 2px black, 0 0 1em white, 0 0 0.2em cyan; color: white; text-shadow: 1px 1px 2px black, 0 0 1em white, 0 0 0.2em cyan; color: white; font: 7em \"Trade Gothic LT Std Extended Bold\", sans-serif;}"
-      ],
+      "custom_css": [],
       "name": "Corporate Hero",
       "settings": {
         "hero_height": 100,
