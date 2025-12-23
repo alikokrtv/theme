@@ -37,7 +37,7 @@
             "link_font_weight": "600",
             "link_text_decoration": "underline",
             "background_gradient": "linear-gradient(135deg, rgba(255, 145, 128, 1), rgba(255, 219, 88, 1) 100%)",
-            "show_sparkles": true,
+            "show_sparkles": false,
             "sparkle_color": "#ffffff",
             "sparkle_size": 12,
             "sparkle_opacity": 0.5,
