@@ -430,9 +430,7 @@
         "brand_9QQmtT",
         "brand_Dp9nXL"
       ],
-      "custom_css": [
-        "logo{min-width: 250px;}"
-      ],
+      "custom_css": [],
       "name": "Corporate Brands",
       "settings": {
         "badge": "Our Portfolio",
