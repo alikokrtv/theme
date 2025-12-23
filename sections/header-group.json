@@ -405,9 +405,9 @@
           "type": "stat",
           "settings": {
             "icon": "package",
-            "number": "1",
-            "suffix": "M+",
-            "label": "Products Sold"
+            "number": "4.9 / 5",
+            "suffix": "*",
+            "label": "Customer Rating"
           }
         },
         "stat_VXi6pb": {
