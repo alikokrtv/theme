@@ -84,7 +84,7 @@
       "settings": {
         "reverse_layout": false,
         "image": "shopify://shop_images/technofashion-square-logo_2000.png",
-        "badge_number": "10+",
+        "badge_number": "20+",
         "badge_text": "Years",
         "label": "Our Story",
         "title": "Crafting Innovative Harmonies for a Unique Lifestyle",
@@ -112,7 +112,7 @@
           "type": "stat",
           "settings": {
             "icon": "globe",
-            "number": "9",
+            "number": "150",
             "suffix": "K+",
             "label": "Orders"
           }
@@ -166,6 +166,16 @@
             "featured_image": "shopify://shop_images/Nautica_Blanks.jpg"
           }
         },
+        "brand_NrFT3j": {
+          "type": "brand",
+          "settings": {
+            "name": "Aqita",
+            "description": "Smart accessories designed for modern, connected lifestyles.",
+            "link_text": "Explore Brand",
+            "link_url": "",
+            "featured": false
+          }
+        },
         "brand_iEjUiq": {
           "type": "brand",
           "settings": {
@@ -186,16 +196,6 @@
             "featured": false
           }
         },
-        "brand_NrFT3j": {
-          "type": "brand",
-          "settings": {
-            "name": "Aqita",
-            "description": "Smart accessories designed for modern, connected lifestyles.",
-            "link_text": "Explore Brand",
-            "link_url": "",
-            "featured": false
-          }
-        },
         "brand_g7KBqE": {
           "type": "brand",
           "settings": {
@@ -209,9 +209,9 @@
       },
       "block_order": [
         "brand_M8wfBk",
+        "brand_NrFT3j",
         "brand_iEjUiq",
         "brand_EaHVJy",
-        "brand_NrFT3j",
         "brand_g7KBqE"
       ],
       "name": "Corporate Brands",
