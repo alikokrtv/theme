@@ -423,9 +423,9 @@
           "type": "stat",
           "settings": {
             "icon": "heart",
-            "number": "500",
-            "suffix": "K+",
-            "label": "Happy Customers"
+            "number": "5",
+            "suffix": "+",
+            "label": "Active Collections"
           }
         }
       },
