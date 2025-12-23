@@ -252,6 +252,7 @@
               {%- if block.settings.logo != blank -%}
                 {{ block.settings.logo | image_url: width: 360 | image_tag: class: 'corporate-brands__logo' }}
               {%- else -%}
+                <span class="corporate-brands__name" style="font-size: 2rem;">{{ block.settings.name }}</span>
               {%- endif -%}
             </div>
 
@@ -262,7 +263,6 @@
             {%- endunless -%}
 
             {%- if block.settings.logo != blank and block.settings.name != blank -%}
-              <h3 class="corporate-brands__name">{{ block.settings.name }}</h3>
             {%- endif -%}
 
             {%- if block.settings.description != blank -%}
