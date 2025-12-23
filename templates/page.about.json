@@ -18,6 +18,10 @@
     },
     "corporate_hero_nY6UfV": {
       "type": "corporate-hero",
+      "custom_css": [
+        "@media (min-width: 800px) {.corporate-hero__logo-img {min-width: 800px; }}",
+        "@media (max-width: 799px) {.corporate-hero__logo-img {max-width: 600px; }}"
+      ],
       "name": "Corporate Hero",
       "settings": {
         "hero_height": 100,
@@ -199,7 +203,7 @@
         "value_wRCgU6"
       ],
       "custom_css": [
-        "span {color:#0E2041;}"
+        "span {color: #0e2041;}"
       ],
       "name": "Corporate Values",
       "settings": {
