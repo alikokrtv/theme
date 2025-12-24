@@ -106,7 +106,7 @@
         "full_width": true,
         "allow_transparent_header": true,
         "show_initial_transition": true,
-        "image_size": "fill",
+        "image_size": "auto",
         "controls_type": "dots",
         "transition_type": "fade_with_text",
         "autoplay": false,
