@@ -223,7 +223,6 @@
       "block_order": [
         "ai_gen_block_f134ab1_a6JKAP"
       ],
-      "disabled": true,
       "settings": {
         "full_width": true,
         "remove_vertical_spacing": true,
@@ -290,6 +289,7 @@
       "block_order": [
         "ai_gen_block_a7e8e0e_y9zmmH"
       ],
+      "disabled": true,
       "settings": {
         "full_width": true,
         "remove_vertical_spacing": false,
