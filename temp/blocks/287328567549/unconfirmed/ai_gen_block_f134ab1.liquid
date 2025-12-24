@@ -1,6 +1,642 @@
+{% doc %}
+  @prompt
+    Create a festive Christmas-themed product section with colorful badges and visual effects. The section should display products with holiday-style badges (like "Holiday Sale", "Limited Edition", "Gift Idea"), festive colors (reds, greens, golds), and eye-catching effects such as subtle animations or hover effects. Include customizable options for badge text, colors, and the number of products to display.
+{% enddoc %}
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+
+{% style %}
+  .ai-festive-products-{{ ai_gen_id }} {
+    display: block;
+    width: 100%;
+    padding: {{ block.settings.section_padding }}px 20px;
+    background: {{ block.settings.section_background }};
+  }
+
+  .ai-festive-products__container-{{ ai_gen_id }} {
+    max-width: 1600px;
+    margin: 0 auto;
+  }
+
+  .ai-festive-products__header-{{ ai_gen_id }} {
+    text-align: center;
+    margin-bottom: 40px;
+  }
+
+  .ai-festive-products__title-{{ ai_gen_id }} {
+    font-size: {{ block.settings.title_size }}px;
+    color: {{ block.settings.title_color }};
+    margin: 0 0 12px;
+  }
+
+  .ai-festive-products__subtitle-{{ ai_gen_id }} {
+    font-size: {{ block.settings.subtitle_size }}px;
+    color: {{ block.settings.subtitle_color }};
+    margin: 0;
+  }
+
+  .ai-festive-products__grid-{{ ai_gen_id }} {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 24px;
+  }
+
+  @media (min-width: 750px) {
+    .ai-festive-products__grid-{{ ai_gen_id }} {
+      grid-template-columns: repeat({{ block.settings.products_per_row }}, 1fr);
+    }
+  }
+
+  .ai-festive-products__card-{{ ai_gen_id }} {
+    position: relative;
+    background: {{ block.settings.card_background }};
+    border-radius: {{ block.settings.card_border_radius }}px;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  .ai-festive-products__card-{{ ai_gen_id }}:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  }
+
+  .ai-festive-products__image-wrapper-{{ ai_gen_id }} {
+    position: relative;
+    width: 100%;
+    padding-bottom: 100%;
+    overflow: hidden;
+    background: #f4f4f4;
+  }
+
+  .ai-festive-products__image-{{ ai_gen_id }} {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+  }
+
+  .ai-festive-products__card-{{ ai_gen_id }}:hover .ai-festive-products__image-{{ ai_gen_id }} {
+    transform: scale(1.05);
+  }
+
+  .ai-festive-products__badge-{{ ai_gen_id }} {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    padding: 6px 14px;
+    background: {{ block.settings.badge_background }};
+    color: {{ block.settings.badge_text_color }};
+    font-size: {{ block.settings.badge_font_size }}px;
+    font-weight: 700;
+    border-radius: {{ block.settings.badge_border_radius }}px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    z-index: 2;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  }
+
+  .ai-festive-products__badge--holiday-{{ ai_gen_id }} {
+    background: {{ block.settings.badge_holiday_bg }};
+  }
+
+  .ai-festive-products__badge--limited-{{ ai_gen_id }} {
+    background: {{ block.settings.badge_limited_bg }};
+  }
+
+  .ai-festive-products__badge--gift-{{ ai_gen_id }} {
+    background: {{ block.settings.badge_gift_bg }};
+  }
+
+  .ai-festive-products__info-{{ ai_gen_id }} {
+    padding: 20px;
+  }
+
+  .ai-festive-products__vendor-{{ ai_gen_id }} {
+    font-size: 12px;
+    color: {{ block.settings.vendor_color }};
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+  }
+
+  .ai-festive-products__product-title-{{ ai_gen_id }} {
+    font-size: {{ block.settings.product_title_size }}px;
+    color: {{ block.settings.product_title_color }};
+    margin: 0 0 12px;
+    font-weight: 600;
+    line-height: 1.3;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .ai-festive-products__price-wrapper-{{ ai_gen_id }} {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 16px;
+  }
+
+  .ai-festive-products__price-{{ ai_gen_id }} {
+    font-size: {{ block.settings.price_size }}px;
+    color: {{ block.settings.price_color }};
+    font-weight: 700;
+  }
+
+  .ai-festive-products__compare-price-{{ ai_gen_id }} {
+    font-size: {{ block.settings.price_size | minus: 2 }}px;
+    color: {{ block.settings.compare_price_color }};
+    text-decoration: line-through;
+    opacity: 0.7;
+  }
+
+  .ai-festive-products__button-{{ ai_gen_id }} {
+    display: block;
+    width: 100%;
+    padding: 12px 24px;
+    background: {{ block.settings.button_background }};
+    color: {{ block.settings.button_text_color }};
+    text-align: center;
+    text-decoration: none;
+    border-radius: {{ block.settings.button_border_radius }}px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+  }
+
+  .ai-festive-products__button-{{ ai_gen_id }}:hover {
+    background: {{ block.settings.button_hover_background }};
+    transform: translateY(-2px);
+  }
+
+  .ai-festive-products__empty-{{ ai_gen_id }} {
+    text-align: center;
+    padding: 60px 20px;
+    color: #999;
+  }
+
+  .ai-festive-products__empty-icon-{{ ai_gen_id }} {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 20px;
+    opacity: 0.3;
+  }
+
+  .ai-festive-products__empty-text-{{ ai_gen_id }} {
+    font-size: 16px;
+    margin: 0;
+  }
+
+  @media (max-width: 749px) {
+    .ai-festive-products__grid-{{ ai_gen_id }} {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+    }
+
+    .ai-festive-products__title-{{ ai_gen_id }} {
+      font-size: {{ block.settings.title_size | times: 0.7 }}px;
+    }
+
+    .ai-festive-products__info-{{ ai_gen_id }} {
+      padding: 16px;
+    }
+  }
+{% endstyle %}
+
+<festive-products-{{ ai_gen_id }}
+  class="ai-festive-products-{{ ai_gen_id }}"
+  {{ block.shopify_attributes }}
+>
+  <div class="ai-festive-products__container-{{ ai_gen_id }}">
+    {% if block.settings.show_header %}
+      <div class="ai-festive-products__header-{{ ai_gen_id }}">
+        {% if block.settings.section_title != blank %}
+          <h2 class="ai-festive-products__title-{{ ai_gen_id }}">
+            {{ block.settings.section_title }}
+          </h2>
+        {% endif %}
+        {% if block.settings.section_subtitle != blank %}
+          <p class="ai-festive-products__subtitle-{{ ai_gen_id }}">
+            {{ block.settings.section_subtitle }}
+          </p>
+        {% endif %}
+      </div>
+    {% endif %}
+
+    {% if block.settings.product_list != blank %}
+      <div class="ai-festive-products__grid-{{ ai_gen_id }}">
+        {% for product in block.settings.product_list limit: block.settings.products_to_show %}
+          <div class="ai-festive-products__card-{{ ai_gen_id }}">
+            <div class="ai-festive-products__image-wrapper-{{ ai_gen_id }}">
+              {% if product.featured_image %}
+                <img
+                  src="{{ product.featured_image | image_url: width: 600 }}"
+                  alt="{{ product.featured_image.alt | escape }}"
+                  class="ai-festive-products__image-{{ ai_gen_id }}"
+                  loading="lazy"
+                  width="600"
+                  height="600"
+                >
+              {% else %}
+                <div class="ai-festive-products__image-placeholder-{{ ai_gen_id }}">
+                  {{ 'product-1' | placeholder_svg_tag }}
+                </div>
+              {% endif %}
+
+              {% assign badge_index = forloop.index | modulo: 3 %}
+              {% if block.settings.show_badges %}
+                {% if badge_index == 1 %}
+                  <div class="ai-festive-products__badge-{{ ai_gen_id }} ai-festive-products__badge--holiday-{{ ai_gen_id }}">
+                    {{ block.settings.badge_holiday_text }}
+                  </div>
+                {% elsif badge_index == 2 %}
+                  <div class="ai-festive-products__badge-{{ ai_gen_id }} ai-festive-products__badge--limited-{{ ai_gen_id }}">
+                    {{ block.settings.badge_limited_text }}
+                  </div>
+                {% else %}
+                  <div class="ai-festive-products__badge-{{ ai_gen_id }} ai-festive-products__badge--gift-{{ ai_gen_id }}">
+                    {{ block.settings.badge_gift_text }}
+                  </div>
+                {% endif %}
+              {% endif %}
+            </div>
+
+            <div class="ai-festive-products__info-{{ ai_gen_id }}">
+              {% if block.settings.show_vendor and product.vendor != blank %}
+                <div class="ai-festive-products__vendor-{{ ai_gen_id }}">
+                  {{ product.vendor }}
+                </div>
+              {% endif %}
+
+              <h3 class="ai-festive-products__product-title-{{ ai_gen_id }}">
+                {{ product.title }}
+              </h3>
+
+              <div class="ai-festive-products__price-wrapper-{{ ai_gen_id }}">
+                <span class="ai-festive-products__price-{{ ai_gen_id }}">
+                  {{ product.price | money }}
+                </span>
+                {% if product.compare_at_price > product.price %}
+                  <span class="ai-festive-products__compare-price-{{ ai_gen_id }}">
+                    {{ product.compare_at_price | money }}
+                  </span>
+                {% endif %}
+              </div>
+
+              <a
+                href="{{ product.url }}"
+                class="ai-festive-products__button-{{ ai_gen_id }}"
+              >
+                {{ block.settings.button_text }}
+              </a>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    {% else %}
+      <div class="ai-festive-products__empty-{{ ai_gen_id }}">
+        <div class="ai-festive-products__empty-icon-{{ ai_gen_id }}">
+          {{ 'product-1' | placeholder_svg_tag }}
+        </div>
+        <p class="ai-festive-products__empty-text-{{ ai_gen_id }}">
+          Next, add products to display in this festive section
+        </p>
+      </div>
+    {% endif %}
+  </div>
+</festive-products-{{ ai_gen_id }}>
+
+<script>
+  (function() {
+    class FestiveProducts{{ ai_gen_id }} extends HTMLElement {
+      constructor() {
+        super();
+      }
+
+      connectedCallback() {
+        this.initializeCards();
+      }
+
+      initializeCards() {
+        const cards = this.querySelectorAll('.ai-festive-products__card-{{ ai_gen_id }}');
+        
+        cards.forEach((card, index) => {
+          card.style.animationDelay = `${index * 0.1}s`;
+        });
+      }
+    }
+
+    customElements.define('festive-products-{{ ai_gen_id }}', FestiveProducts{{ ai_gen_id }});
+  })();
+</script>
+
 {% schema %}
- {
-   "name": "AI_Block",
-   "tag": "shopify-ai-generated-block"
- }
+{
+  "name": "Festive product showcase",
+  "tag": null,
+  "settings": [
+    {
+      "type": "header",
+      "content": "Section header"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_header",
+      "label": "Show header",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "section_title",
+      "label": "Title",
+      "default": "Holiday Gift Guide"
+    },
+    {
+      "type": "text",
+      "id": "section_subtitle",
+      "label": "Subtitle",
+      "default": "Find the perfect gifts this season"
+    },
+    {
+      "type": "range",
+      "id": "title_size",
+      "min": 20,
+      "max": 60,
+      "step": 2,
+      "unit": "px",
+      "label": "Title size",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "subtitle_size",
+      "min": 12,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "label": "Subtitle size",
+      "default": 16
+    },
+    {
+      "type": "color",
+      "id": "title_color",
+      "label": "Title color",
+      "default": "#1a1a1a"
+    },
+    {
+      "type": "color",
+      "id": "subtitle_color",
+      "label": "Subtitle color",
+      "default": "#666666"
+    },
+    {
+      "type": "header",
+      "content": "Products"
+    },
+    {
+      "type": "product_list",
+      "id": "product_list",
+      "label": "Products",
+      "limit": 12
+    },
+    {
+      "type": "range",
+      "id": "products_to_show",
+      "min": 2,
+      "max": 12,
+      "step": 1,
+      "label": "Products to show",
+      "default": 8
+    },
+    {
+      "type": "range",
+      "id": "products_per_row",
+      "min": 2,
+      "max": 4,
+      "step": 1,
+      "label": "Products per row (desktop)",
+      "default": 4
+    },
+    {
+      "type": "checkbox",
+      "id": "show_vendor",
+      "label": "Show vendor",
+      "default": false
+    },
+    {
+      "type": "header",
+      "content": "Festive badges"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_badges",
+      "label": "Show badges",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "badge_holiday_text",
+      "label": "Holiday badge text",
+      "default": "Holiday Sale"
+    },
+    {
+      "type": "color",
+      "id": "badge_holiday_bg",
+      "label": "Holiday badge color",
+      "default": "#c41e3a"
+    },
+    {
+      "type": "text",
+      "id": "badge_limited_text",
+      "label": "Limited badge text",
+      "default": "Limited Edition"
+    },
+    {
+      "type": "color",
+      "id": "badge_limited_bg",
+      "label": "Limited badge color",
+      "default": "#165b33"
+    },
+    {
+      "type": "text",
+      "id": "badge_gift_text",
+      "label": "Gift badge text",
+      "default": "Gift Idea"
+    },
+    {
+      "type": "color",
+      "id": "badge_gift_bg",
+      "label": "Gift badge color",
+      "default": "#d4af37"
+    },
+    {
+      "type": "color",
+      "id": "badge_text_color",
+      "label": "Badge text color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "range",
+      "id": "badge_font_size",
+      "min": 10,
+      "max": 16,
+      "step": 1,
+      "unit": "px",
+      "label": "Badge font size",
+      "default": 12
+    },
+    {
+      "type": "range",
+      "id": "badge_border_radius",
+      "min": 0,
+      "max": 20,
+      "step": 2,
+      "unit": "px",
+      "label": "Badge border radius",
+      "default": 4
+    },
+    {
+      "type": "header",
+      "content": "Card style"
+    },
+    {
+      "type": "color",
+      "id": "card_background",
+      "label": "Card background",
+      "default": "#ffffff"
+    },
+    {
+      "type": "range",
+      "id": "card_border_radius",
+      "min": 0,
+      "max": 24,
+      "step": 2,
+      "unit": "px",
+      "label": "Card border radius",
+      "default": 12
+    },
+    {
+      "type": "color",
+      "id": "vendor_color",
+      "label": "Vendor color",
+      "default": "#999999"
+    },
+    {
+      "type": "range",
+      "id": "product_title_size",
+      "min": 14,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "label": "Product title size",
+      "default": 18
+    },
+    {
+      "type": "color",
+      "id": "product_title_color",
+      "label": "Product title color",
+      "default": "#1a1a1a"
+    },
+    {
+      "type": "range",
+      "id": "price_size",
+      "min": 14,
+      "max": 28,
+      "step": 1,
+      "unit": "px",
+      "label": "Price size",
+      "default": 20
+    },
+    {
+      "type": "color",
+      "id": "price_color",
+      "label": "Price color",
+      "default": "#1a1a1a"
+    },
+    {
+      "type": "color",
+      "id": "compare_price_color",
+      "label": "Compare price color",
+      "default": "#999999"
+    },
+    {
+      "type": "header",
+      "content": "Button"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button text",
+      "default": "View Product"
+    },
+    {
+      "type": "color",
+      "id": "button_background",
+      "label": "Button background",
+      "default": "#020082"
+    },
+    {
+      "type": "color",
+      "id": "button_text_color",
+      "label": "Button text color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "button_hover_background",
+      "label": "Button hover background",
+      "default": "#000066"
+    },
+    {
+      "type": "range",
+      "id": "button_border_radius",
+      "min": 0,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "label": "Button border radius",
+      "default": 8
+    },
+    {
+      "type": "header",
+      "content": "Section style"
+    },
+    {
+      "type": "color",
+      "id": "section_background",
+      "label": "Section background",
+      "default": "#f9f9f9"
+    },
+    {
+      "type": "range",
+      "id": "section_padding",
+      "min": 20,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "label": "Section padding",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "desktop_width_percent",
+      "label": "Desktop width",
+      "min": 50,
+      "max": 100,
+      "step": 5,
+      "unit": "%",
+      "default": 100
+    }
+  ],
+  "presets": [
+    {
+      "name": "Festive product showcase"
+    }
+  ]
+}
 {% endschema %}
