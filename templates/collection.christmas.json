@@ -317,6 +317,38 @@
     },
     "christmas_why_choose": {
       "type": "christmas-why-choose",
+      "blocks": {
+        "benefit_e4w9JR": {
+          "type": "benefit",
+          "settings": {
+            "icon": "✓",
+            "title": "Quality Guaranteed",
+            "description": "Dedicated Customer Service"
+          }
+        },
+        "benefit_i6Uk66": {
+          "type": "benefit",
+          "settings": {
+            "icon": "✓",
+            "title": "Quality Guaranteed",
+            "description": "Dedicated Customer Service"
+          }
+        },
+        "benefit_FgpdaC": {
+          "type": "benefit",
+          "settings": {
+            "icon": "✓",
+            "title": "Quality Guaranteed",
+            "description": "Dedicated Customer Service"
+          }
+        }
+      },
+      "block_order": [
+        "benefit_e4w9JR",
+        "benefit_i6Uk66",
+        "benefit_FgpdaC"
+      ],
+      "disabled": true,
       "settings": {
         "subheading": "",
         "title": "Why Choose Us",
