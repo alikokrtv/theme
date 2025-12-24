@@ -89,81 +89,10 @@
             "background": "",
             "background_gradient": ""
           }
-        },
-        "image_DkEnTn": {
-          "type": "image",
-          "disabled": true,
-          "settings": {
-            "image": "shopify://shop_images/7434293f4e78ce27e010cbef2565c078.jpg",
-            "mobile_image": "shopify://shop_images/53e0f9f4705820a8dba4260e94febd4f.jpg",
-            "content_max_width": 780,
-            "mobile_text_position": "place-self-end-center text-center",
-            "desktop_text_position": "sm:place-self-end-center sm:text-center",
-            "subheading": "",
-            "title": "",
-            "heading_tag": "h0",
-            "button_text": "Shop Now",
-            "button_link": "shopify://collections/new-arrival",
-            "text_color": "#ffffff",
-            "button_background": "#ffffff",
-            "button_text_color": "#000000",
-            "overlay_color": "#0e2041",
-            "overlay_opacity": 0,
-            "background": "",
-            "background_gradient": ""
-          }
-        },
-        "video_kdgM9A": {
-          "type": "video",
-          "disabled": true,
-          "settings": {
-            "video": "shopify://files/videos/44_1764055477.mp4",
-            "mobile_video": "shopify://files/videos/45_1764062855.mp4",
-            "content_max_width": 780,
-            "mobile_text_position": "place-self-end-start text-start",
-            "desktop_text_position": "sm:place-self-end-start sm:text-start",
-            "subheading": "",
-            "title": "",
-            "heading_tag": "h0",
-            "button_text": "",
-            "button_link": "",
-            "text_color": "#ffffff",
-            "button_background": "#ffffff",
-            "button_text_color": "#000000",
-            "overlay_color": "#000000",
-            "overlay_opacity": 0,
-            "background": "",
-            "background_gradient": ""
-          }
-        },
-        "video_E9fdYC": {
-          "type": "video",
-          "disabled": true,
-          "settings": {
-            "video": "shopify://files/videos/UCCSC02_Notext_1.mp4",
-            "content_max_width": 780,
-            "mobile_text_position": "place-self-end-center text-center",
-            "desktop_text_position": "sm:place-self-end-center sm:text-center",
-            "subheading": "Bluetooth-Enabled Smart Scale with BMI",
-            "title": "",
-            "heading_tag": "h0",
-            "button_text": "Shop Now",
-            "button_link": "shopify://products/nautica-body-tracker-plus-smart-scale",
-            "text_color": "#ffffff",
-            "button_background": "#0e2041",
-            "button_text_color": "#ffffff",
-            "overlay_color": "#000000",
-            "overlay_opacity": 0,
-            "background": "",
-            "background_gradient": ""
-          }
         }
       },
       "block_order": [
-        "video_bVrbiM",
-        "image_DkEnTn",
-        "video_kdgM9A",
-        "video_E9fdYC"
+        "video_bVrbiM"
       ],
       "custom_css": [
         "a:hover {transform: translateY(-3px) scale(1.03); box-shadow: 0 8px 20px rgba(0, 0, 0, 0.23); border: 1px solid;}",
@@ -179,7 +108,7 @@
         "image_size": "auto",
         "controls_type": "dots",
         "transition_type": "fade_with_text",
-        "autoplay": true,
+        "autoplay": false,
         "cycle_speed": 14,
         "background": "#f2f2f2",
         "background_gradient": ""
