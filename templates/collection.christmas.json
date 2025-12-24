@@ -132,39 +132,10 @@
         "text_color": ""
       }
     },
-    "christmas_categories": {
-      "type": "christmas-categories",
-      "blocks": {
-        "category_gxPnfz": {
-          "type": "category",
-          "settings": {
-            "category_name": "Earbuds",
-            "category_tag": "christmas-earbuds"
-          }
-        }
-      },
-      "block_order": [
-        "category_gxPnfz"
-      ],
-      "settings": {
-        "subheading": "",
-        "title": "Shop by Category",
-        "content": "",
-        "products_count": 12,
-        "products_per_row_mobile": "2",
-        "products_per_row_desktop": 4,
-        "stack_products": true,
-        "background": "",
-        "heading_color": "",
-        "heading_gradient": "",
-        "product_card_background": "",
-        "product_card_text_color": ""
-      }
-    },
     "main": {
       "type": "main-collection",
       "settings": {
-        "products_per_page": 24,
+        "products_per_page": 50,
         "products_per_row_mobile": "2",
         "products_per_row_desktop": 4,
         "filter_layout": "sidebar",
@@ -191,7 +162,6 @@
     "christmas_hero",
     "video_d6phkx",
     "christmas_intro",
-    "christmas_categories",
     "main",
     "christmas_why_choose"
   ]
