@@ -1,6 +1,732 @@
+{% doc %}
+  @prompt
+    buraya üstteki christmas tarzı ürünlerin görünmesi gibi ama daha fazla efkt ve görsellieğs akip chritmas ruhunu öne çıacarak kategoriler sunabileceğim bir block
+{% enddoc %}
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+
+{% style %}
+  .ai-christmas-categories-{{ ai_gen_id }} {
+    display: block;
+    width: 100%;
+    padding: 60px 20px;
+    background: {{ block.settings.background_gradient }};
+    position: relative;
+    overflow: hidden;
+  }
+
+  .ai-christmas-categories__snowflakes-{{ ai_gen_id }} {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  .ai-christmas-categories__snowflake-{{ ai_gen_id }} {
+    position: absolute;
+    color: {{ block.settings.snowflake_color }};
+    font-size: 20px;
+    opacity: 0.8;
+    animation: ai-christmas-snowfall-{{ ai_gen_id }} linear infinite;
+  }
+
+  @keyframes ai-christmas-snowfall-{{ ai_gen_id }} {
+    0% {
+      transform: translateY(-10px) rotate(0deg);
+      opacity: 0;
+    }
+    10% {
+      opacity: 0.8;
+    }
+    90% {
+      opacity: 0.8;
+    }
+    100% {
+      transform: translateY(100vh) rotate(360deg);
+      opacity: 0;
+    }
+  }
+
+  .ai-christmas-categories__container-{{ ai_gen_id }} {
+    max-width: 1400px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+  }
+
+  .ai-christmas-categories__header-{{ ai_gen_id }} {
+    text-align: center;
+    margin-bottom: 50px;
+  }
+
+  .ai-christmas-categories__title-{{ ai_gen_id }} {
+    font-size: {{ block.settings.title_size }}px;
+    color: {{ block.settings.title_color }};
+    margin: 0 0 15px;
+    font-weight: 700;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  .ai-christmas-categories__subtitle-{{ ai_gen_id }} {
+    font-size: {{ block.settings.subtitle_size }}px;
+    color: {{ block.settings.subtitle_color }};
+    margin: 0;
+  }
+
+  .ai-christmas-categories__grid-{{ ai_gen_id }} {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+  }
+
+  .ai-christmas-categories__card-{{ ai_gen_id }} {
+    position: relative;
+    border-radius: {{ block.settings.card_border_radius }}px;
+    overflow: hidden;
+    background: {{ block.settings.card_background }};
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+    transition: all 0.4s ease;
+    cursor: pointer;
+  }
+
+  .ai-christmas-categories__card-{{ ai_gen_id }}:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25);
+  }
+
+  .ai-christmas-categories__card-image-wrapper-{{ ai_gen_id }} {
+    position: relative;
+    width: 100%;
+    padding-bottom: 100%;
+    overflow: hidden;
+  }
+
+  .ai-christmas-categories__card-image-{{ ai_gen_id }} {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+  }
+
+  .ai-christmas-categories__card-{{ ai_gen_id }}:hover .ai-christmas-categories__card-image-{{ ai_gen_id }} {
+    transform: scale(1.1);
+  }
+
+  .ai-christmas-categories__card-overlay-{{ ai_gen_id }} {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.7) 100%);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 25px;
+    transition: background 0.4s ease;
+  }
+
+  .ai-christmas-categories__card-{{ ai_gen_id }}:hover .ai-christmas-categories__card-overlay-{{ ai_gen_id }} {
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.8) 100%);
+  }
+
+  .ai-christmas-categories__card-title-{{ ai_gen_id }} {
+    font-size: 24px;
+    color: #ffffff;
+    margin: 0 0 8px;
+    font-weight: 700;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  }
+
+  .ai-christmas-categories__card-description-{{ ai_gen_id }} {
+    font-size: 14px;
+    color: #ffffff;
+    margin: 0 0 15px;
+    opacity: 0.9;
+  }
+
+  .ai-christmas-categories__card-button-{{ ai_gen_id }} {
+    display: inline-block;
+    padding: 12px 24px;
+    background: {{ block.settings.button_background }};
+    color: {{ block.settings.button_text_color }};
+    text-decoration: none;
+    border-radius: {{ block.settings.button_border_radius }}px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    text-align: center;
+  }
+
+  .ai-christmas-categories__card-button-{{ ai_gen_id }}:hover {
+    background: {{ block.settings.button_hover_background }};
+    transform: scale(1.05);
+  }
+
+  .ai-christmas-categories__ornament-{{ ai_gen_id }} {
+    position: absolute;
+    font-size: 40px;
+    opacity: 0.3;
+    pointer-events: none;
+    animation: ai-christmas-float-{{ ai_gen_id }} 3s ease-in-out infinite;
+  }
+
+  @keyframes ai-christmas-float-{{ ai_gen_id }} {
+    0%, 100% {
+      transform: translateY(0) rotate(0deg);
+    }
+    50% {
+      transform: translateY(-20px) rotate(10deg);
+    }
+  }
+
+  .ai-christmas-categories__ornament-{{ ai_gen_id }}--1 {
+    top: 10%;
+    left: 5%;
+    animation-delay: 0s;
+  }
+
+  .ai-christmas-categories__ornament-{{ ai_gen_id }}--2 {
+    top: 20%;
+    right: 8%;
+    animation-delay: 1s;
+  }
+
+  .ai-christmas-categories__ornament-{{ ai_gen_id }}--3 {
+    bottom: 15%;
+    left: 10%;
+    animation-delay: 2s;
+  }
+
+  .ai-christmas-categories__ornament-{{ ai_gen_id }}--4 {
+    bottom: 25%;
+    right: 5%;
+    animation-delay: 1.5s;
+  }
+
+  @media screen and (max-width: 749px) {
+    .ai-christmas-categories-{{ ai_gen_id }} {
+      padding: 40px 15px;
+    }
+
+    .ai-christmas-categories__grid-{{ ai_gen_id }} {
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+
+    .ai-christmas-categories__title-{{ ai_gen_id }} {
+      font-size: calc({{ block.settings.title_size }}px * 0.7);
+    }
+
+    .ai-christmas-categories__subtitle-{{ ai_gen_id }} {
+      font-size: calc({{ block.settings.subtitle_size }}px * 0.85);
+    }
+
+    .ai-christmas-categories__ornament-{{ ai_gen_id }} {
+      font-size: 30px;
+    }
+  }
+
+  @media screen and (min-width: 750px) and (max-width: 989px) {
+    .ai-christmas-categories__grid-{{ ai_gen_id }} {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+{% endstyle %}
+
+<christmas-categories-{{ ai_gen_id }}
+  class="ai-christmas-categories-{{ ai_gen_id }}"
+  {{ block.shopify_attributes }}
+>
+  {% if block.settings.show_snowflakes %}
+    <div class="ai-christmas-categories__snowflakes-{{ ai_gen_id }}">
+      {% for i in (1..15) %}
+        {% assign delay = forloop.index | times: 0.5 %}
+        {% assign duration = forloop.index | modulo: 5 | plus: 8 %}
+        {% assign left = forloop.index | times: 6 | modulo: 100 %}
+        <div
+          class="ai-christmas-categories__snowflake-{{ ai_gen_id }}"
+          style="left: {{ left }}%; animation-duration: {{ duration }}s; animation-delay: {{ delay }}s;"
+        >
+          ❄
+        </div>
+      {% endfor %}
+    </div>
+  {% endif %}
+
+  {% if block.settings.show_ornaments %}
+    <div class="ai-christmas-categories__ornament-{{ ai_gen_id }} ai-christmas-categories__ornament-{{ ai_gen_id }}--1">🎄</div>
+    <div class="ai-christmas-categories__ornament-{{ ai_gen_id }} ai-christmas-categories__ornament-{{ ai_gen_id }}--2">🎁</div>
+    <div class="ai-christmas-categories__ornament-{{ ai_gen_id }} ai-christmas-categories__ornament-{{ ai_gen_id }}--3">⭐</div>
+    <div class="ai-christmas-categories__ornament-{{ ai_gen_id }} ai-christmas-categories__ornament-{{ ai_gen_id }}--4">🔔</div>
+  {% endif %}
+
+  <div class="ai-christmas-categories__container-{{ ai_gen_id }}">
+    <div class="ai-christmas-categories__header-{{ ai_gen_id }}">
+      {% if block.settings.title != blank %}
+        <h2 class="ai-christmas-categories__title-{{ ai_gen_id }}">
+          {{ block.settings.title }}
+        </h2>
+      {% endif %}
+      {% if block.settings.subtitle != blank %}
+        <p class="ai-christmas-categories__subtitle-{{ ai_gen_id }}">
+          {{ block.settings.subtitle }}
+        </p>
+      {% endif %}
+    </div>
+
+    <div class="ai-christmas-categories__grid-{{ ai_gen_id }}">
+      {% for i in (1..6) %}
+        {% liquid
+          assign collection_key = 'collection_' | append: i
+          assign title_key = 'category_title_' | append: i
+          assign description_key = 'category_description_' | append: i
+          assign image_key = 'category_image_' | append: i
+          assign button_text_key = 'button_text_' | append: i
+
+          assign collection = block.settings[collection_key]
+          assign title = block.settings[title_key]
+          assign description = block.settings[description_key]
+          assign image = block.settings[image_key]
+          assign button_text = block.settings[button_text_key]
+        %}
+
+        {% if collection != blank or image != blank %}
+          <a
+            href="{% if collection != blank %}{{ collection.url }}{% else %}#{% endif %}"
+            class="ai-christmas-categories__card-{{ ai_gen_id }}"
+          >
+            <div class="ai-christmas-categories__card-image-wrapper-{{ ai_gen_id }}">
+              {% if image != blank %}
+                <img
+                  src="{{ image | image_url: width: 600 }}"
+                  alt="{{ image.alt | escape }}"
+                  class="ai-christmas-categories__card-image-{{ ai_gen_id }}"
+                  loading="lazy"
+                  width="600"
+                  height="600"
+                >
+              {% elsif collection != blank and collection.featured_image %}
+                <img
+                  src="{{ collection.featured_image | image_url: width: 600 }}"
+                  alt="{{ collection.featured_image.alt | escape }}"
+                  class="ai-christmas-categories__card-image-{{ ai_gen_id }}"
+                  loading="lazy"
+                  width="600"
+                  height="600"
+                >
+              {% else %}
+                <div class="ai-christmas-categories__card-image-placeholder-{{ ai_gen_id }}">
+                  {{ 'collection-apparel-1' | placeholder_svg_tag }}
+                </div>
+              {% endif %}
+
+              <div class="ai-christmas-categories__card-overlay-{{ ai_gen_id }}">
+                <h3 class="ai-christmas-categories__card-title-{{ ai_gen_id }}">
+                  {% if title != blank %}
+                    {{ title }}
+                  {% elsif collection != blank %}
+                    {{ collection.title }}
+                  {% else %}
+                    Category {{ i }}
+                  {% endif %}
+                </h3>
+
+                {% if description != blank %}
+                  <p class="ai-christmas-categories__card-description-{{ ai_gen_id }}">
+                    {{ description }}
+                  </p>
+                {% endif %}
+
+                <span class="ai-christmas-categories__card-button-{{ ai_gen_id }}">
+                  {% if button_text != blank %}
+                    {{ button_text }}
+                  {% else %}
+                    Shop Now
+                  {% endif %}
+                </span>
+              </div>
+            </div>
+          </a>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+</christmas-categories-{{ ai_gen_id }}>
+
+<script>
+  (function() {
+    class ChristmasCategories{{ ai_gen_id }} extends HTMLElement {
+      constructor() {
+        super();
+      }
+
+      connectedCallback() {
+        this.initParallax();
+      }
+
+      initParallax() {
+        const cards = this.querySelectorAll('.ai-christmas-categories__card-{{ ai_gen_id }}');
+
+        cards.forEach((card) => {
+          card.addEventListener('mousemove', (e) => {
+            const rect = card.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+
+            const centerX = rect.width / 2;
+            const centerY = rect.height / 2;
+
+            const rotateX = (y - centerY) / 20;
+            const rotateY = (centerX - x) / 20;
+
+            const image = card.querySelector('.ai-christmas-categories__card-image-{{ ai_gen_id }}');
+            if (image) {
+              image.style.transform = `scale(1.1) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+            }
+          });
+
+          card.addEventListener('mouseleave', () => {
+            const image = card.querySelector('.ai-christmas-categories__card-image-{{ ai_gen_id }}');
+            if (image) {
+              image.style.transform = 'scale(1.1) rotateX(0) rotateY(0)';
+            }
+          });
+        });
+      }
+    }
+
+    customElements.define('christmas-categories-{{ ai_gen_id }}', ChristmasCategories{{ ai_gen_id }});
+  })();
+</script>
+
 {% schema %}
- {
-   "name": "AI_Block",
-   "tag": "shopify-ai-generated-block"
- }
+{
+  "name": "Christmas categories",
+  "tag": null,
+  "settings": [
+    {
+      "type": "header",
+      "content": "Section header"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "title",
+      "label": "Title",
+      "default": "🎄 Christmas Collections 🎄"
+    },
+    {
+      "type": "range",
+      "id": "title_size",
+      "min": 24,
+      "max": 72,
+      "step": 2,
+      "unit": "px",
+      "label": "Title size",
+      "default": 48
+    },
+    {
+      "type": "color",
+      "id": "title_color",
+      "label": "Title color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "Discover our festive holiday collections"
+    },
+    {
+      "type": "range",
+      "id": "subtitle_size",
+      "min": 12,
+      "max": 32,
+      "step": 2,
+      "unit": "px",
+      "label": "Subtitle size",
+      "default": 18
+    },
+    {
+      "type": "color",
+      "id": "subtitle_color",
+      "label": "Subtitle color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "header",
+      "content": "Background"
+    },
+    {
+      "type": "color_background",
+      "id": "background_gradient",
+      "label": "Background",
+      "default": "linear-gradient(180deg, rgba(139, 0, 0, 1) 0%, rgba(25, 25, 112, 1) 100%)"
+    },
+    {
+      "type": "header",
+      "content": "Effects"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_snowflakes",
+      "label": "Show snowflakes",
+      "default": true
+    },
+    {
+      "type": "color",
+      "id": "snowflake_color",
+      "label": "Snowflake color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_ornaments",
+      "label": "Show ornaments",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "Card style"
+    },
+    {
+      "type": "color",
+      "id": "card_background",
+      "label": "Card background",
+      "default": "#ffffff"
+    },
+    {
+      "type": "range",
+      "id": "card_border_radius",
+      "min": 0,
+      "max": 40,
+      "step": 4,
+      "unit": "px",
+      "label": "Card border radius",
+      "default": 16
+    },
+    {
+      "type": "header",
+      "content": "Button style"
+    },
+    {
+      "type": "color",
+      "id": "button_background",
+      "label": "Button background",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "button_text_color",
+      "label": "Button text color",
+      "default": "#8b0000"
+    },
+    {
+      "type": "color",
+      "id": "button_hover_background",
+      "label": "Button hover background",
+      "default": "#ffd700"
+    },
+    {
+      "type": "range",
+      "id": "button_border_radius",
+      "min": 0,
+      "max": 40,
+      "step": 4,
+      "unit": "px",
+      "label": "Button border radius",
+      "default": 8
+    },
+    {
+      "type": "header",
+      "content": "Category 1"
+    },
+    {
+      "type": "collection",
+      "id": "collection_1",
+      "label": "Collection"
+    },
+    {
+      "type": "image_picker",
+      "id": "category_image_1",
+      "label": "Custom image"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "category_title_1",
+      "label": "Custom title"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "category_description_1",
+      "label": "Description"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "button_text_1",
+      "label": "Button text",
+      "default": "Shop Now"
+    },
+    {
+      "type": "header",
+      "content": "Category 2"
+    },
+    {
+      "type": "collection",
+      "id": "collection_2",
+      "label": "Collection"
+    },
+    {
+      "type": "image_picker",
+      "id": "category_image_2",
+      "label": "Custom image"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "category_title_2",
+      "label": "Custom title"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "category_description_2",
+      "label": "Description"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "button_text_2",
+      "label": "Button text",
+      "default": "Shop Now"
+    },
+    {
+      "type": "header",
+      "content": "Category 3"
+    },
+    {
+      "type": "collection",
+      "id": "collection_3",
+      "label": "Collection"
+    },
+    {
+      "type": "image_picker",
+      "id": "category_image_3",
+      "label": "Custom image"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "category_title_3",
+      "label": "Custom title"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "category_description_3",
+      "label": "Description"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "button_text_3",
+      "label": "Button text",
+      "default": "Shop Now"
+    },
+    {
+      "type": "header",
+      "content": "Category 4"
+    },
+    {
+      "type": "collection",
+      "id": "collection_4",
+      "label": "Collection"
+    },
+    {
+      "type": "image_picker",
+      "id": "category_image_4",
+      "label": "Custom image"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "category_title_4",
+      "label": "Custom title"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "category_description_4",
+      "label": "Description"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "button_text_4",
+      "label": "Button text",
+      "default": "Shop Now"
+    },
+    {
+      "type": "header",
+      "content": "Category 5"
+    },
+    {
+      "type": "collection",
+      "id": "collection_5",
+      "label": "Collection"
+    },
+    {
+      "type": "image_picker",
+      "id": "category_image_5",
+      "label": "Custom image"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "category_title_5",
+      "label": "Custom title"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "category_description_5",
+      "label": "Description"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "button_text_5",
+      "label": "Button text",
+      "default": "Shop Now"
+    },
+    {
+      "type": "header",
+      "content": "Category 6"
+    },
+    {
+      "type": "collection",
+      "id": "collection_6",
+      "label": "Collection"
+    },
+    {
+      "type": "image_picker",
+      "id": "category_image_6",
+      "label": "Custom image"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "category_title_6",
+      "label": "Custom title"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "category_description_6",
+      "label": "Description"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "button_text_6",
+      "label": "Button text",
+      "default": "Shop Now"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Christmas categories"
+    }
+  ]
+}
 {% endschema %}
