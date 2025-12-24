@@ -96,10 +96,7 @@
         "video_bVrbiM"
       ],
       "custom_css": [
-        "a:hover {transform: translateY(-3px) scale(1.03); box-shadow: 0 8px 20px rgba(0, 0, 0, 0.23); border: 1px solid;}",
-        "a {padding: 13px; border-radius: 20px; top: 25px; background-color: rgba(100, 50, 50, 1); /* Navy + opacity */ color: white; backdrop-filter: blur( 8px ); /* Arka planı bulanıklaştırır */ /* Çok hafif kenar çizgisi */}",
-        "@media (min-width: 768px) {a {margin-right: 40px !important; position: relative; }}",
-        "p {font-size: 30px; text-shadow: 0 3px 3px rgba(0, 0, 0, 0.85), 0 8px 20px rgba(0, 0, 0, 0.65), 0 18px 40px rgba(0, 0, 0, 0.5);}"
+        "{transform: scale(1.02);}"
       ],
       "name": "Slideshow",
       "settings": {
