@@ -205,7 +205,7 @@
             "vendor_color": "#999999",
             "product_title_size": 15,
             "product_title_color": "#1a1a1a",
-            "price_size": 14,
+            "price_size": 17,
             "price_color": "#c41e3a",
             "compare_price_color": "#999999",
             "button_text": "View Product",
