@@ -1,32 +1,23 @@
-/* Base: desktop flyout submenu */
-.tmenu_submenu--desktop .tmenu_item_link{
-  font-size: 10px;
-  line-height: 1.35;
-  padding: 6px 10px;
+/* Tmenu flyout + genel submenu: link + text span */
+.tmenu_submenu .tmenu_item_link,
+.tmenu_submenu .tmenu_item_text {
+  font-size: 15px !important;
+  line-height: 1.35 !important;
 }
 
-/* Large screens: biraz daha rahat */
-@media (min-width: 1200px){
-  .tmenu_submenu--desktop .tmenu_item_link{
-    font-size: 16px;
-    padding: 7px 12px;
-  }
-}
-
-/* Tablet: linkleri büyüt */
+/* Tablet */
 @media (max-width: 989px){
-  .tmenu_submenu .tmenu_item_link{
-    font-size: 16px;
-    padding: 10px 14px;
-    line-height: 1.4;
+  .tmenu_submenu .tmenu_item_link,
+  .tmenu_submenu .tmenu_item_text {
+    font-size: 16px !important;
   }
 }
 
-/* Mobil: daha okunaklı */
+/* Mobil */
 @media (max-width: 749px){
-  .tmenu_submenu .tmenu_item_link{
-    font-size: 17px;
-    padding: 12px 16px;
+  .tmenu_submenu .tmenu_item_link,
+  .tmenu_submenu .tmenu_item_text {
+    font-size: 17px !important;
   }
 }
 
