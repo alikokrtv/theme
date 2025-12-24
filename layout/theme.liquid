@@ -195,6 +195,28 @@ img { loading: lazy; }
     document.documentElement.classList.add('header-loaded');
   });
 </script>
+<script>
+  document.querySelectorAll('video').forEach(video => {
+
+    // Hover oynatma
+    video.addEventListener('mouseenter', () => {
+      video.play();
+    });
+
+    // Hover çıkınca durdur
+    video.addEventListener('mouseleave', () => {
+      video.pause();
+      video.currentTime = 0;
+    });
+
+    // Tıklayınca yönlendir
+    video.addEventListener('click', () => {
+      window.location.href = '/collections/new-arrival';
+    });
+
+  });
+</script>
+
 
 
   </body>
