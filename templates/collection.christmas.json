@@ -233,6 +233,72 @@
         "text_color": ""
       }
     },
+    "176658071821c37ba0": {
+      "type": "_blocks",
+      "blocks": {
+        "ai_gen_block_a7e8e0e_y9zmmH": {
+          "type": "ai_gen_block_a7e8e0e",
+          "settings": {
+            "title": "🎄 Christmas Collections 🎄",
+            "title_size": 48,
+            "title_color": "#ffffff",
+            "subtitle": "Discover our festive holiday collections",
+            "subtitle_size": 18,
+            "subtitle_color": "#ffffff",
+            "background_gradient": "linear-gradient(180deg, rgba(139, 0, 0, 1), rgba(25, 25, 112, 1) 100%)",
+            "show_snowflakes": true,
+            "snowflake_color": "#ffffff",
+            "show_ornaments": true,
+            "card_background": "#ffffff",
+            "card_border_radius": 16,
+            "button_background": "#ffffff",
+            "button_text_color": "#8b0000",
+            "button_hover_background": "#ffd700",
+            "button_border_radius": 8,
+            "collection_1": "audio",
+            "category_image_1": "shopify://shop_images/sp500_navy_13.png",
+            "category_title_1": "",
+            "category_description_1": "",
+            "button_text_1": "Shop Now",
+            "collection_2": "cables",
+            "category_image_2": "shopify://shop_images/cb530_white_9.png",
+            "category_title_2": "",
+            "category_description_2": "",
+            "button_text_2": "Shop Now",
+            "collection_3": "chargers",
+            "category_image_3": "shopify://shop_images/Turan_Core_20_02.png",
+            "category_title_3": "",
+            "category_description_3": "",
+            "button_text_3": "Shop Now",
+            "collection_4": "",
+            "category_title_4": "",
+            "category_description_4": "",
+            "button_text_4": "Shop Now",
+            "collection_5": "",
+            "category_title_5": "",
+            "category_description_5": "",
+            "button_text_5": "Shop Now",
+            "collection_6": "",
+            "category_title_6": "",
+            "category_description_6": "",
+            "button_text_6": "Shop Now"
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "ai_gen_block_a7e8e0e_y9zmmH"
+      ],
+      "settings": {
+        "full_width": true,
+        "remove_vertical_spacing": true,
+        "remove_horizontal_spacing": true,
+        "content_alignment": "center",
+        "background": "",
+        "background_gradient": "",
+        "text_color": ""
+      }
+    },
     "main": {
       "type": "main-collection",
       "custom_css": [],
@@ -265,6 +331,7 @@
     "christmas_intro",
     "blocks_PNdxfH",
     "176657755324dc0e90",
+    "176658071821c37ba0",
     "main",
     "christmas_why_choose"
   ]
