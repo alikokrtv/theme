@@ -120,6 +120,7 @@
           "type": "image",
           "settings": {
             "image": "shopify://shop_images/Image_20251219103412_218_5.jpg",
+            "mobile_image": "shopify://shop_images/post_new.jpg",
             "content_max_width": 680,
             "mobile_text_position": "place-self-end-center text-center",
             "desktop_text_position": "sm:place-self-end-center sm:text-center",
