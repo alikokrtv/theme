@@ -1,6 +1,6 @@
 /* Base: desktop flyout submenu */
 .tmenu_submenu--desktop .tmenu_item_link{
-  font-size: 15px;
+  font-size: 10px;
   line-height: 1.35;
   padding: 6px 10px;
 }
