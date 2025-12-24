@@ -96,7 +96,8 @@
         "video_bVrbiM"
       ],
       "custom_css": [
-        "{transform: scale(1.02);}"
+        "{cursor: pointer; transition: transform 0.35s ease;}",
+        " {transform: scale(1.02);}"
       ],
       "name": "Slideshow",
       "settings": {
