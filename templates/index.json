@@ -115,6 +115,51 @@
         "background_gradient": ""
       }
     },
+    "slideshow_3AeULA": {
+      "type": "slideshow",
+      "blocks": {
+        "image_NbYp87": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Image_20251219103412_218_5.jpg",
+            "content_max_width": 680,
+            "mobile_text_position": "place-self-end-center text-center",
+            "desktop_text_position": "sm:place-self-end-center sm:text-center",
+            "subheading": "",
+            "title": "",
+            "heading_tag": "h3",
+            "button_text": "Shop Now",
+            "button_link": "https://technofashion.com/collections/new-arrival?oseid=61c5pfY4AqZuN2YbfpYtFaXb",
+            "text_color": "#ffffff",
+            "button_background": "#ffffff",
+            "button_text_color": "#000000",
+            "overlay_color": "#000000",
+            "overlay_opacity": 0,
+            "background": "",
+            "background_gradient": ""
+          }
+        }
+      },
+      "block_order": [
+        "image_NbYp87"
+      ],
+      "custom_css": [
+        "@media (max-width: 789px) {a {font-size: 10px; padding: 10px; }}"
+      ],
+      "name": "Slideshow",
+      "settings": {
+        "full_width": true,
+        "allow_transparent_header": true,
+        "show_initial_transition": false,
+        "image_size": "auto",
+        "controls_type": "dots",
+        "transition_type": "fade_with_text",
+        "autoplay": false,
+        "cycle_speed": 6,
+        "background": "#0e2041",
+        "background_gradient": ""
+      }
+    },
     "rich_text_PUBkzp": {
       "type": "rich-text",
       "disabled": true,
@@ -1145,6 +1190,7 @@
   "order": [
     "blocks_ffzUhn",
     "slideshow_7NhrYR",
+    "slideshow_3AeULA",
     "rich_text_PUBkzp",
     "blocks_inKyWH",
     "image_with_text_overlay_KjA6Kx",
