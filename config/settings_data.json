@@ -9,38 +9,96 @@
  */
 {
   "current": {
-    "background": "#ffffff",
+    "page_width": 1800,
+    "section_vertical_spacing": "large",
+    "section_boxed_horizontal_spacing": "small",
+    "button_border_radius": 20,
+    "input_border_radius": 8,
     "block_border_radius": 16,
-    "block_shadow_blur": 25,
     "block_shadow_opacity": 8,
     "block_shadow_vertical_offset": 18,
+    "block_shadow_blur": 25,
+    "icon_stroke_width": 1,
+    "icon_style": "duo",
+    "button_style": "fill",
+    "background": "#ffffff",
+    "text_color": "#1a1a1a",
+    "error_color": "#000000",
+    "header_background": "#f0f0f0",
+    "header_text_color": "#1a1a1a",
+    "footer_background": "#0e2041",
+    "footer_text_color": "#ffffff",
+    "primary_button_background": "#020082",
+    "primary_button_text_color": "#ffffff",
+    "secondary_button_background": "#f0f0f0",
+    "secondary_button_text_color": "#020082",
+    "product_card_text_color": "#1a1a1a",
+    "product_on_sale_accent": "#00a341",
+    "product_primary_badge_background": "#803cee",
+    "heading_font": "epilogue_n4",
+    "heading_font_size": "small",
+    "heading_letter_spacing": -2,
+    "text_font": "manrope_n4",
+    "text_font_size_mobile": 11,
+    "text_font_size_desktop": 14,
+    "text_font_letter_spacing": -1,
+    "currency_code_enabled": true,
+    "reduce_drawer_animation": true,
+    "reduce_menu_animation": true,
+    "heading_apparition": "fade",
+    "color_swatch_config": "Navy - Gold:#010076\nTrue Black:#000000\nTravertine Gray:#242E33\nStone Blue:#809ca7\nSky Blue:#87CEEB\nQuartz Stone:#c5c1b6\nBimini Green\t#b7890\nBimini Green:#007E8D\nBlack-Black:#010203\nBlack-Gray:#3A3B3C\nBlack-Green:#0c2d1c\nBlack-Khaki:#bdb76b\nBlack-Orange:#80381a\nBlack-Red:#380000\nBlue-Yellow:#E8C766\nCantaloupe:#f4ae72\nCharcoal:#4b4848\nDancing Red:#ff3d54\nEmerald Green:#50c878\nGray-Blue:#6699cc\nGray-Green:#75816b\nGray - Gray:#D6CFC7\nGray-Pink:#C1ADAE\nGray-White:#f2f3f5\nGray-Yellow:#8f8b66\nHomie:#6a6a6a\nHy Purple:#483248\nIce White:#edf4f5\nLogo Green:#00ff00\nLogo Navy:#040457\nLogo Yellow:#ffff00\nMatcha:#74a12e\nMilk:#FEFCFF\nMustard:#ffdb58\nNautica Red:#bb1515\nNavy - Blue:#000435\nNavy-Blue:#020082\nNavy Blue:#020082\nNavy-Navy:#020082\nNavy-Gold:#ffd700\nNavy-Red:#ba0600\nNavy - Red:#ba0600\nPure White: #FFFFFF00\nNavy - Yellow:#f0b400\nNavy-Yellow:#f0b400\nWarm White-Nude:#CAB9A7\nPride:#FF8C00\nNavy Yellow:#f0b400\nNavy Flags:#0a3161\nNavy Fuschia:#8c054f\nNavy Green:#35530a\nNavy Harbor:#32577a\nNavy Lime:#32cd32\nNavy Orange:#0ffc00\nRose:#FF007F\nWarm White:#FDF4DC\nYellow-Navy:#f0b400\nNavy Purple:#4e5180\nNavy Red:#ba0600\nNavy Sail:#1a2954\nNavy Sky Blue:#2e5a88\nNavy Sunset:#FAD6A5\nNeo Black:#0f0d0d\nNude:#e3bc9a\nOff White:#faf9f6\nOld Gold:#cfb53b\nOrange-Blue:#f17720\nPale Blue:#add8e6\nPond:#b2831b\nPowder:#b0e0e6\nPure White:#ffffff\nRed-Black:#3a0002\nRose:#ff33a6a\nSummer Sun:#ffdc00\nVery Peri:#6667ab\nWhite - Silver:#e1e0e4\nWhite-Warm White:#fdf5e0",
+    "show_vendor": false,
+    "show_secondary_image": false,
+    "show_quick_buy": true,
+    "show_product_rating": false,
+    "product_rating_mode": "count",
+    "show_sold_out_badge": true,
+    "show_discount": true,
+    "discount_mode": "percentage",
+    "product_color_display": "count",
+    "product_image_aspect_ratio": "square",
+    "product_info_alignment": "start",
+    "cart_icon": "shopping_basket",
+    "cart_show_free_shipping_threshold": true,
+    "cart_free_shipping_threshold": "0",
+    "social_facebook": "https://facebook.com/technofashionhub",
+    "social_twitter": "https://twitter.com/technofashionx",
+    "social_pinterest": "https://www.pinterest.com/TechnoFashionHub/",
+    "social_instagram": "https://www.instagram.com/technofashionline",
+    "social_youtube": "https://www.youtube.com/channel/UCQ7Kfrx8SMY11PWf9sFW7mw",
+    "social_linkedin": "https://www.linkedin.com/company/technofashioninc",
+    "favicon": "shopify://shop_images/1_36430b02-8d04-4604-8452-e5480e036435.png",
+    "checkout_accent_color": "#f0c417",
+    "checkout_button_color": "#1a1a1a",
+    "content_for_index": [],
     "blocks": {
       "10843242192381096955": {
+        "type": "shopify://apps/smps-product-question-answer/blocks/faq-page/84c5ea51-4ec6-4681-8c2f-c95d8846ed7e",
         "disabled": false,
-        "settings": {},
-        "type": "shopify://apps/smps-product-question-answer/blocks/faq-page/84c5ea51-4ec6-4681-8c2f-c95d8846ed7e"
+        "settings": {}
       },
       "11324445858619110513": {
+        "type": "shopify://apps/proviews-product-reviews-q-a/blocks/reviews-drawer/12149a28-b683-4ed7-84d2-9d5b9721e861",
         "disabled": true,
-        "settings": {},
-        "type": "shopify://apps/proviews-product-reviews-q-a/blocks/reviews-drawer/12149a28-b683-4ed7-84d2-9d5b9721e861"
+        "settings": {}
       },
       "1316588950820197971": {
+        "type": "shopify://apps/proviews-product-reviews-q-a/blocks/reviews-notification/12149a28-b683-4ed7-84d2-9d5b9721e861",
         "disabled": true,
-        "settings": {},
-        "type": "shopify://apps/proviews-product-reviews-q-a/blocks/reviews-notification/12149a28-b683-4ed7-84d2-9d5b9721e861"
+        "settings": {}
       },
       "14327677521557774844": {
+        "type": "shopify://apps/simprosys-google-shopping-feed/blocks/core_settings_block/1f0b859e-9fa6-4007-97e8-4513aff5ff3b",
         "disabled": false,
-        "settings": {},
-        "type": "shopify://apps/simprosys-google-shopping-feed/blocks/core_settings_block/1f0b859e-9fa6-4007-97e8-4513aff5ff3b"
+        "settings": {}
       },
       "15623156175785154009": {
+        "type": "shopify://apps/qikify-smart-menu/blocks/app-embed/19d2f1cd-1836-4a32-8937-03df3c601dc8",
         "disabled": false,
-        "settings": {},
-        "type": "shopify://apps/qikify-smart-menu/blocks/app-embed/19d2f1cd-1836-4a32-8937-03df3c601dc8"
+        "settings": {}
       },
       "15683396631634586217": {
+        "type": "shopify://apps/inbox/blocks/chat/841fc607-4181-4ad1-842d-e24d7f8bad6b",
         "disabled": true,
         "settings": {
           "button_color": "#000000",
@@ -51,105 +109,49 @@
           "button_horizontal_position": "bottom_right",
           "button_vertical_position": "lowest",
           "greeting_message": ""
-        },
-        "type": "shopify://apps/inbox/blocks/chat/841fc607-4181-4ad1-842d-e24d7f8bad6b"
+        }
       },
       "16160716078332068383": {
+        "type": "shopify://apps/rubik-variant-images/blocks/rubik-variant-images/e684282e-1343-4a60-8fa2-6393aded15f6",
         "disabled": true,
-        "settings": {},
-        "type": "shopify://apps/rubik-variant-images/blocks/rubik-variant-images/e684282e-1343-4a60-8fa2-6393aded15f6"
+        "settings": {}
       },
       "18194548382691877002": {
+        "type": "shopify://apps/smps-google-customer-reviews/blocks/gcr_block/b8ef3a86-e7fc-44e2-9d94-227e6b8ca222",
         "disabled": true,
-        "settings": {},
-        "type": "shopify://apps/smps-google-customer-reviews/blocks/gcr_block/b8ef3a86-e7fc-44e2-9d94-227e6b8ca222"
+        "settings": {}
       },
       "2531904286521935731": {
+        "type": "shopify://apps/proviews-product-reviews-q-a/blocks/aggregate-snippets/12149a28-b683-4ed7-84d2-9d5b9721e861",
         "disabled": true,
-        "settings": {},
-        "type": "shopify://apps/proviews-product-reviews-q-a/blocks/aggregate-snippets/12149a28-b683-4ed7-84d2-9d5b9721e861"
+        "settings": {}
       },
       "3235757880135714522": {
+        "type": "shopify://apps/proviews-product-reviews-q-a/blocks/core-snippet/12149a28-b683-4ed7-84d2-9d5b9721e861",
         "disabled": false,
-        "settings": {},
-        "type": "shopify://apps/proviews-product-reviews-q-a/blocks/core-snippet/12149a28-b683-4ed7-84d2-9d5b9721e861"
+        "settings": {}
       },
       "4930983257329239833": {
+        "type": "shopify://apps/smps-product-question-answer/blocks/core-snippet/84c5ea51-4ec6-4681-8c2f-c95d8846ed7e",
         "disabled": false,
-        "settings": {},
-        "type": "shopify://apps/smps-product-question-answer/blocks/core-snippet/84c5ea51-4ec6-4681-8c2f-c95d8846ed7e"
+        "settings": {}
       },
       "6143736321357441667": {
+        "type": "shopify://apps/tidio-live-chat-chatbots/blocks/app-embed/1002274d-fb18-4939-98f6-5f05a8deeadc",
         "disabled": false,
-        "settings": {},
-        "type": "shopify://apps/tidio-live-chat-chatbots/blocks/app-embed/1002274d-fb18-4939-98f6-5f05a8deeadc"
+        "settings": {}
       },
       "6478312753674380289": {
+        "type": "shopify://apps/gempages-builder/blocks/embed-gp-script-head/20b379d4-1b20-474c-a6ca-665c331919f3",
         "disabled": false,
-        "settings": {},
-        "type": "shopify://apps/gempages-builder/blocks/embed-gp-script-head/20b379d4-1b20-474c-a6ca-665c331919f3"
+        "settings": {}
       },
       "8419966592507824873": {
+        "type": "shopify://apps/seolab/blocks/app_embed/faf700f6-3b71-45c3-86d4-83ea9f7d9216",
         "disabled": false,
-        "settings": {},
-        "type": "shopify://apps/seolab/blocks/app_embed/faf700f6-3b71-45c3-86d4-83ea9f7d9216"
+        "settings": {}
       }
-    },
-    "button_border_radius": 60,
-    "button_style": "fill",
-    "cart_free_shipping_threshold": "0",
-    "cart_icon": "shopping_basket",
-    "cart_show_free_shipping_threshold": true,
-    "checkout_accent_color": "#f0c417",
-    "checkout_button_color": "#1a1a1a",
-    "color_swatch_config": "Navy - Gold:#010076\nTrue Black:#000000\nTravertine Gray:#242E33\nStone Blue:#809ca7\nSky Blue:#87CEEB\nQuartz Stone:#c5c1b6\nBimini Green\t#b7890\nBimini Green:#007E8D\nBlack-Black:#010203\nBlack-Gray:#3A3B3C\nBlack-Green:#0c2d1c\nBlack-Khaki:#bdb76b\nBlack-Orange:#80381a\nBlack-Red:#380000\nBlue-Yellow:#E8C766\nCantaloupe:#f4ae72\nCharcoal:#4b4848\nDancing Red:#ff3d54\nEmerald Green:#50c878\nGray-Blue:#6699cc\nGray-Green:#75816b\nGray - Gray:#D6CFC7\nGray-Pink:#C1ADAE\nGray-White:#f2f3f5\nGray-Yellow:#8f8b66\nHomie:#6a6a6a\nHy Purple:#483248\nIce White:#edf4f5\nLogo Green:#00ff00\nLogo Navy:#040457\nLogo Yellow:#ffff00\nMatcha:#74a12e\nMilk:#FEFCFF\nMustard:#ffdb58\nNautica Red:#bb1515\nNavy - Blue:#000435\nNavy-Blue:#020082\nNavy Blue:#020082\nNavy-Navy:#020082\nNavy-Gold:#ffd700\nNavy-Red:#ba0600\nNavy - Red:#ba0600\nPure White: #FFFFFF00\nNavy - Yellow:#f0b400\nNavy-Yellow:#f0b400\nWarm White-Nude:#CAB9A7\nPride:#FF8C00\nNavy Yellow:#f0b400\nNavy Flags:#0a3161\nNavy Fuschia:#8c054f\nNavy Green:#35530a\nNavy Harbor:#32577a\nNavy Lime:#32cd32\nNavy Orange:#0ffc00\nRose:#FF007F\nWarm White:#FDF4DC\nYellow-Navy:#f0b400\nNavy Purple:#4e5180\nNavy Red:#ba0600\nNavy Sail:#1a2954\nNavy Sky Blue:#2e5a88\nNavy Sunset:#FAD6A5\nNeo Black:#0f0d0d\nNude:#e3bc9a\nOff White:#faf9f6\nOld Gold:#cfb53b\nOrange-Blue:#f17720\nPale Blue:#add8e6\nPond:#b2831b\nPowder:#b0e0e6\nPure White:#ffffff\nRed-Black:#3a0002\nRose:#ff33a6a\nSummer Sun:#ffdc00\nVery Peri:#6667ab\nWhite - Silver:#e1e0e4\nWhite-Warm White:#fdf5e0",
-    "content_for_index": [],
-    "currency_code_enabled": true,
-    "discount_mode": "percentage",
-    "error_color": "#000000",
-    "favicon": "shopify://shop_images/1_36430b02-8d04-4604-8452-e5480e036435.png",
-    "footer_background": "#0e2041",
-    "footer_text_color": "#ffffff",
-    "header_background": "#f0f0f0",
-    "header_text_color": "#1a1a1a",
-    "heading_apparition": "fade",
-    "heading_font": "epilogue_n4",
-    "heading_font_size": "large",
-    "heading_letter_spacing": -1,
-    "icon_stroke_width": 1,
-    "icon_style": "duo",
-    "input_border_radius": 8,
-    "page_width": 1800,
-    "primary_button_background": "#020082",
-    "primary_button_text_color": "#ffffff",
-    "product_card_text_color": "#1a1a1a",
-    "product_color_display": "count",
-    "product_image_aspect_ratio": "square",
-    "product_info_alignment": "start",
-    "product_on_sale_accent": "#00a341",
-    "product_primary_badge_background": "#803cee",
-    "product_rating_mode": "count",
-    "reduce_drawer_animation": true,
-    "reduce_menu_animation": true,
-    "secondary_button_background": "#f0f0f0",
-    "secondary_button_text_color": "#020082",
-    "section_boxed_horizontal_spacing": "large",
-    "section_vertical_spacing": "large",
-    "show_discount": true,
-    "show_product_rating": false,
-    "show_quick_buy": true,
-    "show_secondary_image": false,
-    "show_sold_out_badge": true,
-    "show_vendor": false,
-    "social_facebook": "https://facebook.com/technofashionhub",
-    "social_instagram": "https://www.instagram.com/technofashionline",
-    "social_linkedin": "https://www.linkedin.com/company/technofashioninc",
-    "social_pinterest": "https://www.pinterest.com/TechnoFashionHub/",
-    "social_twitter": "https://twitter.com/technofashionx",
-    "social_youtube": "https://www.youtube.com/channel/UCQ7Kfrx8SMY11PWf9sFW7mw",
-    "text_color": "#1a1a1a",
-    "text_font": "manrope_n4",
-    "text_font_size_desktop": 14
+    }
   },
   "platform_customizations": {
     "custom_css": []
