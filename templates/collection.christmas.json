@@ -132,106 +132,25 @@
         "text_color": ""
       }
     },
-    "christmas_benefits_perks": {
-      "type": "christmas-benefits",
+    "christmas_categories": {
+      "type": "christmas-categories",
       "blocks": {
-        "benefit_X8WNPg": {
-          "type": "benefit",
+        "category_gxPnfz": {
+          "type": "category",
           "settings": {
-            "icon": "🎁",
-            "title": "Mystery Gift Box",
-            "content": "<p>Spend Over $200, Get A Mystery Box! Get a surprise gift box with purchases over $200!</p>",
-            "link_text": "Learn More",
-            "link_url": ""
-          }
-        },
-        "benefit_6HG3GE": {
-          "type": "benefit",
-          "settings": {
-            "icon": "🎁",
-            "title": "Mystery Gift Box",
-            "content": "<p>Spend Over $200, Get A Mystery Box! Get a surprise gift box with purchases over $200!</p>",
-            "link_text": "Learn More",
-            "link_url": ""
-          }
-        },
-        "benefit_JjPA4H": {
-          "type": "benefit",
-          "settings": {
-            "icon": "🎁",
-            "title": "Mystery Gift Box",
-            "content": "<p>Spend Over $200, Get A Mystery Box! Get a surprise gift box with purchases over $200!</p>",
-            "link_text": "Learn More",
-            "link_url": ""
+            "category_name": "Earbuds",
+            "category_tag": "christmas-earbuds"
           }
         }
       },
       "block_order": [
-        "benefit_X8WNPg",
-        "benefit_6HG3GE",
-        "benefit_JjPA4H"
+        "category_gxPnfz"
       ],
-      "settings": {
-        "subheading": "",
-        "title": "Celebrate Christmas with Rewards",
-        "content": "<p>Learn how to snag the best deals.</p>",
-        "background": "",
-        "heading_color": "",
-        "heading_gradient": ""
-      }
-    },
-    "christmas_products": {
-      "type": "christmas-products",
-      "settings": {
-        "subheading": "Festive Deals, Wrapped Just for You",
-        "title": "Festive Deals, Wrapped Just for You",
-        "content": "<p>Enjoy up to 54% off your favorite products.</p>",
-        "link_text": "",
-        "link_url": "",
-        "tag_name": "christmas",
-        "empty_message": "No Christmas products found. Add 'christmas' tag to products to see them here.",
-        "products_count": 24,
-        "products_per_row_mobile": "2",
-        "products_per_row_desktop": 4,
-        "stack_products": true,
-        "show_progress_bar": false,
-        "background": "",
-        "heading_color": "",
-        "heading_gradient": "",
-        "product_card_background": "",
-        "product_card_text_color": ""
-      }
-    },
-    "christmas_categories": {
-      "type": "christmas-categories",
       "settings": {
         "subheading": "",
         "title": "Shop by Category",
         "content": "",
         "products_count": 12,
-        "products_per_row_mobile": "2",
-        "products_per_row_desktop": 4,
-        "stack_products": true,
-        "background": "",
-        "heading_color": "",
-        "heading_gradient": "",
-        "product_card_background": "",
-        "product_card_text_color": ""
-      }
-    },
-    "christmas_member_benefits": {
-      "type": "christmas-member-benefits",
-      "settings": {
-        "subheading": "",
-        "title": "Join and Enjoy Exclusive Member Rewards",
-        "content": "",
-        "cta_text": "Sign in to save up to 60% off",
-        "member_badge_text": "Exclusive Prices for Members Only",
-        "cta_link_text": "Sign In",
-        "cta_link_url": "/account/login",
-        "member_tag": "christmas-member",
-        "empty_message": "",
-        "products_count": 8,
         "products_per_row_mobile": "2",
         "products_per_row_desktop": 4,
         "stack_products": true,
@@ -272,10 +191,7 @@
     "christmas_hero",
     "video_d6phkx",
     "christmas_intro",
-    "christmas_benefits_perks",
-    "christmas_products",
     "christmas_categories",
-    "christmas_member_benefits",
     "main",
     "christmas_why_choose"
   ]
