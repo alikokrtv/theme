@@ -1,0 +1,315 @@
+{%- comment -%}
+  Christmas Products by Category Section
+  Shows products filtered by category/tag
+{%- endcomment -%}
+
+{%- render 'section-spacing-collapsing' -%}
+
+{%- comment -%} Get products by category tag {%- endcomment -%}
+{%- assign category_products = '' | split: ',' -%}
+{%- assign category_tag = section.settings.category_tag | default: 'christmas' -%}
+
+{%- for product in collections.all.products -%}
+  {%- assign product_has_tag = false -%}
+  {%- for tag in product.tags -%}
+    {%- assign tag_lower = tag | downcase -%}
+    {%- assign category_tag_lower = category_tag | downcase -%}
+    {%- if tag_lower == category_tag_lower -%}
+      {%- assign product_has_tag = true -%}
+      {%- break -%}
+    {%- endif -%}
+  {%- endfor -%}
+  {%- if product_has_tag -%}
+    {%- assign category_products = category_products | push: product -%}
+  {%- endif -%}
+{%- endfor -%}
+
+<style>
+  #shopify-section-{{ section.id }} {
+    position: relative;
+    overflow: hidden;
+  }
+
+  #shopify-section-{{ section.id }} .christmas-category-header {
+    text-align: center;
+    margin-bottom: var(--spacing-8);
+  }
+
+  #shopify-section-{{ section.id }} .christmas-category-tabs {
+    display: flex;
+    justify-content: center;
+    gap: var(--spacing-4);
+    margin-bottom: var(--spacing-8);
+    flex-wrap: wrap;
+  }
+
+  #shopify-section-{{ section.id }} .christmas-category-tab {
+    padding: var(--spacing-3) var(--spacing-6);
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 215, 0, 0.3);
+    border-radius: var(--rounded-button);
+    color: rgba(255, 255, 255, 0.9);
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    cursor: pointer;
+  }
+
+  #shopify-section-{{ section.id }} .christmas-category-tab:hover,
+  #shopify-section-{{ section.id }} .christmas-category-tab.active {
+    background: linear-gradient(135deg, #dc143c 0%, #c41e3a 100%);
+    border-color: #ffd700;
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.4);
+    transform: translateY(-2px);
+  }
+
+  #shopify-section-{{ section.id }} .product-list {
+    --product-list-gap: var(--product-list-row-gap) var(--product-list-column-gap);
+    --product-list-items-per-row: {{ section.settings.products_per_row_mobile | times: 1 }};
+    --product-list-grid: auto / repeat(var(--product-list-items-per-row), minmax(0, 1fr));
+  }
+
+  @media screen and (min-width: 700px) {
+    #shopify-section-{{ section.id }} .product-list {
+      --product-list-items-per-row: 2;
+    }
+  }
+
+  @media screen and (min-width: 1000px) {
+    #shopify-section-{{ section.id }} .product-list {
+      --product-list-items-per-row: {{ section.settings.products_per_row_desktop }};
+    }
+  }
+</style>
+
+<div {% render 'section-properties' %}>
+  <div class="section-stack">
+    {%- render 'section-header', subheading: section.settings.subheading, heading: section.settings.title, heading_color: section.settings.heading_color, heading_gradient: section.settings.heading_gradient, content: section.settings.content -%}
+
+    {%- if section.blocks.size > 0 -%}
+      <div class="christmas-category-tabs">
+        {%- for block in section.blocks -%}
+          <a href="#category-{{ block.id }}" class="christmas-category-tab {% if forloop.first %}active{% endif %}" data-category="{{ block.settings.category_tag }}">
+            {{ block.settings.category_name | default: block.settings.category_tag | escape }}
+          </a>
+        {%- endfor -%}
+      </div>
+    {%- endif -%}
+
+    {%- if section.blocks.size > 0 -%}
+      {%- for block in section.blocks -%}
+        {%- assign block_products = '' | split: ',' -%}
+        {%- for product in collections.all.products -%}
+          {%- if product.tags contains block.settings.category_tag -%}
+            {%- assign block_products = block_products | push: product -%}
+          {%- endif -%}
+        {%- endfor -%}
+
+        <div id="category-{{ block.id }}" class="christmas-category-content {% unless forloop.first %}hidden{% endunless %}" {{ block.shopify_attributes }}>
+          {%- if block_products.size > 0 -%}
+            <div class="floating-controls-container">
+              {%- assign scroll_area_id = 'scroll-area-' | append: section.id | append: '-' | append: block.id -%}
+              <scroll-carousel selector="product-card" id="{{ scroll_area_id }}" class="scroll-area bleed {% if block_products.size > section.settings.products_per_row_desktop %}is-scrollable{% endif %}">
+                <reveal-items selector=".product-list > *">
+                  <product-list class="product-list">
+                    {%- for product in block_products limit: section.settings.products_count -%}
+                      {%- render 'product-card', product: product, stacked: section.settings.stack_products, position: forloop.index, background: section.settings.product_card_background, text_color: section.settings.product_card_text_color, show_badges: true -%}
+                    {%- endfor -%}
+                  </product-list>
+                </reveal-items>
+              </scroll-carousel>
+            </div>
+          {%- else -%}
+            <p style="text-align: center; padding: 2rem; color: rgba(255, 255, 255, 0.7);">
+              No products found with tag "{{ block.settings.category_tag }}".
+            </p>
+          {%- endif -%}
+        </div>
+      {%- endfor -%}
+    {%- elsif category_products.size > 0 -%}
+      <div class="floating-controls-container">
+        {%- assign scroll_area_id = 'scroll-area-' | append: section.id -%}
+        <scroll-carousel selector="product-card" id="{{ scroll_area_id }}" class="scroll-area bleed {% if category_products.size > section.settings.products_per_row_desktop %}is-scrollable{% endif %}">
+          <reveal-items selector=".product-list > *">
+            <product-list class="product-list">
+              {%- for product in category_products limit: section.settings.products_count -%}
+                {%- render 'product-card', product: product, stacked: section.settings.stack_products, position: forloop.index, background: section.settings.product_card_background, text_color: section.settings.product_card_text_color, show_badges: true -%}
+              {%- endfor -%}
+            </product-list>
+          </reveal-items>
+        </scroll-carousel>
+      </div>
+    {%- endif -%}
+  </div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const tabs = document.querySelectorAll('#shopify-section-{{ section.id }} .christmas-category-tab');
+    const contents = document.querySelectorAll('#shopify-section-{{ section.id }} .christmas-category-content');
+
+    tabs.forEach(tab => {
+      tab.addEventListener('click', function(e) {
+        e.preventDefault();
+        const targetId = this.getAttribute('href').substring(1);
+
+        // Remove active class from all tabs
+        tabs.forEach(t => t.classList.remove('active'));
+        // Hide all contents
+        contents.forEach(c => c.classList.add('hidden'));
+
+        // Add active class to clicked tab
+        this.classList.add('active');
+        // Show target content
+        const targetContent = document.getElementById(targetId);
+        if (targetContent) {
+          targetContent.classList.remove('hidden');
+        }
+      });
+    });
+  });
+</script>
+
+{% schema %}
+{
+  "name": "Christmas Categories",
+  "class": "shopify-section--christmas-categories",
+  "tag": "section",
+  "disabled_on": {
+    "templates": ["password"],
+    "groups": ["header", "custom.overlay"]
+  },
+  "settings": [
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Subheading"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "Shop by Category"
+    },
+    {
+      "type": "richtext",
+      "id": "content",
+      "label": "Content"
+    },
+    {
+      "type": "range",
+      "id": "products_count",
+      "min": 4,
+      "max": 50,
+      "step": 1,
+      "label": "Products per category",
+      "default": 12
+    },
+    {
+      "type": "select",
+      "id": "products_per_row_mobile",
+      "label": "Products per row (mobile)",
+      "options": [
+        { "value": "1", "label": "1" },
+        { "value": "2", "label": "2" }
+      ],
+      "default": "2"
+    },
+    {
+      "type": "range",
+      "id": "products_per_row_desktop",
+      "min": 2,
+      "max": 6,
+      "step": 1,
+      "label": "Products per row (desktop)",
+      "default": 4
+    },
+    {
+      "type": "checkbox",
+      "id": "stack_products",
+      "label": "Stack products",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "background",
+      "label": "Background"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading color"
+    },
+    {
+      "type": "text",
+      "id": "heading_gradient",
+      "label": "Heading gradient"
+    },
+    {
+      "type": "color",
+      "id": "product_card_background",
+      "label": "Product card background"
+    },
+    {
+      "type": "color",
+      "id": "product_card_text_color",
+      "label": "Product card text"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "category",
+      "name": "Category",
+      "settings": [
+        {
+          "type": "text",
+          "id": "category_name",
+          "label": "Category name",
+          "default": "Earbuds"
+        },
+        {
+          "type": "text",
+          "id": "category_tag",
+          "label": "Product tag",
+          "default": "christmas-earbuds",
+          "info": "Products with this tag will be shown in this category"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Christmas Categories",
+      "category": "Christmas",
+      "blocks": [
+        {
+          "type": "category",
+          "settings": {
+            "category_name": "Earbuds",
+            "category_tag": "christmas-earbuds"
+          }
+        },
+        {
+          "type": "category",
+          "settings": {
+            "category_name": "Headphones",
+            "category_tag": "christmas-headphones"
+          }
+        },
+        {
+          "type": "category",
+          "settings": {
+            "category_name": "Speakers",
+            "category_tag": "christmas-speakers"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
+

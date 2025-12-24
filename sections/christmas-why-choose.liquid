@@ -1,0 +1,196 @@
+{%- comment -%}
+  Christmas Why Choose Us Section
+  Shows benefits and advantages
+{%- endcomment -%}
+
+{%- render 'section-spacing-collapsing' -%}
+
+<style>
+  #shopify-section-{{ section.id }} {
+    position: relative;
+    overflow: hidden;
+  }
+
+  #shopify-section-{{ section.id }} .why-choose-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--spacing-8);
+    margin-top: var(--spacing-8);
+  }
+
+  #shopify-section-{{ section.id }} .why-choose-item {
+    text-align: center;
+    padding: var(--spacing-6);
+    position: relative;
+  }
+
+  #shopify-section-{{ section.id }} .why-choose-icon {
+    font-size: 3rem;
+    margin-bottom: var(--spacing-4);
+    display: block;
+    filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.5));
+    animation: iconFloat 3s ease-in-out infinite;
+  }
+
+  @keyframes iconFloat {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+  }
+
+  #shopify-section-{{ section.id }} .why-choose-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: var(--spacing-3);
+    background: linear-gradient(135deg, #ffd700 0%, #ff6b6b 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  #shopify-section-{{ section.id }} .why-choose-description {
+    color: rgba(255, 255, 255, 0.8);
+    line-height: 1.6;
+  }
+
+  @media (max-width: 699px) {
+    #shopify-section-{{ section.id }} .why-choose-grid {
+      grid-template-columns: 1fr;
+      gap: var(--spacing-6);
+    }
+  }
+</style>
+
+<div {% render 'section-properties' %}>
+  <div class="section-stack">
+    {%- render 'section-header', subheading: section.settings.subheading, heading: section.settings.title, heading_color: section.settings.heading_color, heading_gradient: section.settings.heading_gradient, content: section.settings.content -%}
+
+    {%- if section.blocks.size > 0 -%}
+      <div class="why-choose-grid">
+        {%- for block in section.blocks -%}
+          <div class="why-choose-item" {{ block.shopify_attributes }}>
+            {%- if block.settings.icon != blank -%}
+              <span class="why-choose-icon">{{ block.settings.icon }}</span>
+            {%- endif -%}
+
+            {%- if block.settings.title != blank -%}
+              <h3 class="why-choose-title">{{ block.settings.title | escape }}</h3>
+            {%- endif -%}
+
+            {%- if block.settings.description != blank -%}
+              <p class="why-choose-description">{{ block.settings.description | escape }}</p>
+            {%- endif -%}
+          </div>
+        {%- endfor -%}
+      </div>
+    {%- endif -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Christmas Why Choose Us",
+  "class": "shopify-section--christmas-why-choose",
+  "tag": "section",
+  "disabled_on": {
+    "templates": ["password"],
+    "groups": ["header", "custom.overlay"]
+  },
+  "settings": [
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Subheading"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "Why Choose Us"
+    },
+    {
+      "type": "richtext",
+      "id": "content",
+      "label": "Content"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "background",
+      "label": "Background"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading color"
+    },
+    {
+      "type": "text",
+      "id": "heading_gradient",
+      "label": "Heading gradient"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "benefit",
+      "name": "Benefit",
+      "settings": [
+        {
+          "type": "text",
+          "id": "icon",
+          "label": "Icon (emoji or text)",
+          "default": "✓",
+          "info": "Use emoji or text for icon"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Quality Guaranteed"
+        },
+        {
+          "type": "text",
+          "id": "description",
+          "label": "Description",
+          "default": "Dedicated Customer Service"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Christmas Why Choose Us",
+      "category": "Christmas",
+      "blocks": [
+        {
+          "type": "benefit",
+          "settings": {
+            "icon": "✓",
+            "title": "Quality Guaranteed",
+            "description": "Dedicated Customer Service"
+          }
+        },
+        {
+          "type": "benefit",
+          "settings": {
+            "icon": "💰",
+            "title": "Lowest Price",
+            "description": "30-Day Price Match"
+          }
+        },
+        {
+          "type": "benefit",
+          "settings": {
+            "icon": "🚚",
+            "title": "Fast Delivery",
+            "description": "Trackable Shipping Information"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
+

@@ -1,0 +1,243 @@
+{
+  "sections": {
+    "christmas_hero": {
+      "type": "image-with-text-overlay",
+      "blocks": {
+        "subheading_christmas": {
+          "type": "subheading",
+          "settings": {
+            "text": "Celebrate Christmas with Deals, Gifts, and Rewards"
+          }
+        },
+        "heading_christmas": {
+          "type": "heading",
+          "settings": {
+            "text": "Festive Sounds of the Season",
+            "heading_tag": "h1"
+          }
+        },
+        "richtext_christmas": {
+          "type": "richtext",
+          "settings": {
+            "content": "<p>Celebrate Christmas with deals, gifts, and rewards—made just for you.</p>"
+          }
+        },
+        "button_christmas": {
+          "type": "button",
+          "settings": {
+            "text": "Shop Now",
+            "link": "#products",
+            "style": "fill"
+          }
+        }
+      },
+      "block_order": [
+        "subheading_christmas",
+        "heading_christmas",
+        "richtext_christmas",
+        "button_christmas"
+      ],
+      "settings": {
+        "full_width": true,
+        "allow_transparent_header": false,
+        "enable_parallax": false,
+        "image_size": "auto",
+        "image": "",
+        "mobile_image": "",
+        "mobile_text_position": "place-self-center text-center",
+        "desktop_text_position": "sm:place-self-center sm:text-center",
+        "text_color": "#ffffff",
+        "overlay_color": "#000000",
+        "overlay_opacity": 40
+      }
+    },
+    "christmas_intro": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_intro": {
+          "type": "heading",
+          "settings": {
+            "text": "Handpicked with You in Mind",
+            "heading_tag": "h2"
+          }
+        },
+        "richtext_intro": {
+          "type": "richtext",
+          "settings": {
+            "content": "<p>Unwrap festive offers curated just for you. Enjoy up to 54% off your favorite products.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "heading_intro",
+        "richtext_intro"
+      ],
+      "settings": {
+        "full_width": true,
+        "content_width": "medium",
+        "text_position": "center",
+        "background": "",
+        "background_gradient": "",
+        "text_color": ""
+      }
+    },
+    "christmas_benefits_perks": {
+      "type": "christmas-benefits",
+      "blocks": {
+        "gift_box": {
+          "type": "benefit",
+          "settings": {
+            "icon": "🎁",
+            "title": "Mystery Gift Box",
+            "content": "<p>Spend Over $200, Get A Mystery Box! Get a surprise gift box with purchases over $200!</p>",
+            "link_text": "Learn More",
+            "link_url": "#"
+          }
+        },
+        "credits": {
+          "type": "benefit",
+          "settings": {
+            "icon": "💰",
+            "title": "Exchange Credits for Cash",
+            "content": "<p>Credits for Cash, Join as a Member! Use your credits directly at checkout.</p>",
+            "link_text": "Sign In",
+            "link_url": "/account/login"
+          }
+        },
+        "referral": {
+          "type": "benefit",
+          "settings": {
+            "icon": "👥",
+            "title": "Invite Friends, Unlock Rewards",
+            "content": "<p>Invite friends to subscribe—they get a coupon, and you unlock Christmas benefits!</p>",
+            "link_text": "Sign In to Share",
+            "link_url": "/account/login"
+          }
+        }
+      },
+      "settings": {
+        "title": "Celebrate Christmas with Rewards",
+        "content": "<p>Learn how to snag the best deals.</p>"
+      }
+    },
+    "christmas_products": {
+      "type": "christmas-products",
+      "settings": {
+        "subheading": "Festive Deals, Wrapped Just for You",
+        "title": "Festive Deals, Wrapped Just for You",
+        "content": "<p>Enjoy up to 54% off your favorite products.</p>",
+        "products_count": 24,
+        "products_per_row_mobile": "2",
+        "products_per_row_desktop": 4,
+        "stack_products": true,
+        "show_progress_bar": false,
+        "tag_name": "christmas"
+      }
+    },
+    "christmas_categories": {
+      "type": "christmas-categories",
+      "blocks": {
+        "earbuds": {
+          "type": "category",
+          "settings": {
+            "category_name": "Earbuds",
+            "category_tag": "christmas-earbuds"
+          }
+        },
+        "headphones": {
+          "type": "category",
+          "settings": {
+            "category_name": "Headphones",
+            "category_tag": "christmas-headphones"
+          }
+        },
+        "speakers": {
+          "type": "category",
+          "settings": {
+            "category_name": "Speakers",
+            "category_tag": "christmas-speakers"
+          }
+        }
+      },
+      "settings": {
+        "title": "Shop by Category",
+        "products_count": 12,
+        "products_per_row_mobile": "2",
+        "products_per_row_desktop": 4,
+        "stack_products": true
+      }
+    },
+    "christmas_member_benefits": {
+      "type": "christmas-member-benefits",
+      "settings": {
+        "title": "Join and Enjoy Exclusive Member Rewards",
+        "cta_text": "Sign in to save up to 60% off",
+        "member_badge_text": "Exclusive Prices for Members Only",
+        "cta_link_text": "Sign In",
+        "cta_link_url": "/account/login",
+        "member_tag": "christmas-member",
+        "products_count": 8,
+        "products_per_row_mobile": "2",
+        "products_per_row_desktop": 4,
+        "stack_products": true
+      }
+    },
+    "main": {
+      "type": "main-collection",
+      "settings": {
+        "products_per_page": 24,
+        "products_per_row_mobile": "2",
+        "products_per_row_desktop": 4,
+        "filter_layout": "sidebar",
+        "show_sort_by": true,
+        "show_filters": true,
+        "show_filter_group_name": true,
+        "show_filter_values_count": true,
+        "open_first_filter_group": false
+      }
+    },
+    "christmas_why_choose": {
+      "type": "christmas-why-choose",
+      "blocks": {
+        "quality": {
+          "type": "benefit",
+          "settings": {
+            "icon": "✓",
+            "title": "Quality Guaranteed",
+            "description": "Dedicated Customer Service"
+          }
+        },
+        "price": {
+          "type": "benefit",
+          "settings": {
+            "icon": "💰",
+            "title": "Lowest Price",
+            "description": "30-Day Price Match"
+          }
+        },
+        "delivery": {
+          "type": "benefit",
+          "settings": {
+            "icon": "🚚",
+            "title": "Fast Delivery",
+            "description": "Trackable Shipping Information"
+          }
+        }
+      },
+      "settings": {
+        "title": "Why Choose Us"
+      }
+    }
+  },
+  "order": [
+    "christmas_hero",
+    "christmas_intro",
+    "christmas_benefits_perks",
+    "christmas_products",
+    "christmas_categories",
+    "christmas_member_benefits",
+    "main",
+    "christmas_why_choose"
+  ]
+}
+

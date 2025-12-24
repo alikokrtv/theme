@@ -1,0 +1,260 @@
+{%- comment -%}
+  Christmas Benefits Section
+  Shows different benefits/perks like gift boxes, credits, referral program
+{%- endcomment -%}
+
+{%- render 'section-spacing-collapsing' -%}
+
+<style>
+  #shopify-section-{{ section.id }} {
+    position: relative;
+    overflow: hidden;
+    {%- if section.settings.background == blank or section.settings.background == 'rgba(0,0,0,0)' -%}
+    background: linear-gradient(135deg, #1a0f0f 0%, #2d1b1b 50%, #1a0f0f 100%);
+    {%- endif -%}
+  }
+
+  #shopify-section-{{ section.id }} .christmas-benefits-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--spacing-8);
+    margin-top: var(--spacing-8);
+  }
+
+  #shopify-section-{{ section.id }} .christmas-benefit-card {
+    position: relative;
+    padding: var(--spacing-8);
+    border-radius: var(--rounded-lg);
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 215, 0, 0.2);
+    transition: all 0.3s ease;
+    overflow: hidden;
+  }
+
+  #shopify-section-{{ section.id }} .christmas-benefit-card::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255, 215, 0, 0.1) 0%, transparent 70%);
+    animation: benefitGlow 3s ease-in-out infinite;
+    pointer-events: none;
+  }
+
+  @keyframes benefitGlow {
+    0%, 100% { opacity: 0.3; transform: scale(1) rotate(0deg); }
+    50% { opacity: 0.6; transform: scale(1.1) rotate(180deg); }
+  }
+
+  #shopify-section-{{ section.id }} .christmas-benefit-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(220, 20, 60, 0.3), 0 0 20px rgba(255, 215, 0, 0.3);
+    border-color: rgba(255, 215, 0, 0.5);
+  }
+
+  #shopify-section-{{ section.id }} .christmas-benefit-icon {
+    font-size: 3rem;
+    margin-bottom: var(--spacing-4);
+    display: block;
+    filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.5));
+  }
+
+  #shopify-section-{{ section.id }} .christmas-benefit-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: var(--spacing-3);
+    background: linear-gradient(135deg, #ffd700 0%, #ff6b6b 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  #shopify-section-{{ section.id }} .christmas-benefit-content {
+    color: rgba(255, 255, 255, 0.9);
+    line-height: 1.6;
+    margin-bottom: var(--spacing-4);
+  }
+
+  #shopify-section-{{ section.id }} .christmas-benefit-link {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--spacing-2);
+    color: #ffd700;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+  }
+
+  #shopify-section-{{ section.id }} .christmas-benefit-link:hover {
+    color: #ff6b6b;
+    transform: translateX(5px);
+  }
+
+  @media (max-width: 699px) {
+    #shopify-section-{{ section.id }} .christmas-benefits-grid {
+      grid-template-columns: 1fr;
+      gap: var(--spacing-6);
+    }
+  }
+</style>
+
+<div {% render 'section-properties' %}>
+  <div class="section-stack">
+    {%- render 'section-header', subheading: section.settings.subheading, heading: section.settings.title, heading_color: section.settings.heading_color, heading_gradient: section.settings.heading_gradient, content: section.settings.content -%}
+
+    {%- if section.blocks.size > 0 -%}
+      <div class="christmas-benefits-grid">
+        {%- for block in section.blocks -%}
+          <div class="christmas-benefit-card" {{ block.shopify_attributes }}>
+            {%- if block.settings.icon != blank -%}
+              <span class="christmas-benefit-icon">{{ block.settings.icon }}</span>
+            {%- endif -%}
+
+            {%- if block.settings.title != blank -%}
+              <h3 class="christmas-benefit-title">{{ block.settings.title | escape }}</h3>
+            {%- endif -%}
+
+            {%- if block.settings.content != blank -%}
+              <div class="christmas-benefit-content">
+                {{ block.settings.content }}
+              </div>
+            {%- endif -%}
+
+            {%- if block.settings.link_text != blank and block.settings.link_url != blank -%}
+              <a href="{{ block.settings.link_url }}" class="christmas-benefit-link">
+                {{ block.settings.link_text | escape }}
+                <span>→</span>
+              </a>
+            {%- endif -%}
+          </div>
+        {%- endfor -%}
+      </div>
+    {%- endif -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Christmas Benefits",
+  "class": "shopify-section--christmas-benefits",
+  "tag": "section",
+  "disabled_on": {
+    "templates": ["password"],
+    "groups": ["header", "custom.overlay"]
+  },
+  "settings": [
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Subheading"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "Christmas Perks & Benefits"
+    },
+    {
+      "type": "richtext",
+      "id": "content",
+      "label": "Content"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "background",
+      "label": "Background"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading color"
+    },
+    {
+      "type": "text",
+      "id": "heading_gradient",
+      "label": "Heading gradient"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "benefit",
+      "name": "Benefit",
+      "settings": [
+        {
+          "type": "text",
+          "id": "icon",
+          "label": "Icon (emoji or text)",
+          "default": "🎁",
+          "info": "Use emoji or text for icon"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Mystery Gift Box"
+        },
+        {
+          "type": "richtext",
+          "id": "content",
+          "label": "Content",
+          "default": "<p>Spend Over $200, Get A Mystery Box! Get a surprise gift box with purchases over $200!</p>"
+        },
+        {
+          "type": "text",
+          "id": "link_text",
+          "label": "Link text",
+          "default": "Learn More"
+        },
+        {
+          "type": "url",
+          "id": "link_url",
+          "label": "Link URL"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Christmas Benefits",
+      "category": "Christmas",
+      "blocks": [
+        {
+          "type": "benefit",
+          "settings": {
+            "icon": "🎁",
+            "title": "Mystery Gift Box",
+            "content": "<p>Spend Over $200, Get A Mystery Box! Get a surprise gift box with purchases over $200!</p>",
+            "link_text": "Learn More"
+          }
+        },
+        {
+          "type": "benefit",
+          "settings": {
+            "icon": "💰",
+            "title": "Exchange Credits for Cash",
+            "content": "<p>Credits for Cash, Join as a Member! Use your credits directly at checkout.</p>",
+            "link_text": "Sign In"
+          }
+        },
+        {
+          "type": "benefit",
+          "settings": {
+            "icon": "👥",
+            "title": "Invite Friends, Unlock Rewards",
+            "content": "<p>Invite friends to subscribe—they get a coupon, and you unlock Christmas benefits!</p>",
+            "link_text": "Sign In to Share"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
+

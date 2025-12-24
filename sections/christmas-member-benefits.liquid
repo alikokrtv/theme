@@ -1,0 +1,244 @@
+{%- comment -%}
+  Christmas Member Benefits Section
+  Shows exclusive member pricing and benefits
+{%- endcomment -%}
+
+{%- render 'section-spacing-collapsing' -%}
+
+{%- comment -%} Get products with member tag {%- endcomment -%}
+{%- assign member_products = '' | split: ',' -%}
+{%- assign member_tag = section.settings.member_tag | default: 'christmas-member' -%}
+
+{%- for product in collections.all.products -%}
+  {%- if product.tags contains member_tag -%}
+    {%- assign member_products = member_products | push: product -%}
+  {%- endif -%}
+{%- endfor -%}
+
+<style>
+  #shopify-section-{{ section.id }} {
+    position: relative;
+    overflow: hidden;
+    {%- if section.settings.background == blank or section.settings.background == 'rgba(0,0,0,0)' -%}
+    background: linear-gradient(135deg, #1a0f0f 0%, #2d1b1b 50%, #1a0f0f 100%);
+    {%- endif -%}
+  }
+
+  #shopify-section-{{ section.id }} .member-benefits-header {
+    text-align: center;
+    margin-bottom: var(--spacing-8);
+  }
+
+  #shopify-section-{{ section.id }} .member-benefits-cta {
+    text-align: center;
+    margin-bottom: var(--spacing-8);
+  }
+
+  #shopify-section-{{ section.id }} .member-benefits-cta-text {
+    font-size: 1.25rem;
+    color: rgba(255, 255, 255, 0.9);
+    margin-bottom: var(--spacing-4);
+  }
+
+  #shopify-section-{{ section.id }} .member-badge {
+    display: inline-block;
+    padding: var(--spacing-2) var(--spacing-4);
+    background: linear-gradient(135deg, #ffd700 0%, #ffed4e 100%);
+    color: #1a0f0f;
+    border-radius: var(--rounded-button);
+    font-weight: 700;
+    font-size: 0.875rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    box-shadow: 0 2px 10px rgba(255, 215, 0, 0.4);
+    margin-bottom: var(--spacing-4);
+  }
+
+  #shopify-section-{{ section.id }} .product-list {
+    --product-list-gap: var(--product-list-row-gap) var(--product-list-column-gap);
+    --product-list-items-per-row: {{ section.settings.products_per_row_mobile | times: 1 }};
+    --product-list-grid: auto / repeat(var(--product-list-items-per-row), minmax(0, 1fr));
+  }
+
+  @media screen and (min-width: 700px) {
+    #shopify-section-{{ section.id }} .product-list {
+      --product-list-items-per-row: 2;
+    }
+  }
+
+  @media screen and (min-width: 1000px) {
+    #shopify-section-{{ section.id }} .product-list {
+      --product-list-items-per-row: {{ section.settings.products_per_row_desktop }};
+    }
+  }
+</style>
+
+<div {% render 'section-properties' %}>
+  <div class="section-stack">
+    {%- render 'section-header', subheading: section.settings.subheading, heading: section.settings.title, heading_color: section.settings.heading_color, heading_gradient: section.settings.heading_gradient, content: section.settings.content -%}
+
+    <div class="member-benefits-cta">
+      <p class="member-benefits-cta-text">{{ section.settings.cta_text | default: "Sign in to save up to 60% off" }}</p>
+      <span class="member-badge">{{ section.settings.member_badge_text | default: "Exclusive Prices for Members Only" }}</span>
+      {%- if section.settings.cta_link_text != blank and section.settings.cta_link_url != blank -%}
+        <div>
+          {%- render 'button', href: section.settings.cta_link_url, content: section.settings.cta_link_text, size: 'lg' -%}
+        </div>
+      {%- endif -%}
+    </div>
+
+    {%- if member_products.size > 0 -%}
+      <div class="floating-controls-container">
+        {%- assign scroll_area_id = 'scroll-area-' | append: section.id -%}
+        <scroll-carousel selector="product-card" id="{{ scroll_area_id }}" class="scroll-area bleed {% if member_products.size > section.settings.products_per_row_desktop %}is-scrollable{% endif %}">
+          <reveal-items selector=".product-list > *">
+            <product-list class="product-list">
+              {%- for product in member_products limit: section.settings.products_count -%}
+                {%- render 'product-card', product: product, stacked: section.settings.stack_products, position: forloop.index, background: section.settings.product_card_background, text_color: section.settings.product_card_text_color, show_badges: true -%}
+              {%- endfor -%}
+            </product-list>
+          </reveal-items>
+        </scroll-carousel>
+      </div>
+    {%- else -%}
+      <p style="text-align: center; padding: 2rem; color: rgba(255, 255, 255, 0.7);">
+        {{ section.settings.empty_message | default: "No member products found. Add 'christmas-member' tag to products to see them here." }}
+      </p>
+    {%- endif -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Christmas Member Benefits",
+  "class": "shopify-section--christmas-member-benefits",
+  "tag": "section",
+  "disabled_on": {
+    "templates": ["password"],
+    "groups": ["header", "custom.overlay"]
+  },
+  "settings": [
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Subheading"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "Join and Enjoy Exclusive Member Rewards"
+    },
+    {
+      "type": "richtext",
+      "id": "content",
+      "label": "Content"
+    },
+    {
+      "type": "text",
+      "id": "cta_text",
+      "label": "CTA text",
+      "default": "Sign in to save up to 60% off"
+    },
+    {
+      "type": "text",
+      "id": "member_badge_text",
+      "label": "Member badge text",
+      "default": "Exclusive Prices for Members Only"
+    },
+    {
+      "type": "text",
+      "id": "cta_link_text",
+      "label": "CTA button text",
+      "default": "Sign In"
+    },
+    {
+      "type": "url",
+      "id": "cta_link_url",
+      "label": "CTA button URL"
+    },
+    {
+      "type": "text",
+      "id": "member_tag",
+      "label": "Member product tag",
+      "default": "christmas-member",
+      "info": "Products with this tag will be displayed"
+    },
+    {
+      "type": "text",
+      "id": "empty_message",
+      "label": "Empty message"
+    },
+    {
+      "type": "range",
+      "id": "products_count",
+      "min": 4,
+      "max": 50,
+      "step": 1,
+      "label": "Products to show",
+      "default": 8
+    },
+    {
+      "type": "select",
+      "id": "products_per_row_mobile",
+      "label": "Products per row (mobile)",
+      "options": [
+        { "value": "1", "label": "1" },
+        { "value": "2", "label": "2" }
+      ],
+      "default": "2"
+    },
+    {
+      "type": "range",
+      "id": "products_per_row_desktop",
+      "min": 2,
+      "max": 6,
+      "step": 1,
+      "label": "Products per row (desktop)",
+      "default": 4
+    },
+    {
+      "type": "checkbox",
+      "id": "stack_products",
+      "label": "Stack products",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "background",
+      "label": "Background"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading color"
+    },
+    {
+      "type": "text",
+      "id": "heading_gradient",
+      "label": "Heading gradient"
+    },
+    {
+      "type": "color",
+      "id": "product_card_background",
+      "label": "Product card background"
+    },
+    {
+      "type": "color",
+      "id": "product_card_text_color",
+      "label": "Product card text"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Christmas Member Benefits",
+      "category": "Christmas"
+    }
+  ]
+}
+{% endschema %}
+

@@ -8556,6 +8556,7 @@ product-rerender {
   opacity: .7;
   transition: opacity .2s ease-in-out;
   display: flex;
+  font-size: 0.875rem;
 }
 
 [open] > .dropdown-menu__item, .dropdown-menu__item:hover {

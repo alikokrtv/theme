@@ -1,0 +1,398 @@
+{%- comment -%}
+  Christmas Products Section
+  Shows products with "christmas" tag automatically
+{%- endcomment -%}
+
+{%- render 'section-spacing-collapsing' -%}
+
+{%- comment -%} Get all products with "christmas" tag {%- endcomment -%}
+{%- assign christmas_products = '' | split: ',' -%}
+{%- assign tag_name = section.settings.tag_name | default: 'christmas' -%}
+
+{%- for product in collections.all.products -%}
+  {%- assign product_has_tag = false -%}
+  {%- for tag in product.tags -%}
+    {%- assign tag_lower = tag | downcase -%}
+    {%- assign tag_name_lower = tag_name | downcase -%}
+    {%- if tag_lower == tag_name_lower -%}
+      {%- assign product_has_tag = true -%}
+      {%- break -%}
+    {%- endif -%}
+  {%- endfor -%}
+  {%- if product_has_tag -%}
+    {%- assign christmas_products = christmas_products | push: product -%}
+  {%- endif -%}
+{%- endfor -%}
+
+<style>
+  {%- assign section_background = section.settings.background | default: settings.background -%}
+  {%- assign card_background = section.settings.product_card_background | default: settings.product_card_background -%}
+  {%- assign card_blends = false -%}
+
+  {%- unless section_background != 'rgba(0,0,0,0)' and card_background != 'rgba(0,0,0,0)' and section_background != card_background -%}
+    {%- assign card_blends = true -%}
+  {%- endunless -%}
+
+  /* Christmas Section Styling */
+  #shopify-section-{{ section.id }} {
+    position: relative;
+    overflow: hidden;
+    {%- if section.settings.background == blank or section.settings.background == 'rgba(0,0,0,0)' -%}
+    background: linear-gradient(135deg, #1a0f0f 0%, #2d1b1b 25%, #1a0f0f 50%, #2d1b1b 75%, #1a0f0f 100%);
+    background-size: 400% 400%;
+    animation: christmasGradient 15s ease infinite;
+    {%- endif -%}
+  }
+
+  /* Animated background gradient */
+  @keyframes christmasGradient {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+
+  /* Sparkle light effects */
+  #shopify-section-{{ section.id }}::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: 
+      radial-gradient(2px 2px at 20% 30%, rgba(255, 255, 255, 0.3), transparent),
+      radial-gradient(2px 2px at 60% 70%, rgba(255, 215, 0, 0.3), transparent),
+      radial-gradient(1px 1px at 50% 50%, rgba(255, 255, 255, 0.4), transparent),
+      radial-gradient(1px 1px at 80% 10%, rgba(255, 215, 0, 0.3), transparent),
+      radial-gradient(2px 2px at 90% 80%, rgba(255, 255, 255, 0.2), transparent),
+      radial-gradient(1px 1px at 33% 90%, rgba(255, 215, 0, 0.3), transparent);
+    background-size: 200% 200%;
+    animation: sparkle 8s linear infinite;
+    pointer-events: none;
+    opacity: 0.6;
+    z-index: 1;
+  }
+
+  @keyframes sparkle {
+    0% { background-position: 0% 0%; }
+    100% { background-position: 200% 200%; }
+  }
+
+  /* Glow effect on section */
+  #shopify-section-{{ section.id }}::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(220, 20, 60, 0.1) 0%, transparent 70%);
+    animation: glowPulse 4s ease-in-out infinite;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  @keyframes glowPulse {
+    0%, 100% { opacity: 0.3; transform: scale(1); }
+    50% { opacity: 0.6; transform: scale(1.1); }
+  }
+
+  #shopify-section-{{ section.id }} > * {
+    position: relative;
+    z-index: 2;
+  }
+
+  #shopify-section-{{ section.id }} .product-list {
+    --product-list-gap: {% if section.settings.stack_products and section.settings.products_per_row_mobile == '2' %}{% if card_blends %}var(--product-list-row-gap){% endif %} var(--spacing-2){% else %}var(--product-list-row-gap) var(--product-list-column-gap){% endif %};
+    --product-list-items-per-row: {{ section.settings.products_per_row_mobile | times: 1 }};
+    --product-list-carousel-item-width: 74vw;
+    --product-list-grid: {% if section.settings.stack_products %}auto / repeat(var(--product-list-items-per-row), minmax(0, 1fr)){% else %}auto / auto-flow var(--product-list-carousel-item-width){% endif %};
+  }
+
+  @media screen and (min-width: 700px) {
+    #shopify-section-{{ section.id }} .product-list {
+      --product-list-gap: var(--product-list-row-gap) var(--product-list-column-gap);
+      --product-list-items-per-row: 2;
+      --product-list-carousel-item-width: 36vw;
+    }
+  }
+
+  @media screen and (min-width: 1000px) {
+    #shopify-section-{{ section.id }} .product-list {
+      --product-list-items-per-row: {{ section.settings.products_per_row_desktop }};
+      --product-list-carousel-item-width: calc(var(--container-inner-width) / {{ section.settings.products_per_row_desktop }} - (var(--product-list-column-gap) / {{ section.settings.products_per_row_desktop }} * {{ section.settings.products_per_row_desktop | minus: 1 }}));
+    }
+  }
+
+  /* Christmas Product Card Enhancements */
+  #shopify-section-{{ section.id }} .product-card {
+    position: relative;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  #shopify-section-{{ section.id }} .product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(220, 20, 60, 0.3), 0 0 20px rgba(255, 215, 0, 0.2);
+  }
+
+  /* Special Christmas Badge Styling */
+  #shopify-section-{{ section.id }} .product-card__badge-list {
+    z-index: 10;
+  }
+
+  #shopify-section-{{ section.id }} .badge {
+    position: relative;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2), 0 0 10px rgba(255, 215, 0, 0.3);
+    animation: badgeGlow 2s ease-in-out infinite;
+  }
+
+  @keyframes badgeGlow {
+    0%, 100% { 
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2), 0 0 10px rgba(255, 215, 0, 0.3);
+    }
+    50% { 
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.3), 0 0 20px rgba(255, 215, 0, 0.5);
+    }
+  }
+
+  /* On Sale Badge - Christmas Red with Gold */
+  #shopify-section-{{ section.id }} .badge--on-sale {
+    background: linear-gradient(135deg, #dc143c 0%, #c41e3a 100%) !important;
+    color: #ffffff !important;
+    border: 1px solid rgba(255, 215, 0, 0.5);
+    box-shadow: 0 2px 10px rgba(220, 20, 60, 0.4), 0 0 15px rgba(255, 215, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  }
+
+  /* Primary Badge - Gold/Green Christmas Theme */
+  #shopify-section-{{ section.id }} .badge--primary {
+    background: linear-gradient(135deg, #ffd700 0%, #ffed4e 100%) !important;
+    color: #1a0f0f !important;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 2px 10px rgba(255, 215, 0, 0.4), 0 0 15px rgba(255, 215, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  }
+
+  /* New Arrival Badge - Green Christmas Theme */
+  #shopify-section-{{ section.id }} .badge--new-arrival {
+    background: linear-gradient(135deg, #228b22 0%, #32cd32 100%) !important;
+    color: #ffffff !important;
+    border: 1px solid rgba(255, 215, 0, 0.5);
+    box-shadow: 0 2px 10px rgba(34, 139, 34, 0.4), 0 0 15px rgba(255, 215, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  }
+
+  /* Heading Styling */
+  #shopify-section-{{ section.id }} .section-header__heading {
+    background: linear-gradient(135deg, #ffd700 0%, #ff6b6b 50%, #ffd700 100%);
+    background-size: 200% 200%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: textShine 3s ease-in-out infinite;
+    text-shadow: 0 0 30px rgba(255, 215, 0, 0.5);
+  }
+
+  @keyframes textShine {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+  }
+
+  .christmas-products-empty {
+    text-align: center;
+    padding: 4rem 2rem;
+    color: rgb(var(--text-color));
+  }
+
+  .christmas-products-empty p {
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+  }
+
+  /* Responsive adjustments */
+  @media (max-width: 699px) {
+    #shopify-section-{{ section.id }}::before,
+    #shopify-section-{{ section.id }}::after {
+      opacity: 0.4;
+    }
+  }
+</style>
+
+<div {% render 'section-properties' %}>
+  <div class="section-stack">
+    {%- render 'section-header', subheading: section.settings.subheading, heading: section.settings.title, heading_color: section.settings.heading_color, heading_gradient: section.settings.heading_gradient, content: section.settings.content, link_text: section.settings.link_text, link_url: section.settings.link_url -%}
+
+    {%- if christmas_products.size > 0 -%}
+      <div class="{% if section.settings.show_progress_bar %}scrollable-with-controls{% else %}floating-controls-container{% endif %}">
+        {%- assign scroll_area_id = 'scroll-area-' | append: section.id -%}
+
+        <scroll-carousel selector="product-card" id="{{ scroll_area_id }}" class="scroll-area bleed {% if christmas_products.size > section.settings.products_per_row_desktop %}is-scrollable{% endif %}">
+          <reveal-items selector=".product-list > *">
+            <product-list class="product-list">
+              {%- for product in christmas_products limit: section.settings.products_count -%}
+                {%- render 'product-card', product: product, stacked: section.settings.stack_products, position: forloop.index, background: section.settings.product_card_background, text_color: section.settings.product_card_text_color, show_badges: true -%}
+              {%- endfor -%}
+            </product-list>
+          </reveal-items>
+        </scroll-carousel>
+
+        {%- if section.settings.stack_products == false -%}
+          {%- if section.settings.show_progress_bar -%}
+            {%- assign default_progress = section.settings.products_per_row_desktop | times: 1.0 | divided_by: christmas_products.size -%}
+            {%- render 'scrollbar', observes: scroll_area_id, default_progress: default_progress, show_buttons: true -%}
+          {%- else -%}
+            <button is="prev-button" class="circle-button circle-button--lg circle-button--fill border group" aria-controls="{{ scroll_area_id }}" disabled>
+              <span class="sr-only">{{ 'general.accessibility.previous' | t }}</span>
+              <span class="animated-arrow animated-arrow--reverse"></span>
+            </button>
+
+            <button is="next-button" class="circle-button circle-button--lg circle-button--fill border group" aria-controls="{{ scroll_area_id }}">
+              <span class="sr-only">{{ 'general.accessibility.next' | t }}</span>
+              <span class="animated-arrow"></span>
+            </button>
+          {%- endif -%}
+        {%- endif -%}
+      </div>
+    {%- else -%}
+      <div class="christmas-products-empty">
+        <p>{{ section.settings.empty_message | default: "No Christmas products found. Add 'christmas' tag to products to see them here." }}</p>
+        <p><small>To show products here, add the "christmas" tag to your products in Shopify admin.</small></p>
+      </div>
+    {%- endif -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Christmas Products",
+  "class": "shopify-section--christmas-products",
+  "tag": "section",
+  "disabled_on": {
+    "templates": ["password"],
+    "groups": ["header", "custom.overlay"]
+  },
+  "settings": [
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Subheading"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "Christmas Collection"
+    },
+    {
+      "type": "richtext",
+      "id": "content",
+      "label": "Content"
+    },
+    {
+      "type": "text",
+      "id": "link_text",
+      "label": "Link text"
+    },
+    {
+      "type": "url",
+      "id": "link_url",
+      "label": "Link URL"
+    },
+    {
+      "type": "text",
+      "id": "tag_name",
+      "label": "Product tag name",
+      "default": "christmas",
+      "info": "Products with this tag will be displayed. Case-insensitive."
+    },
+    {
+      "type": "text",
+      "id": "empty_message",
+      "label": "Empty message",
+      "default": "No Christmas products found. Add 'christmas' tag to products to see them here."
+    },
+    {
+      "type": "range",
+      "id": "products_count",
+      "min": 4,
+      "max": 50,
+      "step": 1,
+      "label": "Products to show",
+      "default": 12
+    },
+    {
+      "type": "select",
+      "id": "products_per_row_mobile",
+      "label": "Products per row (mobile)",
+      "options": [
+        {
+          "value": "1",
+          "label": "1"
+        },
+        {
+          "value": "2",
+          "label": "2"
+        }
+      ],
+      "default": "2"
+    },
+    {
+      "type": "range",
+      "id": "products_per_row_desktop",
+      "min": 2,
+      "max": 6,
+      "step": 1,
+      "label": "Products per row (desktop)",
+      "default": 4
+    },
+    {
+      "type": "checkbox",
+      "id": "stack_products",
+      "label": "Stack products",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_progress_bar",
+      "label": "Show carousel progress bar",
+      "default": false
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "background",
+      "label": "Background"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading color"
+    },
+    {
+      "type": "text",
+      "id": "heading_gradient",
+      "label": "Heading gradient"
+    },
+    {
+      "type": "color",
+      "id": "product_card_background",
+      "label": "Product card background"
+    },
+    {
+      "type": "color",
+      "id": "product_card_text_color",
+      "label": "Product card text"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Christmas Products",
+      "category": "Collection"
+    }
+  ]
+}
+{% endschema %}
+
