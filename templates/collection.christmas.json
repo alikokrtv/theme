@@ -173,8 +173,8 @@
             "show_header": true,
             "section_title": "🎄 Christmas Collections 🎄",
             "section_subtitle": "Find the perfect gifts this season",
-            "title_size": 56,
-            "subtitle_size": 20,
+            "title_size": 30,
+            "subtitle_size": 17,
             "title_color": "#ffffff",
             "subtitle_color": "#e8d4b8",
             "product_list": [
