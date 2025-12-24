@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "christmas_hero": {
@@ -25,9 +34,8 @@
         "button_christmas": {
           "type": "button",
           "settings": {
-            "text": "Shop Now",
-            "link": "#products",
-            "style": "fill"
+            "style": "fill",
+            "text": "Shop Now"
           }
         }
       },
@@ -126,12 +134,12 @@
         "subheading": "Festive Deals, Wrapped Just for You",
         "title": "Festive Deals, Wrapped Just for You",
         "content": "<p>Enjoy up to 54% off your favorite products.</p>",
+        "tag_name": "christmas",
         "products_count": 24,
         "products_per_row_mobile": "2",
         "products_per_row_desktop": 4,
         "stack_products": true,
-        "show_progress_bar": false,
-        "tag_name": "christmas"
+        "show_progress_bar": false
       }
     },
     "christmas_categories": {
@@ -240,4 +248,3 @@
     "christmas_why_choose"
   ]
 }
-
