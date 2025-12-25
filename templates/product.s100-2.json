@@ -185,6 +185,7 @@
     },
     "image_with_text_overlay_P7nakk": {
       "type": "image-with-text-overlay",
+      "disabled": true,
       "name": "Image with text overlay + marquee",
       "settings": {
         "full_width": true,
@@ -296,6 +297,7 @@
         "image_FdQCWy",
         "image_HcnHp4"
       ],
+      "disabled": true,
       "name": "Slideshow",
       "settings": {
         "full_width": true,
@@ -382,6 +384,7 @@
         "image_YATzC8",
         "image_8nM4Hy"
       ],
+      "disabled": true,
       "custom_css": [],
       "name": "Slideshow",
       "settings": {
@@ -469,6 +472,7 @@
         "image_rn37Uj",
         "image_pw9GXL"
       ],
+      "disabled": true,
       "name": "Slideshow",
       "settings": {
         "full_width": true,
@@ -555,6 +559,7 @@
         "image_fFwhTk",
         "image_GAWwxp"
       ],
+      "disabled": true,
       "name": "Slideshow",
       "settings": {
         "full_width": true,
