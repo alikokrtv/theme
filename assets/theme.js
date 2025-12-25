@@ -43,7 +43,7 @@ elements.forEach(el => {
     const header = document.getElementById('shopify-section-sections--20175067840765__header');
 
     if (!announcementBar || !header) {
-        console.warn("Shopify header/announcement bar ID'leri bulunamadı. JS çalışmayacak.");
+        // Production: Silent fail, no console output
         return; 
     }
 
@@ -88,13 +88,13 @@ elements.forEach(el => {
         }
     }
 
-    // 2. Scroll Olayını Dinleme Fonksiyonu (Throttle Edilmiş)
+    // 2. Scroll Olayını Dinleme Fonksiyonu (Optimized with requestAnimationFrame)
     function handleScroll() {
         if (isThrottled) return; 
 
         isThrottled = true; 
         
-        setTimeout(() => {
+        requestAnimationFrame(() => {
             const currentScrollY = window.scrollY;
             const isScrollingDown = currentScrollY > lastScrollY;
             
@@ -114,7 +114,7 @@ elements.forEach(el => {
             
             lastScrollY = currentScrollY;
             isThrottled = false; 
-        }, THROTTLE_DELAY);
+        });
     }
 
     // 3. Fare Üstü Alan Olayını Dinleme Fonksiyonu
@@ -3349,8 +3349,9 @@ var ProductRerender = class extends HTMLElement {
   }
   connectedCallback() {
     __privateSet(this, _abortController3, new AbortController());
+    // Production: Silent validation - no console output
     if (!this.id || !this.hasAttribute("observe-form")) {
-      console.warn('The <product-rerender> requires an ID to identify the element to re-render, and an "observe-form" attribute referencing to the form to monitor.');
+      return;
     }
     document.forms[this.getAttribute("observe-form")].addEventListener("product:rerender", __privateMethod(this, _ProductRerender_instances, onRerender_fn).bind(this), { signal: __privateGet(this, _abortController3).signal });
   }
