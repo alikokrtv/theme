@@ -31,6 +31,15 @@ Supported variables
           <span class="badge badge--primary">{{ custom_badge }}</span>
         {%- endfor -%}
 
+        {%- comment -%}
+          ÜRÜN TAG'İNDE "new" VARSA NEW ARRIVAL BADGE
+        {%- endcomment -%}
+        {%- if product.tags contains 'new' -%}
+          <span class="badge badge--new-arrival">
+            New Arrival
+          </span>
+        {%- endif -%}
+
       {%- when 'sold_out' -%}
         {%- if settings.show_sold_out_badge -%}
           {%- if variant.available == false -%}
