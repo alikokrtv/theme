@@ -191,24 +191,32 @@ NOTE TO DEVELOPERS: welcome to Impact theme! We hope that you will enjoy editing
       });
     </script>
 
-    <script>
-      document.querySelectorAll('video').forEach(video => {
-        // Hover oynatma
-        video.addEventListener('mouseenter', () => {
-          video.play();
-        });
+  <script>
+  document.addEventListener('DOMContentLoaded', function () {
+    // Sadece bu posteri kullanan videoyu seç
+    const specialVideo = document.querySelector(
+      'video[poster*="4f374aec7fa64006abed3e3a32119823"]'
+    );
 
-        // Hover çıkınca durdur
-        video.addEventListener('mouseleave', () => {
-          video.pause();
-          video.currentTime = 0;
-        });
+    if (!specialVideo) return;
 
-        // Tıklayınca yönlendir
-        video.addEventListener('click', () => {
-          window.location.href = '/collections/christmas-sale';
-        });
-      });
-    </script>
+    // Hover oynatma
+    specialVideo.addEventListener('mouseenter', () => {
+      specialVideo.play();
+    });
+
+    // Hover çıkınca durdur
+    specialVideo.addEventListener('mouseleave', () => {
+      specialVideo.pause();
+      specialVideo.currentTime = 0;
+    });
+
+    // Sadece bu video tıklanınca yönlendir
+    specialVideo.addEventListener('click', () => {
+      window.location.href = '/collections/christmas-sale';
+    });
+  });
+</script>
+
   </body>
 </html>
