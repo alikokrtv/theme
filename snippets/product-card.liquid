@@ -67,9 +67,7 @@ Supported variables
   {%- if product.media.size > 0 -%}
   <div class="product-card__figure">
 
-    {%- if product.tags contains 'new' -%}
-      <span class="badge badge--new-arrival">New Arrival</span>
-    {%- endif -%}
+    
 
     <a href="{{ product.url }}" data-instant>
       {%- capture sizes -%}
