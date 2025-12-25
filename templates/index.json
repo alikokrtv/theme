@@ -1,1 +1,1281 @@
-{"sections":{"blocks_ffzUhn":{"type":"_blocks","blocks":{"ai_gen_block_ea35d1e_NbAyCR":{"type":"ai_gen_block_ea35d1e","disabled":true,"settings":{"show_badge":true,"badge_text":"Christmas Sale","badge_background":"#ba0e0e","badge_text_color":"#ffffff","badge_font_size":12,"badge_font_weight":"700","badge_text_transform":"uppercase","badge_letter_spacing":1,"badge_padding_vertical":6,"badge_padding_horizontal":12,"badge_border_radius":20,"banner_text":"Celebrate Christmas with deals, gifts, and rewards","text_color":"#ffffff","text_font_size":15,"text_font_weight":"500","link_text":"Shop now","link_url":"https:\/\/technofashion.com\/collections\/best-selling-products","link_color":"#ffffff","link_font_size":14,"link_font_weight":"700","link_text_decoration":"none","background_gradient":"linear-gradient(135deg, rgba(240, 23, 23, 1), rgba(186, 14, 14, 1) 100%)","show_sparkles":false,"sparkle_color":"#ffffff","sparkle_size":12,"sparkle_opacity":0.5,"padding_vertical":16,"padding_horizontal":32,"content_gap":16},"blocks":{}}},"block_order":["ai_gen_block_ea35d1e_NbAyCR"],"custom_css":["section {padding-left: 0; padding-right: 0;}"],"name":"New arrival banner","settings":{"full_width":true,"remove_vertical_spacing":true,"remove_horizontal_spacing":true,"content_alignment":"center","background":"","background_gradient":"","text_color":""}},"slideshow_7NhrYR":{"type":"slideshow","blocks":{"video_bVrbiM":{"type":"video","settings":{"video":"shopify:\/\/files\/videos\/vers6.mp4","mobile_video":"shopify:\/\/files\/videos\/ok pinterst.mp4","content_max_width":780,"mobile_text_position":"place-self-center text-center","desktop_text_position":"sm:place-self-center sm:text-center","subheading":"","title":"","heading_tag":"h0","button_text":"","button_link":"","text_color":"#ffffff","button_background":"#ffffff","button_text_color":"#000000","overlay_color":"#000000","overlay_opacity":0,"background":"","background_gradient":""}}},"block_order":["video_bVrbiM"],"custom_css":["{cursor: pointer; transition: transform 0.35s ease;}"," {transform: scale(1.02);}"],"name":"Slideshow","settings":{"full_width":true,"allow_transparent_header":true,"show_initial_transition":true,"image_size":"auto","controls_type":"dots","transition_type":"fade_with_text","autoplay":false,"cycle_speed":14,"background":"#f2f2f2","background_gradient":""}},"slideshow_3AeULA":{"type":"slideshow","blocks":{"image_NbYp87":{"type":"image","settings":{"image":"shopify:\/\/shop_images\/Image_20251219103412_218_5.jpg","mobile_image":"shopify:\/\/shop_images\/post_new.jpg","content_max_width":680,"mobile_text_position":"place-self-end-center text-center","desktop_text_position":"sm:place-self-end-center sm:text-center","subheading":"","title":"","heading_tag":"h3","button_text":"Shop Now","button_link":"https:\/\/technofashion.com\/collections\/new-arrival?oseid=61c5pfY4AqZuN2YbfpYtFaXb","text_color":"#ffffff","button_background":"#ffffff","button_text_color":"#000000","overlay_color":"#000000","overlay_opacity":0,"background":"","background_gradient":""}}},"block_order":["image_NbYp87"],"disabled":true,"custom_css":["@media (max-width: 789px) {a {font-size: 10px; padding: 10px; }}"],"name":"Slideshow","settings":{"full_width":true,"allow_transparent_header":true,"show_initial_transition":false,"image_size":"auto","controls_type":"dots","transition_type":"fade_with_text","autoplay":false,"cycle_speed":6,"background":"#0e2041","background_gradient":""}},"rich_text_PUBkzp":{"type":"rich-text","disabled":true,"custom_css":["div {margin-bottom: 1px; margin-top: -10px;}"],"name":"Rich text","settings":{"full_width":true,"content_width":"small","text_position":"start","background":"","background_gradient":"","text_color":""}},"blocks_inKyWH":{"type":"_blocks","blocks":{"rich_text_qtVbkx":{"type":"rich-text","name":"Rich text","disabled":true,"settings":{"text":"<p>Future Products<\/p>","content_width":"large","text_alignment":"center"},"blocks":{}}},"block_order":["rich_text_qtVbkx"],"custom_css":["p {padding-left: 20px; font-size: 30px;}"," {margin-top: 10px; margin-bottom: -5px;}"],"settings":{"full_width":true,"remove_vertical_spacing":true,"remove_horizontal_spacing":true,"content_alignment":"left","background":"","background_gradient":"","text_color":""}},"image_with_text_overlay_KjA6Kx":{"type":"image-with-text-overlay","blocks":{"subheading_LWgrnB":{"type":"subheading","disabled":true,"settings":{"text":"Own The Moment."}},"heading_HxiP7G":{"type":"heading","disabled":true,"settings":{"text":"Own The Sound.","heading_tag":"h2"}},"richtext_hPwUfY":{"type":"richtext","disabled":true,"settings":{"content":"<p>Seamlessly blend premium audio with vibrant, <br\/>rhythm-synced light effects. <br\/>Your party, your soundtrack, your style.<\/p>"}},"button_bJ6Vm9":{"type":"button","name":"Button2","settings":{"style":"fill","size":"xl","text":"Shop Now","url":"shopify:\/\/collections\/audio","background":"#0e2041","text_color":"#ffffff"}}},"block_order":["subheading_LWgrnB","heading_HxiP7G","richtext_hPwUfY","button_bJ6Vm9"],"disabled":true,"custom_css":["@media (max-width: 879px) {a {display: none; }}"],"name":"Image with text overlay + marquee","settings":{"full_width":true,"allow_transparent_header":false,"enable_parallax":false,"image_size":"auto","image":"shopify:\/\/shop_images\/Artboard_1_1fb475cc-e7c5-4606-97b0-bedab8de526c.jpg","mobile_image":"shopify:\/\/shop_images\/MOBIL_BANNER_audio_copy.jpg","mobile_text_position":"place-self-end-start text-start","desktop_text_position":"sm:place-self-end-center sm:text-center","text_color":"#0e2041","overlay_color":"#000000","overlay_opacity":0,"show_marquee":false,"marquee_speed":30}},"floating_shoppable_video_zQj44U":{"type":"floating-shoppable-video","blocks":{"video_gdcEAQ":{"type":"video","settings":{"video_url":"https:\/\/cdn.shopify.com\/videos\/c\/o\/v\/e0d742b6aa6f4d80bf4ab555ecf17dbe.mp4","cta_text":"Ürünü Gör","cta_url":"","cta_newtab":true}},"video_miKGpx":{"type":"video","settings":{"video_url":"https:\/\/cdn.shopify.com\/videos\/c\/o\/v\/862d72a8edb24387aad30464668c09a9.mp4","cta_text":"Ürünü Gör","cta_url":"","cta_newtab":true}},"video_DTBmpM":{"type":"video","settings":{"video_url":"https:\/\/cdn.shopify.com\/videos\/c\/o\/v\/2c5e7d1c9beb40a19a310624ea76dbf6.mp4","cta_text":"Ürünü Gör","cta_url":"","cta_newtab":true}}},"block_order":["video_gdcEAQ","video_miKGpx","video_DTBmpM"],"custom_css":["{z-index: 50 !important;}"],"name":"Floating Shoppable Video","settings":{"position":"bottom-left","widget_size":280,"offset":18,"hide_on_mobile":false}},"17582056850b7087e9":{"type":"_blocks","blocks":{"ai_gen_block_2b6b25e_mbEUj9":{"type":"ai_gen_block_2b6b25e","disabled":true,"settings":{"headline":"Discover Audio, Chargers & More — Explore Top Categories","headline_size":32,"headline_color":"#1a1a1a","feature_1_text":"Premium Quality","feature_2_text":"Fast Shipping","feature_3_text":"24\/7 Support","feature_text_size":14,"feature_text_color":"#6a6a6a","divider_color":"#1a1a1a","background_color":"#ffffff","border_radius":24},"blocks":{}}},"block_order":["ai_gen_block_2b6b25e_mbEUj9"],"custom_css":["{max-width: 1800px; margin: auto;}"],"settings":{"full_width":true,"remove_vertical_spacing":false,"remove_horizontal_spacing":false,"content_alignment":"center","background":"","background_gradient":"","text_color":""}},"featured-collection":{"type":"featured-collection","custom_css":["img {transform: scale(0.7);}"," {font-size: 16px; font-family: manrope; margin-top: 0px;}","@media (min-width: 768px) {img {transform: scale(1); box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px; border-radius: 10px; padding: 10px; }}"],"settings":{"collection":"featured-products","products":"{{ section.settings.collection.products }}","full_width":false,"stack_products":false,"show_progress_bar":true,"products_count":10,"products_per_row_mobile":"1","products_per_row_desktop":5,"subheading":"","title":"","content":"","link_url":"shopify:\/\/collections\/featured-products","link_text":"","background":"","background_gradient":"","text_color":"","heading_color":"","heading_gradient":"","product_card_background":"","product_card_text_color":""}},"shop_the_look_mxWpqY":{"type":"shop-the-look","blocks":{"product_MKwjqR":{"type":"product","settings":{"product":"nautica-turan-core-20-charging-bundle-2-20w-wall-chargers-2-usb-c-to-usb-c-cables","horizontal_position":16,"vertical_position":49}},"product_twTV4n":{"type":"product","settings":{"product":"nautica-turan-qmag-series-magnetic-phone-holder","horizontal_position":30,"vertical_position":39}},"product_6zcWaG":{"type":"product","settings":{"product":"nautica-portable-charger-turan-pb2100-series","horizontal_position":53,"vertical_position":26}},"product_iBAkUC":{"type":"product","settings":{"product":"portable-bluetooth-speaker-nautica","horizontal_position":77,"vertical_position":35}},"product_CAdTwd":{"type":"product","settings":{"product":"nautica-portable-bluetooth-speaker-sp500","horizontal_position":51,"vertical_position":65}},"product_NjN3aT":{"type":"product","settings":{"product":"nautica-true-wireless-earbuds-t710","horizontal_position":72,"vertical_position":68}},"product_zHL83w":{"type":"product","settings":{"product":"nautica-turan-usb-c-to-usb-c-charging-cable-60w-fast-charge-4ft-3-pack","horizontal_position":40,"vertical_position":92}}},"block_order":["product_MKwjqR","product_twTV4n","product_6zcWaG","product_iBAkUC","product_CAdTwd","product_NjN3aT","product_zHL83w"],"custom_css":["{margin: 40px;}"],"name":"Shop the look","settings":{"full_width":true,"stack_mobile":false,"image":"shopify:\/\/shop_images\/shoptolook.png","title":"Shop the look","content":"","background":"","background_gradient":"","text_color":"","heading_color":"","heading_gradient":"","product_card_background":"","product_card_text_color":"","product_card_mobile_background":"","product_card_mobile_text_color":"","background_dots":"#ffffff"}},"media_grid_X8ykAQ":{"type":"media-grid","blocks":{"image_nFiDhY":{"type":"image","settings":{"image":"shopify:\/\/shop_images\/categorn_image.png","title":"Nautica Nayman SP700 Portable Bluetooth Speaker with an IPX7 Waterproof","heading_tag":"h5","link_url":"shopify:\/\/products\/portable-bluetooth-speaker-nautica","link_text":"Ready to Go","mobile_text_position":"place-self-end-center text-center","desktop_column_span":4,"desktop_row_span":2,"desktop_text_position":"sm:place-self-end-center sm:text-center","background":"#ffffff","background_gradient":"","text_color":"#ffffff","text_gradient":"","button_background":"#0e2041","button_text_color":"#ffffff","overlay_color":"#000000","overlay_opacity":0}}},"block_order":["image_nFiDhY"],"custom_css":["p {text-shadow: 0 3px 3px rgba(0, 0, 0, 0.85), 0 8px 20px rgba(0, 0, 0, 0.65), 0 18px 40px rgba(0, 0, 0, 0.5);}"],"name":"Media grid","settings":{"full_width":true,"reduce_width":true,"desktop_row_height":290,"mobile_row_height":150,"background":"","background_gradient":""}},"related_products_emVex9":{"type":"related-products","custom_css":["img {transform: scale(0.7);}"," {font-size: 16px; font-family: manrope; margin-top: 0px;}","@media (min-width: 768px) {img {transform: scale(1); box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px; border-radius: 10px; padding: 10px; }}"],"name":"Featured collection","settings":{"collection":"new-arrival","products":[],"full_width":true,"stack_products":true,"show_progress_bar":false,"products_count":16,"products_per_row_mobile":"2","products_per_row_desktop":3,"subheading":"","title":"New Arrival","content":"","link_url":"","link_text":"View all","background":"","background_gradient":"","text_color":"","heading_color":"","heading_gradient":"","product_card_background":"","product_card_text_color":""}},"media_grid_8phRqR":{"type":"media-grid","blocks":{"image_fhgBHH":{"type":"image","settings":{"image":"shopify:\/\/shop_images\/Gemini_Generated_Image_pmd0zvpmd0zvpmd0.png","title":"Nautica PH120 Magnetic Phone Holder","heading_tag":"h3","link_url":"https:\/\/technofashion.com\/products\/nautica-ph120-magnetic-phone-holder-3-in-1-car-mount-for-dashboard-windshield-air-vent-adjustable-distance-strong-magnetic-grip","link_text":"Shop","mobile_text_position":"place-self-end-center text-center","desktop_column_span":2,"desktop_row_span":2,"desktop_text_position":"sm:place-self-start-center sm:text-center","background":"#000000","background_gradient":"","text_color":"#f2f2f2","text_gradient":"","button_background":"#0e2041","button_text_color":"#ffffff","overlay_color":"#000000","overlay_opacity":0}},"image_azekUw":{"type":"image","settings":{"image":"shopify:\/\/shop_images\/Gemini_Generated_Image_f8yzamf8yzamf8yz.png","title":"Nautica PH 200 Universal Car Phone Holder","heading_tag":"h3","link_url":"https:\/\/technofashion.com\/products\/nautica-universal-car-phone-holder-urban-ph-200","link_text":"Shop","mobile_text_position":"place-self-end-center text-center","desktop_column_span":2,"desktop_row_span":2,"desktop_text_position":"sm:place-self-start-center sm:text-center","background":"#000000","background_gradient":"","text_color":"#ffffff","text_gradient":"","button_background":"#000000","button_text_color":"#ffffff","overlay_color":"#000000","overlay_opacity":0}}},"block_order":["image_fhgBHH","image_azekUw"],"disabled":true,"custom_css":["a {text-shadow: 1px 1px 2px gray, 0 0 1em gray, 0 0 0.2em gray;}"],"name":"Media grid","settings":{"full_width":true,"reduce_width":false,"desktop_row_height":290,"mobile_row_height":150,"background":"","background_gradient":""}},"media_grid_VY68x8":{"type":"media-grid","blocks":{"image_jNknnL":{"type":"image","settings":{"image":"shopify:\/\/shop_images\/PH120_2.png","title":"","heading_tag":"h4","link_url":"https:\/\/technofashion.com\/products\/nautica-ph120-magnetic-phone-holder-3-in-1-car-mount-for-dashboard-windshield-air-vent-adjustable-distance-strong-magnetic-grip","link_text":"Nautica PH120","mobile_text_position":"place-self-end-center text-center","desktop_column_span":1,"desktop_row_span":2,"desktop_text_position":"sm:place-self-end-center sm:text-center","background":"#1a1a1a","background_gradient":"","text_color":"#ffffff","text_gradient":"","button_background":"#0e2041","button_text_color":"#ffffff","overlay_color":"#000000","overlay_opacity":0}},"image_AywfLE":{"type":"image","settings":{"image":"shopify:\/\/shop_images\/PH200_01.webp","title":"","heading_tag":"h4","link_url":"https:\/\/technofashion.com\/products\/nautica-universal-car-phone-holder-urban-ph-200","link_text":"Nautica PH 200","mobile_text_position":"place-self-end-center text-center","desktop_column_span":1,"desktop_row_span":2,"desktop_text_position":"sm:place-self-end-center sm:text-center","background":"#000000","background_gradient":"","text_color":"#0e2041","text_gradient":"","button_background":"#0e2041","button_text_color":"#ffffff","overlay_color":"#000000","overlay_opacity":0}}},"block_order":["image_jNknnL","image_AywfLE"],"disabled":true,"name":"Media grid","settings":{"full_width":true,"reduce_width":false,"desktop_row_height":290,"mobile_row_height":150,"background":"","background_gradient":""}},"17581206290497c4ee":{"type":"_blocks","blocks":{"image_Ep89Cr":{"type":"image","name":"Image","disabled":true,"settings":{"image":"shopify:\/\/shop_images\/BANSP700.jpg","alignment":"center","width_mode":"full_width","max_width":600,"mobile_max_width":400},"blocks":{}},"ai_gen_block_5907379_mayQX7":{"type":"ai_gen_block_5907379","disabled":true,"settings":{"section_background":"#ffffff","card_background":"#ffffff","column_spacing":30,"card_border_radius":12,"image_height":250,"content_padding":25,"text_alignment":"center","title_size":24,"title_color":"#1a1a1a","description_size":16,"description_color":"#666666","button_background":"#1a1a1a","button_text_color":"#ffffff","button_hover_background":"#f0c417","button_hover_text_color":"#1a1a1a","button_border_radius":24,"button_text_size":14,"category_1_image":"shopify:\/\/shop_images\/aasd.jpg","category_1_title":"Wall Charger","category_1_description":"Nautica 30W Dual Port Wall Charger","category_1_link":"shopify:\/\/products\/nautica-pd-20w-usb-c-wall-charger-ch110","category_1_button_text":"Learn More","category_2_image":"shopify:\/\/shop_images\/ss1-PB_Marketing-Renders.1529.jpg","category_2_title":"Powerbank","category_2_description":"Nautica Magnetic Portable Charger","category_2_link":"shopify:\/\/collections\/mobile-accessories","category_2_button_text":"Learn More","category_3_image":"shopify:\/\/shop_images\/SP600_Nude_1_9a25b1b6-d4e2-4669-9db1-9990623d5d32.png","category_3_title":"Cables","category_3_description":"Fast and efficient charging","category_3_link":"shopify:\/\/collections\/cables","category_3_button_text":"Learn More"},"blocks":{}}},"block_order":["image_Ep89Cr","ai_gen_block_5907379_mayQX7"],"custom_css":["h3 {padding: 20px;}"],"settings":{"full_width":true,"remove_vertical_spacing":true,"remove_horizontal_spacing":true,"content_alignment":"left","background":"","background_gradient":"","text_color":""}},"blocks_7irXGg":{"type":"_blocks","blocks":{"rich_text_U8GLKG":{"type":"rich-text","name":"Rich text","settings":{"text":"<p>Non-Stop Music All Day Long<\/p>","content_width":"large","text_alignment":"center"},"blocks":{}}},"block_order":["rich_text_U8GLKG"],"custom_css":["p {padding-left: 20px; font-size: 30px;}"," {margin-top: 10px; margin-bottom: 10px;}"],"settings":{"full_width":true,"remove_vertical_spacing":true,"remove_horizontal_spacing":true,"content_alignment":"left","background":"","background_gradient":"","text_color":""}},"custom_hover_slider_tqphQi":{"type":"custom-hover-slider","blocks":{"slide_UwBrUN":{"type":"slide","settings":{"image":"shopify:\/\/shop_images\/SP600N12.png","title":"Freedom to Go Anywhere","subtitle":"With its specially designed carrying strap, you can effortlessly take your music anywhere. Easily attach it to your bag, backpack, or wrist to enjoy your music on the move.","link":"shopify:\/\/products\/portable-bluetooth-speaker"}},"slide_dyJCjw":{"type":"slide","settings":{"image":"shopify:\/\/shop_images\/DYNMAIC.jpg","title":"Dynamic Ambient Light","subtitle":"Create the perfect ambiance for your mood with the Nautica Urban SP600's dynamic light bar. Transform the rhythm of your music into colors with 5 different lighting effect options.","link":"shopify:\/\/products\/portable-bluetooth-speaker"}},"slide_nWharW":{"type":"slide","settings":{"image":"shopify:\/\/shop_images\/CAMPP.jpg","title":"Non-Stop Music All Day Long","subtitle":"With up to 16 hours of battery life, you can listen to your music non-stop from sunset to sunrise. It's the perfect companion for parties, camping trips, and all outdoor activities.","link":"shopify:\/\/products\/portable-bluetooth-speaker"}},"slide_pk3w8G":{"type":"slide","settings":{"image":"shopify:\/\/shop_images\/DYNMAIC.png","title":"Ready for Every Splash","subtitle":"This speaker keeps the music goingrain or shine with IPX5 splash-proof protection. Perfect for beaches,pool parties, and everyday adventures.","link":"shopify:\/\/products\/portable-bluetooth-speaker"}},"slide_VGBqYW":{"type":"slide","settings":{"image":"shopify:\/\/shop_images\/DYNMAIC_1.jpg","title":"Quick Connection","subtitle":"Equipped with advanced Bluetooth 5.3 tech, this wireless portable speaker allows you move around while still keeping the beats flowing; Get your music started in seconds","link":"shopify:\/\/products\/portable-bluetooth-speaker"}}},"block_order":["slide_UwBrUN","slide_dyJCjw","slide_nWharW","slide_pk3w8G","slide_VGBqYW"],"custom_css":["* {text-shadow: 8px 8px 20px black !important;}"],"name":"Hover Expand Slider","settings":{}},"custom_slider_for_mobile_XmKjhG":{"type":"custom-slider-for-mobile","blocks":{"slide_z8E4DJ":{"type":"slide","settings":{"image":"shopify:\/\/shop_images\/SP600N12.png","title":"Freedom to Go Anywhere","subtitle":"","link":"shopify:\/\/products\/portable-bluetooth-speaker"}},"slide_38PVNJ":{"type":"slide","settings":{"image":"shopify:\/\/shop_images\/DYNMAIC.jpg","title":"Dynamic Ambient Light","subtitle":"","link":"shopify:\/\/products\/portable-bluetooth-speaker"}},"slide_tUbkxd":{"type":"slide","settings":{"image":"shopify:\/\/shop_images\/CAMPP.jpg","title":"Non-Stop Music All Day Long","subtitle":"","link":"shopify:\/\/products\/portable-bluetooth-speaker"}},"slide_FkMtFU":{"type":"slide","settings":{"image":"shopify:\/\/shop_images\/SPLAS.jpg","title":"Ready for Every Splash","subtitle":"","link":"shopify:\/\/products\/portable-bluetooth-speaker"}}},"block_order":["slide_z8E4DJ","slide_38PVNJ","slide_tUbkxd","slide_FkMtFU"],"name":"Mobile Swipe Slider","settings":{}},"blocks_39jzMM":{"type":"_blocks","name":"Newsletter signup","settings":{"full_width":true,"remove_vertical_spacing":false,"remove_horizontal_spacing":false,"content_alignment":"center","background":"","background_gradient":"","text_color":""}},"multi_column_pXknzU":{"type":"multi-column","blocks":{"item_yfgpdr":{"type":"item","settings":{"show_controls":false,"column_size":"3","title":"30-DAY MONEY-BACK GUARANTEE","heading_tag":"h6","content":"<p><strong>Return<\/strong> any item within <strong>30 days<\/strong> for a hassle-free, <strong>full refund<\/strong>.<\/p>","link_url":"","link_text":"","link_style":"link"}},"item_3Njigq":{"type":"item","settings":{"show_controls":false,"column_size":"3","title":"EASY RETURNS","heading_tag":"h6","content":"<p>Not 100% satisfied? Send it back within a month. <strong>We make returns simple and quick.<\/strong><\/p>","link_url":"","link_text":"","link_style":"link"}},"item_LEt7Yp":{"type":"item","settings":{"show_controls":false,"column_size":"3","title":"PAY WITH FLEXIBILITY","heading_tag":"h6","content":"<p>Pay now with all major cards or spread the cost with <strong>easy installment options<\/strong>.<\/p>","link_url":"","link_text":"","link_style":"link"}},"item_JdqpnT":{"type":"item","settings":{"show_controls":false,"column_size":"2","title":"FLEXIBLE CHECKOUT","heading_tag":"h6","content":"<p>Complete your purchase <strong>immediately<\/strong> or use a <strong>Buy Now, Pay Later<\/strong> service like checkout.<\/p>","link_url":"shopify:\/\/collections\/all","link_text":"Shop","link_style":"link"}},"item_JGzJX9":{"type":"item","settings":{"show_controls":false,"column_size":"2","title":"WE'RE HERE TO HELP","heading_tag":"h6","content":"<p><strong>Contact our expert support team<\/strong> via email or <strong>live chat<\/strong> for instant assistance.<\/p>","link_url":"shopify:\/\/pages\/contact","link_text":"Contact","link_style":"link"}}},"block_order":["item_yfgpdr","item_3Njigq","item_LEt7Yp","item_JdqpnT","item_JGzJX9"],"custom_css":["div div div div {background-color: white; color: black; padding: 10px; border-radius: 10px; margin: 10px;}"," {}"],"name":"Multi-column","settings":{"full_width":true,"stack_on_mobile":false,"gap":"small","text_alignment":"start","subheading":"","title":"FAST & RELIABLE DELIVERY","content":"<p>Your tech is delivered swiftly in <strong>3-5 business days<\/strong>!<\/p>","background":"","background_gradient":"linear-gradient(46deg, rgba(25, 25, 112, 1) 22%, rgba(12, 134, 122, 1) 90%)","text_color":"#ffffff"}},"newsletter_BCzMcx":{"type":"newsletter","name":"Newsletter","settings":{"full_width":false,"show_icon":false,"title":"Trust & Connection","content":"<p>Subscribe to receive exclusive discounts, early access to sales, and fresh updates.<\/p>","button_text":"Subscribe","subtext":"","background":"","background_gradient":"","text_color":"","button_background":"","button_text_color":""}},"blocks_TYkdXj":{"type":"_blocks","name":"Professional footer","settings":{"full_width":true,"remove_vertical_spacing":false,"remove_horizontal_spacing":false,"content_alignment":"center","background":"","background_gradient":"","text_color":""}},"d2b15a90-7a7a-4203-843c-e2e06f00055e":{"type":"media-with-text","blocks":{"template--17108473413885__d2b15a90-7a7a-4203-843c-e2e06f00055e-image-1":{"type":"image","settings":{"image":"shopify:\/\/shop_images\/shutterstock_1883624404_pb205-Yeni-logo-RED.jpg","media_width":50,"media_position":"end","text_position":"place-self-center text-center","icon":"none","icon_width":48,"subheading":"","title":"Compact Design, Maximum Power!","content":"<p>Never run out of battery with our compact MagSafe powerbank that fits right in your pocket.<\/p><h6><\/h6>","link_text":"Discover","link_url":"https:\/\/technofashion.com\/products\/nautica-magnetic-portable-charger-urban-pb205","background":"#0e2041","background_gradient":"","text_color":"#ffffff","text_gradient":"","button_background":"","button_text_color":""}}},"block_order":["template--17108473413885__d2b15a90-7a7a-4203-843c-e2e06f00055e-image-1"],"disabled":true,"settings":{"full_width":true,"alternate_media_position":false,"spacing":"small"}},"feature-chart":{"type":"feature-chart","blocks":{"16644246508f6fa13a-0":{"type":"headings","settings":{"heading_1":"Heading 1","heading_2":"Heading 2","heading_3":"Heading 3","heading_4":"Heading 4","heading_5":"","heading_6":"","heading_7":"","heading_8":"","heading_9":"","heading_10":"","heading_11":"","heading_12":"","heading_13":"","heading_14":"","heading_15":"","heading_16":"","heading_17":"","heading_18":"","heading_19":"","heading_20":""}},"16644246508f6fa13a-1":{"type":"values","settings":{"product":"","value_1":"<p>Yes<\/p>","value_2":"<p>Yes<\/p>","value_3":"<p>No<\/p>","value_4":"<p>No<\/p>","value_5":"","value_6":"","value_7":"","value_8":"","value_9":"","value_10":"","value_11":"","value_12":"","value_13":"","value_14":"","value_15":"","value_16":"","value_17":"","value_18":"","value_19":"","value_20":"","view_button_background":"","view_button_text_color":""}},"16644246508f6fa13a-2":{"type":"values","settings":{"product":"","value_1":"<p>No<\/p>","value_2":"<p>Yes<\/p>","value_3":"<p>Yes<\/p>","value_4":"<p>No<\/p>","value_5":"","value_6":"","value_7":"","value_8":"","value_9":"","value_10":"","value_11":"","value_12":"","value_13":"","value_14":"","value_15":"","value_16":"","value_17":"","value_18":"","value_19":"","value_20":"","view_button_background":"","view_button_text_color":""}}},"block_order":["16644246508f6fa13a-0","16644246508f6fa13a-1","16644246508f6fa13a-2"],"disabled":true,"settings":{"full_width":true,"subheading":"Compare","title":"Product specification","content":"<p>Give your customers useful information about your products and showcase differences between them.<\/p>","button_text":"","button_url":"","text_position":"start","max_rows":5,"view_all_text":"View all","view_less_text":"View less","view_product":"View","viewing_product":"","show_product_swatch":true,"background":"","background_gradient":"","text_color":"","heading_color":"","heading_gradient":"","button_background":"","button_text_color":"","chart_background":"","chart_text_color":"","chart_true_false_color":""}},"17665770814b91b084":{"type":"_blocks","blocks":{"ai_gen_block_e0cfcf1_XbCmaK":{"type":"ai_gen_block_e0cfcf1","settings":{"heading":"Merry Christmas!","heading_size":60,"heading_color":"#ffffff","subheading":"Celebrate the season with our special holiday collection","subheading_size":24,"subheading_color":"#ffffff","text":"<p>Discover magical gifts and festive deals that bring joy to your loved ones this Christmas season.<\/p>","text_size":16,"text_color":"#ffffff","text_alignment":"center","spacing_between_elements":20,"button_text":"Shop holiday collection","button_link":"","button_text_size":16,"button_background":"#ffffff","button_text_color":"#c41e3a","button_hover_background":"#ffd700","button_hover_text_color":"#c41e3a","button_border_radius":30,"button_padding_vertical":16,"button_padding_horizontal":40,"background_color_1":"#c41e3a","background_color_2":"#8b0000","enable_twinkling":true,"light_count":50,"light_size":8,"light_color_1":"#ffd700","light_color_2":"#ffffff","light_color_3":"#00ff00","light_color_4":"#ff0000","enable_glow":true,"glow_intensity":15,"enable_sparkles":true,"sparkle_count":30,"sparkle_color":"#ffffff","enable_snow":true,"snow_count":25,"snow_color":"#ffffff","content_width":800,"padding_top":100,"padding_bottom":100,"padding_horizontal":30,"desktop_width_percent":100},"blocks":{}}},"block_order":["ai_gen_block_e0cfcf1_XbCmaK"],"settings":{"full_width":false,"remove_vertical_spacing":false,"remove_horizontal_spacing":false,"content_alignment":"center","background":"","background_gradient":"","text_color":""}}},"order":["blocks_ffzUhn","slideshow_7NhrYR","slideshow_3AeULA","rich_text_PUBkzp","blocks_inKyWH","image_with_text_overlay_KjA6Kx","floating_shoppable_video_zQj44U","17582056850b7087e9","featured-collection","shop_the_look_mxWpqY","media_grid_X8ykAQ","related_products_emVex9","media_grid_8phRqR","media_grid_VY68x8","17581206290497c4ee","blocks_7irXGg","custom_hover_slider_tqphQi","custom_slider_for_mobile_XmKjhG","blocks_39jzMM","multi_column_pXknzU","newsletter_BCzMcx","blocks_TYkdXj","d2b15a90-7a7a-4203-843c-e2e06f00055e","feature-chart","17665770814b91b084"]}
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "blocks_ffzUhn": {
+      "type": "_blocks",
+      "blocks": {
+        "ai_gen_block_ea35d1e_NbAyCR": {
+          "type": "ai_gen_block_ea35d1e",
+          "disabled": true,
+          "settings": {
+            "show_badge": true,
+            "badge_text": "Christmas Sale",
+            "badge_background": "#ba0e0e",
+            "badge_text_color": "#ffffff",
+            "badge_font_size": 12,
+            "badge_font_weight": "700",
+            "badge_text_transform": "uppercase",
+            "badge_letter_spacing": 1,
+            "badge_padding_vertical": 6,
+            "badge_padding_horizontal": 12,
+            "badge_border_radius": 20,
+            "banner_text": "Celebrate Christmas with deals, gifts, and rewards",
+            "text_color": "#ffffff",
+            "text_font_size": 15,
+            "text_font_weight": "500",
+            "link_text": "Shop now",
+            "link_url": "https://technofashion.com/collections/best-selling-products",
+            "link_color": "#ffffff",
+            "link_font_size": 14,
+            "link_font_weight": "700",
+            "link_text_decoration": "none",
+            "background_gradient": "linear-gradient(135deg, rgba(240, 23, 23, 1), rgba(186, 14, 14, 1) 100%)",
+            "show_sparkles": false,
+            "sparkle_color": "#ffffff",
+            "sparkle_size": 12,
+            "sparkle_opacity": 0.5,
+            "padding_vertical": 16,
+            "padding_horizontal": 32,
+            "content_gap": 16
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "ai_gen_block_ea35d1e_NbAyCR"
+      ],
+      "custom_css": [
+        "section {padding-left: 0; padding-right: 0;}"
+      ],
+      "name": "New arrival banner",
+      "settings": {
+        "full_width": true,
+        "remove_vertical_spacing": true,
+        "remove_horizontal_spacing": true,
+        "content_alignment": "center",
+        "background": "",
+        "background_gradient": "",
+        "text_color": ""
+      }
+    },
+    "slideshow_7NhrYR": {
+      "type": "slideshow",
+      "blocks": {
+        "video_bVrbiM": {
+          "type": "video",
+          "settings": {
+            "video": "shopify://files/videos/vers6.mp4",
+            "mobile_video": "shopify://files/videos/ok pinterst.mp4",
+            "content_max_width": 780,
+            "mobile_text_position": "place-self-center text-center",
+            "desktop_text_position": "sm:place-self-center sm:text-center",
+            "subheading": "",
+            "title": "",
+            "heading_tag": "h0",
+            "button_text": "",
+            "button_link": "",
+            "text_color": "#ffffff",
+            "button_background": "#ffffff",
+            "button_text_color": "#000000",
+            "overlay_color": "#000000",
+            "overlay_opacity": 0,
+            "background": "",
+            "background_gradient": ""
+          }
+        }
+      },
+      "block_order": [
+        "video_bVrbiM"
+      ],
+      "custom_css": [
+        "{cursor: pointer; transition: transform 0.35s ease;}",
+        " {transform: scale(1.02);}"
+      ],
+      "name": "Slideshow",
+      "settings": {
+        "full_width": true,
+        "allow_transparent_header": true,
+        "show_initial_transition": true,
+        "image_size": "auto",
+        "controls_type": "dots",
+        "transition_type": "fade_with_text",
+        "autoplay": false,
+        "cycle_speed": 14,
+        "background": "#f2f2f2",
+        "background_gradient": ""
+      }
+    },
+    "1766648496ca99d16f": {
+      "type": "_blocks",
+      "blocks": {
+        "ai_gen_block_b600f04_CERnQn": {
+          "type": "ai_gen_block_b600f04",
+          "settings": {
+            "youtube_url": "https://studio.youtube.com/video/dQD43Xc4-ug/edit",
+            "autoplay": true,
+            "loop": true,
+            "mute": true,
+            "show_controls": true,
+            "hide_on_mobile": false,
+            "hide_on_desktop": false,
+            "heading": "",
+            "heading_size_mobile": 32,
+            "heading_size_desktop": 56,
+            "heading_color": "#ffffff",
+            "subheading": "",
+            "subheading_size_mobile": 14,
+            "subheading_size_desktop": 18,
+            "subheading_color": "#ffffff",
+            "text_alignment": "center",
+            "button_text": "",
+            "button_link": "",
+            "button_background": "#020082",
+            "button_text_color": "#ffffff",
+            "button_hover_background": "#ffffff",
+            "button_hover_text_color": "#020082"
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "ai_gen_block_b600f04_CERnQn"
+      ],
+      "settings": {
+        "full_width": false,
+        "remove_vertical_spacing": false,
+        "remove_horizontal_spacing": false,
+        "content_alignment": "center",
+        "background": "",
+        "background_gradient": "",
+        "text_color": ""
+      }
+    },
+    "rich_text_PUBkzp": {
+      "type": "rich-text",
+      "disabled": true,
+      "custom_css": [
+        "div {margin-bottom: 1px; margin-top: -10px;}"
+      ],
+      "name": "Rich text",
+      "settings": {
+        "full_width": true,
+        "content_width": "small",
+        "text_position": "start",
+        "background": "",
+        "background_gradient": "",
+        "text_color": ""
+      }
+    },
+    "blocks_inKyWH": {
+      "type": "_blocks",
+      "blocks": {
+        "rich_text_qtVbkx": {
+          "type": "rich-text",
+          "name": "Rich text",
+          "disabled": true,
+          "settings": {
+            "text": "<p>Future Products</p>",
+            "content_width": "large",
+            "text_alignment": "center"
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "rich_text_qtVbkx"
+      ],
+      "custom_css": [
+        "p {padding-left: 20px; font-size: 30px;}",
+        " {margin-top: 10px; margin-bottom: -5px;}"
+      ],
+      "settings": {
+        "full_width": true,
+        "remove_vertical_spacing": true,
+        "remove_horizontal_spacing": true,
+        "content_alignment": "left",
+        "background": "",
+        "background_gradient": "",
+        "text_color": ""
+      }
+    },
+    "image_with_text_overlay_KjA6Kx": {
+      "type": "image-with-text-overlay",
+      "blocks": {
+        "subheading_LWgrnB": {
+          "type": "subheading",
+          "disabled": true,
+          "settings": {
+            "text": "Own The Moment."
+          }
+        },
+        "heading_HxiP7G": {
+          "type": "heading",
+          "disabled": true,
+          "settings": {
+            "text": "Own The Sound.",
+            "heading_tag": "h2"
+          }
+        },
+        "richtext_hPwUfY": {
+          "type": "richtext",
+          "disabled": true,
+          "settings": {
+            "content": "<p>Seamlessly blend premium audio with vibrant, <br/>rhythm-synced light effects. <br/>Your party, your soundtrack, your style.</p>"
+          }
+        },
+        "button_bJ6Vm9": {
+          "type": "button",
+          "name": "Button2",
+          "settings": {
+            "style": "fill",
+            "size": "xl",
+            "text": "Shop Now",
+            "url": "shopify://collections/audio",
+            "background": "#0e2041",
+            "text_color": "#ffffff"
+          }
+        }
+      },
+      "block_order": [
+        "subheading_LWgrnB",
+        "heading_HxiP7G",
+        "richtext_hPwUfY",
+        "button_bJ6Vm9"
+      ],
+      "disabled": true,
+      "custom_css": [
+        "@media (max-width: 879px) {a {display: none; }}"
+      ],
+      "name": "Image with text overlay + marquee",
+      "settings": {
+        "full_width": true,
+        "allow_transparent_header": false,
+        "enable_parallax": false,
+        "image_size": "auto",
+        "image": "shopify://shop_images/Artboard_1_1fb475cc-e7c5-4606-97b0-bedab8de526c.jpg",
+        "mobile_image": "shopify://shop_images/MOBIL_BANNER_audio_copy.jpg",
+        "mobile_text_position": "place-self-end-start text-start",
+        "desktop_text_position": "sm:place-self-end-center sm:text-center",
+        "text_color": "#0e2041",
+        "overlay_color": "#000000",
+        "overlay_opacity": 0,
+        "show_marquee": false,
+        "marquee_speed": 30
+      }
+    },
+    "floating_shoppable_video_zQj44U": {
+      "type": "floating-shoppable-video",
+      "blocks": {
+        "video_gdcEAQ": {
+          "type": "video",
+          "settings": {
+            "video_url": "https://cdn.shopify.com/videos/c/o/v/e0d742b6aa6f4d80bf4ab555ecf17dbe.mp4",
+            "cta_text": "Ürünü Gör",
+            "cta_url": "",
+            "cta_newtab": true
+          }
+        },
+        "video_miKGpx": {
+          "type": "video",
+          "settings": {
+            "video_url": "https://cdn.shopify.com/videos/c/o/v/862d72a8edb24387aad30464668c09a9.mp4",
+            "cta_text": "Ürünü Gör",
+            "cta_url": "",
+            "cta_newtab": true
+          }
+        },
+        "video_DTBmpM": {
+          "type": "video",
+          "settings": {
+            "video_url": "https://cdn.shopify.com/videos/c/o/v/2c5e7d1c9beb40a19a310624ea76dbf6.mp4",
+            "cta_text": "Ürünü Gör",
+            "cta_url": "",
+            "cta_newtab": true
+          }
+        }
+      },
+      "block_order": [
+        "video_gdcEAQ",
+        "video_miKGpx",
+        "video_DTBmpM"
+      ],
+      "custom_css": [
+        "{z-index: 50 !important;}"
+      ],
+      "name": "Floating Shoppable Video",
+      "settings": {
+        "position": "bottom-left",
+        "widget_size": 280,
+        "offset": 18,
+        "hide_on_mobile": false
+      }
+    },
+    "17582056850b7087e9": {
+      "type": "_blocks",
+      "blocks": {
+        "ai_gen_block_2b6b25e_mbEUj9": {
+          "type": "ai_gen_block_2b6b25e",
+          "disabled": true,
+          "settings": {
+            "headline": "Discover Audio, Chargers & More — Explore Top Categories",
+            "headline_size": 32,
+            "headline_color": "#1a1a1a",
+            "feature_1_text": "Premium Quality",
+            "feature_2_text": "Fast Shipping",
+            "feature_3_text": "24/7 Support",
+            "feature_text_size": 14,
+            "feature_text_color": "#6a6a6a",
+            "divider_color": "#1a1a1a",
+            "background_color": "#ffffff",
+            "border_radius": 24
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "ai_gen_block_2b6b25e_mbEUj9"
+      ],
+      "custom_css": [
+        "{max-width: 1800px; margin: auto;}"
+      ],
+      "settings": {
+        "full_width": true,
+        "remove_vertical_spacing": false,
+        "remove_horizontal_spacing": false,
+        "content_alignment": "center",
+        "background": "",
+        "background_gradient": "",
+        "text_color": ""
+      }
+    },
+    "featured-collection": {
+      "type": "featured-collection",
+      "custom_css": [
+        "img {transform: scale(0.7);}",
+        " {font-size: 16px; font-family: manrope; margin-top: 0px;}",
+        "@media (min-width: 768px) {img {transform: scale(1); box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px; border-radius: 10px; padding: 10px; }}"
+      ],
+      "settings": {
+        "collection": "featured-products",
+        "products": "{{ section.settings.collection.products }}",
+        "full_width": false,
+        "stack_products": false,
+        "show_progress_bar": true,
+        "products_count": 10,
+        "products_per_row_mobile": "1",
+        "products_per_row_desktop": 5,
+        "subheading": "",
+        "title": "",
+        "content": "",
+        "link_url": "shopify://collections/featured-products",
+        "link_text": "",
+        "background": "",
+        "background_gradient": "",
+        "text_color": "",
+        "heading_color": "",
+        "heading_gradient": "",
+        "product_card_background": "",
+        "product_card_text_color": ""
+      }
+    },
+    "shop_the_look_mxWpqY": {
+      "type": "shop-the-look",
+      "blocks": {
+        "product_MKwjqR": {
+          "type": "product",
+          "settings": {
+            "product": "nautica-turan-core-20-charging-bundle-2-20w-wall-chargers-2-usb-c-to-usb-c-cables",
+            "horizontal_position": 16,
+            "vertical_position": 49
+          }
+        },
+        "product_twTV4n": {
+          "type": "product",
+          "settings": {
+            "product": "nautica-turan-qmag-series-magnetic-phone-holder",
+            "horizontal_position": 30,
+            "vertical_position": 39
+          }
+        },
+        "product_6zcWaG": {
+          "type": "product",
+          "settings": {
+            "product": "nautica-portable-charger-turan-pb2100-series",
+            "horizontal_position": 53,
+            "vertical_position": 26
+          }
+        },
+        "product_iBAkUC": {
+          "type": "product",
+          "settings": {
+            "product": "portable-bluetooth-speaker-nautica",
+            "horizontal_position": 77,
+            "vertical_position": 35
+          }
+        },
+        "product_CAdTwd": {
+          "type": "product",
+          "settings": {
+            "product": "nautica-portable-bluetooth-speaker-sp500",
+            "horizontal_position": 51,
+            "vertical_position": 65
+          }
+        },
+        "product_NjN3aT": {
+          "type": "product",
+          "settings": {
+            "product": "nautica-true-wireless-earbuds-t710",
+            "horizontal_position": 72,
+            "vertical_position": 68
+          }
+        },
+        "product_zHL83w": {
+          "type": "product",
+          "settings": {
+            "product": "nautica-turan-usb-c-to-usb-c-charging-cable-60w-fast-charge-4ft-3-pack",
+            "horizontal_position": 40,
+            "vertical_position": 92
+          }
+        }
+      },
+      "block_order": [
+        "product_MKwjqR",
+        "product_twTV4n",
+        "product_6zcWaG",
+        "product_iBAkUC",
+        "product_CAdTwd",
+        "product_NjN3aT",
+        "product_zHL83w"
+      ],
+      "custom_css": [
+        "{margin: 40px;}"
+      ],
+      "name": "Shop the look",
+      "settings": {
+        "full_width": true,
+        "stack_mobile": false,
+        "image": "shopify://shop_images/shoptolook.png",
+        "title": "Shop the look",
+        "content": "",
+        "background": "",
+        "background_gradient": "",
+        "text_color": "",
+        "heading_color": "",
+        "heading_gradient": "",
+        "product_card_background": "",
+        "product_card_text_color": "",
+        "product_card_mobile_background": "",
+        "product_card_mobile_text_color": "",
+        "background_dots": "#ffffff"
+      }
+    },
+    "media_grid_X8ykAQ": {
+      "type": "media-grid",
+      "blocks": {
+        "image_nFiDhY": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/categorn_image.png",
+            "title": "Nautica Nayman SP700 Portable Bluetooth Speaker with an IPX7 Waterproof",
+            "heading_tag": "h5",
+            "link_url": "shopify://products/portable-bluetooth-speaker-nautica",
+            "link_text": "Ready to Go",
+            "mobile_text_position": "place-self-end-center text-center",
+            "desktop_column_span": 4,
+            "desktop_row_span": 2,
+            "desktop_text_position": "sm:place-self-end-center sm:text-center",
+            "background": "#ffffff",
+            "background_gradient": "",
+            "text_color": "#ffffff",
+            "text_gradient": "",
+            "button_background": "#0e2041",
+            "button_text_color": "#ffffff",
+            "overlay_color": "#000000",
+            "overlay_opacity": 0
+          }
+        }
+      },
+      "block_order": [
+        "image_nFiDhY"
+      ],
+      "custom_css": [
+        "p {text-shadow: 0 3px 3px rgba(0, 0, 0, 0.85), 0 8px 20px rgba(0, 0, 0, 0.65), 0 18px 40px rgba(0, 0, 0, 0.5);}"
+      ],
+      "name": "Media grid",
+      "settings": {
+        "full_width": true,
+        "reduce_width": true,
+        "desktop_row_height": 290,
+        "mobile_row_height": 150,
+        "background": "",
+        "background_gradient": ""
+      }
+    },
+    "related_products_emVex9": {
+      "type": "related-products",
+      "custom_css": [
+        "img {transform: scale(0.7);}",
+        " {font-size: 16px; font-family: manrope; margin-top: 0px;}",
+        "@media (min-width: 768px) {img {transform: scale(1); box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px; border-radius: 10px; padding: 10px; }}"
+      ],
+      "name": "Featured collection",
+      "settings": {
+        "collection": "new-arrival",
+        "products": [],
+        "full_width": true,
+        "stack_products": true,
+        "show_progress_bar": false,
+        "products_count": 16,
+        "products_per_row_mobile": "2",
+        "products_per_row_desktop": 3,
+        "subheading": "",
+        "title": "New Arrival",
+        "content": "",
+        "link_url": "",
+        "link_text": "View all",
+        "background": "",
+        "background_gradient": "",
+        "text_color": "",
+        "heading_color": "",
+        "heading_gradient": "",
+        "product_card_background": "",
+        "product_card_text_color": ""
+      }
+    },
+    "media_grid_8phRqR": {
+      "type": "media-grid",
+      "blocks": {
+        "image_fhgBHH": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Gemini_Generated_Image_pmd0zvpmd0zvpmd0.png",
+            "title": "Nautica PH120 Magnetic Phone Holder",
+            "heading_tag": "h3",
+            "link_url": "https://technofashion.com/products/nautica-ph120-magnetic-phone-holder-3-in-1-car-mount-for-dashboard-windshield-air-vent-adjustable-distance-strong-magnetic-grip",
+            "link_text": "Shop",
+            "mobile_text_position": "place-self-end-center text-center",
+            "desktop_column_span": 2,
+            "desktop_row_span": 2,
+            "desktop_text_position": "sm:place-self-start-center sm:text-center",
+            "background": "#000000",
+            "background_gradient": "",
+            "text_color": "#f2f2f2",
+            "text_gradient": "",
+            "button_background": "#0e2041",
+            "button_text_color": "#ffffff",
+            "overlay_color": "#000000",
+            "overlay_opacity": 0
+          }
+        },
+        "image_azekUw": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Gemini_Generated_Image_f8yzamf8yzamf8yz.png",
+            "title": "Nautica PH 200 Universal Car Phone Holder",
+            "heading_tag": "h3",
+            "link_url": "https://technofashion.com/products/nautica-universal-car-phone-holder-urban-ph-200",
+            "link_text": "Shop",
+            "mobile_text_position": "place-self-end-center text-center",
+            "desktop_column_span": 2,
+            "desktop_row_span": 2,
+            "desktop_text_position": "sm:place-self-start-center sm:text-center",
+            "background": "#000000",
+            "background_gradient": "",
+            "text_color": "#ffffff",
+            "text_gradient": "",
+            "button_background": "#000000",
+            "button_text_color": "#ffffff",
+            "overlay_color": "#000000",
+            "overlay_opacity": 0
+          }
+        }
+      },
+      "block_order": [
+        "image_fhgBHH",
+        "image_azekUw"
+      ],
+      "disabled": true,
+      "custom_css": [
+        "a {text-shadow: 1px 1px 2px gray, 0 0 1em gray, 0 0 0.2em gray;}"
+      ],
+      "name": "Media grid",
+      "settings": {
+        "full_width": true,
+        "reduce_width": false,
+        "desktop_row_height": 290,
+        "mobile_row_height": 150,
+        "background": "",
+        "background_gradient": ""
+      }
+    },
+    "media_grid_VY68x8": {
+      "type": "media-grid",
+      "blocks": {
+        "image_jNknnL": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/PH120_2.png",
+            "title": "",
+            "heading_tag": "h4",
+            "link_url": "https://technofashion.com/products/nautica-ph120-magnetic-phone-holder-3-in-1-car-mount-for-dashboard-windshield-air-vent-adjustable-distance-strong-magnetic-grip",
+            "link_text": "Nautica PH120",
+            "mobile_text_position": "place-self-end-center text-center",
+            "desktop_column_span": 1,
+            "desktop_row_span": 2,
+            "desktop_text_position": "sm:place-self-end-center sm:text-center",
+            "background": "#1a1a1a",
+            "background_gradient": "",
+            "text_color": "#ffffff",
+            "text_gradient": "",
+            "button_background": "#0e2041",
+            "button_text_color": "#ffffff",
+            "overlay_color": "#000000",
+            "overlay_opacity": 0
+          }
+        },
+        "image_AywfLE": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/PH200_01.webp",
+            "title": "",
+            "heading_tag": "h4",
+            "link_url": "https://technofashion.com/products/nautica-universal-car-phone-holder-urban-ph-200",
+            "link_text": "Nautica PH 200",
+            "mobile_text_position": "place-self-end-center text-center",
+            "desktop_column_span": 1,
+            "desktop_row_span": 2,
+            "desktop_text_position": "sm:place-self-end-center sm:text-center",
+            "background": "#000000",
+            "background_gradient": "",
+            "text_color": "#0e2041",
+            "text_gradient": "",
+            "button_background": "#0e2041",
+            "button_text_color": "#ffffff",
+            "overlay_color": "#000000",
+            "overlay_opacity": 0
+          }
+        }
+      },
+      "block_order": [
+        "image_jNknnL",
+        "image_AywfLE"
+      ],
+      "disabled": true,
+      "name": "Media grid",
+      "settings": {
+        "full_width": true,
+        "reduce_width": false,
+        "desktop_row_height": 290,
+        "mobile_row_height": 150,
+        "background": "",
+        "background_gradient": ""
+      }
+    },
+    "17581206290497c4ee": {
+      "type": "_blocks",
+      "blocks": {
+        "image_Ep89Cr": {
+          "type": "image",
+          "name": "Image",
+          "disabled": true,
+          "settings": {
+            "image": "shopify://shop_images/BANSP700.jpg",
+            "alignment": "center",
+            "width_mode": "full_width",
+            "max_width": 600,
+            "mobile_max_width": 400
+          },
+          "blocks": {}
+        },
+        "ai_gen_block_5907379_mayQX7": {
+          "type": "ai_gen_block_5907379",
+          "disabled": true,
+          "settings": {
+            "section_background": "#ffffff",
+            "card_background": "#ffffff",
+            "column_spacing": 30,
+            "card_border_radius": 12,
+            "image_height": 250,
+            "content_padding": 25,
+            "text_alignment": "center",
+            "title_size": 24,
+            "title_color": "#1a1a1a",
+            "description_size": 16,
+            "description_color": "#666666",
+            "button_background": "#1a1a1a",
+            "button_text_color": "#ffffff",
+            "button_hover_background": "#f0c417",
+            "button_hover_text_color": "#1a1a1a",
+            "button_border_radius": 24,
+            "button_text_size": 14,
+            "category_1_image": "shopify://shop_images/aasd.jpg",
+            "category_1_title": "Wall Charger",
+            "category_1_description": "Nautica 30W Dual Port Wall Charger",
+            "category_1_link": "shopify://products/nautica-pd-20w-usb-c-wall-charger-ch110",
+            "category_1_button_text": "Learn More",
+            "category_2_image": "shopify://shop_images/ss1-PB_Marketing-Renders.1529.jpg",
+            "category_2_title": "Powerbank",
+            "category_2_description": "Nautica Magnetic Portable Charger",
+            "category_2_link": "shopify://collections/mobile-accessories",
+            "category_2_button_text": "Learn More",
+            "category_3_image": "shopify://shop_images/SP600_Nude_1_9a25b1b6-d4e2-4669-9db1-9990623d5d32.png",
+            "category_3_title": "Cables",
+            "category_3_description": "Fast and efficient charging",
+            "category_3_link": "shopify://collections/cables",
+            "category_3_button_text": "Learn More"
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "image_Ep89Cr",
+        "ai_gen_block_5907379_mayQX7"
+      ],
+      "custom_css": [
+        "h3 {padding: 20px;}"
+      ],
+      "settings": {
+        "full_width": true,
+        "remove_vertical_spacing": true,
+        "remove_horizontal_spacing": true,
+        "content_alignment": "left",
+        "background": "",
+        "background_gradient": "",
+        "text_color": ""
+      }
+    },
+    "blocks_7irXGg": {
+      "type": "_blocks",
+      "blocks": {
+        "rich_text_U8GLKG": {
+          "type": "rich-text",
+          "name": "Rich text",
+          "settings": {
+            "text": "<p>Non-Stop Music All Day Long</p>",
+            "content_width": "large",
+            "text_alignment": "center"
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "rich_text_U8GLKG"
+      ],
+      "custom_css": [
+        "p {padding-left: 20px; font-size: 30px;}",
+        " {margin-top: 10px; margin-bottom: 10px;}"
+      ],
+      "settings": {
+        "full_width": true,
+        "remove_vertical_spacing": true,
+        "remove_horizontal_spacing": true,
+        "content_alignment": "left",
+        "background": "",
+        "background_gradient": "",
+        "text_color": ""
+      }
+    },
+    "custom_hover_slider_tqphQi": {
+      "type": "custom-hover-slider",
+      "blocks": {
+        "slide_UwBrUN": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/SP600N12.png",
+            "title": "Freedom to Go Anywhere",
+            "subtitle": "With its specially designed carrying strap, you can effortlessly take your music anywhere. Easily attach it to your bag, backpack, or wrist to enjoy your music on the move.",
+            "link": "shopify://products/portable-bluetooth-speaker"
+          }
+        },
+        "slide_dyJCjw": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/DYNMAIC.jpg",
+            "title": "Dynamic Ambient Light",
+            "subtitle": "Create the perfect ambiance for your mood with the Nautica Urban SP600's dynamic light bar. Transform the rhythm of your music into colors with 5 different lighting effect options.",
+            "link": "shopify://products/portable-bluetooth-speaker"
+          }
+        },
+        "slide_nWharW": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/CAMPP.jpg",
+            "title": "Non-Stop Music All Day Long",
+            "subtitle": "With up to 16 hours of battery life, you can listen to your music non-stop from sunset to sunrise. It's the perfect companion for parties, camping trips, and all outdoor activities.",
+            "link": "shopify://products/portable-bluetooth-speaker"
+          }
+        },
+        "slide_pk3w8G": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/DYNMAIC.png",
+            "title": "Ready for Every Splash",
+            "subtitle": "This speaker keeps the music goingrain or shine with IPX5 splash-proof protection. Perfect for beaches,pool parties, and everyday adventures.",
+            "link": "shopify://products/portable-bluetooth-speaker"
+          }
+        },
+        "slide_VGBqYW": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/DYNMAIC_1.jpg",
+            "title": "Quick Connection",
+            "subtitle": "Equipped with advanced Bluetooth 5.3 tech, this wireless portable speaker allows you move around while still keeping the beats flowing; Get your music started in seconds",
+            "link": "shopify://products/portable-bluetooth-speaker"
+          }
+        }
+      },
+      "block_order": [
+        "slide_UwBrUN",
+        "slide_dyJCjw",
+        "slide_nWharW",
+        "slide_pk3w8G",
+        "slide_VGBqYW"
+      ],
+      "custom_css": [
+        "* {text-shadow: 8px 8px 20px black !important;}"
+      ],
+      "name": "Hover Expand Slider",
+      "settings": {}
+    },
+    "custom_slider_for_mobile_XmKjhG": {
+      "type": "custom-slider-for-mobile",
+      "blocks": {
+        "slide_z8E4DJ": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/SP600N12.png",
+            "title": "Freedom to Go Anywhere",
+            "subtitle": "",
+            "link": "shopify://products/portable-bluetooth-speaker"
+          }
+        },
+        "slide_38PVNJ": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/DYNMAIC.jpg",
+            "title": "Dynamic Ambient Light",
+            "subtitle": "",
+            "link": "shopify://products/portable-bluetooth-speaker"
+          }
+        },
+        "slide_tUbkxd": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/CAMPP.jpg",
+            "title": "Non-Stop Music All Day Long",
+            "subtitle": "",
+            "link": "shopify://products/portable-bluetooth-speaker"
+          }
+        },
+        "slide_FkMtFU": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/SPLAS.jpg",
+            "title": "Ready for Every Splash",
+            "subtitle": "",
+            "link": "shopify://products/portable-bluetooth-speaker"
+          }
+        }
+      },
+      "block_order": [
+        "slide_z8E4DJ",
+        "slide_38PVNJ",
+        "slide_tUbkxd",
+        "slide_FkMtFU"
+      ],
+      "name": "Mobile Swipe Slider",
+      "settings": {}
+    },
+    "blocks_39jzMM": {
+      "type": "_blocks",
+      "name": "Newsletter signup",
+      "settings": {
+        "full_width": true,
+        "remove_vertical_spacing": false,
+        "remove_horizontal_spacing": false,
+        "content_alignment": "center",
+        "background": "",
+        "background_gradient": "",
+        "text_color": ""
+      }
+    },
+    "multi_column_pXknzU": {
+      "type": "multi-column",
+      "blocks": {
+        "item_yfgpdr": {
+          "type": "item",
+          "settings": {
+            "show_controls": false,
+            "column_size": "3",
+            "title": "30-DAY MONEY-BACK GUARANTEE",
+            "heading_tag": "h6",
+            "content": "<p><strong>Return</strong> any item within <strong>30 days</strong> for a hassle-free, <strong>full refund</strong>.</p>",
+            "link_url": "",
+            "link_text": "",
+            "link_style": "link"
+          }
+        },
+        "item_3Njigq": {
+          "type": "item",
+          "settings": {
+            "show_controls": false,
+            "column_size": "3",
+            "title": "EASY RETURNS",
+            "heading_tag": "h6",
+            "content": "<p>Not 100% satisfied? Send it back within a month. <strong>We make returns simple and quick.</strong></p>",
+            "link_url": "",
+            "link_text": "",
+            "link_style": "link"
+          }
+        },
+        "item_LEt7Yp": {
+          "type": "item",
+          "settings": {
+            "show_controls": false,
+            "column_size": "3",
+            "title": "PAY WITH FLEXIBILITY",
+            "heading_tag": "h6",
+            "content": "<p>Pay now with all major cards or spread the cost with <strong>easy installment options</strong>.</p>",
+            "link_url": "",
+            "link_text": "",
+            "link_style": "link"
+          }
+        },
+        "item_JdqpnT": {
+          "type": "item",
+          "settings": {
+            "show_controls": false,
+            "column_size": "2",
+            "title": "FLEXIBLE CHECKOUT",
+            "heading_tag": "h6",
+            "content": "<p>Complete your purchase <strong>immediately</strong> or use a <strong>Buy Now, Pay Later</strong> service like checkout.</p>",
+            "link_url": "shopify://collections/all",
+            "link_text": "Shop",
+            "link_style": "link"
+          }
+        },
+        "item_JGzJX9": {
+          "type": "item",
+          "settings": {
+            "show_controls": false,
+            "column_size": "2",
+            "title": "WE'RE HERE TO HELP",
+            "heading_tag": "h6",
+            "content": "<p><strong>Contact our expert support team</strong> via email or <strong>live chat</strong> for instant assistance.</p>",
+            "link_url": "shopify://pages/contact",
+            "link_text": "Contact",
+            "link_style": "link"
+          }
+        }
+      },
+      "block_order": [
+        "item_yfgpdr",
+        "item_3Njigq",
+        "item_LEt7Yp",
+        "item_JdqpnT",
+        "item_JGzJX9"
+      ],
+      "custom_css": [
+        "div div div div {background-color: white; color: black; padding: 10px; border-radius: 10px; margin: 10px;}",
+        " {}"
+      ],
+      "name": "Multi-column",
+      "settings": {
+        "full_width": true,
+        "stack_on_mobile": false,
+        "gap": "small",
+        "text_alignment": "start",
+        "subheading": "",
+        "title": "FAST & RELIABLE DELIVERY",
+        "content": "<p>Your tech is delivered swiftly in <strong>3-5 business days</strong>!</p>",
+        "background": "",
+        "background_gradient": "linear-gradient(46deg, rgba(25, 25, 112, 1) 22%, rgba(12, 134, 122, 1) 90%)",
+        "text_color": "#ffffff"
+      }
+    },
+    "newsletter_BCzMcx": {
+      "type": "newsletter",
+      "name": "Newsletter",
+      "settings": {
+        "full_width": false,
+        "show_icon": false,
+        "title": "Trust & Connection",
+        "content": "<p>Subscribe to receive exclusive discounts, early access to sales, and fresh updates.</p>",
+        "button_text": "Subscribe",
+        "subtext": "",
+        "background": "",
+        "background_gradient": "",
+        "text_color": "",
+        "button_background": "",
+        "button_text_color": ""
+      }
+    },
+    "blocks_TYkdXj": {
+      "type": "_blocks",
+      "name": "Professional footer",
+      "settings": {
+        "full_width": true,
+        "remove_vertical_spacing": false,
+        "remove_horizontal_spacing": false,
+        "content_alignment": "center",
+        "background": "",
+        "background_gradient": "",
+        "text_color": ""
+      }
+    },
+    "d2b15a90-7a7a-4203-843c-e2e06f00055e": {
+      "type": "media-with-text",
+      "blocks": {
+        "template--17108473413885__d2b15a90-7a7a-4203-843c-e2e06f00055e-image-1": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/shutterstock_1883624404_pb205-Yeni-logo-RED.jpg",
+            "media_width": 50,
+            "media_position": "end",
+            "text_position": "place-self-center text-center",
+            "icon": "none",
+            "icon_width": 48,
+            "subheading": "",
+            "title": "Compact Design, Maximum Power!",
+            "content": "<p>Never run out of battery with our compact MagSafe powerbank that fits right in your pocket.</p><h6></h6>",
+            "link_text": "Discover",
+            "link_url": "https://technofashion.com/products/nautica-magnetic-portable-charger-urban-pb205",
+            "background": "#0e2041",
+            "background_gradient": "",
+            "text_color": "#ffffff",
+            "text_gradient": "",
+            "button_background": "",
+            "button_text_color": ""
+          }
+        }
+      },
+      "block_order": [
+        "template--17108473413885__d2b15a90-7a7a-4203-843c-e2e06f00055e-image-1"
+      ],
+      "disabled": true,
+      "settings": {
+        "full_width": true,
+        "alternate_media_position": false,
+        "spacing": "small"
+      }
+    },
+    "feature-chart": {
+      "type": "feature-chart",
+      "blocks": {
+        "16644246508f6fa13a-0": {
+          "type": "headings",
+          "settings": {
+            "heading_1": "Heading 1",
+            "heading_2": "Heading 2",
+            "heading_3": "Heading 3",
+            "heading_4": "Heading 4",
+            "heading_5": "",
+            "heading_6": "",
+            "heading_7": "",
+            "heading_8": "",
+            "heading_9": "",
+            "heading_10": "",
+            "heading_11": "",
+            "heading_12": "",
+            "heading_13": "",
+            "heading_14": "",
+            "heading_15": "",
+            "heading_16": "",
+            "heading_17": "",
+            "heading_18": "",
+            "heading_19": "",
+            "heading_20": ""
+          }
+        },
+        "16644246508f6fa13a-1": {
+          "type": "values",
+          "settings": {
+            "product": "",
+            "value_1": "<p>Yes</p>",
+            "value_2": "<p>Yes</p>",
+            "value_3": "<p>No</p>",
+            "value_4": "<p>No</p>",
+            "value_5": "",
+            "value_6": "",
+            "value_7": "",
+            "value_8": "",
+            "value_9": "",
+            "value_10": "",
+            "value_11": "",
+            "value_12": "",
+            "value_13": "",
+            "value_14": "",
+            "value_15": "",
+            "value_16": "",
+            "value_17": "",
+            "value_18": "",
+            "value_19": "",
+            "value_20": "",
+            "view_button_background": "",
+            "view_button_text_color": ""
+          }
+        },
+        "16644246508f6fa13a-2": {
+          "type": "values",
+          "settings": {
+            "product": "",
+            "value_1": "<p>No</p>",
+            "value_2": "<p>Yes</p>",
+            "value_3": "<p>Yes</p>",
+            "value_4": "<p>No</p>",
+            "value_5": "",
+            "value_6": "",
+            "value_7": "",
+            "value_8": "",
+            "value_9": "",
+            "value_10": "",
+            "value_11": "",
+            "value_12": "",
+            "value_13": "",
+            "value_14": "",
+            "value_15": "",
+            "value_16": "",
+            "value_17": "",
+            "value_18": "",
+            "value_19": "",
+            "value_20": "",
+            "view_button_background": "",
+            "view_button_text_color": ""
+          }
+        }
+      },
+      "block_order": [
+        "16644246508f6fa13a-0",
+        "16644246508f6fa13a-1",
+        "16644246508f6fa13a-2"
+      ],
+      "disabled": true,
+      "settings": {
+        "full_width": true,
+        "subheading": "Compare",
+        "title": "Product specification",
+        "content": "<p>Give your customers useful information about your products and showcase differences between them.</p>",
+        "button_text": "",
+        "button_url": "",
+        "text_position": "start",
+        "max_rows": 5,
+        "view_all_text": "View all",
+        "view_less_text": "View less",
+        "view_product": "View",
+        "viewing_product": "",
+        "show_product_swatch": true,
+        "background": "",
+        "background_gradient": "",
+        "text_color": "",
+        "heading_color": "",
+        "heading_gradient": "",
+        "button_background": "",
+        "button_text_color": "",
+        "chart_background": "",
+        "chart_text_color": "",
+        "chart_true_false_color": ""
+      }
+    },
+    "17665770814b91b084": {
+      "type": "_blocks",
+      "blocks": {
+        "ai_gen_block_e0cfcf1_XbCmaK": {
+          "type": "ai_gen_block_e0cfcf1",
+          "settings": {
+            "heading": "Merry Christmas!",
+            "heading_size": 60,
+            "heading_color": "#ffffff",
+            "subheading": "Celebrate the season with our special holiday collection",
+            "subheading_size": 24,
+            "subheading_color": "#ffffff",
+            "text": "<p>Discover magical gifts and festive deals that bring joy to your loved ones this Christmas season.</p>",
+            "text_size": 16,
+            "text_color": "#ffffff",
+            "text_alignment": "center",
+            "spacing_between_elements": 20,
+            "button_text": "Shop holiday collection",
+            "button_link": "",
+            "button_text_size": 16,
+            "button_background": "#ffffff",
+            "button_text_color": "#c41e3a",
+            "button_hover_background": "#ffd700",
+            "button_hover_text_color": "#c41e3a",
+            "button_border_radius": 30,
+            "button_padding_vertical": 16,
+            "button_padding_horizontal": 40,
+            "background_color_1": "#c41e3a",
+            "background_color_2": "#8b0000",
+            "enable_twinkling": true,
+            "light_count": 50,
+            "light_size": 8,
+            "light_color_1": "#ffd700",
+            "light_color_2": "#ffffff",
+            "light_color_3": "#00ff00",
+            "light_color_4": "#ff0000",
+            "enable_glow": true,
+            "glow_intensity": 15,
+            "enable_sparkles": true,
+            "sparkle_count": 30,
+            "sparkle_color": "#ffffff",
+            "enable_snow": true,
+            "snow_count": 25,
+            "snow_color": "#ffffff",
+            "content_width": 800,
+            "padding_top": 100,
+            "padding_bottom": 100,
+            "padding_horizontal": 30,
+            "desktop_width_percent": 100
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "ai_gen_block_e0cfcf1_XbCmaK"
+      ],
+      "settings": {
+        "full_width": false,
+        "remove_vertical_spacing": false,
+        "remove_horizontal_spacing": false,
+        "content_alignment": "center",
+        "background": "",
+        "background_gradient": "",
+        "text_color": ""
+      }
+    }
+  },
+  "order": [
+    "blocks_ffzUhn",
+    "slideshow_7NhrYR",
+    "1766648496ca99d16f",
+    "rich_text_PUBkzp",
+    "blocks_inKyWH",
+    "image_with_text_overlay_KjA6Kx",
+    "floating_shoppable_video_zQj44U",
+    "17582056850b7087e9",
+    "featured-collection",
+    "shop_the_look_mxWpqY",
+    "media_grid_X8ykAQ",
+    "related_products_emVex9",
+    "media_grid_8phRqR",
+    "media_grid_VY68x8",
+    "17581206290497c4ee",
+    "blocks_7irXGg",
+    "custom_hover_slider_tqphQi",
+    "custom_slider_for_mobile_XmKjhG",
+    "blocks_39jzMM",
+    "multi_column_pXknzU",
+    "newsletter_BCzMcx",
+    "blocks_TYkdXj",
+    "d2b15a90-7a7a-4203-843c-e2e06f00055e",
+    "feature-chart",
+    "17665770814b91b084"
+  ]
+}
