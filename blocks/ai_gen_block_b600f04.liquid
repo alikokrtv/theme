@@ -1,0 +1,633 @@
+{% doc %}
+  @prompt
+    Create a custom video block for a slideshow section that supports YouTube videos with the following features:
+    
+    - YouTube video URL input field
+    - Video autoplay option
+    - Video loop option (must support looping)
+    - Video mute option
+    - Mobile and desktop display settings
+    - Video overlay text with heading and subheading fields
+    - Text alignment options (left, center, right)
+    - Button with customizable text and link
+    - Video cover image option for before autoplay
+    - Responsive design that works on both mobile and desktop
+    - Full-width video display within slideshow
+    - Controls for video playback visibility
+    
+    The block should have the same styling capabilities as a standard slideshow video block but specifically designed to work with YouTube embed URLs and support continuous looping.
+{% enddoc %}
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+
+{% style %}
+  .ai-youtube-video-{{ ai_gen_id }} {
+    display: block;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    min-height: 400px;
+    overflow: hidden;
+  }
+
+  @media screen and (min-width: 750px) {
+    .ai-youtube-video-{{ ai_gen_id }} {
+      min-height: 600px;
+    }
+  }
+
+  .ai-youtube-video__container-{{ ai_gen_id }} {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  .ai-youtube-video__iframe-{{ ai_gen_id }} {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100vw;
+    height: 56.25vw;
+    min-height: 100vh;
+    min-width: 177.77vh;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+  }
+
+  .ai-youtube-video__cover-{{ ai_gen_id }} {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1;
+    transition: opacity 0.3s ease;
+  }
+
+  .ai-youtube-video__cover-{{ ai_gen_id }}.hidden {
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .ai-youtube-video__overlay-{{ ai_gen_id }} {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 40px 20px;
+    z-index: 2;
+    text-align: {{ block.settings.text_alignment }};
+  }
+
+  @media screen and (min-width: 750px) {
+    .ai-youtube-video__overlay-{{ ai_gen_id }} {
+      padding: 60px 80px;
+    }
+  }
+
+  .ai-youtube-video__content-{{ ai_gen_id }} {
+    max-width: 600px;
+    {% if block.settings.text_alignment == 'center' %}
+      margin: 0 auto;
+    {% elsif block.settings.text_alignment == 'right' %}
+      margin-left: auto;
+    {% endif %}
+  }
+
+  .ai-youtube-video__heading-{{ ai_gen_id }} {
+    color: {{ block.settings.heading_color }};
+    font-size: {{ block.settings.heading_size_mobile }}px;
+    margin: 0 0 12px 0;
+    font-weight: 700;
+    line-height: 1.2;
+  }
+
+  @media screen and (min-width: 750px) {
+    .ai-youtube-video__heading-{{ ai_gen_id }} {
+      font-size: {{ block.settings.heading_size_desktop }}px;
+      margin-bottom: 16px;
+    }
+  }
+
+  .ai-youtube-video__subheading-{{ ai_gen_id }} {
+    color: {{ block.settings.subheading_color }};
+    font-size: {{ block.settings.subheading_size_mobile }}px;
+    margin: 0 0 24px 0;
+    line-height: 1.5;
+  }
+
+  @media screen and (min-width: 750px) {
+    .ai-youtube-video__subheading-{{ ai_gen_id }} {
+      font-size: {{ block.settings.subheading_size_desktop }}px;
+      margin-bottom: 32px;
+    }
+  }
+
+  .ai-youtube-video__button-{{ ai_gen_id }} {
+    display: inline-block;
+    padding: 14px 32px;
+    background-color: {{ block.settings.button_background }};
+    color: {{ block.settings.button_text_color }};
+    text-decoration: none;
+    border-radius: {{ settings.button_border_radius }}px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    border: 2px solid {{ block.settings.button_background }};
+  }
+
+  .ai-youtube-video__button-{{ ai_gen_id }}:hover {
+    background-color: {{ block.settings.button_hover_background }};
+    color: {{ block.settings.button_hover_text_color }};
+    border-color: {{ block.settings.button_hover_background }};
+  }
+
+  .ai-youtube-video__controls-{{ ai_gen_id }} {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    z-index: 3;
+    display: flex;
+    gap: 10px;
+  }
+
+  .ai-youtube-video__control-btn-{{ ai_gen_id }} {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background-color: rgba(0, 0, 0, 0.6);
+    border: none;
+    color: #ffffff;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s ease;
+  }
+
+  .ai-youtube-video__control-btn-{{ ai_gen_id }}:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+  }
+
+  .ai-youtube-video__control-btn-{{ ai_gen_id }} svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  @media screen and (max-width: 749px) {
+    {% if block.settings.hide_on_mobile %}
+      .ai-youtube-video-{{ ai_gen_id }} {
+        display: none;
+      }
+    {% endif %}
+  }
+
+  @media screen and (min-width: 750px) {
+    {% if block.settings.hide_on_desktop %}
+      .ai-youtube-video-{{ ai_gen_id }} {
+        display: none;
+      }
+    {% endif %}
+  }
+{% endstyle %}
+
+<youtube-video-{{ ai_gen_id }}
+  class="ai-youtube-video-{{ ai_gen_id }}"
+  data-autoplay="{{ block.settings.autoplay }}"
+  data-loop="{{ block.settings.loop }}"
+  data-mute="{{ block.settings.mute }}"
+  data-controls="{{ block.settings.show_controls }}"
+  {{ block.shopify_attributes }}
+>
+  <div class="ai-youtube-video__container-{{ ai_gen_id }}">
+    {% if block.settings.youtube_url != blank %}
+      <div
+        id="ai-youtube-player-{{ ai_gen_id }}"
+        class="ai-youtube-video__iframe-{{ ai_gen_id }}"
+      ></div>
+    {% endif %}
+
+    {% if block.settings.cover_image %}
+      <img
+        src="{{ block.settings.cover_image | image_url: width: 2000 }}"
+        alt="{{ block.settings.cover_image.alt | escape }}"
+        class="ai-youtube-video__cover-{{ ai_gen_id }}"
+        loading="lazy"
+        width="{{ block.settings.cover_image.width }}"
+        height="{{ block.settings.cover_image.height }}"
+      >
+    {% endif %}
+
+    {% if block.settings.heading != blank or block.settings.subheading != blank or block.settings.button_text != blank %}
+      <div class="ai-youtube-video__overlay-{{ ai_gen_id }}">
+        <div class="ai-youtube-video__content-{{ ai_gen_id }}">
+          {% if block.settings.heading != blank %}
+            <h2 class="ai-youtube-video__heading-{{ ai_gen_id }}">
+              {{ block.settings.heading }}
+            </h2>
+          {% endif %}
+
+          {% if block.settings.subheading != blank %}
+            <div class="ai-youtube-video__subheading-{{ ai_gen_id }}">
+              {{ block.settings.subheading }}
+            </div>
+          {% endif %}
+
+          {% if block.settings.button_text != blank and block.settings.button_link != blank %}
+            <a
+              href="{{ block.settings.button_link }}"
+              class="ai-youtube-video__button-{{ ai_gen_id }}"
+            >
+              {{ block.settings.button_text }}
+            </a>
+          {% endif %}
+        </div>
+      </div>
+    {% endif %}
+
+    {% if block.settings.show_controls %}
+      <div class="ai-youtube-video__controls-{{ ai_gen_id }}">
+        <button
+          class="ai-youtube-video__control-btn-{{ ai_gen_id }} ai-youtube-video__play-pause-{{ ai_gen_id }}"
+          aria-label="Play/Pause video"
+        >
+          <svg class="ai-youtube-video__play-icon-{{ ai_gen_id }}" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M8 5v14l11-7z"/>
+          </svg>
+          <svg class="ai-youtube-video__pause-icon-{{ ai_gen_id }}" style="display: none;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M6 4h4v16H6V4zm8 0h4v16h-4V4z"/>
+          </svg>
+        </button>
+        <button
+          class="ai-youtube-video__control-btn-{{ ai_gen_id }} ai-youtube-video__mute-{{ ai_gen_id }}"
+          aria-label="Mute/Unmute video"
+        >
+          <svg class="ai-youtube-video__sound-icon-{{ ai_gen_id }}" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/>
+          </svg>
+          <svg class="ai-youtube-video__mute-icon-{{ ai_gen_id }}" style="display: none;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z"/>
+          </svg>
+        </button>
+      </div>
+    {% endif %}
+  </div>
+</youtube-video-{{ ai_gen_id }}>
+
+<script>
+  (function() {
+    if (!window.youtubeAPIReady) {
+      const tag = document.createElement('script');
+      tag.src = 'https://www.youtube.com/iframe_api';
+      const firstScriptTag = document.getElementsByTagName('script')[0];
+      firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+      window.youtubeAPIReady = new Promise((resolve) => {
+        window.onYouTubeIframeAPIReady = resolve;
+      });
+    }
+
+    class YouTubeVideo{{ ai_gen_id }} extends HTMLElement {
+      constructor() {
+        super();
+        this.player = null;
+        this.isPlaying = false;
+        this.isMuted = this.dataset.mute === 'true';
+      }
+
+      async connectedCallback() {
+        const videoUrl = '{{ block.settings.youtube_url }}';
+        if (!videoUrl) return;
+
+        const videoId = this.extractVideoId(videoUrl);
+        if (!videoId) return;
+
+        await window.youtubeAPIReady;
+        this.initPlayer(videoId);
+        this.setupControls();
+      }
+
+      extractVideoId(url) {
+        const regExp = /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#&?]*).*/;
+        const match = url.match(regExp);
+        return (match && match[7].length === 11) ? match[7] : null;
+      }
+
+      initPlayer(videoId) {
+        const autoplay = this.dataset.autoplay === 'true';
+        const loop = this.dataset.loop === 'true';
+        const mute = this.dataset.mute === 'true';
+        const controls = this.dataset.controls === 'true' ? 1 : 0;
+
+        this.player = new YT.Player('ai-youtube-player-{{ ai_gen_id }}', {
+          videoId: videoId,
+          playerVars: {
+            autoplay: autoplay ? 1 : 0,
+            mute: mute ? 1 : 0,
+            loop: loop ? 1 : 0,
+            playlist: loop ? videoId : '',
+            controls: controls,
+            modestbranding: 1,
+            rel: 0,
+            showinfo: 0,
+            iv_load_policy: 3,
+            playsinline: 1,
+            enablejsapi: 1
+          },
+          events: {
+            onReady: (event) => {
+              if (autoplay) {
+                event.target.playVideo();
+                this.isPlaying = true;
+                this.updatePlayPauseButton();
+                this.hideCoverImage();
+              }
+              if (mute) {
+                event.target.mute();
+              }
+            },
+            onStateChange: (event) => {
+              if (event.data === YT.PlayerState.PLAYING) {
+                this.isPlaying = true;
+                this.updatePlayPauseButton();
+                this.hideCoverImage();
+              } else if (event.data === YT.PlayerState.PAUSED) {
+                this.isPlaying = false;
+                this.updatePlayPauseButton();
+              }
+            }
+          }
+        });
+      }
+
+      setupControls() {
+        const playPauseBtn = this.querySelector('.ai-youtube-video__play-pause-{{ ai_gen_id }}');
+        const muteBtn = this.querySelector('.ai-youtube-video__mute-{{ ai_gen_id }}');
+
+        if (playPauseBtn) {
+          playPauseBtn.addEventListener('click', () => {
+            if (!this.player) return;
+            
+            if (this.isPlaying) {
+              this.player.pauseVideo();
+            } else {
+              this.player.playVideo();
+            }
+          });
+        }
+
+        if (muteBtn) {
+          muteBtn.addEventListener('click', () => {
+            if (!this.player) return;
+            
+            if (this.isMuted) {
+              this.player.unMute();
+              this.isMuted = false;
+            } else {
+              this.player.mute();
+              this.isMuted = true;
+            }
+            this.updateMuteButton();
+          });
+        }
+
+        this.updateMuteButton();
+      }
+
+      updatePlayPauseButton() {
+        const playIcon = this.querySelector('.ai-youtube-video__play-icon-{{ ai_gen_id }}');
+        const pauseIcon = this.querySelector('.ai-youtube-video__pause-icon-{{ ai_gen_id }}');
+        
+        if (playIcon && pauseIcon) {
+          if (this.isPlaying) {
+            playIcon.style.display = 'none';
+            pauseIcon.style.display = 'block';
+          } else {
+            playIcon.style.display = 'block';
+            pauseIcon.style.display = 'none';
+          }
+        }
+      }
+
+      updateMuteButton() {
+        const soundIcon = this.querySelector('.ai-youtube-video__sound-icon-{{ ai_gen_id }}');
+        const muteIcon = this.querySelector('.ai-youtube-video__mute-icon-{{ ai_gen_id }}');
+        
+        if (soundIcon && muteIcon) {
+          if (this.isMuted) {
+            soundIcon.style.display = 'none';
+            muteIcon.style.display = 'block';
+          } else {
+            soundIcon.style.display = 'block';
+            muteIcon.style.display = 'none';
+          }
+        }
+      }
+
+      hideCoverImage() {
+        const coverImage = this.querySelector('.ai-youtube-video__cover-{{ ai_gen_id }}');
+        if (coverImage) {
+          coverImage.classList.add('hidden');
+        }
+      }
+    }
+
+    customElements.define('youtube-video-{{ ai_gen_id }}', YouTubeVideo{{ ai_gen_id }});
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "YouTube video",
+  "tag": null,
+  "settings": [
+    {
+      "type": "header",
+      "content": "Video"
+    },
+    {
+      "type": "url",
+      "id": "youtube_url",
+      "label": "YouTube URL"
+    },
+    {
+      "type": "checkbox",
+      "id": "autoplay",
+      "label": "Autoplay video",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "loop",
+      "label": "Loop video",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "mute",
+      "label": "Mute video",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_controls",
+      "label": "Show playback controls",
+      "default": true
+    },
+    {
+      "type": "image_picker",
+      "id": "cover_image",
+      "label": "Cover image"
+    },
+    {
+      "type": "header",
+      "content": "Display settings"
+    },
+    {
+      "type": "checkbox",
+      "id": "hide_on_mobile",
+      "label": "Hide on mobile",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "hide_on_desktop",
+      "label": "Hide on desktop",
+      "default": false
+    },
+    {
+      "type": "header",
+      "content": "Overlay content"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "heading",
+      "label": "Heading"
+    },
+    {
+      "type": "range",
+      "id": "heading_size_mobile",
+      "min": 20,
+      "max": 60,
+      "step": 2,
+      "unit": "px",
+      "label": "Heading size (mobile)",
+      "default": 32
+    },
+    {
+      "type": "range",
+      "id": "heading_size_desktop",
+      "min": 30,
+      "max": 100,
+      "step": 2,
+      "unit": "px",
+      "label": "Heading size (desktop)",
+      "default": 56
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "richtext",
+      "id": "subheading",
+      "label": "Subheading"
+    },
+    {
+      "type": "range",
+      "id": "subheading_size_mobile",
+      "min": 12,
+      "max": 30,
+      "step": 1,
+      "unit": "px",
+      "label": "Subheading size (mobile)",
+      "default": 14
+    },
+    {
+      "type": "range",
+      "id": "subheading_size_desktop",
+      "min": 14,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "label": "Subheading size (desktop)",
+      "default": 18
+    },
+    {
+      "type": "color",
+      "id": "subheading_color",
+      "label": "Subheading color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "select",
+      "id": "text_alignment",
+      "label": "Text alignment",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "header",
+      "content": "Button"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button text"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button link"
+    },
+    {
+      "type": "color",
+      "id": "button_background",
+      "label": "Button background",
+      "default": "#020082"
+    },
+    {
+      "type": "color",
+      "id": "button_text_color",
+      "label": "Button text color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "button_hover_background",
+      "label": "Button hover background",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "button_hover_text_color",
+      "label": "Button hover text color",
+      "default": "#020082"
+    }
+  ],
+  "presets": [
+    {
+      "name": "YouTube video"
+    }
+  ]
+}
+{% endschema %}
