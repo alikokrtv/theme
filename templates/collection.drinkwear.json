@@ -51,6 +51,7 @@
       "block_order": [
         "ai_gen_block_ea35d1e_9JPJmF"
       ],
+      "disabled": true,
       "settings": {
         "full_width": true,
         "remove_vertical_spacing": true,
@@ -66,6 +67,7 @@
       "blocks": {
         "heading_VDq9T8": {
           "type": "heading",
+          "disabled": true,
           "settings": {
             "text": "Drinkware",
             "heading_tag": "h0"
@@ -73,6 +75,7 @@
         },
         "subheading_ptbWrF": {
           "type": "subheading",
+          "disabled": true,
           "settings": {
             "text": "Tap lid to view beverage temperature. Enjoy hot or cold drinks anytime with smart drinkware designed for your comfort."
           }
@@ -82,17 +85,15 @@
         "heading_VDq9T8",
         "subheading_ptbWrF"
       ],
-      "custom_css": [
-        "div div {width: 100%; /* Sabit px yerine yüzde kullan */ max-width: 450px; /* Büyük ekranlarda 450px’i geçmesin */ text-shadow: 0 2px 4px rgba(0,0,0,0.35); /* Yazıya yumuşak bir gölge */}",
-        "@media (max-width: 768px) {div {font-size: 0.6rem; /* Başlıklar çok büyükse küçült */ padding: 5px; text-shadow: 0 2px 4px rgba(0,0,0,0.35); /* Mobilde de gölge ver */ }}"
-      ],
+      "custom_css": [],
       "name": "Image with text overlay + marquee",
       "settings": {
         "full_width": true,
         "allow_transparent_header": false,
         "enable_parallax": false,
         "image_size": "auto",
-        "image": "shopify://shop_images/Adsiz_tasarim.svg",
+        "image": "shopify://shop_images/Drinkware.svg",
+        "mobile_image": "shopify://shop_images/Drinkware_1200_x_1600_piksel.svg",
         "mobile_text_position": "place-self-center-start text-start",
         "desktop_text_position": "sm:place-self-center-start sm:text-start",
         "text_color": "#ffffff",
