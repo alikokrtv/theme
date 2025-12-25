@@ -32,9 +32,7 @@
     },
     "image_with_text_overlay_n8zRcw": {
       "type": "image-with-text-overlay",
-      "custom_css": [
-        "@media (max-width: 768px) {/* Sözdizimi düzeltildi: max-width: 768px kullanıldı */ div div {max-width: 200px; }}"
-      ],
+      "custom_css": [],
       "name": "Image with text overlay + marquee",
       "settings": {
         "full_width": true,
