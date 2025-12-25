@@ -340,6 +340,7 @@
     },
     "featured-collection": {
       "type": "featured-collection",
+      "disabled": true,
       "custom_css": [
         "img {transform: scale(0.7);}",
         " {font-size: 16px; font-family: manrope; margin-top: 0px;}",
