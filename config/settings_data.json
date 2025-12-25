@@ -56,7 +56,7 @@
     "show_discount": true,
     "discount_mode": "percentage",
     "product_color_display": "count",
-    "product_image_aspect_ratio": "square",
+    "product_image_aspect_ratio": "short",
     "product_info_alignment": "start",
     "cart_icon": "shopping_basket",
     "cart_show_free_shipping_threshold": true,
