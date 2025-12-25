@@ -11,17 +11,23 @@ NOTE TO DEVELOPERS: welcome to Impact theme! We hope that you will enjoy editing
 
 <html lang="{{ request.locale.iso_code }}" dir="{% render 'direction' %}">
   <head>
- {%- if content_for_header contains 'tapita-seo-script-tags' -%}{%- include 'tapita-seo-schema' -%}{%- endif -%} 
+    {%- if content_for_header contains 'tapita-seo-script-tags' -%}{%- include 'tapita-seo-schema' -%}{%- endif -%} 
 
-	<!-- Added by AVADA SEO Suite -->
-	{% include 'avada-seo' %}
-	<!-- /Added by AVADA SEO Suite -->
+    <!-- Added by AVADA SEO Suite -->
+    {% include 'avada-seo' %}
+    <!-- /Added by AVADA SEO Suite -->
+
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, height=device-height, minimum-scale=1.0, maximum-scale=1.0">
     <meta name="theme-color" content="{{ settings.header_background }}">
     
-
-    <title>{% if page_title == blank %}{{ shop.name }}{% else %}{{ page_title }}{% if current_page != 1 %} &ndash; {{ 'general.page' | t: page: current_page }}{% endif %}{% endif %}</title>
+    <title>
+      {% if page_title == blank %}
+        {{ shop.name }}
+      {% else %}
+        {{ page_title }}{% if current_page != 1 %} &ndash; {{ 'general.page' | t: page: current_page }}{% endif %}
+      {% endif %}
+    </title>
 
     {%- if page_description -%}
       <meta name="description" content="{{ page_description | escape }}">
@@ -62,69 +68,56 @@ NOTE TO DEVELOPERS: welcome to Impact theme! We hope that you will enjoy editing
         }
       }
     </script>
-    <script>
-  gtag('event', 'conversion_event_purchase', {
-    // <event_parameters>
-  });
-</script>
-
 
     <script type="module" src="{{ 'vendor.min.js' | asset_url }}"></script>
     <script type="module" src="{{ 'theme.js' | asset_url }}"></script>
     <script src="{{ 'popup-control.js' | asset_url }}" defer></script>
 
-
     {{ content_for_header }}
 
     {{- 'theme.css' | asset_url | stylesheet_tag: preload: true -}}
-  {% include 'pagefly-app-header' %}
-<style>
-img { loading: lazy; }
-</style>
+    {% include 'pagefly-app-header' %}
 
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=AW-11473090165"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-11473090165"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'AW-11473090165');
+    </script>
 
-  gtag('config', 'AW-11473090165');
-</script>
-<!-- Event snippet for Purchase Tracking For GSF822208 - 20240114162428 conversion page -->
-<script>
-  gtag('event', 'conversion', {
-      'send_to': 'AW-11473090165/Gb92CNDqy4gZEPXs5d4q',
-      'value': 1.0,
-      'currency': 'USD',
-      'transaction_id': ''
-  });
-</script>
-<style>
-  html.header-loading header,
-  html.header-loading .shopify-section--header,
-  html.header-loading #shopify-section-header {
-    opacity: 0 !important;
-    pointer-events: none !important;
-  }
+    <!-- Event snippet for Purchase Tracking For GSF822208 - 20240114162428 conversion page -->
+    <script>
+      gtag('event', 'conversion', {
+        'send_to': 'AW-11473090165/Gb92CNDqy4gZEPXs5d4q',
+        'value': 1.0,
+        'currency': 'USD',
+        'transaction_id': ''
+      });
+    </script>
 
-  html.header-loaded header,
-  html.header-loaded .shopify-section--header,
-  html.header-loaded #shopify-section-header {
-    opacity: 1 !important;
-    pointer-events: auto !important;
-    transition: opacity 0.2s linear;
+    <style>
+      html.header-loading header,
+      html.header-loading .shopify-section--header,
+      html.header-loading #shopify-section-header {
+        opacity: 0 !important;
+        pointer-events: none !important;
+      }
 
-  }
-</style>
+      html.header-loaded header,
+      html.header-loaded .shopify-section--header,
+      html.header-loaded #shopify-section-header {
+        opacity: 1 !important;
+        pointer-events: auto !important;
+        transition: opacity 0.2s linear;
+      }
+    </style>
 
-<script>
-  document.documentElement.classList.add('header-loading');
-</script>
-
-
-
-</head>
+    <script>
+      document.documentElement.classList.add('header-loading');
+    </script>
+  </head>
 
   <body class="{% if settings.zoom_image_on_hover %}zoom-image--enabled{% endif %}">
     {%- render 'shadow-dom-templates' -%}
@@ -166,36 +159,61 @@ img { loading: lazy; }
         {%- sections 'footer-group' -%}
       {%- endif -%}
     </main>
+
+    {{ content_for_footer }}
+
+    <script src="https://apis.google.com/js/platform.js?onload=renderOptIn" async defer></script>
+
+    <script>
+      window.renderOptIn = function() {
+        window.gapi.load('surveyoptin', function() {
+          window.gapi.surveyoptin.render(
+            {
+              // REQUIRED FIELDS
+              "merchant_id": 5323574518,
+              "order_id": "ORDER_ID",
+              "email": "CUSTOMER_EMAIL",
+              "delivery_country": "COUNTRY_CODE",
+              "estimated_delivery_date": "YYYY-MM-DD",
+
+              // OPTIONAL FIELDS
+              "products": [{"gtin":"GTIN1"}, {"gtin":"GTIN2"}]
+            }
+          );
+        });
+      }
+    </script>
+
+    <script>
+      window.addEventListener('load', function () {
+        document.documentElement.classList.remove('header-loading');
+        document.documentElement.classList.add('header-loaded');
+      });
+    </script>
+
+  <script>
+  document.addEventListener('DOMContentLoaded', function () {
+    // Sadece bu posteri kullanan videoyu seç
+    const specialVideo = document.querySelector(
+      'video[poster*="4f374aec7fa64006abed3e3a32119823"]'
+    );
+
+    if (!specialVideo) return;
+
+    // Hover oynatma
+    specialVideo.addEventListener('mouseenter', () => {
+      specialVideo.play();
+    });
+
+    // Hover çıkınca durdur
    
 
-  {{ content_for_footer }}
-  <script src="https://apis.google.com/js/platform.js?onload=renderOptIn" async defer></script>
-
-<script>
-  window.renderOptIn = function() {
-    window.gapi.load('surveyoptin', function() {
-      window.gapi.surveyoptin.render(
-        {
-          // REQUIRED FIELDS
-          "merchant_id": 5323574518,
-          "order_id": "ORDER_ID",
-          "email": "CUSTOMER_EMAIL",
-          "delivery_country": "COUNTRY_CODE",
-          "estimated_delivery_date": "YYYY-MM-DD",
-
-          // OPTIONAL FIELDS
-          "products": [{"gtin":"GTIN1"}, {"gtin":"GTIN2"}]
-        });
+    // Sadece bu video tıklanınca yönlendir
+    specialVideo.addEventListener('click', () => {
+      window.location.href = '/collections/christmas-sale';
     });
-  }
-</script>
-<script>
-  window.addEventListener('load', function () {
-    document.documentElement.classList.remove('header-loading');
-    document.documentElement.classList.add('header-loaded');
   });
 </script>
-
 
   </body>
 </html>

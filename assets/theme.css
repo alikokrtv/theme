@@ -1,3 +1,25 @@
+/* Tmenu flyout + genel submenu: link + text span */
+.tmenu_submenu .tmenu_item_link,
+.tmenu_submenu .tmenu_item_text {
+  font-size: 15px !important;
+  line-height: 1.35 !important;
+}
+
+/* Tablet */
+@media (max-width: 989px){
+  .tmenu_submenu .tmenu_item_link,
+  .tmenu_submenu .tmenu_item_text {
+    font-size: 16px !important;
+  }
+}
+
+/* Mobil */
+@media (max-width: 749px){
+  .tmenu_submenu .tmenu_item_link,
+  .tmenu_submenu .tmenu_item_text {
+    font-size: 17px !important;
+  }
+}
 
 
 #shopify-section-template--20877033898237__shop_the_look_mxWpqY 
@@ -1023,14 +1045,7 @@ button.prorw-btn:hover {
 }
 
 
-#qikify-quickview > div > div.qview-lightbox.v--modal-overlay.scrollable > div > div.v--modal-box.v--modal > div > div.qlightbox__header__silent,#qikify-quickview > div > div.qview-lightbox.v--modal-overlay.scrollable > div > div.v--modal-box.v--modal > div > div.qlightbox__header > a.qview-watermark {
-  display:none !important;
-}
-.bss-watermark {
-  display: none !important;
-  visibility: hidden !important;
-  opacity: 0 !important;
-}
+
 
 
 
