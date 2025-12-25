@@ -314,7 +314,12 @@
     },
     "main": {
       "type": "main-collection",
-      "custom_css": [],
+      "custom_css": [
+        "img {transform: scale(0.7);}",
+        " {font-size: 16px; font-family: manrope;}",
+        "@media (min-width: 768px) {img {transform: scale(1); box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px; border-radius: 10px; padding: 10px; }}",
+        " {}"
+      ],
       "settings": {
         "products_per_page": 23,
         "products_per_row_mobile": "2",
@@ -329,7 +334,12 @@
     },
     "featured_collection_MDFxmy": {
       "type": "featured-collection",
-      "custom_css": [],
+      "custom_css": [
+        "img {transform: scale(0.7);}",
+        " {font-size: 16px; font-family: manrope;}",
+        "@media (min-width: 768px) {img {transform: scale(1); box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px; border-radius: 10px; padding: 10px; }}",
+        " {}"
+      ],
       "name": "Featured collection",
       "settings": {
         "collection": "best-selling-products",
