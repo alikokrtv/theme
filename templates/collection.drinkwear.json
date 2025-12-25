@@ -82,7 +82,10 @@
         "heading_VDq9T8",
         "subheading_ptbWrF"
       ],
-      "custom_css": [],
+      "custom_css": [
+        "div div {width: 100%; /* Sabit px yerine yüzde kullan */ max-width: 450px; /* Büyük ekranlarda 450px’i geçmesin */ text-shadow: 0 2px 4px rgba(0,0,0,0.35); /* Yazıya yumuşak bir gölge */}",
+        "@media (max-width: 768px) {div {font-size: 0.6rem; /* Başlıklar çok büyükse küçült */ padding: 5px; text-shadow: 0 2px 4px rgba(0,0,0,0.35); /* Mobilde de gölge ver */ }}"
+      ],
       "name": "Image with text overlay + marquee",
       "settings": {
         "full_width": true,
