@@ -100,23 +100,7 @@ img { loading: lazy; }
       'transaction_id': ''
   });
 </script>
-<style>
-  html.header-loading header,
-  html.header-loading .shopify-section--header,
-  html.header-loading #shopify-section-header {
-    opacity: 0 !important;
-    pointer-events: none !important;
-  }
 
-  html.header-loaded header,
-  html.header-loaded .shopify-section--header,
-  html.header-loaded #shopify-section-header {
-    opacity: 1 !important;
-    pointer-events: auto !important;
-    transition: opacity 0.2s linear;
-
-  }
-</style>
 
 <script>
   document.documentElement.classList.add('header-loading');
