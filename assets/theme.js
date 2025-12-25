@@ -11,127 +11,107 @@
 
 document.addEventListener('DOMContentLoaded', () => {
 
-  const observer = new MutationObserver(() => {
-  const watermark = document.querySelector('.tmenu-watermark');
-  if (watermark) watermark.remove();
-});
+  // REMOVED: Inefficient MutationObserver for .tmenu-watermark (Handled via CSS)
+  // REMOVED: Inefficient loop for "Add to Cart" text centering (Handled via CSS)
 
 
 
-observer.observe(document.body, { childList: true, subtree: true });
 
 
-  
-// Sayfadaki tüm elementleri tarayıp içeriği "Add to Cart" olanları seçiyoruz
-const elements = document.querySelectorAll('button, div');
+  // 1. Öğeleri Seçme ve Durum Değişkenleri
+  const announcementBar = document.getElementById('shopify-section-sections--20175067840765__announcement-bar');
+  const header = document.getElementById('shopify-section-sections--20175067840765__header');
 
-elements.forEach(el => {
-  if (el.textContent.trim() === 'Add to Cart') {
-    
-    
-    
-    el.style.textAlign = 'center';
+  if (!announcementBar || !header) {
+    // Production: Silent fail, no console output
+    return;
   }
-});
 
+  let lastScrollY = window.scrollY;
+  // Scroll Eşikleri
+  const ANNOUNCEMENT_THRESHOLD = 0;
+  // Header'ın kaybolması için biraz daha fazla kaydırma gereksin (örneğin 200px)
+  const HEADER_HIDE_THRESHOLD = 200;
 
-  
+  // Fare Eşiği: Fare imlecinin üstten kaç piksel mesafeye geldiğinde tetikleneceği.
+  const MOUSE_TOP_AREA_THRESHOLD = 50; // Örneğin 50px üst alan
 
-  
-    // 1. Öğeleri Seçme ve Durum Değişkenleri
-    const announcementBar = document.getElementById('shopify-section-sections--20175067840765__announcement-bar');
-    const header = document.getElementById('shopify-section-sections--20175067840765__header');
+  // Throttle İçin Değişkenler
+  let isThrottled = false;
+  const THROTTLE_DELAY = 100; // 100 milisaniyede bir çalıştır
 
-    if (!announcementBar || !header) {
-        // Production: Silent fail, no console output
-        return; 
+  // Çubukları görünür hale getiren fonksiyon (Hepsi)
+  function revealElements() {
+    // Her zaman önce Header'ı geri getir
+    header.classList.remove('header-hidden');
+    // Ardından Duyuru Çubuğunu geri getir
+    announcementBar.classList.remove('announcement-hidden');
+  }
+
+  // Sadece Header'ı görünür hale getiren fonksiyon
+  function revealHeaderOnly() {
+    header.classList.remove('header-hidden');
+  }
+
+  // Çubukları gizleyen fonksiyon
+  function hideElements() {
+    const currentScrollY = window.scrollY;
+
+    // 1. Duyuru Çubuğunu Gizle (Hemen)
+    if (currentScrollY > ANNOUNCEMENT_THRESHOLD) {
+      announcementBar.classList.add('announcement-hidden');
     }
 
-    let lastScrollY = window.scrollY;
-    // Scroll Eşikleri
-    const ANNOUNCEMENT_THRESHOLD = 0; 
-    // Header'ın kaybolması için biraz daha fazla kaydırma gereksin (örneğin 200px)
-    const HEADER_HIDE_THRESHOLD = 200; 
-    
-    // Fare Eşiği: Fare imlecinin üstten kaç piksel mesafeye geldiğinde tetikleneceği.
-    const MOUSE_TOP_AREA_THRESHOLD = 50; // Örneğin 50px üst alan
-
-    // Throttle İçin Değişkenler
-    let isThrottled = false;
-    const THROTTLE_DELAY = 100; // 100 milisaniyede bir çalıştır
-
-    // Çubukları görünür hale getiren fonksiyon (Hepsi)
-    function revealElements() {
-        // Her zaman önce Header'ı geri getir
-        header.classList.remove('header-hidden');
-        // Ardından Duyuru Çubuğunu geri getir
-        announcementBar.classList.remove('announcement-hidden');
+    // 2. Header'ı Gizle (Belirtilen eşiği geçince)
+    if (currentScrollY > HEADER_HIDE_THRESHOLD) {
+      header.classList.add('header-hidden');
     }
-    
-    // Sadece Header'ı görünür hale getiren fonksiyon
-    function revealHeaderOnly() {
-        header.classList.remove('header-hidden');
+  }
+
+  // 2. Scroll Olayını Dinleme Fonksiyonu (Optimized with requestAnimationFrame)
+  function handleScroll() {
+    if (isThrottled) return;
+
+    isThrottled = true;
+
+    requestAnimationFrame(() => {
+      const currentScrollY = window.scrollY;
+      const isScrollingDown = currentScrollY > lastScrollY;
+
+      // Kullanıcı tamamen üste çıktığında (0) her zaman hepsini geri getir
+      if (currentScrollY === 0) {
+        revealElements();
+      }
+      // Aşağı Kaydırıyorsa -> Gizle
+      else if (isScrollingDown) {
+        hideElements();
+      }
+      // Yukarı Kaydırıyorsa -> Geri Getir
+      // Önemli: Yukarı kaydırmada hemen geri gelmesi için
+      else {
+        revealElements();
+      }
+
+      lastScrollY = currentScrollY;
+      isThrottled = false;
+    });
+  }
+
+  // 3. Fare Üstü Alan Olayını Dinleme Fonksiyonu
+  function handleMouseMove(event) {
+    // Mouse Y koordinatı üst bölgedeyse VE header gizlenmişse
+    if (event.clientY < MOUSE_TOP_AREA_THRESHOLD && header.classList.contains('header-hidden')) {
+      // Sadece header'ı geri getir
+      revealHeaderOnly();
     }
+  }
 
-    // Çubukları gizleyen fonksiyon
-    function hideElements() {
-        const currentScrollY = window.scrollY;
+  // Olay Dinleyicileri
+  window.addEventListener('scroll', handleScroll);
+  document.addEventListener('mousemove', handleMouseMove);
 
-        // 1. Duyuru Çubuğunu Gizle (Hemen)
-        if (currentScrollY > ANNOUNCEMENT_THRESHOLD) {
-            announcementBar.classList.add('announcement-hidden');
-        }
-
-        // 2. Header'ı Gizle (Belirtilen eşiği geçince)
-        if (currentScrollY > HEADER_HIDE_THRESHOLD) {
-            header.classList.add('header-hidden');
-        }
-    }
-
-    // 2. Scroll Olayını Dinleme Fonksiyonu (Optimized with requestAnimationFrame)
-    function handleScroll() {
-        if (isThrottled) return; 
-
-        isThrottled = true; 
-        
-        requestAnimationFrame(() => {
-            const currentScrollY = window.scrollY;
-            const isScrollingDown = currentScrollY > lastScrollY;
-            
-            // Kullanıcı tamamen üste çıktığında (0) her zaman hepsini geri getir
-            if (currentScrollY === 0) {
-                revealElements();
-            }
-            // Aşağı Kaydırıyorsa -> Gizle
-            else if (isScrollingDown) {
-                hideElements();
-            } 
-            // Yukarı Kaydırıyorsa -> Geri Getir
-            // Önemli: Yukarı kaydırmada hemen geri gelmesi için
-            else { 
-                revealElements();
-            }
-            
-            lastScrollY = currentScrollY;
-            isThrottled = false; 
-        });
-    }
-
-    // 3. Fare Üstü Alan Olayını Dinleme Fonksiyonu
-    function handleMouseMove(event) {
-        // Mouse Y koordinatı üst bölgedeyse VE header gizlenmişse
-        if (event.clientY < MOUSE_TOP_AREA_THRESHOLD && header.classList.contains('header-hidden')) {
-            // Sadece header'ı geri getir
-            revealHeaderOnly(); 
-        }
-    }
-
-    // Olay Dinleyicileri
-    window.addEventListener('scroll', handleScroll);
-    document.addEventListener('mousemove', handleMouseMove);
-
-    // Sayfa yüklendiğinde bir kere çalıştır
-    handleScroll();
+  // Sayfa yüklendiğinde bir kere çalıştır
+  handleScroll();
 });
 
 
@@ -329,7 +309,7 @@ _timer = new WeakMap();
 _state = new WeakMap();
 _onVisibilityChangeListener = new WeakMap();
 _Player_instances = new WeakSet();
-onVisibilityChange_fn = function() {
+onVisibilityChange_fn = function () {
   if (document.visibilityState === "hidden") {
     this.pause();
   } else if (document.visibilityState === "visible") {
@@ -606,7 +586,7 @@ var RevealItems = class extends HTMLElement {
   }
 };
 _RevealItems_instances = new WeakSet();
-reveal_fn = function() {
+reveal_fn = function () {
   this.style.opacity = "1";
   animate2(
     this.hasAttribute("selector") ? this.querySelectorAll(this.getAttribute("selector")) : this.children,
@@ -637,10 +617,10 @@ var CustomCursor = class extends HTMLElement {
 };
 _abortController = new WeakMap();
 _CustomCursor_instances = new WeakSet();
-onPointerLeave_fn = function() {
+onPointerLeave_fn = function () {
   this.classList.remove("is-visible", "is-half-start", "is-half-end");
 };
-onPointerMove_fn = function(event) {
+onPointerMove_fn = function (event) {
   if (event.target.matches("button, a[href], button :scope, a[href] :scope")) {
     return this.classList.remove("is-visible");
   }
@@ -689,15 +669,15 @@ _firstClientX = new WeakMap();
 _tracking = new WeakMap();
 _start = new WeakMap();
 _GestureArea_instances = new WeakSet();
-touchStart_fn = function(event) {
+touchStart_fn = function (event) {
   __privateSet(this, _firstClientX, event.touches[0].clientX);
 };
-preventTouch_fn = function(event) {
+preventTouch_fn = function (event) {
   if (Math.abs(event.touches[0].clientX - __privateGet(this, _firstClientX)) > 10) {
     event.preventDefault();
   }
 };
-gestureStart_fn = function(event) {
+gestureStart_fn = function (event) {
   __privateSet(this, _tracking, true);
   __privateSet(this, _start, {
     time: (/* @__PURE__ */ new Date()).getTime(),
@@ -705,12 +685,12 @@ gestureStart_fn = function(event) {
     y: event.clientY
   });
 };
-gestureMove_fn = function(event) {
+gestureMove_fn = function (event) {
   if (__privateGet(this, _tracking)) {
     event.preventDefault();
   }
 };
-gestureEnd_fn = function(event) {
+gestureEnd_fn = function (event) {
   if (!__privateGet(this, _tracking)) {
     return;
   }
@@ -800,14 +780,14 @@ _lastKnownY = new WeakMap();
 _currentTop = new WeakMap();
 _position = new WeakMap();
 _SafeSticky_instances = new WeakSet();
-recalculateStyles_fn = function() {
+recalculateStyles_fn = function () {
   this.style.removeProperty("top");
   const computedStyles = getComputedStyle(this);
   __privateSet(this, _initialTop, parseInt(computedStyles.top));
   __privateSet(this, _position, computedStyles.position);
   __privateMethod(this, _SafeSticky_instances, checkPosition_fn).call(this);
 };
-checkPosition_fn = function() {
+checkPosition_fn = function () {
   if (__privateGet(this, _position) !== "sticky") {
     return this.style.removeProperty("top");
   }
@@ -1036,7 +1016,7 @@ var SplitLines = class extends HTMLElement {
 _requireSplit = new WeakMap();
 _lastScreenWidth = new WeakMap();
 _SplitLines_instances = new WeakSet();
-split_fn = function(force = false) {
+split_fn = function (force = false) {
   if (!__privateGet(this, _requireSplit) && !force) {
     return;
   }
@@ -1053,7 +1033,7 @@ split_fn = function(force = false) {
     `)));
   __privateSet(this, _requireSplit, false);
 };
-onWindowResized_fn = function() {
+onWindowResized_fn = function () {
   if (__privateGet(this, _lastScreenWidth) === window.innerWidth) {
     return;
   }
@@ -1436,7 +1416,7 @@ var CartDiscountBanner = class extends HTMLElement {
 };
 _abortController2 = new WeakMap();
 _CartDiscountBanner_instances = new WeakSet();
-onCartDiscountError_fn = function() {
+onCartDiscountError_fn = function () {
   this.hidden = false;
 };
 var _hiddenDiscountInputOriginalValue, _CartDiscountField_instances, hiddenDiscountInput_get, updateHiddenInput_fn;
@@ -1452,10 +1432,10 @@ var CartDiscountField = class extends AbstractCartDiscount {
 };
 _hiddenDiscountInputOriginalValue = new WeakMap();
 _CartDiscountField_instances = new WeakSet();
-hiddenDiscountInput_get = function() {
+hiddenDiscountInput_get = function () {
   return this.querySelector('[name="discount"]');
 };
-updateHiddenInput_fn = function(event) {
+updateHiddenInput_fn = function (event) {
   __privateGet(this, _CartDiscountField_instances, hiddenDiscountInput_get).value = [__privateGet(this, _hiddenDiscountInputOriginalValue), event.target.value].filter((val) => val && val.trim() !== "").join(",");
 };
 var CartDiscountRemoveButton = class extends AbstractCartDiscount {
@@ -1514,8 +1494,10 @@ var DialogElement = class _DialogElement extends HTMLElement {
   disconnectedCallback() {
     this._abortController.abort();
     this.delegate.off();
-    this.focusTrap?.deactivate({ onDeactivate: () => {
-    } });
+    this.focusTrap?.deactivate({
+      onDeactivate: () => {
+      }
+    });
     if (this.#isLocked) {
       this.#isLocked = false;
       document.documentElement.classList.toggle("lock", --_DialogElement.#lockLayerCount > 0);
@@ -2759,7 +2741,7 @@ var Listbox = class extends HTMLElement {
 _accessibilityInitialized = new WeakMap();
 _hiddenInput = new WeakMap();
 _Listbox_instances = new WeakSet();
-onOptionClicked_fn = function(event) {
+onOptionClicked_fn = function (event) {
   this.setAttribute("aria-activedescendant", event.currentTarget.id);
   event.currentTarget.dispatchEvent(new CustomEvent("listbox:select", {
     bubbles: true,
@@ -2768,10 +2750,10 @@ onOptionClicked_fn = function(event) {
     }
   }));
 };
-onInputChanged_fn = function(event) {
+onInputChanged_fn = function (event) {
   this.setAttribute("aria-activedescendant", this.querySelector(`[role="option"][value="${CSS.escape(event.target.value)}"]`).id);
 };
-onKeyDown_fn = function(event) {
+onKeyDown_fn = function (event) {
   if (event.key === "ArrowUp") {
     event.target.previousElementSibling?.focus();
     event.preventDefault();
@@ -2862,11 +2844,11 @@ _recipientSendOnProperty = new WeakMap();
 _offsetProperty = new WeakMap();
 _recipientFieldsContainer = new WeakMap();
 _GiftCardRecipient_instances = new WeakSet();
-synchronizeProperties_fn = function() {
+synchronizeProperties_fn = function () {
   __privateGet(this, _recipientOtherProperties).forEach((property) => property.disabled = !__privateGet(this, _recipientCheckbox).checked);
   __privateGet(this, _recipientFieldsContainer).toggleAttribute("hidden", !__privateGet(this, _recipientCheckbox).checked);
 };
-formatDate_fn = function(date) {
+formatDate_fn = function (date) {
   const offset = date.getTimezoneOffset();
   const offsetDate = new Date(date.getTime() - offset * 60 * 1e3);
   return offsetDate.toISOString().split("T")[0];
@@ -3361,7 +3343,7 @@ var ProductRerender = class extends HTMLElement {
 };
 _abortController3 = new WeakMap();
 _ProductRerender_instances = new WeakSet();
-onRerender_fn = function(event) {
+onRerender_fn = function (event) {
   const matchingElement = deepQuerySelector(event.detail.htmlFragment, `#${this.id}`);
   if (!matchingElement) {
     return;
@@ -3532,17 +3514,17 @@ _VariantPicker_instances = new WeakSet();
 /**
  * Get the option values for the active combination
  */
-getActiveOptionValues_fn = function() {
+getActiveOptionValues_fn = function () {
   return Array.from(__privateGet(this, _form).elements).filter((item) => item.matches("input[data-option-position]:checked")).sort((a, b) => parseInt(a.getAttribute("data-option-position")) - parseInt(b.getAttribute("data-option-position"))).map((input) => input.value);
 };
 /**
  * Get the option values for a given input
  */
-getOptionValuesFromOption_fn = function(input) {
+getOptionValuesFromOption_fn = function (input) {
   const optionValues = [input, ...Array.from(__privateGet(this, _form).elements).filter((item) => item.matches(`input[data-option-position]:not([name="${input.name}"]):checked`))].sort((a, b) => parseInt(a.getAttribute("data-option-position")) - parseInt(b.getAttribute("data-option-position"))).map((input2) => input2.value);
   return optionValues;
 };
-onOptionChanged_fn = async function(event) {
+onOptionChanged_fn = async function (event) {
   if (!event.target.name.includes("option")) {
     return;
   }
@@ -3554,14 +3536,14 @@ onOptionChanged_fn = async function(event) {
 /**
  * To improve the user experience, we preload a variant whenever the user hovers over a specific option
  */
-onOptionPreload_fn = function(event, target) {
+onOptionPreload_fn = function (event, target) {
   __privateMethod(this, _VariantPicker_instances, renderForCombination_fn).call(this, __privateMethod(this, _VariantPicker_instances, getOptionValuesFromOption_fn).call(this, target.control));
 };
 /**
  * When the variant picker is intersecting the viewport, we preload the options to improve the user experience
  * so that switching variants is nearly instant
  */
-onIntersection_fn = function(entries) {
+onIntersection_fn = function (entries) {
   const prerenderOptions = () => {
     Array.from(__privateGet(this, _form).elements).filter((item) => item.matches("input[data-option-position]:not(:checked)")).forEach((input) => {
       __privateMethod(this, _VariantPicker_instances, renderForCombination_fn).call(this, __privateMethod(this, _VariantPicker_instances, getOptionValuesFromOption_fn).call(this, input));
@@ -3575,7 +3557,7 @@ onIntersection_fn = function(entries) {
     }
   }
 };
-renderForCombination_fn = async function(optionValues) {
+renderForCombination_fn = async function (optionValues) {
   const optionValuesAsString = optionValues.join(",");
   const hashKey = __privateMethod(this, _VariantPicker_instances, createHashKeyForHtml_fn).call(this, optionValuesAsString);
   let productUrl = `${Shopify.routes.root}products/${this.productHandle}`;
@@ -3598,7 +3580,7 @@ renderForCombination_fn = async function(optionValues) {
   }
   return __privateGet(_VariantPicker, _preloadedHtml).get(hashKey).htmlPromise;
 };
-createHashKeyForHtml_fn = function(optionValuesAsString) {
+createHashKeyForHtml_fn = function (optionValuesAsString) {
   return `${optionValuesAsString}-${this.getAttribute("section-id")}`;
 };
 __privateAdd(_VariantPicker, _preloadedHtml, /* @__PURE__ */ new Map());
@@ -4005,7 +3987,7 @@ var Tabs = class extends HTMLElement {
   }
 };
 _Tabs_instances = new WeakSet();
-setupComponent_fn = function() {
+setupComponent_fn = function () {
   this.buttons = Array.from(this.shadowRoot.querySelector('slot[name="title"]').assignedNodes(), (item) => item.matches("button") && item || item.querySelector("button"));
   this.panels = this.shadowRoot.querySelector('slot[name="content"]') ? Array.from(this.shadowRoot.querySelector('slot[name="content"]').assignedNodes()) : null;
   this.buttons.forEach((button, index) => button.addEventListener("click", () => this.selectedIndex = index, { signal: this._abortController.signal }));
@@ -4017,7 +3999,7 @@ setupComponent_fn = function() {
   }
   this._setupAccessibility();
 };
-onSlotChange_fn = function() {
+onSlotChange_fn = function () {
   __privateMethod(this, _Tabs_instances, setupComponent_fn).call(this);
 };
 if (!window.customElements.get("x-tabs")) {
@@ -4151,7 +4133,7 @@ var SectionHeader = class extends HTMLElement {
   }
 };
 _SectionHeader_instances = new WeakSet();
-reveal_fn2 = function() {
+reveal_fn2 = function () {
   const heading = this.querySelector('h2[reveal-on-scroll="true"]'), headingKeyframe = getHeadingKeyframe(heading);
   animate10(...headingKeyframe);
 };
@@ -5172,14 +5154,14 @@ var RecentlyViewedProducts = class extends HTMLElement {
 };
 _isLoaded = new WeakMap();
 _RecentlyViewedProducts_instances = new WeakSet();
-searchQueryString_get = function() {
+searchQueryString_get = function () {
   const items = new Set(JSON.parse(localStorage.getItem("theme:recently-viewed-products") || "[]"));
   if (this.hasAttribute("exclude-id")) {
     items.delete(parseInt(this.getAttribute("exclude-id")));
   }
   return Array.from(items.values(), (item) => `id:${item}`).slice(0, parseInt(this.getAttribute("products-count"))).join(" OR ");
 };
-loadProducts_fn = async function() {
+loadProducts_fn = async function () {
   if (__privateGet(this, _isLoaded)) {
     return;
   }
@@ -5442,7 +5424,7 @@ var SlideshowCarousel = class extends EffectCarousel {
    * Perform the synchronization with video
    */
 
-  
+
   async _onSlideSelected(event) {
     Array.from(this.querySelectorAll("video-media")).forEach((video) => video.pause());
     if (event.detail.slide.getAttribute("data-slide-type") === "video") {

@@ -12504,3 +12504,16 @@ shopify-accelerated-checkout, shopify-accelerated-checkout-cart {
     gap: 3px !important;
   }
 }
+
+/* Optimization: Center Add to Cart button text (Replaces JS loop) */
+.buy-buttons .button {
+  text-align: center;
+}
+
+/* Optimization: Hide watermark (Replaces MutationObserver) */
+.tmenu-watermark {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
