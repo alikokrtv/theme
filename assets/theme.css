@@ -1045,14 +1045,7 @@ button.prorw-btn:hover {
 }
 
 
-#qikify-quickview > div > div.qview-lightbox.v--modal-overlay.scrollable > div > div.v--modal-box.v--modal > div > div.qlightbox__header__silent,#qikify-quickview > div > div.qview-lightbox.v--modal-overlay.scrollable > div > div.v--modal-box.v--modal > div > div.qlightbox__header > a.qview-watermark {
-  display:none !important;
-}
-.bss-watermark {
-  display: none !important;
-  visibility: hidden !important;
-  opacity: 0 !important;
-}
+
 
 
 
