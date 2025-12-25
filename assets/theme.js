@@ -1,74 +1,48 @@
-//
-// OPTİMİZE EDİLMİŞ: Scroll Throttle ve Geri Getirme Mantığı
-//
-// Gerekli Değişiklikler:
-// 1. hideElements(): Header'ın gizlenme mantığı eklendi.
-// 2. revealHeaderOnly(): Sadece Header'ı geri getiren yeni fonksiyon eklendi.
-// 3. handleMouseMove(): revealHeaderOnly() fonksiyonunu çağıracak şekilde güncellendi.
-// 4. HEADER_THRESHOLD değeri fare ile tetikleme yapıldıktan sonra kaybolma eşiği için artırıldı (önerilen).
-
-
 
 document.addEventListener('DOMContentLoaded', () => {
 
-  // REMOVED: Inefficient MutationObserver for .tmenu-watermark (Handled via CSS)
-  // REMOVED: Inefficient loop for "Add to Cart" text centering (Handled via CSS)
-
-
-
-
-
-  // 1. Öğeleri Seçme ve Durum Değişkenleri
   const announcementBar = document.getElementById('shopify-section-sections--20175067840765__announcement-bar');
   const header = document.getElementById('shopify-section-sections--20175067840765__header');
 
   if (!announcementBar || !header) {
-    // Production: Silent fail, no console output
+
     return;
   }
 
   let lastScrollY = window.scrollY;
-  // Scroll Eşikleri
+
   const ANNOUNCEMENT_THRESHOLD = 0;
-  // Header'ın kaybolması için biraz daha fazla kaydırma gereksin (örneğin 200px)
+
   const HEADER_HIDE_THRESHOLD = 200;
 
-  // Fare Eşiği: Fare imlecinin üstten kaç piksel mesafeye geldiğinde tetikleneceği.
   const MOUSE_TOP_AREA_THRESHOLD = 50; // Örneğin 50px üst alan
 
-  // Throttle İçin Değişkenler
   let isThrottled = false;
   const THROTTLE_DELAY = 100; // 100 milisaniyede bir çalıştır
 
-  // Çubukları görünür hale getiren fonksiyon (Hepsi)
   function revealElements() {
-    // Her zaman önce Header'ı geri getir
+
     header.classList.remove('header-hidden');
-    // Ardından Duyuru Çubuğunu geri getir
+
     announcementBar.classList.remove('announcement-hidden');
   }
 
-  // Sadece Header'ı görünür hale getiren fonksiyon
   function revealHeaderOnly() {
     header.classList.remove('header-hidden');
   }
 
-  // Çubukları gizleyen fonksiyon
   function hideElements() {
     const currentScrollY = window.scrollY;
 
-    // 1. Duyuru Çubuğunu Gizle (Hemen)
     if (currentScrollY > ANNOUNCEMENT_THRESHOLD) {
       announcementBar.classList.add('announcement-hidden');
     }
 
-    // 2. Header'ı Gizle (Belirtilen eşiği geçince)
     if (currentScrollY > HEADER_HIDE_THRESHOLD) {
       header.classList.add('header-hidden');
     }
   }
 
-  // 2. Scroll Olayını Dinleme Fonksiyonu (Optimized with requestAnimationFrame)
   function handleScroll() {
     if (isThrottled) return;
 
@@ -78,16 +52,14 @@ document.addEventListener('DOMContentLoaded', () => {
       const currentScrollY = window.scrollY;
       const isScrollingDown = currentScrollY > lastScrollY;
 
-      // Kullanıcı tamamen üste çıktığında (0) her zaman hepsini geri getir
       if (currentScrollY === 0) {
         revealElements();
       }
-      // Aşağı Kaydırıyorsa -> Gizle
+
       else if (isScrollingDown) {
         hideElements();
       }
-      // Yukarı Kaydırıyorsa -> Geri Getir
-      // Önemli: Yukarı kaydırmada hemen geri gelmesi için
+
       else {
         revealElements();
       }
@@ -97,23 +69,19 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // 3. Fare Üstü Alan Olayını Dinleme Fonksiyonu
   function handleMouseMove(event) {
-    // Mouse Y koordinatı üst bölgedeyse VE header gizlenmişse
+
     if (event.clientY < MOUSE_TOP_AREA_THRESHOLD && header.classList.contains('header-hidden')) {
-      // Sadece header'ı geri getir
+
       revealHeaderOnly();
     }
   }
 
-  // Olay Dinleyicileri
   window.addEventListener('scroll', handleScroll);
   document.addEventListener('mousemove', handleMouseMove);
 
-  // Sayfa yüklendiğinde bir kere çalıştır
   handleScroll();
 });
-
 
 var __typeError = (msg) => {
   throw TypeError(msg);
@@ -124,7 +92,6 @@ var __privateAdd = (obj, member, value) => member.has(obj) ? __typeError("Cannot
 var __privateSet = (obj, member, value, setter) => (__accessCheck(obj, member, "write to private field"), setter ? setter.call(obj, value) : member.set(obj, value), value);
 var __privateMethod = (obj, member, method) => (__accessCheck(obj, member, "access private method"), method);
 
-// js/common/utilities/country-selector.js
 var CountrySelector = class extends HTMLElement {
   constructor() {
     super();
@@ -161,8 +128,7 @@ if (!window.customElements.get("country-selector")) {
   window.customElements.define("country-selector", CountrySelector);
 }
 
-// js/common/utilities/cached-fetch.js
-var cachedMap = /* @__PURE__ */ new Map();
+var cachedMap =  new Map();
 function cachedFetch(url, options) {
   const cacheKey = url;
   if (cachedMap.has(cacheKey)) {
@@ -181,13 +147,11 @@ function cachedFetch(url, options) {
   });
 }
 
-// js/common/utilities/extract-section-id.js
 function extractSectionId(element) {
   element = element.classList.contains("shopify-section") ? element : element.closest(".shopify-section");
   return element.id.replace("shopify-section-", "");
 }
 
-// js/common/utilities/dom.js
 function deepQuerySelector(root, selector) {
   let element = root.querySelector(selector);
   if (element) {
@@ -240,7 +204,6 @@ function waitForEvent(element, eventName) {
   });
 }
 
-// js/common/utilities/player.js
 var _callback, _duration, _remainingTime, _startTime, _timer, _state, _onVisibilityChangeListener, _Player_instances, onVisibilityChange_fn;
 var Player = class extends EventTarget {
   constructor(durationInSec, stopOnVisibility = true) {
@@ -271,7 +234,7 @@ var Player = class extends EventTarget {
     }
     clearTimeout(__privateGet(this, _timer));
     __privateSet(this, _state, "paused");
-    __privateSet(this, _remainingTime, __privateGet(this, _remainingTime) - ((/* @__PURE__ */ new Date()).getTime() - __privateGet(this, _startTime)));
+    __privateSet(this, _remainingTime, __privateGet(this, _remainingTime) - (( new Date()).getTime() - __privateGet(this, _startTime)));
     this.dispatchEvent(new CustomEvent("player:pause", { detail: { duration: __privateGet(this, _duration) / 1e3, remainingTime: __privateGet(this, _remainingTime) / 1e3 } }));
   }
   resume(restartTimer = false) {
@@ -280,7 +243,7 @@ var Player = class extends EventTarget {
         this.start();
       } else {
         clearTimeout(__privateGet(this, _timer));
-        __privateSet(this, _startTime, (/* @__PURE__ */ new Date()).getTime());
+        __privateSet(this, _startTime, ( new Date()).getTime());
         __privateSet(this, _state, "started");
         __privateSet(this, _timer, setTimeout(__privateGet(this, _callback), __privateGet(this, _remainingTime)));
         this.dispatchEvent(new CustomEvent("player:resume", { detail: { duration: __privateGet(this, _duration) / 1e3, remainingTime: __privateGet(this, _remainingTime) / 1e3 } }));
@@ -289,7 +252,7 @@ var Player = class extends EventTarget {
   }
   start() {
     clearTimeout(__privateGet(this, _timer));
-    __privateSet(this, _startTime, (/* @__PURE__ */ new Date()).getTime());
+    __privateSet(this, _startTime, ( new Date()).getTime());
     __privateSet(this, _state, "started");
     __privateSet(this, _remainingTime, __privateGet(this, _duration));
     __privateSet(this, _timer, setTimeout(__privateGet(this, _callback), __privateGet(this, _remainingTime)));
@@ -317,7 +280,6 @@ onVisibilityChange_fn = function () {
   }
 };
 
-// js/common/utilities/accessibility.js
 function announceText(holderId, message) {
   const holder = document.getElementById(holderId);
   holder.textContent = "";
@@ -332,7 +294,6 @@ function announceError(message) {
   announceText("error-announcement", message);
 }
 
-// js/common/actions/confirm-button.js
 var ConfirmButton = class extends HTMLButtonElement {
   constructor() {
     super();
@@ -347,7 +308,6 @@ if (!window.customElements.get("confirm-button")) {
   window.customElements.define("confirm-button", ConfirmButton, { extends: "button" });
 }
 
-// js/common/actions/controls.js
 var PageDots = class extends HTMLElement {
   connectedCallback() {
     this._abortController = new AbortController();
@@ -436,7 +396,6 @@ if (!window.customElements.get("next-button")) {
   window.customElements.define("next-button", NextButton, { extends: "button" });
 }
 
-// js/common/actions/copy-button.js
 import { timeline } from "vendor";
 var CopyButton = class extends HTMLButtonElement {
   constructor() {
@@ -479,7 +438,6 @@ if (!window.customElements.get("copy-button")) {
   window.customElements.define("copy-button", CopyButton, { extends: "button" });
 }
 
-// js/common/actions/custom-button.js
 import { animate, timeline as timeline2, stagger } from "vendor";
 var CustomButton = class extends HTMLButtonElement {
   static get observedAttributes() {
@@ -529,7 +487,6 @@ if (!window.customElements.get("custom-button")) {
   window.customElements.define("custom-button", CustomButton, { extends: "button" });
 }
 
-// js/common/actions/share-button.js
 var ShareButton = class extends HTMLButtonElement {
   constructor() {
     super();
@@ -548,7 +505,6 @@ if (!window.customElements.get("share-button")) {
   window.customElements.define("share-button", ShareButton, { extends: "button" });
 }
 
-// js/common/animation/heading.js
 import { stagger as stagger2 } from "vendor";
 function getHeadingKeyframe(element, options = {}) {
   if (!element) {
@@ -573,7 +529,6 @@ function getHeadingKeyframe(element, options = {}) {
   }
 }
 
-// js/common/animation/reveal-items.js
 import { animate as animate2, stagger as stagger3, inView } from "vendor";
 var _RevealItems_instances, reveal_fn;
 var RevealItems = class extends HTMLElement {
@@ -598,7 +553,6 @@ if (!window.customElements.get("reveal-items")) {
   window.customElements.define("reveal-items", RevealItems);
 }
 
-// js/common/behavior/custom-cursor.js
 var _abortController, _CustomCursor_instances, onPointerLeave_fn, onPointerMove_fn;
 var CustomCursor = class extends HTMLElement {
   constructor() {
@@ -636,7 +590,6 @@ if (!window.customElements.get("custom-cursor")) {
   window.customElements.define("custom-cursor", CustomCursor);
 }
 
-// js/common/behavior/gesture-area.js
 var _domElement, _thresholdDistance, _thresholdTime, _signal, _firstClientX, _tracking, _start, _GestureArea_instances, touchStart_fn, preventTouch_fn, gestureStart_fn, gestureMove_fn, gestureEnd_fn;
 var GestureArea = class {
   constructor(domElement, { thresholdDistance = 80, thresholdTime = 500, signal = null } = {}) {
@@ -680,7 +633,7 @@ preventTouch_fn = function (event) {
 gestureStart_fn = function (event) {
   __privateSet(this, _tracking, true);
   __privateSet(this, _start, {
-    time: (/* @__PURE__ */ new Date()).getTime(),
+    time: ( new Date()).getTime(),
     x: event.clientX,
     y: event.clientY
   });
@@ -695,7 +648,7 @@ gestureEnd_fn = function (event) {
     return;
   }
   __privateSet(this, _tracking, false);
-  const now = (/* @__PURE__ */ new Date()).getTime(), deltaTime = now - __privateGet(this, _start).time, deltaX = event.clientX - __privateGet(this, _start).x, deltaY = event.clientY - __privateGet(this, _start).y;
+  const now = ( new Date()).getTime(), deltaTime = now - __privateGet(this, _start).time, deltaX = event.clientX - __privateGet(this, _start).x, deltaY = event.clientY - __privateGet(this, _start).y;
   if (deltaTime > __privateGet(this, _thresholdTime)) {
     return;
   }
@@ -716,7 +669,6 @@ gestureEnd_fn = function (event) {
   }
 };
 
-// js/common/behavior/height-observer.js
 var HeightObserver = class extends HTMLElement {
   constructor() {
     super();
@@ -744,7 +696,6 @@ if (!window.customElements.get("height-observer")) {
   window.customElements.define("height-observer", HeightObserver);
 }
 
-// js/common/behavior/safe-sticky.js
 import { inView as inView2 } from "vendor";
 var _resizeObserver, _checkPositionListener, _initialTop, _lastKnownY, _currentTop, _position, _SafeSticky_instances, recalculateStyles_fn, checkPosition_fn;
 var SafeSticky = class extends HTMLElement {
@@ -755,7 +706,7 @@ var SafeSticky = class extends HTMLElement {
     __privateAdd(this, _checkPositionListener, throttle(__privateMethod(this, _SafeSticky_instances, checkPosition_fn).bind(this)));
     __privateAdd(this, _initialTop, 0);
     __privateAdd(this, _lastKnownY, 0);
-    /* we could initialize it to window.scrollY but this avoids a costly reflow */
+
     __privateAdd(this, _currentTop, 0);
     __privateAdd(this, _position, "relative");
   }
@@ -805,7 +756,6 @@ if (!window.customElements.get("safe-sticky")) {
   window.customElements.define("safe-sticky", SafeSticky);
 }
 
-// js/common/behavior/scroll-area.js
 var ScrollArea = class {
   constructor(element, abortController2 = null) {
     this._element = element;
@@ -873,7 +823,6 @@ var ScrollArea = class {
   }
 };
 
-// js/common/behavior/scroll-progress.js
 var ScrollProgress = class extends HTMLElement {
   connectedCallback() {
     this.scrolledElement.addEventListener("scroll", throttle(this._updateScrollProgress.bind(this)));
@@ -893,7 +842,6 @@ if (!window.customElements.get("scroll-progress")) {
   window.customElements.define("scroll-progress", ScrollProgress);
 }
 
-// js/common/behavior/scroll-shadow.js
 var template = `
   <style>
     :host {
@@ -901,11 +849,11 @@ var template = `
       contain: layout;
       position: relative;
     }
-    
+
     :host([hidden]) {
       display: none;
     }
-    
+
     s {
       position: absolute;
       top: 0;
@@ -993,7 +941,6 @@ if ("ResizeObserver" in window && !window.customElements.get("scroll-shadow")) {
   window.customElements.define("scroll-shadow", ScrollShadow);
 }
 
-// js/common/behavior/split-lines.js
 var _requireSplit, _lastScreenWidth, _SplitLines_instances, split_fn, onWindowResized_fn;
 var SplitLines = class extends HTMLElement {
   constructor() {
@@ -1021,7 +968,7 @@ split_fn = function (force = false) {
     return;
   }
   this.shadowRoot.innerHTML = this.textContent.replace(/./g, "<span>$&</span>").replace(/\s/g, " ");
-  const bounds = /* @__PURE__ */ new Map();
+  const bounds =  new Map();
   Array.from(this.shadowRoot.children).forEach((letter) => {
     const key = Math.round(letter.getBoundingClientRect().top);
     bounds.set(key, (bounds.get(key) || "").concat(letter.textContent));
@@ -1044,10 +991,8 @@ if (!window.customElements.get("split-lines")) {
   window.customElements.define("split-lines", SplitLines);
 }
 
-// js/common/carousel/effect-carousel.js
 import { timeline as timeline3, inView as inView3 } from "vendor";
 
-// js/common/carousel/base-carousel.js
 var BaseCarousel = class extends HTMLElement {
   connectedCallback() {
     this._abortController = new AbortController();
@@ -1137,7 +1082,6 @@ var BaseCarousel = class extends HTMLElement {
   }
 };
 
-// js/common/carousel/effect-carousel.js
 var EffectCarousel = class extends BaseCarousel {
   connectedCallback() {
     if (this.items.length > 1 && this.hasAttribute("autoplay")) {
@@ -1183,11 +1127,7 @@ var EffectCarousel = class extends BaseCarousel {
       this._dispatchEvent("carousel:settle", index);
     }
   }
-  /**
-   * Perform a simple fade animation. For more complex animations, you should implement your own custom elements
-   * that extends the EffectCarousel, and implement your own transition. You should make sure to return a promise
-   * that resolves when the animation is finished
-   */
+
   _transitionTo(fromSlide, toSlide, { direction = "next", animate: animate19 = true } = {}) {
     fromSlide.classList.remove("is-selected");
     toSlide.classList.add("is-selected");
@@ -1202,7 +1142,6 @@ if (!window.customElements.get("effect-carousel")) {
   window.customElements.define("effect-carousel", EffectCarousel);
 }
 
-// js/common/carousel/scroll-carousel.js
 var ScrollCarousel = class extends BaseCarousel {
   constructor() {
     super();
@@ -1241,10 +1180,7 @@ var ScrollCarousel = class extends BaseCarousel {
       this._transitionTo(fromSlide, toSlide, { animate: animate19 });
     }
   }
-  /**
-   * Transition using the scrollTo method. To prevent the intersection observer to caught up the change, we set up
-   * a "hasPendingProgrammaticScroll" variable to true, that is set back to false once the scroll has settled
-   */
+
   _transitionTo(fromSlide, toSlide, { animate: animate19 = true } = {}) {
     fromSlide.classList.remove("is-selected");
     toSlide.classList.add("is-selected");
@@ -1260,9 +1196,7 @@ var ScrollCarousel = class extends BaseCarousel {
     this._hasPendingProgrammaticScroll = animate19;
     this.scrollTo({ left: scrollAmount, behavior: animate19 ? "smooth" : "auto" });
   }
-  /**
-   * Update the index when manually scrolling (which allows to update the controls)
-   */
+
   _onCarouselScroll() {
     if (this._hasPendingProgrammaticScroll || this._scrollArea.scrollDirection === "none") {
       return;
@@ -1274,9 +1208,7 @@ var ScrollCarousel = class extends BaseCarousel {
       this._dispatchEvent("carousel:change", this.selectedIndex);
     }
   }
-  /**
-   * On the scroll has settled we dispatch the event (which covers both programmatic scroll and swipe)
-   */
+
   _onScrollSettled() {
     this.items.forEach((item) => item.classList.remove("is-selected"));
     this.selectedSlide.classList.add("is-selected");
@@ -1297,10 +1229,8 @@ if (!window.customElements.get("scroll-carousel")) {
   window.customElements.define("scroll-carousel", ScrollCarousel);
 }
 
-// js/common/cart/cart-count.js
 import { animate as animate3 } from "vendor";
 
-// js/common/cart/fetch-cart.js
 var createCartPromise = () => {
   return new Promise(async (resolve) => {
     resolve(await (await fetch(`${Shopify.routes.root}cart.js`)).json());
@@ -1319,7 +1249,6 @@ window.addEventListener("pageshow", (event) => {
   }
 });
 
-// js/common/cart/cart-count.js
 var CartCount = class extends HTMLElement {
   constructor() {
     super();
@@ -1363,7 +1292,6 @@ if (!window.customElements.get("cart-count")) {
   window.customElements.define("cart-count", CartCount);
 }
 
-// js/common/cart/cart-discount.js
 var AbstractCartDiscount = class extends HTMLElement {
   async getDiscountCodes() {
     return (await fetchCart)["discount_codes"].filter((discount) => discount.applicable).map((discount) => discount.code.toLowerCase());
@@ -1454,10 +1382,8 @@ if (!window.customElements.get("cart-discount-banner")) {
   window.customElements.define("cart-discount-banner", CartDiscountBanner);
 }
 
-// js/common/cart/cart-drawer.js
 import { animate as animate4 } from "vendor";
 
-// js/common/overlay/dialog-element.js
 import { FocusTrap, Delegate } from "vendor";
 var DialogElement = class _DialogElement extends HTMLElement {
   static get observedAttributes() {
@@ -1532,11 +1458,7 @@ var DialogElement = class _DialogElement extends HTMLElement {
   get shouldLock() {
     return false;
   }
-  /**
-   * Sometimes (especially for drawer) we need to ensure that an element is on top of everything else. To do that,
-   * we need to move the element to the body. We are doing that on open, and then restore the initial position on
-   * close
-   */
+
   get shouldAppendToBody() {
     return false;
   }
@@ -1610,12 +1532,12 @@ var DialogElement = class _DialogElement extends HTMLElement {
         break;
     }
   }
-  /* Those methods are used to perform custom show/hide transition, and must return a promise */
+
   _showTransition(animate19 = true) {
   }
   _hideTransition() {
   }
-  /* By default, a focus element is deactivated when you click outside it */
+
   _allowOutsideClick(event) {
     if ("TouchEvent" in window && event instanceof TouchEvent) {
       return this._allowOutsideClickTouch(event);
@@ -1663,7 +1585,6 @@ if (!window.customElements.get("close-button")) {
   window.customElements.define("close-button", CloseButton, { extends: "button" });
 }
 
-// js/common/overlay/drawer.js
 import { animate as motionAnimate, timeline as motionTimeline } from "vendor";
 var reduceDrawerAnimation = window.matchMedia("(prefers-reduced-motion: reduce)").matches || window.themeVariables.settings.reduceDrawerAnimation;
 var Drawer = class extends DialogElement {
@@ -1752,7 +1673,6 @@ if (!window.customElements.get("x-drawer")) {
   window.customElements.define("x-drawer", Drawer);
 }
 
-// js/common/overlay/popover.js
 import { animate as motionAnimate2, timeline as motionTimeline2 } from "vendor";
 var Popover = class extends DialogElement {
   constructor() {
@@ -1840,7 +1760,6 @@ if (!window.customElements.get("x-popover")) {
   window.customElements.define("x-popover", Popover);
 }
 
-// js/common/overlay/privacy-bar.js
 import { Delegate as Delegate2 } from "vendor";
 var PrivacyBar = class extends HTMLElement {
   constructor() {
@@ -1887,7 +1806,6 @@ if (!window.customElements.get("privacy-bar")) {
   window.customElements.define("privacy-bar", PrivacyBar);
 }
 
-// js/common/cart/cart-drawer.js
 var CartDrawer = class extends Drawer {
   constructor() {
     super();
@@ -1920,9 +1838,7 @@ var CartDrawer = class extends Drawer {
   _onPrepareBundledSections(event) {
     event.detail.sections.push(extractSectionId(this));
   }
-  /**
-   * Update the cart drawer content when cart content changes.
-   */
+
   async _onCartChanged(event) {
     const updatedDrawerContent = new DOMParser().parseFromString(event.detail.cart["sections"][extractSectionId(this)], "text/html");
     if (event.detail.cart["item_count"] > 0) {
@@ -1941,27 +1857,21 @@ var CartDrawer = class extends Drawer {
       animate4(this.querySelector(".empty-state"), { opacity: [0, 1], transform: ["translateY(20px)", "translateY(0)"] }, { duration: 0.15 });
     }
   }
-  /**
-   * Handle the case when the page is served from BF cache
-   */
+
   _onPageShow(event) {
     if (!event.persisted) {
       return;
     }
     this._onCartRefresh();
   }
-  /**
-   * Listeners called when a new variant has been added
-   */
+
   _onVariantAdded(event) {
     if (window.themeVariables.settings.cartType !== "drawer" || event.detail?.blockCartDrawerOpening) {
       return;
     }
     this.show();
   }
-  /**
-   * Force a complete refresh of the cart drawer (this is called by dispatching the 'cart:refresh' on the document)
-   */
+
   async _onCartRefresh() {
     const tempDiv = document.createElement("div");
     tempDiv.innerHTML = await (await fetch(`${window.Shopify.routes.root}?section_id=${extractSectionId(this)}`)).text();
@@ -2036,7 +1946,6 @@ if (!window.customElements.get("line-item")) {
   window.customElements.define("line-item", LineItem);
 }
 
-// js/common/cart/cart-note.js
 var CartNote = class extends HTMLElement {
   constructor() {
     super();
@@ -2051,7 +1960,7 @@ var CartNote = class extends HTMLElement {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ note: event.target.value }),
       keepalive: true
-      // Allows to make sure the request is fired even when submitting the form
+
     });
   }
 };
@@ -2075,7 +1984,6 @@ if (!window.customElements.get("cart-note-dialog")) {
   window.customElements.define("cart-note-dialog", CartNoteDialog);
 }
 
-// js/common/cart/free-shipping-bar.js
 var FreeShippingBar = class extends HTMLElement {
   static get observedAttributes() {
     return ["threshold", "total-price"];
@@ -2135,7 +2043,6 @@ if (!window.customElements.get("free-shipping-bar")) {
   window.customElements.define("free-shipping-bar", FreeShippingBar);
 }
 
-// js/common/cart/line-item-quantity.js
 var LineItemQuantity = class extends HTMLElement {
   constructor() {
     super();
@@ -2210,7 +2117,6 @@ if (!window.customElements.get("line-item-quantity")) {
   window.customElements.define("line-item-quantity", LineItemQuantity);
 }
 
-// js/common/cart/shipping-estimator.js
 var ShippingEstimator = class extends HTMLElement {
   constructor() {
     super();
@@ -2224,9 +2130,7 @@ var ShippingEstimator = class extends HTMLElement {
   disconnectedCallback() {
     this.submitButton.removeEventListener("click", this._estimateShippingListener);
   }
-  /**
-   * @doc https://shopify.dev/docs/themes/ajax-api/reference/cart#generate-shipping-rates
-   */
+
   async _estimateShipping(event) {
     event.preventDefault();
     const zip = this.querySelector('[name="address[zip]"]').value, country = this.querySelector('[name="address[country]"]').value, province = this.querySelector('[name="address[province]"]').value;
@@ -2278,7 +2182,6 @@ if (!window.customElements.get("shipping-estimator")) {
   window.customElements.define("shipping-estimator", ShippingEstimator);
 }
 
-// js/common/facets/facet-apply-button.js
 var FacetApplyButton = class extends HTMLButtonElement {
   constructor() {
     super();
@@ -2302,7 +2205,6 @@ if (!window.customElements.get("facet-apply-button")) {
   window.customElements.define("facet-apply-button", FacetApplyButton, { extends: "button" });
 }
 
-// js/common/facets/facet-dialog.js
 var FacetDialog = class extends DialogElement {
   get initialFocus() {
     return false;
@@ -2312,7 +2214,6 @@ if (!window.customElements.get("facet-dialog")) {
   window.customElements.define("facet-dialog", FacetDialog);
 }
 
-// js/common/facets/facet-drawer.js
 var FacetDrawer = class extends Drawer {
   constructor() {
     super();
@@ -2331,7 +2232,6 @@ if (!window.customElements.get("facet-drawer")) {
   window.customElements.define("facet-drawer", FacetDrawer);
 }
 
-// js/common/facets/facet-floating-filter.js
 import { animate as animate5 } from "vendor";
 var FacetFloatingFilter = class extends HTMLElement {
   connectedCallback() {
@@ -2349,9 +2249,8 @@ if (!window.customElements.get("facet-floating-filter")) {
   window.customElements.define("facet-floating-filter", FacetFloatingFilter);
 }
 
-// js/common/facets/facet-form.js
 var abortController = null;
-var openElements = /* @__PURE__ */ new Set();
+var openElements =  new Set();
 document.addEventListener("facet:update", async (event) => {
   if (abortController) {
     abortController.abort();
@@ -2441,7 +2340,6 @@ if (!window.customElements.get("facet-form")) {
   window.customElements.define("facet-form", FacetForm, { extends: "form" });
 }
 
-// js/common/facets/facet-link.js
 var FacetLink = class extends HTMLAnchorElement {
   constructor() {
     super();
@@ -2463,7 +2361,6 @@ if (!window.customElements.get("facet-link")) {
   window.customElements.define("facet-link", FacetLink, { extends: "a" });
 }
 
-// js/common/facets/facet-sort-by.js
 var FacetSortBy = class extends HTMLElement {
   constructor() {
     super();
@@ -2489,7 +2386,6 @@ if (!window.customElements.get("facet-sort-by")) {
   window.customElements.define("facet-sort-by", FacetSortBy);
 }
 
-// js/common/feedback/pill-loader.js
 import { animate as animate6, timeline as timeline4, stagger as stagger4 } from "vendor";
 var PillLoader = class extends HTMLElement {
   static get observedAttributes() {
@@ -2502,7 +2398,7 @@ var PillLoader = class extends HTMLElement {
         <span></span>
         <span></span>
       </div>
-      
+
       <svg class="loader-checkmark" fill="none" width="9" height="8" viewBox="0 0 9 8">
         <path d="M1 3.5 3.3 6 8 1" stroke="currentColor" stroke-width="2"/>
       </svg>
@@ -2529,7 +2425,6 @@ if (!window.customElements.get("pill-loader")) {
   window.customElements.define("pill-loader", PillLoader);
 }
 
-// js/common/feedback/progress-bar.js
 var ProgressBar = class extends HTMLElement {
   static get observedAttributes() {
     return ["aria-valuenow", "aria-valuemax"];
@@ -2548,7 +2443,6 @@ if (!window.customElements.get("progress-bar")) {
   window.customElements.define("progress-bar", ProgressBar);
 }
 
-// js/common/form/price-range.js
 var PriceRange = class extends HTMLElement {
   connectedCallback() {
     this._abortController = new AbortController();
@@ -2599,7 +2493,6 @@ if (!window.customElements.get("price-range")) {
   window.customElements.define("price-range", PriceRange);
 }
 
-// js/common/form/quantity-selector.js
 var QuantitySelector = class extends HTMLElement {
   connectedCallback() {
     this._abortController = new AbortController();
@@ -2668,7 +2561,6 @@ if (!window.customElements.get("quantity-input")) {
   window.customElements.define("quantity-input", QuantityInput, { extends: "input" });
 }
 
-// js/common/form/resizable-textarea.js
 var ResizableTextarea = class extends HTMLTextAreaElement {
   constructor() {
     super();
@@ -2683,7 +2575,6 @@ if (!window.customElements.get("resizable-textarea")) {
   window.customElements.define("resizable-textarea", ResizableTextarea, { extends: "textarea" });
 }
 
-// js/common/list/listbox.js
 var _accessibilityInitialized, _hiddenInput, _Listbox_instances, onOptionClicked_fn, onInputChanged_fn, onKeyDown_fn;
 var Listbox = class extends HTMLElement {
   constructor() {
@@ -2766,7 +2657,6 @@ if (!window.customElements.get("x-listbox")) {
   window.customElements.define("x-listbox", Listbox);
 }
 
-// js/common/media/image.js
 function imageLoaded(imageOrArray) {
   if (!imageOrArray) {
     return Promise.resolve();
@@ -2807,7 +2697,6 @@ function createMediaImg(media, widths = [], properties = {}) {
   return image;
 }
 
-// js/common/product/gift-card-recipient.js
 var _recipientCheckbox, _recipientOtherProperties, _recipientSendOnProperty, _offsetProperty, _recipientFieldsContainer, _GiftCardRecipient_instances, synchronizeProperties_fn, formatDate_fn;
 var GiftCardRecipient = class extends HTMLElement {
   constructor() {
@@ -2826,11 +2715,11 @@ var GiftCardRecipient = class extends HTMLElement {
     __privateSet(this, _recipientFieldsContainer, this.querySelector(".gift-card-recipient__fields"));
     __privateSet(this, _offsetProperty, this.querySelector('[name="properties[__shopify_offset]"]'));
     if (__privateGet(this, _offsetProperty)) {
-      __privateGet(this, _offsetProperty).value = (/* @__PURE__ */ new Date()).getTimezoneOffset().toString();
+      __privateGet(this, _offsetProperty).value = ( new Date()).getTimezoneOffset().toString();
     }
     __privateSet(this, _recipientSendOnProperty, this.querySelector('[name="properties[Send on]"]'));
-    const minDate = /* @__PURE__ */ new Date();
-    const maxDate = /* @__PURE__ */ new Date();
+    const minDate =  new Date();
+    const maxDate =  new Date();
     maxDate.setDate(minDate.getDate() + 90);
     __privateGet(this, _recipientSendOnProperty)?.setAttribute("min", __privateMethod(this, _GiftCardRecipient_instances, formatDate_fn).call(this, minDate));
     __privateGet(this, _recipientSendOnProperty)?.setAttribute("max", __privateMethod(this, _GiftCardRecipient_instances, formatDate_fn).call(this, maxDate));
@@ -2857,7 +2746,6 @@ if (!window.customElements.get("gift-card-recipient")) {
   window.customElements.define("gift-card-recipient", GiftCardRecipient);
 }
 
-// js/common/product/product-card.js
 import { Delegate as Delegate3 } from "vendor";
 var ProductCard = class extends HTMLElement {
   constructor() {
@@ -2913,7 +2801,6 @@ if (!window.customElements.get("product-card")) {
   window.customElements.define("product-card", ProductCard);
 }
 
-// js/common/product/product-form.js
 var ProductForm = class extends HTMLFormElement {
   #submitting = false;
   constructor() {
@@ -2947,7 +2834,7 @@ var ProductForm = class extends HTMLFormElement {
       method: "POST",
       headers: {
         "X-Requested-With": "XMLHttpRequest"
-        // Needed for Shopify to check inventory
+
       }
     });
     submitButtons.forEach((submitButton) => {
@@ -2990,7 +2877,6 @@ if (!window.customElements.get("product-form")) {
   window.customElements.define("product-form", ProductForm, { extends: "form" });
 }
 
-// js/common/product/product-form-listeners.js
 var BuyButtons = class extends HTMLElement {
   constructor() {
     super();
@@ -3028,7 +2914,7 @@ var BuyButtons = class extends HTMLElement {
         <path d="M0 9C0 4.02944 4.02944 0 9 0C13.9706 0 18 4.02944 18 9C18 13.9706 13.9706 18 9 18C4.02944 18 0 13.9706 0 9Z" fill="currentColor"></path>
         <path d="M5.29289 6.70711L11.2929 12.7071L12.7071 11.2929L6.70711 5.29289L5.29289 6.70711ZM6.70711 12.7071L12.7071 6.70711L11.2929 5.2929L5.29289 11.2929L6.70711 12.7071Z" fill="#ffffff"></path>
       </svg>
-      
+
       <p>${event.detail.error}</p>
     `;
     this.before(errorBanner);
@@ -3042,7 +2928,6 @@ if (!window.customElements.get("buy-buttons")) {
   window.customElements.define("buy-buttons", BuyButtons);
 }
 
-// js/common/product/product-gallery.js
 import { PhotoSwipeLightbox } from "vendor";
 var ProductGallery = class extends HTMLElement {
   connectedCallback() {
@@ -3079,7 +2964,7 @@ var ProductGallery = class extends HTMLElement {
       closeTitle: window.themeVariables.strings.closeGallery,
       zoomTitle: window.themeVariables.strings.zoomGallery,
       errorMsg: window.themeVariables.strings.errorGallery,
-      // UX
+
       arrowPrev: false,
       arrowNext: false,
       counter: false,
@@ -3101,11 +2986,11 @@ var ProductGallery = class extends HTMLElement {
             <button class="pagination__item group" rel="prev">
               <span class="animated-arrow animated-arrow--reverse"></span>
             </button>
-            
+
             <span class="pagination__current text-sm">
               <span class="pagination__current-page">1</span> / <span class="pagination__page-count"></span>
             </span>
-            
+
             <button class="pagination__item group" rel="next">
               <span class="animated-arrow"></span>
             </button>
@@ -3124,9 +3009,7 @@ var ProductGallery = class extends HTMLElement {
     photoswipe.init();
     return this._photoswipe = photoswipe;
   }
-  /**
-   * Open the zoom by dynamically creating a data source based on the filtered items
-   */
+
   openZoom(index = 0) {
     const dataSource = Array.from(this.querySelectorAll('.product-gallery__media[data-media-type="image"]:not([hidden]) > img')).map((image) => {
       return {
@@ -3261,7 +3144,6 @@ if (!window.customElements.get("media-carousel")) {
   window.customElements.define("media-carousel", MediaCarousel);
 }
 
-// js/common/product/product-loader.js
 var ProductLoader = class {
   static loadedProducts = {};
   static load(productHandle) {
@@ -3288,7 +3170,6 @@ var ProductLoader = class {
   }
 };
 
-// js/common/product/quick-add.js
 var ProductQuickAdd = class extends HTMLElement {
   #scopeFromPassed = false;
   #scopeToReached = false;
@@ -3321,7 +3202,6 @@ if (!window.customElements.get("product-quick-add")) {
   window.customElements.define("product-quick-add", ProductQuickAdd);
 }
 
-// js/common/product/product-rerender.js
 var _abortController3, _ProductRerender_instances, onRerender_fn;
 var ProductRerender = class extends HTMLElement {
   constructor() {
@@ -3331,7 +3211,7 @@ var ProductRerender = class extends HTMLElement {
   }
   connectedCallback() {
     __privateSet(this, _abortController3, new AbortController());
-    // Production: Silent validation - no console output
+
     if (!this.id || !this.hasAttribute("observe-form")) {
       return;
     }
@@ -3387,7 +3267,6 @@ if (!window.customElements.get("product-rerender")) {
   window.customElements.define("product-rerender", ProductRerender);
 }
 
-// js/common/product/quick-buy-drawer.js
 import { animate as animate7, timeline as timeline5 } from "vendor";
 var QuickBuyDrawer = class extends Drawer {
   constructor() {
@@ -3433,7 +3312,6 @@ if (!window.customElements.get("quick-buy-drawer")) {
   window.customElements.define("quick-buy-drawer", QuickBuyDrawer);
 }
 
-// js/common/product/variant-picker.js
 import { Delegate as Delegate4 } from "vendor";
 var CACHE_EVICTION_TIME = 1e3 * 60 * 5;
 var _preloadedHtml, _delegate, _intersectionObserver, _form, _selectedVariant, _VariantPicker_instances, getActiveOptionValues_fn, getOptionValuesFromOption_fn, onOptionChanged_fn, onOptionPreload_fn, onIntersection_fn, renderForCombination_fn, createHashKeyForHtml_fn;
@@ -3467,10 +3345,7 @@ var _VariantPicker = class _VariantPicker extends HTMLElement {
   get updateUrl() {
     return this.hasAttribute("update-url");
   }
-  /**
-   * Select a variant using a list of option values. The list of option values might lead to no variant (for instance)
-   * in the case of a combination that does not exist
-   */
+
   async selectCombination({ optionValues, productChange }) {
     const previousVariant = this.selectedVariant;
     const newContent = document.createRange().createContextualFragment(await __privateMethod(this, _VariantPicker_instances, renderForCombination_fn).call(this, optionValues));
@@ -3511,15 +3386,11 @@ _intersectionObserver = new WeakMap();
 _form = new WeakMap();
 _selectedVariant = new WeakMap();
 _VariantPicker_instances = new WeakSet();
-/**
- * Get the option values for the active combination
- */
+
 getActiveOptionValues_fn = function () {
   return Array.from(__privateGet(this, _form).elements).filter((item) => item.matches("input[data-option-position]:checked")).sort((a, b) => parseInt(a.getAttribute("data-option-position")) - parseInt(b.getAttribute("data-option-position"))).map((input) => input.value);
 };
-/**
- * Get the option values for a given input
- */
+
 getOptionValuesFromOption_fn = function (input) {
   const optionValues = [input, ...Array.from(__privateGet(this, _form).elements).filter((item) => item.matches(`input[data-option-position]:not([name="${input.name}"]):checked`))].sort((a, b) => parseInt(a.getAttribute("data-option-position")) - parseInt(b.getAttribute("data-option-position"))).map((input2) => input2.value);
   return optionValues;
@@ -3533,16 +3404,11 @@ onOptionChanged_fn = async function (event) {
     productChange: event.target.hasAttribute("data-product-url")
   });
 };
-/**
- * To improve the user experience, we preload a variant whenever the user hovers over a specific option
- */
+
 onOptionPreload_fn = function (event, target) {
   __privateMethod(this, _VariantPicker_instances, renderForCombination_fn).call(this, __privateMethod(this, _VariantPicker_instances, getOptionValuesFromOption_fn).call(this, target.control));
 };
-/**
- * When the variant picker is intersecting the viewport, we preload the options to improve the user experience
- * so that switching variants is nearly instant
- */
+
 onIntersection_fn = function (entries) {
   const prerenderOptions = () => {
     Array.from(__privateGet(this, _form).elements).filter((item) => item.matches("input[data-option-position]:not(:checked)")).forEach((input) => {
@@ -3583,13 +3449,12 @@ renderForCombination_fn = async function (optionValues) {
 createHashKeyForHtml_fn = function (optionValuesAsString) {
   return `${optionValuesAsString}-${this.getAttribute("section-id")}`;
 };
-__privateAdd(_VariantPicker, _preloadedHtml, /* @__PURE__ */ new Map());
+__privateAdd(_VariantPicker, _preloadedHtml,  new Map());
 var VariantPicker = _VariantPicker;
 if (!window.customElements.get("variant-picker")) {
   window.customElements.define("variant-picker", VariantPicker);
 }
 
-// js/common/media/base-media.js
 import { inView as inView4 } from "vendor";
 var BaseMedia = class extends HTMLElement {
   static get observedAttributes() {
@@ -3643,7 +3508,6 @@ var BaseMedia = class extends HTMLElement {
   }
 };
 
-// js/common/media/model.js
 var ModelMedia = class extends BaseMedia {
   connectedCallback() {
     super.connectedCallback();
@@ -3689,7 +3553,6 @@ if (!window.customElements.get("model-media")) {
   window.customElements.define("model-media", ModelMedia);
 }
 
-// js/common/media/video.js
 var onYouTubePromise = new Promise((resolve) => {
   window.onYouTubeIframeAPIReady = () => resolve();
 });
@@ -3703,7 +3566,7 @@ var VideoMedia = class extends BaseMedia {
     if (this.hasAttribute("show-play-button") && !this.shadowRoot) {
       this.attachShadow({ mode: "open" }).appendChild(document.createRange().createContextualFragment(`
         <slot></slot>
-        
+
         <svg part="play-button" fill="none" width="48" height="48" viewBox="0 0 48 48">
           <path d="M48 24C48 10.745 37.255 0 24 0S0 10.745 0 24s10.745 24 24 24 24-10.745 24-24Z" fill="${window.themeVariables.settings.pageBackground}"/>
           <path d="M18.578 32.629a.375.375 0 0 1-.578-.316V15.687c0-.297.328-.476.578-.316l12.931 8.314c.23.147.23.483 0 .63L18.578 32.63Z" fill="${window.themeVariables.settings.textColor}"/>
@@ -3819,10 +3682,8 @@ if (!window.customElements.get("video-media")) {
   window.customElements.define("video-media", VideoMedia);
 }
 
-// js/common/navigation/accordion-disclosure.js
 import { timeline as timeline6 } from "vendor";
 
-// js/common/navigation/animated-details.js
 var AnimatedDetails = class extends HTMLDetailsElement {
   constructor() {
     super();
@@ -3856,7 +3717,6 @@ var AnimatedDetails = class extends HTMLDetailsElement {
   }
 };
 
-// js/common/navigation/accordion-disclosure.js
 var AccordionDisclosure = class extends AnimatedDetails {
   static get observedAttributes() {
     return ["open"];
@@ -3900,7 +3760,6 @@ if (!window.customElements.get("accordion-disclosure")) {
   window.customElements.define("accordion-disclosure", AccordionDisclosure, { extends: "details" });
 }
 
-// js/common/navigation/tabs.js
 import { animate as animate8 } from "vendor";
 var _Tabs_instances, setupComponent_fn, onSlotChange_fn;
 var Tabs = class extends HTMLElement {
@@ -3960,10 +3819,7 @@ var Tabs = class extends HTMLElement {
       panel.hidden = index !== this.selectedIndex;
     });
   }
-  /**
-   * As per https://www.w3.org/WAI/ARIA/apg/example-index/tabs/tabs-automatic.html, when a tab is currently focused,
-   * left and right arrow should switch the tab
-   */
+
   _handleKeyboard(event) {
     const index = this.buttons.indexOf(document.activeElement);
     if (index === -1 || !["ArrowLeft", "ArrowRight"].includes(event.key)) {
@@ -3976,9 +3832,7 @@ var Tabs = class extends HTMLElement {
     }
     this.buttons[this.selectedIndex].focus();
   }
-  /**
-   * Perform a custom transition (can be overridden in subclasses). To "from" and "to" are hash representing the panel
-   */
+
   async _transition(fromPanel, toPanel) {
     await animate8(fromPanel, { opacity: [1, 0] }, { duration: this.animationDuration }).finished;
     fromPanel.hidden = true;
@@ -4006,7 +3860,6 @@ if (!window.customElements.get("x-tabs")) {
   window.customElements.define("x-tabs", Tabs);
 }
 
-// js/common/search/predictive-search.js
 import { animate as animate9 } from "vendor";
 var PredictiveSearch = class extends HTMLElement {
   constructor() {
@@ -4021,23 +3874,15 @@ var PredictiveSearch = class extends HTMLElement {
     this._searchForm.addEventListener("reset", this._onSearchCleared.bind(this));
     this._queryInput.addEventListener("input", debounce(this._onInputChanged.bind(this), this.autoCompleteDelay));
   }
-  /**
-   * Return the delay in ms before we send the autocomplete request. Using a value too low can cause the results to
-   * refresh too often, so we recommend to keep the default one
-   */
+
   get autoCompleteDelay() {
     return 280;
   }
-  /**
-   * Check if the store supports the predictive API (some languages do not). When not supported, the predictive
-   * search is simply disabled and only the standard search is used
-   */
+
   supportsPredictiveApi() {
     return JSON.parse(document.getElementById("shopify-features").innerHTML)["predictiveSearch"];
   }
-  /**
-   * Check if the input is not empty, and if so, trigger the predictive search
-   */
+
   _onInputChanged() {
     if (this._queryInput.value === "") {
       return this._onSearchCleared();
@@ -4052,17 +3897,13 @@ var PredictiveSearch = class extends HTMLElement {
       }
     }
   }
-  /**
-   * Prevent the form submission if the query is empty
-   */
+
   _onFormSubmitted(event) {
     if (this._queryInput.value === "") {
       return event.preventDefault();
     }
   }
-  /**
-   * Do the actual predictive search
-   */
+
   async _doPredictiveSearch() {
     await this._transitionToSlot("loading");
     const queryParams = `q=${encodeURIComponent(this._queryInput.value)}&section_id=${this.getAttribute("section-id")}&resources[limit]=10&resources[limit_scope]=each`;
@@ -4070,10 +3911,7 @@ var PredictiveSearch = class extends HTMLElement {
     this.querySelector('[slot="results"]').replaceWith(document.importNode(nodeElement.querySelector('[slot="results"]'), true));
     return this._transitionToSlot("results");
   }
-  /**
-   * For merchants using store that do not support the predictive search, we have to fallback to standard search. Unfortunately,
-   * the standard search is less convenient, and we have to simulate one request for each desired resource type
-   */
+
   async _doFallbackSearch() {
     await this._transitionToSlot("loading");
     const queryParams = `q=${this._queryInput.value}&section_id=${this.getAttribute("section-id")}&resources[limit]=10&resources[limit_scope]=each`;
@@ -4081,17 +3919,13 @@ var PredictiveSearch = class extends HTMLElement {
     this.querySelector('[slot="results"]').replaceWith(document.importNode(nodeElement.querySelector('[slot="results"]'), true));
     return this._transitionToSlot("results");
   }
-  /**
-   * If any search is pending, we abort them, and transition to the idle slot
-   */
+
   _onSearchCleared() {
     this._abortController?.abort();
     this._queryInput.focus();
     return this._transitionToSlot("idle");
   }
-  /**
-   * Transition between different slot. To prevent useless animation, the slot does not transition if we go to the same slot
-   */
+
   async _transitionToSlot(toSlotName) {
     if (this.shadowRoot.firstElementChild.name === toSlotName) {
       return;
@@ -4105,7 +3939,6 @@ if (!window.customElements.get("predictive-search")) {
   window.customElements.define("predictive-search", PredictiveSearch);
 }
 
-// js/common/search/search-drawer.js
 var SearchDrawer = class extends Drawer {
   get shouldAppendToBody() {
     return false;
@@ -4118,7 +3951,6 @@ if (!window.customElements.get("search-drawer")) {
   window.customElements.define("search-drawer", SearchDrawer);
 }
 
-// js/common/text/section-header.js
 import { animate as animate10, inView as inView5 } from "vendor";
 var _SectionHeader_instances, reveal_fn2;
 var SectionHeader = class extends HTMLElement {
@@ -4141,7 +3973,6 @@ if (!window.customElements.get("section-header")) {
   window.customElements.define("section-header", SectionHeader);
 }
 
-// js/common/ui/marquee-text.js
 var MarqueeText = class extends HTMLElement {
   constructor() {
     super();
@@ -4158,7 +3989,6 @@ if (!window.customElements.get("marquee-text")) {
   window.customElements.define("marquee-text", MarqueeText);
 }
 
-// js/sections/announcement-bar.js
 import { timeline as timeline7 } from "vendor";
 var AnnouncementBar = class extends EffectCarousel {
   _transitionTo(fromSlide, toSlide) {
@@ -4172,7 +4002,6 @@ if (!window.customElements.get("announcement-bar")) {
   window.customElements.define("announcement-bar", AnnouncementBar);
 }
 
-// js/sections/before-after-image.js
 var SplitCursor = class extends HTMLElement {
   _abortController;
   connectedCallback() {
@@ -4237,7 +4066,6 @@ if (!window.customElements.get("split-cursor")) {
   window.customElements.define("split-cursor", SplitCursor);
 }
 
-// js/sections/collection-list.js
 import { timeline as timeline8, inView as inView6 } from "vendor";
 var CollectionList = class extends HTMLElement {
   connectedCallback() {
@@ -4258,7 +4086,6 @@ if (!window.customElements.get("collection-list")) {
   window.customElements.define("collection-list", CollectionList);
 }
 
-// js/sections/customer-login.js
 import { Delegate as Delegate5 } from "vendor";
 var AccountLogin = class extends HTMLElement {
   connectedCallback() {
@@ -4281,7 +4108,6 @@ if (!window.customElements.get("account-login")) {
   window.customElements.define("account-login", AccountLogin);
 }
 
-// js/sections/header.js
 import { animate as animate11, timeline as timeline9, stagger as stagger5, Delegate as Delegate6 } from "vendor";
 var reduceMenuAnimation = window.themeVariables.settings.reduceMenuAnimation;
 var StoreHeader = class extends HTMLElement {
@@ -4397,10 +4223,7 @@ var DropdownDisclosure = class _DropdownDisclosure extends AnimatedDetails {
   get mouseOverDelayTolerance() {
     return 250;
   }
-  /**
-   * When the summary is clicked and that the mode is hover, we follow the link (if set) that may have been specified
-   * on the parent. If the mode is click, then we deferred to the default behavior of the "AnimatedDetails" parent
-   */
+
   _onSummaryClicked(event) {
     if (this.trigger === "hover") {
       event.preventDefault();
@@ -4438,10 +4261,7 @@ var DropdownDisclosure = class _DropdownDisclosure extends AnimatedDetails {
   _transitionOut() {
     return timeline9([[this.contentElement, { opacity: 0 }, { duration: 0.2 }]]).finished;
   }
-  /**
-   * When dropdown menu is configured to open on click, we add a listener to detect click outside and automatically
-   * close the navigation.
-   */
+
   _detectClickOutside(event) {
     if (this.trigger !== "click") {
       return;
@@ -4450,9 +4270,7 @@ var DropdownDisclosure = class _DropdownDisclosure extends AnimatedDetails {
       this.open = false;
     }
   }
-  /**
-   * On desktop device, if the mode is set to hover, we open/close the dropdown on hover
-   */
+
   _detectHover(event) {
     if (this.trigger !== "hover") {
       return;
@@ -4464,9 +4282,7 @@ var DropdownDisclosure = class _DropdownDisclosure extends AnimatedDetails {
       this._hoverTimer = setTimeout(() => this.open = false, this.mouseOverDelayTolerance);
     }
   }
-  /**
-   * Detect if we hit the "Escape" key to automatically close the dropdown
-   */
+
   _detectEscKeyboard(event) {
     if (event.code === "Escape") {
       const targetMenu = event.target.closest("details[open]");
@@ -4475,9 +4291,7 @@ var DropdownDisclosure = class _DropdownDisclosure extends AnimatedDetails {
       }
     }
   }
-  /**
-   * Close the dropdown automatically when the dropdown is focused out
-   */
+
   _detectFocusOut(event) {
     if (event.relatedTarget && !this.contains(event.relatedTarget)) {
       this.open = false;
@@ -4504,9 +4318,7 @@ var MegaMenuDisclosure = class extends DropdownDisclosure {
     }
     return timeline9(timelineSequence).finished;
   }
-  /**
-   * When the toggle is hovered we preload the mega-menu images to improve perceived performance
-   */
+
   _preloadImages() {
     Array.from(this.querySelectorAll('img[loading="lazy"]')).forEach((image) => image.setAttribute("loading", "eager"));
   }
@@ -4537,7 +4349,7 @@ var NavigationDrawer = class extends Drawer {
   get openFrom() {
     return window.matchMedia("(max-width: 699px)").matches ? this.getAttribute("mobile-opening") : super.openFrom;
   }
-  // Used for navigation mobile and navigation desktop set to drawer
+
   switchToPanel(panelIndex, linkListIndex = null) {
     const panels = this.querySelectorAll(".panel");
     let panelToHideTransform, panelToShowTransform, panelToHide = linkListIndex !== null ? panels[parseInt(panelIndex) - 1] : panels[parseInt(panelIndex) + 1], panelToShow = panels[panelIndex], linkLists = panelToShow.querySelectorAll(".panel__wrapper"), timelineSequence = [];
@@ -4558,7 +4370,7 @@ var NavigationDrawer = class extends Drawer {
     }
     timeline9(timelineSequence);
   }
-  // Used when mega menu is set to drawer
+
   showPanel(panelIndex, linkListIndex = null) {
     const panels = this.querySelectorAll(".panel");
     let timelineSequence = [], panelToShow = panels[panelIndex], linkLists = panelToShow.querySelectorAll(".panel__wrapper");
@@ -4592,7 +4404,7 @@ var NavigationDrawer = class extends Drawer {
     linkLists[linkListIndex].removeAttribute("hidden");
     return [linkLists[linkListIndex].querySelectorAll("li"), { opacity: [0, 1], visibility: ["hidden", "visible"], transform: ["translateY(-10px)", "translateY(0)"] }, { easing: "ease", duration: 0.2, at: "-0.15", delay: stagger5(0.025, { start: 0.1 }) }];
   }
-  // Set navigation drawer to initial state when drawer closed
+
   reinitializeDrawer() {
     if (this.hasAttribute("mega-menu") && window.matchMedia("(min-width:1150px)").matches) {
       this.style.removeProperty("width");
@@ -4645,7 +4457,6 @@ if (!window.customElements.get("navigation-drawer")) {
   window.customElements.define("navigation-drawer", NavigationDrawer);
 }
 
-// js/sections/feature-chart.js
 import { animate as motionAnimate3, scroll } from "vendor";
 var FeatureChart = class extends HTMLElement {
   connectedCallback() {
@@ -4711,7 +4522,6 @@ if (!window.customElements.get("feature-chart")) {
   window.customElements.define("feature-chart", FeatureChart);
 }
 
-// js/sections/image-banner.js
 import { scroll as scroll2, timeline as timeline10, animate as animate12, inView as inView7 } from "vendor";
 var ImageBanner = class extends HTMLElement {
   connectedCallback() {
@@ -4745,7 +4555,6 @@ if (!window.customElements.get("image-banner")) {
   window.customElements.define("image-banner", ImageBanner);
 }
 
-// js/sections/image-link-blocks.js
 var ImageLinkBlocks = class extends HTMLElement {
   connectedCallback() {
     this.items = Array.from(this.children);
@@ -4764,7 +4573,6 @@ if (!window.customElements.get("image-link-blocks")) {
   window.customElements.define("image-link-blocks", ImageLinkBlocks);
 }
 
-// js/sections/images-with-text-scrolling.js
 import { animate as animate13, timeline as timeline11, inView as inView8 } from "vendor";
 var ImagesWithTextScrolling = class extends HTMLElement {
   connectedCallback() {
@@ -4828,7 +4636,6 @@ if (!window.customElements.get("images-with-text-scrolling")) {
   window.customElements.define("images-with-text-scrolling", ImagesWithTextScrolling);
 }
 
-// js/sections/impact-text.js
 import { animate as animate14, inView as inView9 } from "vendor";
 var ImpactText = class extends HTMLElement {
   connectedCallback() {
@@ -4869,7 +4676,6 @@ if (!window.customElements.get("impact-text")) {
   window.customElements.define("impact-text", ImpactText);
 }
 
-// js/sections/main-search.js
 var SearchResultPanel = class extends HTMLElement {
   async connectedCallback() {
     if (!this.hasAttribute("load-from-url")) {
@@ -4890,7 +4696,6 @@ if (!window.customElements.get("search-result-panel")) {
   window.customElements.define("search-result-panel", SearchResultPanel);
 }
 
-// js/sections/media-grid.js
 import { timeline as timeline12, inView as inView10 } from "vendor";
 var MediaGrid = class extends HTMLElement {
   connectedCallback() {
@@ -4911,7 +4716,6 @@ if (!window.customElements.get("media-grid")) {
   window.customElements.define("media-grid", MediaGrid);
 }
 
-// js/sections/media-with-text.js
 import { animate as animate15, timeline as timeline13, inView as inView11 } from "vendor";
 var reduceMotion = window.matchMedia("(prefers-reduced-motion: no-preference)").matches;
 var MediaWithText = class extends HTMLElement {
@@ -4937,7 +4741,6 @@ if (!window.customElements.get("media-with-text")) {
   window.customElements.define("media-with-text", MediaWithText);
 }
 
-// js/sections/multiple-images-with-text.js
 import { timeline as timeline14, animate as animate16, stagger as stagger6, inView as inView12 } from "vendor";
 var MultipleImagesWithText = class extends HTMLElement {
   constructor() {
@@ -5038,7 +4841,6 @@ if (!window.customElements.get("multiple-images-with-text-content-list")) {
   window.customElements.define("multiple-images-with-text-content-list", MultipleImagesWithTextContentList);
 }
 
-// js/sections/newsletter-popup.js
 var NewsletterPopup = class extends Drawer {
   connectedCallback() {
     super.connectedCallback();
@@ -5075,7 +4877,6 @@ if (!window.customElements.get("newsletter-popup")) {
   window.customElements.define("newsletter-popup", NewsletterPopup);
 }
 
-// js/sections/press.js
 import { timeline as timeline15, animate as animate17, inView as inView13 } from "vendor";
 var reduceMotion2 = window.matchMedia("(prefers-reduced-motion: no-preference)").matches;
 var PressCarousel = class extends EffectCarousel {
@@ -5105,7 +4906,6 @@ if (!window.customElements.get("press-carousel")) {
   window.customElements.define("press-carousel", PressCarousel);
 }
 
-// js/sections/product-recommendations.js
 var ProductRecommendations = class extends HTMLElement {
   constructor() {
     super();
@@ -5136,7 +4936,6 @@ if (!window.customElements.get("product-recommendations")) {
   window.customElements.define("product-recommendations", ProductRecommendations);
 }
 
-// js/sections/recently-viewed-products.js
 var _isLoaded, _RecentlyViewedProducts_instances, searchQueryString_get, loadProducts_fn;
 var RecentlyViewedProducts = class extends HTMLElement {
   constructor() {
@@ -5194,7 +4993,6 @@ document.addEventListener("DOMContentLoaded", function () {
   items.forEach((item) => observer.observe(item));
 });
 
-// js/sections/revealed-image-on-scroll.js
 import { scroll as scroll3, timeline as timeline16, ScrollOffset, inView as inView14 } from "vendor";
 var RevealedImage = class extends HTMLElement {
   connectedCallback() {
@@ -5221,7 +5019,6 @@ if (!window.customElements.get("revealed-image")) {
   window.customElements.define("revealed-image", RevealedImage);
 }
 
-// js/sections/scrolling-text.js
 import { animate as animate18, scroll as scroll4 } from "vendor";
 var ScrollingText = class extends HTMLElement {
   connectedCallback() {
@@ -5262,7 +5059,6 @@ if (!window.customElements.get("scrolling-text")) {
   window.customElements.define("scrolling-text", ScrollingText);
 }
 
-// js/sections/shop-the-look.js
 var ShopTheLookDots = class extends HTMLElement {
   connectedCallback() {
     this._abortController = new AbortController();
@@ -5281,7 +5077,6 @@ if (!window.customElements.get("shop-the-look-dots")) {
   window.customElements.define("shop-the-look-dots", ShopTheLookDots);
 }
 
-// js/sections/slideshow.js
 import { animate as motionAnimate4, timeline as timeline17, inView as inView15 } from "vendor";
 var Slideshow = class extends HTMLElement {
   constructor() {
@@ -5375,11 +5170,7 @@ var SlideshowCarousel = class extends EffectCarousel {
     }
     event.detail.originalEvent.clientX > window.innerWidth / 2 ? this.next() : this.previous();
   }
-  /**
-   * Perform a simple fade animation. For more complex animations, you should implement your own custom elements
-   * that extends the EffectCarousel, and implement your own transition. You should make sure to return a promise
-   * that resolves when the animation is finished
-   */
+
   async _transitionTo(fromSlide, toSlide, { direction, animate: animate19 = true } = {}) {
     fromSlide.classList.remove("is-selected");
     toSlide.classList.add("is-selected");
@@ -5397,18 +5188,14 @@ var SlideshowCarousel = class extends EffectCarousel {
     }
     return timelineControls.finished;
   }
-  /**
-   * Perform a simple fade transition
-   */
+
   _fade(fromSlide, toSlide) {
     return timeline17([
       [fromSlide, { opacity: [1, 0], visibility: ["visible", "hidden"], zIndex: 0 }, { duration: 0.3, easing: "ease-in", zIndex: { easing: "step-end" } }],
       [toSlide, { opacity: [0, 1], visibility: ["hidden", "visible"], zIndex: 1 }, { duration: 0.3, at: "<", easing: "ease-out", zIndex: { easing: "step-end" } }]
     ]);
   }
-  /**
-   * Perform a transition with fade images and image transition
-   */
+
   async _fadeWithText(fromSlide, toSlide) {
     motionAnimate4(fromSlide, { opacity: [1, 0], visibility: ["visible", "hidden"], zIndex: 0 }, { duration: 0.3, easing: "ease-in", zIndex: { easing: "step-end" } });
     await imageLoaded(toSlide.querySelectorAll("img"));
@@ -5420,10 +5207,6 @@ var SlideshowCarousel = class extends EffectCarousel {
       [...getHeadingKeyframe(toSlide.querySelector('[data-sequence="heading"]'), { duration: 0.3, at: "content" })]
     ]);
   }
-  /**
-   * Perform the synchronization with video
-   */
-
 
   async _onSlideSelected(event) {
     Array.from(this.querySelectorAll("video-media")).forEach((video) => video.pause());
@@ -5452,7 +5235,6 @@ if (!window.customElements.get("slideshow-carousel")) {
   window.customElements.define("slideshow-carousel", SlideshowCarousel);
 }
 
-// js/theme.js
 import { Delegate as Delegate7 } from "vendor";
 (() => {
   const delegateDocument = new Delegate7(document.documentElement);
