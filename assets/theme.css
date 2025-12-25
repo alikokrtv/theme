@@ -269,7 +269,7 @@ cart-drawer:not([open]) [bss-b2b-cart-total-price] {
 
 .product-card > div.product-card__badge-list > on-sale-badge
 {
-  background-color:Red;
+  background-color: red;
 }
 
 
@@ -296,9 +296,6 @@ cart-drawer:not([open]) [bss-b2b-cart-total-price] {
    ====================== */
 
 /* Arka planı çok zorlamadan hafif koyulaştıralım */
-.section.section-blends.section-full {
-  
-}
 
 /* Widget container: sade kart */
 .section.section-blends.section-full .prorw-container.prorw-extensions-container {
@@ -322,9 +319,6 @@ cart-drawer:not([open]) [bss-b2b-cart-total-price] {
 
 /* ---- Summary alanı (üst mavi bar + ortalama) ---- */
 
-.section.section-blends.section-full #prorw_review_summary {
-
-}
 
 /* Sol taraftaki yıldız + “based on 50 reviews” */
 .section.section-blends.section-full .prorw-summary {
@@ -384,9 +378,6 @@ cart-drawer:not([open]) [bss-b2b-cart-total-price] {
 }
 
 /* Sağdaki butonlar */
-.section.section-blends.section-full #prorw_review_summary_actions {
-
-}
 
 .section.section-blends.section-full .prorw-summary-actions-newreview,
 .section.section-blends.section-full .prorw-summary-actions-newquestion {
@@ -489,10 +480,6 @@ cart-drawer:not([open]) [bss-b2b-cart-total-price] {
 
 #prorw__select_option_sort_reviews > span {
   color:black;
-}
-#prorw_art_sect_106871 > div.prorw-review-header > div.prorw-avatar.prorw__product_review_popup_avatar > div > span {
-
-
 }
 #prorw_review_created_at_content {
   padding:10px;
@@ -1062,9 +1049,6 @@ button.prorw-btn:hover {
 
 #shopify-section-sections--20175067840765__header > height-observer > store-header > div > div.header__main-nav > div > nav > div > nav > ul > li > a:hover {
   border-radius:10px;
-}
-{
-  display:none;
 }
 .custom-slide .content {
   position: absolute;
