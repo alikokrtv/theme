@@ -1,1 +1,403 @@
-{"sections":{"banner":{"type":"collection-banner","disabled":true,"settings":{"full_width":true,"allow_transparent_header":false,"enable_parallax":false,"show_collection_title":false,"show_collection_description":false,"show_collection_image":true,"collection_title_size":"h5","image_size":"auto","mobile_text_position":"place-self-center text-center","desktop_text_position":"sm:place-self-center sm:text-center","featured_product":"","featured_product_heading":"Featured product","text_color":"#ffffff","overlay_color":"#000000","overlay_opacity":0}},"blocks_7h777B":{"type":"_blocks","blocks":{"ai_gen_block_ea35d1e_exke4A":{"type":"ai_gen_block_ea35d1e","settings":{"show_badge":true,"badge_text":"NEW ARRIVAL","badge_background":"#0e2041","badge_text_color":"#ffffff","badge_font_size":12,"badge_font_weight":"700","badge_text_transform":"uppercase","badge_letter_spacing":1,"badge_padding_vertical":6,"badge_padding_horizontal":12,"badge_border_radius":20,"banner_text":"Discover our latest collection","text_color":"#1a1a1a","text_font_size":14,"text_font_weight":"400","link_text":"Shop now","link_url":"shopify:\/\/collections\/new-arrival","link_color":"#1a1a1a","link_font_size":14,"link_font_weight":"600","link_text_decoration":"underline","background_gradient":"linear-gradient(135deg, rgba(255, 145, 128, 1), rgba(255, 219, 88, 1) 100%)","show_sparkles":false,"sparkle_color":"#ffffff","sparkle_size":12,"sparkle_opacity":0.5,"padding_vertical":16,"padding_horizontal":32,"content_gap":16},"blocks":{}}},"block_order":["ai_gen_block_ea35d1e_exke4A"],"settings":{"full_width":true,"remove_vertical_spacing":true,"remove_horizontal_spacing":true,"content_alignment":"center","background":"","background_gradient":"","text_color":""}},"image_with_text_overlay_n8zRcw":{"type":"image-with-text-overlay","custom_css":["@media (max-width: 768px) {\/* Sözdizimi düzeltildi: max-width: 768px kullanıldı *\/ div div {max-width: 200px; }}"],"name":"Image with text overlay + marquee","settings":{"full_width":true,"allow_transparent_header":false,"enable_parallax":false,"image_size":"auto","image":"{{ collection.image }}","mobile_image":"{{ collection.image }}","mobile_text_position":"place-self-center text-center","desktop_text_position":"sm:place-self-center sm:text-center","text_color":"#ffffff","overlay_color":"#000000","overlay_opacity":0,"show_marquee":true,"marquee_speed":30}},"icon_marquee_hF3prr":{"type":"icon-marquee","blocks":{"item_YhtAwP":{"type":"item","settings":{"icon":"shopify:\/\/shop_images\/battery.png","text":"Super Fast Charging"}},"item_CcDDBw":{"type":"item","settings":{"icon":"shopify:\/\/shop_images\/adapter.png","text":"Dual Port Wall Chargers"}},"item_mWGRAB":{"type":"item","settings":{"icon":"shopify:\/\/shop_images\/power-bank.png","text":"Portable Power Banks"}},"item_EJWCRq":{"type":"item","settings":{"icon":"shopify:\/\/shop_images\/usb-c-cable.png","text":"Lightning Cables"}},"item_HYhgxa":{"type":"item","settings":{"icon":"shopify:\/\/shop_images\/automotive.png","text":"Compact & Stylish Car Holders"}},"item_giTY4j":{"type":"item","settings":{"icon":"shopify:\/\/shop_images\/battery.png","text":"Super Fast Charging"}},"item_getxye":{"type":"item","settings":{"icon":"shopify:\/\/shop_images\/adapter.png","text":"Dual Port Wall Chargers"}},"item_3b87Nq":{"type":"item","settings":{"icon":"shopify:\/\/shop_images\/power-bank.png","text":"Portable Power Banks"}},"item_WjDrtB":{"type":"item","settings":{"icon":"shopify:\/\/shop_images\/usb-c-cable.png","text":"Lightning Cables"}},"item_jxLRDn":{"type":"item","settings":{"icon":"shopify:\/\/shop_images\/automotive.png","text":"Compact & Stylish Car Holders"}}},"block_order":["item_YhtAwP","item_CcDDBw","item_mWGRAB","item_EJWCRq","item_HYhgxa","item_giTY4j","item_getxye","item_3b87Nq","item_WjDrtB","item_jxLRDn"],"custom_css":["div {background: white !important; font-size: 13px !important; top: 0px;}"," {z-index: 5; bottom: 22px;}"],"name":"Icon Marquee Banner","settings":{"bg_color":"#f9f9f9","text_color":"#1d1d1f","speed":25}},"featured_collection_M7n4RT":{"type":"featured-collection","custom_css":["img {transform: scale(0.7);}"," {font-size: 16px; font-family: manrope; margin-top: 10px;}","@media (min-width: 768px) {img {transform: scale(1); box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px; border-radius: 10px; padding: 10px; }}"," {}"],"name":"Featured collection","settings":{"collection":"mobile-accessories","products":[],"full_width":true,"stack_products":false,"show_progress_bar":true,"products_count":6,"products_per_row_mobile":"2","products_per_row_desktop":5,"subheading":"","title":"Best Sellers","content":"","link_url":"","link_text":"","background":"","background_gradient":"","text_color":"","heading_color":"","heading_gradient":"","product_card_background":"","product_card_text_color":""}},"7e958007-3cef-4659-99e4-84dd6a264177":{"type":"collection-list","blocks":{"template--17108473381117__7e958007-3cef-4659-99e4-84dd6a264177-collection-1":{"type":"collection","settings":{"collection":"","subheading":"","title":"","url":"","heading_tag":"h2","text_position":"place-self-center text-center","text_color":"#ffffff","overlay_color":"#000000","overlay_opacity":30}},"template--17108473381117__7e958007-3cef-4659-99e4-84dd6a264177-collection-2":{"type":"collection","settings":{"collection":"","subheading":"","title":"","url":"","heading_tag":"h2","text_position":"place-self-center text-center","text_color":"#ffffff","overlay_color":"#000000","overlay_opacity":30}},"template--17108473381117__7e958007-3cef-4659-99e4-84dd6a264177-collection-3":{"type":"collection","settings":{"collection":"","subheading":"","title":"","url":"","heading_tag":"h2","text_position":"place-self-center text-center","text_color":"#ffffff","overlay_color":"#000000","overlay_opacity":30}},"46d6f28e-67ea-4ea4-ac70-23acedf1d54d":{"type":"collection","settings":{"collection":"","subheading":"","title":"","url":"","heading_tag":"h2","text_position":"place-self-center text-center","text_color":"#ffffff","overlay_color":"#000000","overlay_opacity":30}},"e7d9cd93-27f7-44c1-afd2-1325b9b10d52":{"type":"collection","settings":{"collection":"","subheading":"","title":"","url":"","heading_tag":"h2","text_position":"place-self-center text-center","text_color":"#ffffff","overlay_color":"#000000","overlay_opacity":30}}},"block_order":["template--17108473381117__7e958007-3cef-4659-99e4-84dd6a264177-collection-1","template--17108473381117__7e958007-3cef-4659-99e4-84dd6a264177-collection-2","template--17108473381117__7e958007-3cef-4659-99e4-84dd6a264177-collection-3","46d6f28e-67ea-4ea4-ac70-23acedf1d54d","e7d9cd93-27f7-44c1-afd2-1325b9b10d52"],"disabled":true,"settings":{"full_width":false,"stack_collections":false,"collections_per_row_mobile":"1","collections_per_row":3,"show_progress_bar":false,"subheading":"","title":"","content":"","link_url":"","link_text":"","background":"","background_gradient":"","text_color":"","heading_color":"","heading_gradient":""}},"main":{"type":"main-collection","custom_css":["product-list > product-card div {justify-content: center; text-align: left; align-content: center; margin: auto; font-size: 16px;}"," {margin-top: 50px;}","#accordion-filter-v-option-color {display: none;}","@media (min-width: 768px) {img {transform: scale(1); box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px; border-radius: 10px; padding: 10px; }}"," {}",".prudcut-card a {text-align: left !important;}","div.product-card__aside > p {display: none;}"],"settings":{"products_per_page":24,"products_per_row_mobile":"2","products_per_row_desktop":3,"filter_layout":"sidebar","show_sort_by":true,"show_filters":true,"show_filter_group_name":true,"show_filter_values_count":true,"open_first_filter_group":true}},"accordion_content_3jyLYt":{"type":"accordion-content","blocks":{"item_rAjPwz":{"type":"item","settings":{"icon":"none","icon_width":20,"title":"How fast do Nautica chargers power up my devices?","content":"<p>Nautica wall chargers and cables are designed for <strong>Super Fast Charging<\/strong>. Depending on the model, you can get up to <strong>65W Power Delivery<\/strong>, allowing you to quickly charge smartphones, tablets, and even laptops.<\/p>","page":""}},"item_A7UVBp":{"type":"item","settings":{"icon":"none","icon_width":20,"title":"Are Nautica charging cables durable?","content":"<p>Yes. Our cables are made with <strong>premium braided materials<\/strong> for maximum durability and flexibility. Many models are also <strong>MFi Certified<\/strong>, ensuring safe and reliable charging for Apple devices.<\/p>","page":""}},"item_33q8wR":{"type":"item","settings":{"icon":"none","icon_width":20,"title":"Do Nautica cables support data transfer as well?","content":"<p>Absolutely. In addition to charging, Nautica cables allow <strong>high-speed data transfer<\/strong>, making them perfect for syncing files, photos, and music across devices.<\/p>","page":""}},"item_7wmUib":{"type":"item","settings":{"icon":"none","icon_width":20,"title":"What should I look for when choosing a phone charger or cable?","content":"<p>When buying charging accessories, check for:<\/p><ul><li><br\/><strong>Compatibility<\/strong>: Works with iPhone, Samsung, Google, Huawei, and more.<br\/><\/li><li><br\/><strong>Certification<\/strong>: Look for MFi Certified Lightning cables for Apple devices.<br\/><\/li><li><br\/><strong>Power Delivery (PD)<\/strong>: Higher wattage (30W–65W) for faster charging.<\/li><\/ul>","page":""}},"item_3P7KN7":{"type":"item","settings":{"icon":"none","icon_width":20,"title":"What warranty is included with Nautica mobile accessories?","content":"<p>All Nautica mobile accessories come with a <strong>12-month manufacturer’s warranty<\/strong> covering defects in materials and workmanship (normal wear and misuse not included).<\/p>","page":""}}},"block_order":["item_rAjPwz","item_A7UVBp","item_33q8wR","item_7wmUib","item_3P7KN7"],"custom_css":["div.section-stack__main {margin: 0 auto;}","@media (min-width: 879px) {div.section-stack__main {min-width: 1200px; max-width: 75vw !important; }}"," {}"],"name":"Accordion content","settings":{"full_width":true,"subheading":"","title":"FAQs","content":"","button_text":"","button_url":"","text_position":"center","background":"","background_gradient":"","text_color":"","heading_color":"","heading_gradient":"","button_background":"","button_text_color":"","accordion_background":"","accordion_text_color":""}}},"order":["banner","blocks_7h777B","image_with_text_overlay_n8zRcw","icon_marquee_hF3prr","featured_collection_M7n4RT","7e958007-3cef-4659-99e4-84dd6a264177","main","accordion_content_3jyLYt"]}
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "banner": {
+      "type": "collection-banner",
+      "disabled": true,
+      "settings": {
+        "full_width": true,
+        "allow_transparent_header": false,
+        "enable_parallax": false,
+        "show_collection_title": false,
+        "show_collection_description": false,
+        "show_collection_image": true,
+        "collection_title_size": "h5",
+        "image_size": "auto",
+        "mobile_text_position": "place-self-center text-center",
+        "desktop_text_position": "sm:place-self-center sm:text-center",
+        "featured_product": "",
+        "featured_product_heading": "Featured product",
+        "text_color": "#ffffff",
+        "overlay_color": "#000000",
+        "overlay_opacity": 0
+      }
+    },
+    "image_with_text_overlay_n8zRcw": {
+      "type": "image-with-text-overlay",
+      "custom_css": [
+        "@media (max-width: 768px) {/* Sözdizimi düzeltildi: max-width: 768px kullanıldı */ div div {max-width: 200px; }}"
+      ],
+      "name": "Image with text overlay + marquee",
+      "settings": {
+        "full_width": true,
+        "allow_transparent_header": false,
+        "enable_parallax": false,
+        "image_size": "auto",
+        "image": "shopify://shop_images/WechatIMG19mmm_7eff57e3-1211-4eac-aedf-156612050d77.webp",
+        "mobile_image": "shopify://shop_images/Drinkware_1200_x_1600_piksel_1.svg",
+        "mobile_text_position": "place-self-center text-center",
+        "desktop_text_position": "sm:place-self-center sm:text-center",
+        "text_color": "#ffffff",
+        "overlay_color": "#000000",
+        "overlay_opacity": 0,
+        "show_marquee": true,
+        "marquee_speed": 30
+      }
+    },
+    "icon_marquee_hF3prr": {
+      "type": "icon-marquee",
+      "blocks": {
+        "item_YhtAwP": {
+          "type": "item",
+          "settings": {
+            "icon": "shopify://shop_images/battery.png",
+            "text": "Super Fast Charging"
+          }
+        },
+        "item_CcDDBw": {
+          "type": "item",
+          "settings": {
+            "icon": "shopify://shop_images/adapter.png",
+            "text": "Dual Port Wall Chargers"
+          }
+        },
+        "item_mWGRAB": {
+          "type": "item",
+          "settings": {
+            "icon": "shopify://shop_images/power-bank.png",
+            "text": "Portable Power Banks"
+          }
+        },
+        "item_EJWCRq": {
+          "type": "item",
+          "settings": {
+            "icon": "shopify://shop_images/usb-c-cable.png",
+            "text": "Lightning Cables"
+          }
+        },
+        "item_HYhgxa": {
+          "type": "item",
+          "settings": {
+            "icon": "shopify://shop_images/automotive.png",
+            "text": "Compact & Stylish Car Holders"
+          }
+        },
+        "item_giTY4j": {
+          "type": "item",
+          "settings": {
+            "icon": "shopify://shop_images/battery.png",
+            "text": "Super Fast Charging"
+          }
+        },
+        "item_getxye": {
+          "type": "item",
+          "settings": {
+            "icon": "shopify://shop_images/adapter.png",
+            "text": "Dual Port Wall Chargers"
+          }
+        },
+        "item_3b87Nq": {
+          "type": "item",
+          "settings": {
+            "icon": "shopify://shop_images/power-bank.png",
+            "text": "Portable Power Banks"
+          }
+        },
+        "item_WjDrtB": {
+          "type": "item",
+          "settings": {
+            "icon": "shopify://shop_images/usb-c-cable.png",
+            "text": "Lightning Cables"
+          }
+        },
+        "item_jxLRDn": {
+          "type": "item",
+          "settings": {
+            "icon": "shopify://shop_images/automotive.png",
+            "text": "Compact & Stylish Car Holders"
+          }
+        }
+      },
+      "block_order": [
+        "item_YhtAwP",
+        "item_CcDDBw",
+        "item_mWGRAB",
+        "item_EJWCRq",
+        "item_HYhgxa",
+        "item_giTY4j",
+        "item_getxye",
+        "item_3b87Nq",
+        "item_WjDrtB",
+        "item_jxLRDn"
+      ],
+      "custom_css": [
+        "div {background: white !important; font-size: 13px !important; top: 0px;}",
+        " {z-index: 5; bottom: 22px;}"
+      ],
+      "name": "Icon Marquee Banner",
+      "settings": {
+        "bg_color": "#f9f9f9",
+        "text_color": "#1d1d1f",
+        "speed": 25
+      }
+    },
+    "featured_collection_M7n4RT": {
+      "type": "featured-collection",
+      "custom_css": [
+        "img {transform: scale(0.7);}",
+        " {font-size: 16px; font-family: manrope; margin-top: 10px;}",
+        "@media (min-width: 768px) {img {transform: scale(1); box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px; border-radius: 10px; padding: 10px; }}",
+        " {}"
+      ],
+      "name": "Featured collection",
+      "settings": {
+        "collection": "mobile-accessories",
+        "products": [],
+        "full_width": true,
+        "stack_products": false,
+        "show_progress_bar": true,
+        "products_count": 6,
+        "products_per_row_mobile": "2",
+        "products_per_row_desktop": 5,
+        "subheading": "",
+        "title": "Best Sellers",
+        "content": "",
+        "link_url": "",
+        "link_text": "",
+        "background": "",
+        "background_gradient": "",
+        "text_color": "",
+        "heading_color": "",
+        "heading_gradient": "",
+        "product_card_background": "",
+        "product_card_text_color": ""
+      }
+    },
+    "7e958007-3cef-4659-99e4-84dd6a264177": {
+      "type": "collection-list",
+      "blocks": {
+        "template--17108473381117__7e958007-3cef-4659-99e4-84dd6a264177-collection-1": {
+          "type": "collection",
+          "settings": {
+            "collection": "",
+            "subheading": "",
+            "title": "",
+            "url": "",
+            "heading_tag": "h2",
+            "text_position": "place-self-center text-center",
+            "text_color": "#ffffff",
+            "overlay_color": "#000000",
+            "overlay_opacity": 30
+          }
+        },
+        "template--17108473381117__7e958007-3cef-4659-99e4-84dd6a264177-collection-2": {
+          "type": "collection",
+          "settings": {
+            "collection": "",
+            "subheading": "",
+            "title": "",
+            "url": "",
+            "heading_tag": "h2",
+            "text_position": "place-self-center text-center",
+            "text_color": "#ffffff",
+            "overlay_color": "#000000",
+            "overlay_opacity": 30
+          }
+        },
+        "template--17108473381117__7e958007-3cef-4659-99e4-84dd6a264177-collection-3": {
+          "type": "collection",
+          "settings": {
+            "collection": "",
+            "subheading": "",
+            "title": "",
+            "url": "",
+            "heading_tag": "h2",
+            "text_position": "place-self-center text-center",
+            "text_color": "#ffffff",
+            "overlay_color": "#000000",
+            "overlay_opacity": 30
+          }
+        },
+        "46d6f28e-67ea-4ea4-ac70-23acedf1d54d": {
+          "type": "collection",
+          "settings": {
+            "collection": "",
+            "subheading": "",
+            "title": "",
+            "url": "",
+            "heading_tag": "h2",
+            "text_position": "place-self-center text-center",
+            "text_color": "#ffffff",
+            "overlay_color": "#000000",
+            "overlay_opacity": 30
+          }
+        },
+        "e7d9cd93-27f7-44c1-afd2-1325b9b10d52": {
+          "type": "collection",
+          "settings": {
+            "collection": "",
+            "subheading": "",
+            "title": "",
+            "url": "",
+            "heading_tag": "h2",
+            "text_position": "place-self-center text-center",
+            "text_color": "#ffffff",
+            "overlay_color": "#000000",
+            "overlay_opacity": 30
+          }
+        }
+      },
+      "block_order": [
+        "template--17108473381117__7e958007-3cef-4659-99e4-84dd6a264177-collection-1",
+        "template--17108473381117__7e958007-3cef-4659-99e4-84dd6a264177-collection-2",
+        "template--17108473381117__7e958007-3cef-4659-99e4-84dd6a264177-collection-3",
+        "46d6f28e-67ea-4ea4-ac70-23acedf1d54d",
+        "e7d9cd93-27f7-44c1-afd2-1325b9b10d52"
+      ],
+      "disabled": true,
+      "settings": {
+        "full_width": false,
+        "stack_collections": false,
+        "collections_per_row_mobile": "1",
+        "collections_per_row": 3,
+        "show_progress_bar": false,
+        "subheading": "",
+        "title": "",
+        "content": "",
+        "link_url": "",
+        "link_text": "",
+        "background": "",
+        "background_gradient": "",
+        "text_color": "",
+        "heading_color": "",
+        "heading_gradient": ""
+      }
+    },
+    "main": {
+      "type": "main-collection",
+      "custom_css": [
+        "product-list > product-card div {justify-content: center; text-align: left; align-content: center; margin: auto; font-size: 16px;}",
+        " {margin-top: 50px;}",
+        "#accordion-filter-v-option-color {display: none;}",
+        "@media (min-width: 768px) {img {transform: scale(1); box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px; border-radius: 10px; padding: 10px; }}",
+        " {}",
+        ".prudcut-card a {text-align: left !important;}",
+        "div.product-card__aside > p {display: none;}"
+      ],
+      "settings": {
+        "products_per_page": 24,
+        "products_per_row_mobile": "2",
+        "products_per_row_desktop": 3,
+        "filter_layout": "sidebar",
+        "show_sort_by": true,
+        "show_filters": true,
+        "show_filter_group_name": true,
+        "show_filter_values_count": true,
+        "open_first_filter_group": true
+      }
+    },
+    "accordion_content_3jyLYt": {
+      "type": "accordion-content",
+      "blocks": {
+        "item_rAjPwz": {
+          "type": "item",
+          "settings": {
+            "icon": "none",
+            "icon_width": 20,
+            "title": "How fast do Nautica chargers power up my devices?",
+            "content": "<p>Nautica wall chargers and cables are designed for <strong>Super Fast Charging</strong>. Depending on the model, you can get up to <strong>65W Power Delivery</strong>, allowing you to quickly charge smartphones, tablets, and even laptops.</p>",
+            "page": ""
+          }
+        },
+        "item_A7UVBp": {
+          "type": "item",
+          "settings": {
+            "icon": "none",
+            "icon_width": 20,
+            "title": "Are Nautica charging cables durable?",
+            "content": "<p>Yes. Our cables are made with <strong>premium braided materials</strong> for maximum durability and flexibility. Many models are also <strong>MFi Certified</strong>, ensuring safe and reliable charging for Apple devices.</p>",
+            "page": ""
+          }
+        },
+        "item_33q8wR": {
+          "type": "item",
+          "settings": {
+            "icon": "none",
+            "icon_width": 20,
+            "title": "Do Nautica cables support data transfer as well?",
+            "content": "<p>Absolutely. In addition to charging, Nautica cables allow <strong>high-speed data transfer</strong>, making them perfect for syncing files, photos, and music across devices.</p>",
+            "page": ""
+          }
+        },
+        "item_7wmUib": {
+          "type": "item",
+          "settings": {
+            "icon": "none",
+            "icon_width": 20,
+            "title": "What should I look for when choosing a phone charger or cable?",
+            "content": "<p>When buying charging accessories, check for:</p><ul><li><br/><strong>Compatibility</strong>: Works with iPhone, Samsung, Google, Huawei, and more.<br/></li><li><br/><strong>Certification</strong>: Look for MFi Certified Lightning cables for Apple devices.<br/></li><li><br/><strong>Power Delivery (PD)</strong>: Higher wattage (30W–65W) for faster charging.</li></ul>",
+            "page": ""
+          }
+        },
+        "item_3P7KN7": {
+          "type": "item",
+          "settings": {
+            "icon": "none",
+            "icon_width": 20,
+            "title": "What warranty is included with Nautica mobile accessories?",
+            "content": "<p>All Nautica mobile accessories come with a <strong>12-month manufacturer’s warranty</strong> covering defects in materials and workmanship (normal wear and misuse not included).</p>",
+            "page": ""
+          }
+        }
+      },
+      "block_order": [
+        "item_rAjPwz",
+        "item_A7UVBp",
+        "item_33q8wR",
+        "item_7wmUib",
+        "item_3P7KN7"
+      ],
+      "custom_css": [
+        "div.section-stack__main {margin: 0 auto;}",
+        "@media (min-width: 879px) {div.section-stack__main {min-width: 1200px; max-width: 75vw !important; }}",
+        " {}"
+      ],
+      "name": "Accordion content",
+      "settings": {
+        "full_width": true,
+        "subheading": "",
+        "title": "FAQs",
+        "content": "",
+        "button_text": "",
+        "button_url": "",
+        "text_position": "center",
+        "background": "",
+        "background_gradient": "",
+        "text_color": "",
+        "heading_color": "",
+        "heading_gradient": "",
+        "button_background": "",
+        "button_text_color": "",
+        "accordion_background": "",
+        "accordion_text_color": ""
+      }
+    }
+  },
+  "order": [
+    "banner",
+    "image_with_text_overlay_n8zRcw",
+    "icon_marquee_hF3prr",
+    "featured_collection_M7n4RT",
+    "7e958007-3cef-4659-99e4-84dd6a264177",
+    "main",
+    "accordion_content_3jyLYt"
+  ]
+}
