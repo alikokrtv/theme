@@ -1,1 +1,441 @@
-{"sections":{"blocks_zCz6hY":{"type":"_blocks","blocks":{"ai_gen_block_ea35d1e_9JPJmF":{"type":"ai_gen_block_ea35d1e","settings":{"show_badge":true,"badge_text":"NEW ARRIVAL","badge_background":"#0e2041","badge_text_color":"#ffffff","badge_font_size":12,"badge_font_weight":"700","badge_text_transform":"uppercase","badge_letter_spacing":1,"badge_padding_vertical":6,"badge_padding_horizontal":12,"badge_border_radius":20,"banner_text":"Discover our latest collection","text_color":"#1a1a1a","text_font_size":14,"text_font_weight":"400","link_text":"Shop now","link_url":"shopify:\/\/collections\/new-arrival","link_color":"#1a1a1a","link_font_size":14,"link_font_weight":"600","link_text_decoration":"underline","background_gradient":"linear-gradient(135deg, rgba(255, 145, 128, 1), rgba(255, 219, 88, 1) 100%)","show_sparkles":false,"sparkle_color":"#ffffff","sparkle_size":12,"sparkle_opacity":0.5,"padding_vertical":16,"padding_horizontal":32,"content_gap":16},"blocks":{}}},"block_order":["ai_gen_block_ea35d1e_9JPJmF"],"settings":{"full_width":true,"remove_vertical_spacing":true,"remove_horizontal_spacing":true,"content_alignment":"center","background":"","background_gradient":"","text_color":""}},"image_with_text_overlay_F9cA8N":{"type":"image-with-text-overlay","blocks":{"heading_VDq9T8":{"type":"heading","settings":{"text":"Drinkware","heading_tag":"h2"}},"subheading_ptbWrF":{"type":"subheading","settings":{"text":"Tap lid to view beverage temperature. Enjoy hot or cold drinks anytime with smart drinkware designed for your comfort."}}},"block_order":["heading_VDq9T8","subheading_ptbWrF"],"custom_css":["div div {width: 100%; \/* Sabit px yerine yüzde kullan *\/ max-width: 450px; \/* Büyük ekranlarda 450px’i geçmesin *\/}","@media (max-width: 768px) {div {font-size: 0.6rem; \/* Başlıklar çok büyükse küçült *\/ padding: 5px; }}"],"name":"Image with text overlay + marquee","settings":{"full_width":true,"allow_transparent_header":false,"enable_parallax":false,"image_size":"auto","image":"shopify:\/\/shop_images\/1440_40001_2046x_8b17cba9-f4d7-4da5-ab2e-e66ce9511f79.jpg","mobile_text_position":"place-self-center-start text-start","desktop_text_position":"sm:place-self-center-start sm:text-start","text_color":"#ffffff","overlay_color":"#000000","overlay_opacity":0,"show_marquee":true,"marquee_speed":25}},"icon_marquee_meAA69":{"type":"icon-marquee","blocks":{"item_WUXM6T":{"type":"item","settings":{"icon":"shopify:\/\/shop_images\/virtual.png","text":"Smart Temperature Display"}},"item_BtxPq6":{"type":"item","settings":{"icon":"shopify:\/\/shop_images\/thumbs-up.png","text":"Easy to Clean & Hygienic"}},"item_ygATrG":{"type":"item","settings":{"icon":"shopify:\/\/shop_images\/bpa-free.png","text":"BPA-Free & Safe Materials"}},"item_RLrJtq":{"type":"item","settings":{"icon":"shopify:\/\/shop_images\/reliability.png","text":"Durable & Stylish Finish"}},"item_9tPUFk":{"type":"item","settings":{"icon":"shopify:\/\/shop_images\/virtual.png","text":"Smart Temperature Display"}},"item_nmpLRx":{"type":"item","settings":{"icon":"shopify:\/\/shop_images\/thumbs-up.png","text":"Easy to Clean & Hygienic"}},"item_7eaTeY":{"type":"item","settings":{"icon":"shopify:\/\/shop_images\/bpa-free.png","text":"BPA-Free & Safe Materials"}},"item_wyFpfF":{"type":"item","settings":{"icon":"shopify:\/\/shop_images\/reliability.png","text":"Durable & Stylish Finish"}},"item_HW8KXN":{"type":"item","settings":{"icon":"shopify:\/\/shop_images\/virtual.png","text":"Smart Temperature Display"}}},"block_order":["item_WUXM6T","item_BtxPq6","item_ygATrG","item_RLrJtq","item_9tPUFk","item_nmpLRx","item_7eaTeY","item_wyFpfF","item_HW8KXN"],"custom_css":["div {background: white !important; font-size: 13px !important; top: 0px;}"," {z-index: 5; bottom: 22px;}"],"name":"Icon Marquee Banner","settings":{"bg_color":"#f9f9f9","text_color":"#1d1d1f","speed":25}},"7e958007-3cef-4659-99e4-84dd6a264177":{"type":"collection-list","blocks":{"template--17108473381117__7e958007-3cef-4659-99e4-84dd6a264177-collection-1":{"type":"collection","settings":{"collection":"","subheading":"","title":"","url":"","heading_tag":"h4","text_position":"place-self-end-start text-start","text_color":"#ffffff","overlay_color":"#000000","overlay_opacity":0}},"f7404271-9518-455d-93df-be93876f12e8":{"type":"collection","settings":{"collection":"","subheading":"","title":"","url":"","heading_tag":"h2","text_position":"place-self-center text-center","text_color":"#ffffff","overlay_color":"#000000","overlay_opacity":30}},"a3d56beb-ee64-4600-abe4-42d89acb13ee":{"type":"collection","settings":{"collection":"","subheading":"","title":"","url":"","heading_tag":"h2","text_position":"place-self-center text-center","text_color":"#ffffff","overlay_color":"#000000","overlay_opacity":30}},"1667a878-450c-4fdf-8991-225f2010bf81":{"type":"collection","settings":{"collection":"","subheading":"","title":"","url":"","heading_tag":"h2","text_position":"place-self-center text-center","text_color":"#ffffff","overlay_color":"#000000","overlay_opacity":30}}},"block_order":["template--17108473381117__7e958007-3cef-4659-99e4-84dd6a264177-collection-1","f7404271-9518-455d-93df-be93876f12e8","a3d56beb-ee64-4600-abe4-42d89acb13ee","1667a878-450c-4fdf-8991-225f2010bf81"],"disabled":true,"settings":{"full_width":true,"stack_collections":false,"collections_per_row_mobile":"1","collections_per_row":5,"show_progress_bar":false,"subheading":"","title":"","content":"","link_url":"","link_text":"","background":"","background_gradient":"","text_color":"","heading_color":"","heading_gradient":""}},"banner":{"type":"collection-banner","disabled":true,"settings":{"full_width":true,"allow_transparent_header":true,"enable_parallax":true,"show_collection_title":true,"show_collection_description":true,"show_collection_image":true,"collection_title_size":"h5","image_size":"auto","mobile_text_position":"place-self-center text-center","desktop_text_position":"sm:place-self-center sm:text-center","featured_product":"","featured_product_heading":"Featured product","text_color":"#ffffff","overlay_color":"#000000","overlay_opacity":30}},"featured_collection_DM9G3C":{"type":"featured-collection","custom_css":["img {transform: scale(0.7);}"," {font-size: 16px; font-family: manrope; margin-top: 10px;}","@media (min-width: 768px) {img {transform: scale(1); box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px; border-radius: 10px; padding: 10px; }}"," {}"],"name":"Featured collection","settings":{"collection":"drinkwear","products":[],"full_width":true,"stack_products":false,"show_progress_bar":false,"products_count":6,"products_per_row_mobile":"2","products_per_row_desktop":3,"subheading":"","title":"Best Sellers","content":"","link_url":"","link_text":"View all","background":"","background_gradient":"","text_color":"","heading_color":"","heading_gradient":"","product_card_background":"","product_card_text_color":""}},"main":{"type":"main-collection","custom_css":["product-list > product-card div {justify-content: center; text-align: center; align-content: center; margin: auto; font-size: 16px;}"," {margin-top: 50px;}","#accordion-filter-v-option-color {display: none;}","@media (min-width: 768px) {img {transform: scale(1); box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px; border-radius: 10px; padding: 10px; }}"," {}",".prudcut-card a {text-align: left !important;}","div.product-card__aside > p {display: none;}"],"settings":{"products_per_page":24,"products_per_row_mobile":"2","products_per_row_desktop":3,"filter_layout":"sidebar","show_sort_by":true,"show_filters":true,"show_filter_group_name":true,"show_filter_values_count":true,"open_first_filter_group":true}},"accordion_content_TfyEM7":{"type":"accordion-content","blocks":{"item_VWa8qm":{"type":"item","settings":{"icon":"none","icon_width":20,"title":"How do the Smart Tumblers (Smart Tumblers) work?","content":"<p>Our Smart Tumblers instantly show your drink's temperature via an <strong>integrated LED display<\/strong> on the lid. This allows you to easily see when your drink is at the ideal temperature for sipping. Some models may also feature extra functions like temperature alarms or hydration reminders.<\/p>","page":""}},"item_XFNCzV":{"type":"item","settings":{"icon":"none","icon_width":20,"title":"What is the insulation performance of the Smart Tumblers like?","content":"<p>All Nautica Smart Tumblers are made with <strong>double-walled, stainless steel vacuum insulation<\/strong>. This technology helps to keep your beverages hot for 6-12 hours, and cold drinks can stay chilled for up to 24 hours.<\/p>","page":""}},"item_Px36DV":{"type":"item","settings":{"icon":"none","icon_width":20,"title":"Can I wash the Smart Tumblers in the dishwasher?","content":"<p>To protect the tumbler body's insulation, we recommend <strong>handwashing<\/strong> it. Crucially, the lid, which houses the temperature display, <strong>must not be placed in the dishwasher<\/strong>, as this can cause permanent damage to the electronic components.<\/p>","page":""}},"item_Y8eHDB":{"type":"item","settings":{"icon":"none","icon_width":20,"title":"Does the temperature display require a battery?","content":"<p>Yes, the temperature display typically runs on a long-lasting coin cell battery. These batteries are designed to last the life of the device and do not require external charging.<\/p>","page":""}}},"block_order":["item_VWa8qm","item_XFNCzV","item_Px36DV","item_Y8eHDB"],"custom_css":["div.section-stack__main {margin: 0 auto;}","@media (min-width: 879px) {div.section-stack__main {min-width: 1200px; max-width: 75vw !important; }}"," {}"],"name":"Accordion content","settings":{"full_width":true,"subheading":"","title":"FAQs","content":"","button_text":"","button_url":"","text_position":"center","background":"","background_gradient":"","text_color":"","heading_color":"","heading_gradient":"","button_background":"","button_text_color":"","accordion_background":"","accordion_text_color":""}}},"order":["blocks_zCz6hY","image_with_text_overlay_F9cA8N","icon_marquee_meAA69","7e958007-3cef-4659-99e4-84dd6a264177","banner","featured_collection_DM9G3C","main","accordion_content_TfyEM7"]}
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "blocks_zCz6hY": {
+      "type": "_blocks",
+      "blocks": {
+        "ai_gen_block_ea35d1e_9JPJmF": {
+          "type": "ai_gen_block_ea35d1e",
+          "settings": {
+            "show_badge": true,
+            "badge_text": "NEW ARRIVAL",
+            "badge_background": "#0e2041",
+            "badge_text_color": "#ffffff",
+            "badge_font_size": 12,
+            "badge_font_weight": "700",
+            "badge_text_transform": "uppercase",
+            "badge_letter_spacing": 1,
+            "badge_padding_vertical": 6,
+            "badge_padding_horizontal": 12,
+            "badge_border_radius": 20,
+            "banner_text": "Discover our latest collection",
+            "text_color": "#1a1a1a",
+            "text_font_size": 14,
+            "text_font_weight": "400",
+            "link_text": "Shop now",
+            "link_url": "shopify://collections/new-arrival",
+            "link_color": "#1a1a1a",
+            "link_font_size": 14,
+            "link_font_weight": "600",
+            "link_text_decoration": "underline",
+            "background_gradient": "linear-gradient(135deg, rgba(255, 145, 128, 1), rgba(255, 219, 88, 1) 100%)",
+            "show_sparkles": false,
+            "sparkle_color": "#ffffff",
+            "sparkle_size": 12,
+            "sparkle_opacity": 0.5,
+            "padding_vertical": 16,
+            "padding_horizontal": 32,
+            "content_gap": 16
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "ai_gen_block_ea35d1e_9JPJmF"
+      ],
+      "settings": {
+        "full_width": true,
+        "remove_vertical_spacing": true,
+        "remove_horizontal_spacing": true,
+        "content_alignment": "center",
+        "background": "",
+        "background_gradient": "",
+        "text_color": ""
+      }
+    },
+    "image_with_text_overlay_F9cA8N": {
+      "type": "image-with-text-overlay",
+      "blocks": {
+        "heading_VDq9T8": {
+          "type": "heading",
+          "settings": {
+            "text": "Drinkware",
+            "heading_tag": "h2"
+          }
+        },
+        "subheading_ptbWrF": {
+          "type": "subheading",
+          "settings": {
+            "text": "Tap lid to view beverage temperature. Enjoy hot or cold drinks anytime with smart drinkware designed for your comfort."
+          }
+        }
+      },
+      "block_order": [
+        "heading_VDq9T8",
+        "subheading_ptbWrF"
+      ],
+      "custom_css": [
+        "div div {width: 100%; /* Sabit px yerine yüzde kullan */ max-width: 450px; /* Büyük ekranlarda 450px’i geçmesin */ text-shadow: 0 2px 4px rgba(0,0,0,0.35); /* Yazıya yumuşak bir gölge */}",
+        "@media (max-width: 768px) {div {font-size: 0.6rem; /* Başlıklar çok büyükse küçült */ padding: 5px; text-shadow: 0 2px 4px rgba(0,0,0,0.35); /* Mobilde de gölge ver */ }}"
+      ],
+      "name": "Image with text overlay + marquee",
+      "settings": {
+        "full_width": true,
+        "allow_transparent_header": false,
+        "enable_parallax": false,
+        "image_size": "auto",
+        "image": "shopify://shop_images/Adsiz_tasarim.svg",
+        "mobile_text_position": "place-self-center-start text-start",
+        "desktop_text_position": "sm:place-self-center-start sm:text-start",
+        "text_color": "#ffffff",
+        "overlay_color": "#000000",
+        "overlay_opacity": 0,
+        "show_marquee": true,
+        "marquee_speed": 25
+      }
+    },
+    "icon_marquee_meAA69": {
+      "type": "icon-marquee",
+      "blocks": {
+        "item_WUXM6T": {
+          "type": "item",
+          "settings": {
+            "icon": "shopify://shop_images/virtual.png",
+            "text": "Smart Temperature Display"
+          }
+        },
+        "item_BtxPq6": {
+          "type": "item",
+          "settings": {
+            "icon": "shopify://shop_images/thumbs-up.png",
+            "text": "Easy to Clean & Hygienic"
+          }
+        },
+        "item_ygATrG": {
+          "type": "item",
+          "settings": {
+            "icon": "shopify://shop_images/bpa-free.png",
+            "text": "BPA-Free & Safe Materials"
+          }
+        },
+        "item_RLrJtq": {
+          "type": "item",
+          "settings": {
+            "icon": "shopify://shop_images/reliability.png",
+            "text": "Durable & Stylish Finish"
+          }
+        },
+        "item_9tPUFk": {
+          "type": "item",
+          "settings": {
+            "icon": "shopify://shop_images/virtual.png",
+            "text": "Smart Temperature Display"
+          }
+        },
+        "item_nmpLRx": {
+          "type": "item",
+          "settings": {
+            "icon": "shopify://shop_images/thumbs-up.png",
+            "text": "Easy to Clean & Hygienic"
+          }
+        },
+        "item_7eaTeY": {
+          "type": "item",
+          "settings": {
+            "icon": "shopify://shop_images/bpa-free.png",
+            "text": "BPA-Free & Safe Materials"
+          }
+        },
+        "item_wyFpfF": {
+          "type": "item",
+          "settings": {
+            "icon": "shopify://shop_images/reliability.png",
+            "text": "Durable & Stylish Finish"
+          }
+        },
+        "item_HW8KXN": {
+          "type": "item",
+          "settings": {
+            "icon": "shopify://shop_images/virtual.png",
+            "text": "Smart Temperature Display"
+          }
+        }
+      },
+      "block_order": [
+        "item_WUXM6T",
+        "item_BtxPq6",
+        "item_ygATrG",
+        "item_RLrJtq",
+        "item_9tPUFk",
+        "item_nmpLRx",
+        "item_7eaTeY",
+        "item_wyFpfF",
+        "item_HW8KXN"
+      ],
+      "custom_css": [
+        "div {background: white !important; font-size: 13px !important; top: 0px;}",
+        " {z-index: 5; bottom: 22px;}"
+      ],
+      "name": "Icon Marquee Banner",
+      "settings": {
+        "bg_color": "#f9f9f9",
+        "text_color": "#1d1d1f",
+        "speed": 25
+      }
+    },
+    "7e958007-3cef-4659-99e4-84dd6a264177": {
+      "type": "collection-list",
+      "blocks": {
+        "template--17108473381117__7e958007-3cef-4659-99e4-84dd6a264177-collection-1": {
+          "type": "collection",
+          "settings": {
+            "collection": "",
+            "subheading": "",
+            "title": "",
+            "url": "",
+            "heading_tag": "h4",
+            "text_position": "place-self-end-start text-start",
+            "text_color": "#ffffff",
+            "overlay_color": "#000000",
+            "overlay_opacity": 0
+          }
+        },
+        "f7404271-9518-455d-93df-be93876f12e8": {
+          "type": "collection",
+          "settings": {
+            "collection": "",
+            "subheading": "",
+            "title": "",
+            "url": "",
+            "heading_tag": "h2",
+            "text_position": "place-self-center text-center",
+            "text_color": "#ffffff",
+            "overlay_color": "#000000",
+            "overlay_opacity": 30
+          }
+        },
+        "a3d56beb-ee64-4600-abe4-42d89acb13ee": {
+          "type": "collection",
+          "settings": {
+            "collection": "",
+            "subheading": "",
+            "title": "",
+            "url": "",
+            "heading_tag": "h2",
+            "text_position": "place-self-center text-center",
+            "text_color": "#ffffff",
+            "overlay_color": "#000000",
+            "overlay_opacity": 30
+          }
+        },
+        "1667a878-450c-4fdf-8991-225f2010bf81": {
+          "type": "collection",
+          "settings": {
+            "collection": "",
+            "subheading": "",
+            "title": "",
+            "url": "",
+            "heading_tag": "h2",
+            "text_position": "place-self-center text-center",
+            "text_color": "#ffffff",
+            "overlay_color": "#000000",
+            "overlay_opacity": 30
+          }
+        }
+      },
+      "block_order": [
+        "template--17108473381117__7e958007-3cef-4659-99e4-84dd6a264177-collection-1",
+        "f7404271-9518-455d-93df-be93876f12e8",
+        "a3d56beb-ee64-4600-abe4-42d89acb13ee",
+        "1667a878-450c-4fdf-8991-225f2010bf81"
+      ],
+      "disabled": true,
+      "settings": {
+        "full_width": true,
+        "stack_collections": false,
+        "collections_per_row_mobile": "1",
+        "collections_per_row": 5,
+        "show_progress_bar": false,
+        "subheading": "",
+        "title": "",
+        "content": "",
+        "link_url": "",
+        "link_text": "",
+        "background": "",
+        "background_gradient": "",
+        "text_color": "",
+        "heading_color": "",
+        "heading_gradient": ""
+      }
+    },
+    "banner": {
+      "type": "collection-banner",
+      "disabled": true,
+      "settings": {
+        "full_width": true,
+        "allow_transparent_header": true,
+        "enable_parallax": true,
+        "show_collection_title": true,
+        "show_collection_description": true,
+        "show_collection_image": true,
+        "collection_title_size": "h5",
+        "image_size": "auto",
+        "mobile_text_position": "place-self-center text-center",
+        "desktop_text_position": "sm:place-self-center sm:text-center",
+        "featured_product": "",
+        "featured_product_heading": "Featured product",
+        "text_color": "#ffffff",
+        "overlay_color": "#000000",
+        "overlay_opacity": 30
+      }
+    },
+    "featured_collection_DM9G3C": {
+      "type": "featured-collection",
+      "custom_css": [
+        "img {transform: scale(0.7);}",
+        " {font-size: 16px; font-family: manrope; margin-top: 10px;}",
+        "@media (min-width: 768px) {img {transform: scale(1); box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px; border-radius: 10px; padding: 10px; }}",
+        " {}"
+      ],
+      "name": "Featured collection",
+      "settings": {
+        "collection": "drinkwear",
+        "products": [],
+        "full_width": true,
+        "stack_products": false,
+        "show_progress_bar": false,
+        "products_count": 6,
+        "products_per_row_mobile": "2",
+        "products_per_row_desktop": 3,
+        "subheading": "",
+        "title": "Best Sellers",
+        "content": "",
+        "link_url": "",
+        "link_text": "View all",
+        "background": "",
+        "background_gradient": "",
+        "text_color": "",
+        "heading_color": "",
+        "heading_gradient": "",
+        "product_card_background": "",
+        "product_card_text_color": ""
+      }
+    },
+    "main": {
+      "type": "main-collection",
+      "custom_css": [
+        "product-list > product-card div {justify-content: center; text-align: center; align-content: center; margin: auto; font-size: 16px;}",
+        " {margin-top: 50px;}",
+        "#accordion-filter-v-option-color {display: none;}",
+        "@media (min-width: 768px) {img {transform: scale(1); box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px; border-radius: 10px; padding: 10px; }}",
+        " {}",
+        ".prudcut-card a {text-align: left !important;}",
+        "div.product-card__aside > p {display: none;}"
+      ],
+      "settings": {
+        "products_per_page": 24,
+        "products_per_row_mobile": "2",
+        "products_per_row_desktop": 3,
+        "filter_layout": "sidebar",
+        "show_sort_by": true,
+        "show_filters": true,
+        "show_filter_group_name": true,
+        "show_filter_values_count": true,
+        "open_first_filter_group": true
+      }
+    },
+    "accordion_content_TfyEM7": {
+      "type": "accordion-content",
+      "blocks": {
+        "item_VWa8qm": {
+          "type": "item",
+          "settings": {
+            "icon": "none",
+            "icon_width": 20,
+            "title": "How do the Smart Tumblers (Smart Tumblers) work?",
+            "content": "<p>Our Smart Tumblers instantly show your drink's temperature via an <strong>integrated LED display</strong> on the lid. This allows you to easily see when your drink is at the ideal temperature for sipping. Some models may also feature extra functions like temperature alarms or hydration reminders.</p>",
+            "page": ""
+          }
+        },
+        "item_XFNCzV": {
+          "type": "item",
+          "settings": {
+            "icon": "none",
+            "icon_width": 20,
+            "title": "What is the insulation performance of the Smart Tumblers like?",
+            "content": "<p>All Nautica Smart Tumblers are made with <strong>double-walled, stainless steel vacuum insulation</strong>. This technology helps to keep your beverages hot for 6-12 hours, and cold drinks can stay chilled for up to 24 hours.</p>",
+            "page": ""
+          }
+        },
+        "item_Px36DV": {
+          "type": "item",
+          "settings": {
+            "icon": "none",
+            "icon_width": 20,
+            "title": "Can I wash the Smart Tumblers in the dishwasher?",
+            "content": "<p>To protect the tumbler body's insulation, we recommend <strong>handwashing</strong> it. Crucially, the lid, which houses the temperature display, <strong>must not be placed in the dishwasher</strong>, as this can cause permanent damage to the electronic components.</p>",
+            "page": ""
+          }
+        },
+        "item_Y8eHDB": {
+          "type": "item",
+          "settings": {
+            "icon": "none",
+            "icon_width": 20,
+            "title": "Does the temperature display require a battery?",
+            "content": "<p>Yes, the temperature display typically runs on a long-lasting coin cell battery. These batteries are designed to last the life of the device and do not require external charging.</p>",
+            "page": ""
+          }
+        }
+      },
+      "block_order": [
+        "item_VWa8qm",
+        "item_XFNCzV",
+        "item_Px36DV",
+        "item_Y8eHDB"
+      ],
+      "custom_css": [
+        "div.section-stack__main {margin: 0 auto;}",
+        "@media (min-width: 879px) {div.section-stack__main {min-width: 1200px; max-width: 75vw !important; }}",
+        " {}"
+      ],
+      "name": "Accordion content",
+      "settings": {
+        "full_width": true,
+        "subheading": "",
+        "title": "FAQs",
+        "content": "",
+        "button_text": "",
+        "button_url": "",
+        "text_position": "center",
+        "background": "",
+        "background_gradient": "",
+        "text_color": "",
+        "heading_color": "",
+        "heading_gradient": "",
+        "button_background": "",
+        "button_text_color": "",
+        "accordion_background": "",
+        "accordion_text_color": ""
+      }
+    }
+  },
+  "order": [
+    "blocks_zCz6hY",
+    "image_with_text_overlay_F9cA8N",
+    "icon_marquee_meAA69",
+    "7e958007-3cef-4659-99e4-84dd6a264177",
+    "banner",
+    "featured_collection_DM9G3C",
+    "main",
+    "accordion_content_TfyEM7"
+  ]
+}
