@@ -183,50 +183,73 @@ NOTE TO DEVELOPERS: welcome to Impact theme! We hope that you will enjoy editing
     </script>
 
   <script>
-  // Christmas video redirect - Fixed for mobile and desktop
+  // Christmas video redirect - Works for both mobile and desktop videos
   function initChristmasVideo() {
-    // Find video by poster attribute (works for both video and video-media elements)
-    const specialVideo = document.querySelector('video[poster*="4f374aec7fa64006abed3e3a32119823"]');
-    if (!specialVideo) return;
+    // Find videos by poster ID (both desktop and mobile versions)
+    const posterIds = ['4f374aec7fa64006abed3e3a32119823', '995eede906094a83b1441666fb8f0e76'];
+    const videos = [];
     
-    // Find parent video-media element if exists
-    const videoMedia = specialVideo.closest('video-media');
-    const clickTarget = videoMedia || specialVideo;
+    // Find all videos matching Christmas poster IDs
+    posterIds.forEach(posterId => {
+      const video = document.querySelector(`video[poster*="${posterId}"]`);
+      if (video) videos.push(video);
+    });
     
-    // Desktop: hover to play
-    if (window.matchMedia('(hover: hover)').matches) {
-      specialVideo.addEventListener('mouseenter', () => {
-        specialVideo.play().catch(() => {}); // Suppress autoplay errors
-      });
-    }
+    if (videos.length === 0) return;
     
-    // Both mobile and desktop: click/touch to redirect
-    const handleRedirect = (e) => {
-      e.preventDefault();
-      e.stopPropagation();
-      window.location.href = '/collections/christmas-sale';
-    };
-    
-    clickTarget.addEventListener('click', handleRedirect);
-    clickTarget.addEventListener('touchend', handleRedirect, { passive: false });
-    
-    // Make clickable on mobile
-    if (clickTarget.style) {
-      clickTarget.style.cursor = 'pointer';
-      clickTarget.style.userSelect = 'none';
-    }
+    // Process each video (mobile and desktop)
+    videos.forEach(specialVideo => {
+      // Find parent video-media element if exists
+      const videoMedia = specialVideo.closest('video-media');
+      const clickTarget = videoMedia || specialVideo;
+      
+      // Skip if already initialized
+      if (clickTarget.dataset.christmasInit === 'true') return;
+      clickTarget.dataset.christmasInit = 'true';
+      
+      // Desktop: hover to play
+      if (window.matchMedia('(hover: hover)').matches) {
+        specialVideo.addEventListener('mouseenter', () => {
+          specialVideo.play().catch(() => {}); // Suppress autoplay errors
+        });
+      }
+      
+      // Both mobile and desktop: click/touch to redirect
+      const handleRedirect = (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        window.location.href = '/collections/christmas-sale';
+      };
+      
+      clickTarget.addEventListener('click', handleRedirect);
+      clickTarget.addEventListener('touchend', handleRedirect, { passive: false });
+      
+      // Make clickable
+      if (clickTarget.style) {
+        clickTarget.style.cursor = 'pointer';
+        clickTarget.style.userSelect = 'none';
+        clickTarget.style.webkitTapHighlightColor = 'transparent';
+      }
+      
+      // Also make the video element itself clickable
+      if (specialVideo.style) {
+        specialVideo.style.cursor = 'pointer';
+        specialVideo.style.pointerEvents = 'auto';
+      }
+    });
   }
   
-  // Try multiple times to ensure video is loaded (especially on mobile)
+  // Try multiple times to ensure videos are loaded (especially on mobile)
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', initChristmasVideo);
   } else {
     initChristmasVideo();
   }
   
-  // Retry after a short delay for dynamically loaded content
+  // Retry after delays for dynamically loaded content
   setTimeout(initChristmasVideo, 500);
   setTimeout(initChristmasVideo, 1500);
+  setTimeout(initChristmasVideo, 3000);
 </script>
 
   </body>
