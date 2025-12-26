@@ -140,6 +140,41 @@
         "product_card_text_color": ""
       }
     },
+    "image_with_text_overlay_KBnWYb": {
+      "type": "image-with-text-overlay",
+      "blocks": {
+        "button_P6LRdW": {
+          "type": "button",
+          "settings": {
+            "style": "fill",
+            "size": "base",
+            "text": "Shop Now",
+            "url": "shopify://collections/car-mounts",
+            "background": "#0e2041",
+            "text_color": "#ffffff"
+          }
+        }
+      },
+      "block_order": [
+        "button_P6LRdW"
+      ],
+      "name": "Image with text overlay + marquee",
+      "settings": {
+        "full_width": true,
+        "allow_transparent_header": false,
+        "enable_parallax": false,
+        "image_size": "auto",
+        "image": "shopify://shop_images/car-mount-campaign-banner.png",
+        "mobile_image": "shopify://shop_images/image_69707b9b-0777-49c6-a28b-ea0349d64b3d.png",
+        "mobile_text_position": "place-self-end-center text-center",
+        "desktop_text_position": "sm:place-self-end-center sm:text-center",
+        "text_color": "#ffffff",
+        "overlay_color": "#000000",
+        "overlay_opacity": 0,
+        "show_marquee": false,
+        "marquee_speed": 30
+      }
+    },
     "rich_text_PUBkzp": {
       "type": "rich-text",
       "disabled": true,
@@ -993,6 +1028,7 @@
     "blocks_ffzUhn",
     "slideshow_7NhrYR",
     "featured_collection_Gp9rXY",
+    "image_with_text_overlay_KBnWYb",
     "rich_text_PUBkzp",
     "blocks_inKyWH",
     "image_with_text_overlay_KjA6Kx",
