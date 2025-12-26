@@ -253,53 +253,6 @@
         "marquee_speed": 30
       }
     },
-    "floating_shoppable_video_zQj44U": {
-      "type": "floating-shoppable-video",
-      "blocks": {
-        "video_gdcEAQ": {
-          "type": "video",
-          "settings": {
-            "video_url": "https://cdn.shopify.com/videos/c/o/v/e0d742b6aa6f4d80bf4ab555ecf17dbe.mp4",
-            "cta_text": "Ürünü Gör",
-            "cta_url": "",
-            "cta_newtab": true
-          }
-        },
-        "video_miKGpx": {
-          "type": "video",
-          "settings": {
-            "video_url": "https://cdn.shopify.com/videos/c/o/v/862d72a8edb24387aad30464668c09a9.mp4",
-            "cta_text": "Ürünü Gör",
-            "cta_url": "",
-            "cta_newtab": true
-          }
-        },
-        "video_DTBmpM": {
-          "type": "video",
-          "settings": {
-            "video_url": "https://cdn.shopify.com/videos/c/o/v/2c5e7d1c9beb40a19a310624ea76dbf6.mp4",
-            "cta_text": "Ürünü Gör",
-            "cta_url": "",
-            "cta_newtab": true
-          }
-        }
-      },
-      "block_order": [
-        "video_gdcEAQ",
-        "video_miKGpx",
-        "video_DTBmpM"
-      ],
-      "custom_css": [
-        "{z-index: 50 !important;}"
-      ],
-      "name": "Floating Shoppable Video",
-      "settings": {
-        "position": "bottom-left",
-        "widget_size": 280,
-        "offset": 18,
-        "hide_on_mobile": false
-      }
-    },
     "17582056850b7087e9": {
       "type": "_blocks",
       "blocks": {
@@ -1108,7 +1061,6 @@
     "rich_text_PUBkzp",
     "blocks_inKyWH",
     "image_with_text_overlay_KjA6Kx",
-    "floating_shoppable_video_zQj44U",
     "17582056850b7087e9",
     "featured-collection",
     "shop_the_look_mxWpqY",
