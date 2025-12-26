@@ -108,51 +108,35 @@ product-card sale-price {
 }
 
 
-/* ==== PRODUCT CARD NORMALİZE ====  */
-/* BUNU CSS DOSYANIN EN ALTINA EKLE  */
+/* === PRODUCT CARD ALIGN FIX === */
 
-product-card,
-.product-card,
-#product-card {
-  display: flex !important;
-  flex-direction: column !important;
-  justify-content: space-between !important;
-  height: 100% !important;
-}
-
-/* Görsel alanı ortalansın */
-.product-card__figure {
-  text-align: center !important;
-}
-
-/* Metin bloğu her kartta aynı davransın */
+/* Tüm info bloklarını ortala */
 .product-card__info {
-  flex-grow: 1 !important;
+  text-align: center !important;
+  align-items: center !important;
+}
+
+/* Başlık + fiyat bloğunu ortala */
+.product-card__info .v-stack {
   display: flex !important;
   flex-direction: column !important;
-  justify-content: flex-start !important;
   align-items: center !important;
   text-align: center !important;
 }
 
-/* Başlıklar her zaman ortalı ve genişlik full olsun */
+/* Başlıklar */
 .product-card__title,
 .product-card__title a {
-  width: 100% !important;
   text-align: center !important;
-  display: -webkit-box !important;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  overflow: hidden !important;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-/* Fiyat ve Sold Out / renk bilgisi de ortalansın */
+/* Fiyat satırı ve alt bilgi */
 .product-card__info .price-list,
-.product-card__info .product-card__price-wrapper,
-.product-card__sold-out-info {
-  width: 100% !important;
-  display: flex !important;
-  justify-content: center !important;
-  align-items: center !important;
+.product-card__aside,
+.product-card__color-count {
   text-align: center !important;
+  margin-left: auto;
+  margin-right: auto;
 }
