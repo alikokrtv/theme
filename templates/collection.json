@@ -51,6 +51,7 @@
       "block_order": [
         "ai_gen_block_ea35d1e_3PdkCn"
       ],
+      "disabled": true,
       "custom_css": [],
       "settings": {
         "full_width": true,
