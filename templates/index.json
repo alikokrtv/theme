@@ -619,14 +619,15 @@
         "slide_pk3w8G": {
           "type": "slide",
           "settings": {
-            "image": "shopify://shop_images/cb530_white_10.png",
-            "title": "PremiumPower Connection",
-            "subtitle": "Metal connectors and copper core ensureefficient charging you can trust.",
+            "image": "shopify://shop_images/Adsiz_tasarim_4.svg",
+            "title": "60W High Power Performance",
+            "subtitle": "Delivers high output charging for modern devices with stable effeciency.",
             "link": "shopify://products/nautica-turan-usb-c-to-usb-c-charging-cable-60w-fast-charge-4ft-3-pack"
           }
         },
         "slide_VGBqYW": {
           "type": "slide",
+          "disabled": true,
           "settings": {
             "image": "shopify://shop_images/DYNMAIC_1.jpg",
             "title": "Quick Connection",
