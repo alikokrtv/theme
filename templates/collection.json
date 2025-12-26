@@ -334,7 +334,6 @@
     },
     "featured_collection_MDFxmy": {
       "type": "featured-collection",
-      "disabled": true,
       "custom_css": [],
       "name": "Featured collection",
       "settings": {
