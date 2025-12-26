@@ -108,6 +108,67 @@ product-card sale-price {
 }
 
 
+/* === UNIFORM PRODUCT CARD LAYOUT === */
+/* Tüm collection sayfalarında kartları eşit yükseklikte ve ortalı yapar */
+
+product-card,
+.product-card,
+#product-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+
+/* Görsel alanı */
+.product-card__figure {
+  display: flex;
+  justify-content: center;
+}
+
+/* Metin + fiyat + renk sayısı bloğu */
+.product-card__info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding-top: 12px;
+}
+
+/* Başlık satırı */
+.product-card__title,
+.product-card__title a {
+  display: block;
+  width: 100%;
+  text-align: center;
+  line-height: 1.3;
+  min-height: 3.6em;    /* 2 satıra yetecek kadar alan */
+}
+
+/* Fiyat satırı */
+.product-card__info .price-list {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* "X colors available" kısmı */
+.product-card__aside,
+.product-card__color-count {
+  text-align: center;
+  width: 100%;
+}
+
+/* Add to cart butonunu kartın altına it */
+.product-card__quick-buy {
+  margin-top: auto;
+  width: 100%;
+}
+.product-card__quick-buy .button {
+  width: 100%;
+  justify-content: center;
+}
 
 
 
