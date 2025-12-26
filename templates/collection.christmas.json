@@ -112,7 +112,7 @@
         "text_color": "#ffffff",
         "overlay_color": "#000000",
         "overlay_opacity": 0,
-        "show_marquee": true,
+        "show_marquee": false,
         "marquee_speed": 30
       }
     },
