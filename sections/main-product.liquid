@@ -238,24 +238,10 @@
   Right sidebar: Same collection (category) products
 {%- endcomment -%}
 
-{%- assign picked_collection = blank -%}
-
-{%- if product.collections_count > 0 -%}
-  {%- for c in product.collections -%}
-    {%- unless c.handle == 'all'
-      or c.handle == 'frontpage'
-      or c.handle contains 'best-seller'
-      or c.handle contains 'bestseller' -%}
-      {%- assign picked_collection = c -%}
-      {%- break -%}
-    {%- endunless -%}
-  {%- endfor -%}
-
-  {%- if picked_collection == blank -%}
-    {%- assign picked_collection = product.collections | first -%}
-  {%- endif -%}
+{%- assign picked_collection = collection -%}
+{%- if picked_collection == blank -%}
+  {%- assign picked_collection = product.collections.first -%}
 {%- endif -%}
-
 
 {%- if picked_collection != blank and picked_collection.products_count > 1 -%}
   <aside class="product-related-sidebar" aria-label="Same category products">
