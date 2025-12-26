@@ -1,6 +1,751 @@
+{% doc %}
+  @prompt
+    Add a customizable gradient overlay feature to the custom hover slider section. The gradient should:
+    - Start from the bottom with a dark color (default: dark navy or black with 70% opacity)
+    - Fade to transparent towards the top
+    - Be adjustable with settings for gradient start color, opacity, and height
+    - Improve text readability over images
+    - Match the premium brand aesthetic with smooth transitions
+    
+    Include theme settings to control:
+    - Overlay gradient start color
+    - Overlay opacity percentage
+    - Gradient height (how far up it extends)
+    - Option to enable/disable per slide
+{% enddoc %}
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+
+{% style %}
+  .ai-hover-slider-{{ ai_gen_id }} {
+    display: block;
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    border-radius: {{ block.settings.border_radius }}px;
+  }
+
+  .ai-hover-slider-container-{{ ai_gen_id }} {
+    display: flex;
+    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    height: {{ block.settings.slider_height }}px;
+  }
+
+  .ai-hover-slider-slide-{{ ai_gen_id }} {
+    position: relative;
+    flex: 0 0 100%;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+  }
+
+  .ai-hover-slider-image-{{ ai_gen_id }} {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .ai-hover-slider-slide-{{ ai_gen_id }}:hover .ai-hover-slider-image-{{ ai_gen_id }} {
+    transform: scale({{ block.settings.zoom_scale }});
+  }
+
+  .ai-hover-slider-overlay-{{ ai_gen_id }} {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: var(--overlay-height);
+    background: linear-gradient(
+      to top,
+      var(--overlay-color) 0%,
+      transparent 100%
+    );
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+  }
+
+  .ai-hover-slider-content-{{ ai_gen_id }} {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: {{ block.settings.content_padding }}px;
+    z-index: 2;
+    color: {{ block.settings.text_color }};
+  }
+
+  .ai-hover-slider-title-{{ ai_gen_id }} {
+    font-size: {{ block.settings.title_size }}px;
+    font-weight: 600;
+    margin: 0 0 8px 0;
+    line-height: 1.2;
+  }
+
+  .ai-hover-slider-description-{{ ai_gen_id }} {
+    font-size: {{ block.settings.description_size }}px;
+    margin: 0 0 16px 0;
+    line-height: 1.5;
+    opacity: 0.95;
+  }
+
+  .ai-hover-slider-button-{{ ai_gen_id }} {
+    display: inline-block;
+    padding: 12px 24px;
+    background-color: {{ block.settings.button_background }};
+    color: {{ block.settings.button_text_color }};
+    text-decoration: none;
+    border-radius: {{ block.settings.button_border_radius }}px;
+    font-size: {{ block.settings.button_font_size }}px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+  }
+
+  .ai-hover-slider-button-{{ ai_gen_id }}:hover {
+    background-color: {{ block.settings.button_hover_background }};
+    transform: translateY(-2px);
+  }
+
+  .ai-hover-slider-nav-{{ ai_gen_id }} {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 8px;
+    z-index: 3;
+  }
+
+  .ai-hover-slider-dot-{{ ai_gen_id }} {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.5);
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    padding: 0;
+  }
+
+  .ai-hover-slider-dot-{{ ai_gen_id }}.active {
+    background-color: {{ block.settings.nav_active_color }};
+    width: 24px;
+    border-radius: 5px;
+  }
+
+  .ai-hover-slider-placeholder-{{ ai_gen_id }} {
+    width: 100%;
+    height: 100%;
+    background-color: #f4f4f4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+
+  .ai-hover-slider-placeholder-{{ ai_gen_id }} svg {
+    width: 100%;
+    height: 100%;
+    max-width: 500px;
+    max-height: 500px;
+  }
+
+  .ai-hover-slider-empty-state-{{ ai_gen_id }} {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 12px 20px;
+    font-size: 14px;
+    color: #666;
+    text-align: center;
+    pointer-events: none;
+  }
+
+  @media screen and (max-width: 749px) {
+    .ai-hover-slider-container-{{ ai_gen_id }} {
+      height: {{ block.settings.slider_height | times: 0.7 }}px;
+    }
+
+    .ai-hover-slider-title-{{ ai_gen_id }} {
+      font-size: {{ block.settings.title_size | times: 0.8 }}px;
+    }
+
+    .ai-hover-slider-description-{{ ai_gen_id }} {
+      font-size: {{ block.settings.description_size | times: 0.9 }}px;
+    }
+
+    .ai-hover-slider-content-{{ ai_gen_id }} {
+      padding: {{ block.settings.content_padding | times: 0.7 }}px;
+    }
+  }
+{% endstyle %}
+
+<hover-slider-{{ ai_gen_id }}
+  class="ai-hover-slider-{{ ai_gen_id }}"
+  {{ block.shopify_attributes }}
+>
+  <div class="ai-hover-slider-container-{{ ai_gen_id }}">
+    {% for i in (1..3) %}
+      {% liquid
+        assign slide_enabled_key = 'slide_' | append: i | append: '_enabled'
+        assign slide_image_key = 'slide_' | append: i | append: '_image'
+        assign slide_title_key = 'slide_' | append: i | append: '_title'
+        assign slide_description_key = 'slide_' | append: i | append: '_description'
+        assign slide_button_text_key = 'slide_' | append: i | append: '_button_text'
+        assign slide_button_link_key = 'slide_' | append: i | append: '_button_link'
+        assign slide_overlay_enabled_key = 'slide_' | append: i | append: '_overlay_enabled'
+        assign slide_overlay_color_key = 'slide_' | append: i | append: '_overlay_color'
+        assign slide_overlay_opacity_key = 'slide_' | append: i | append: '_overlay_opacity'
+        assign slide_overlay_height_key = 'slide_' | append: i | append: '_overlay_height'
+
+        assign slide_enabled = block.settings[slide_enabled_key]
+        assign slide_image = block.settings[slide_image_key]
+        assign slide_title = block.settings[slide_title_key]
+        assign slide_description = block.settings[slide_description_key]
+        assign slide_button_text = block.settings[slide_button_text_key]
+        assign slide_button_link = block.settings[slide_button_link_key]
+        assign slide_overlay_enabled = block.settings[slide_overlay_enabled_key]
+        assign slide_overlay_color = block.settings[slide_overlay_color_key]
+        assign slide_overlay_opacity = block.settings[slide_overlay_opacity_key]
+        assign slide_overlay_height = block.settings[slide_overlay_height_key]
+
+        assign overlay_rgba = slide_overlay_color | color_to_rgb | remove: 'rgb(' | remove: ')' | append: ', ' | append: slide_overlay_opacity | divided_by: 100.0
+      %}
+
+      {% if slide_enabled %}
+        <div
+          class="ai-hover-slider-slide-{{ ai_gen_id }}"
+          data-slide="{{ i }}"
+          style="
+            --overlay-color: rgba({{ overlay_rgba }});
+            --overlay-height: {{ slide_overlay_height }}%;
+          "
+        >
+          {% if slide_image %}
+            <img
+              src="{{ slide_image | image_url: width: 2000 }}"
+              alt="{{ slide_image.alt | escape }}"
+              loading="lazy"
+              width="{{ slide_image.width }}"
+              height="{{ slide_image.height }}"
+              class="ai-hover-slider-image-{{ ai_gen_id }}"
+            >
+          {% else %}
+            <div class="ai-hover-slider-placeholder-{{ ai_gen_id }}">
+              {{ 'hero-apparel-1' | placeholder_svg_tag }}
+              <div class="ai-hover-slider-empty-state-{{ ai_gen_id }}">
+                Add an image for slide {{ i }}
+              </div>
+            </div>
+          {% endif %}
+
+          {% if slide_overlay_enabled %}
+            <div class="ai-hover-slider-overlay-{{ ai_gen_id }}"></div>
+          {% endif %}
+
+          <div class="ai-hover-slider-content-{{ ai_gen_id }}">
+            {% if slide_title != blank %}
+              <h2 class="ai-hover-slider-title-{{ ai_gen_id }}">{{ slide_title }}</h2>
+            {% endif %}
+
+            {% if slide_description != blank %}
+              <div class="ai-hover-slider-description-{{ ai_gen_id }}">{{ slide_description }}</div>
+            {% endif %}
+
+            {% if slide_button_text != blank and slide_button_link != blank %}
+              <a
+                href="{{ slide_button_link }}"
+                class="ai-hover-slider-button-{{ ai_gen_id }}"
+              >
+                {{ slide_button_text }}
+              </a>
+            {% endif %}
+          </div>
+        </div>
+      {% endif %}
+    {% endfor %}
+  </div>
+
+  <div class="ai-hover-slider-nav-{{ ai_gen_id }}">
+    {% for i in (1..3) %}
+      {% liquid
+        assign slide_enabled_key = 'slide_' | append: i | append: '_enabled'
+        assign slide_enabled = block.settings[slide_enabled_key]
+      %}
+      {% if slide_enabled %}
+        <button
+          class="ai-hover-slider-dot-{{ ai_gen_id }} {% if forloop.first %}active{% endif %}"
+          data-slide="{{ i }}"
+          aria-label="Go to slide {{ i }}"
+        ></button>
+      {% endif %}
+    {% endfor %}
+  </div>
+</hover-slider-{{ ai_gen_id }}>
+
+<script>
+  (function() {
+    class HoverSlider{{ ai_gen_id }} extends HTMLElement {
+      constructor() {
+        super();
+        this.currentSlide = 0;
+        this.autoplayInterval = null;
+      }
+
+      connectedCallback() {
+        this.container = this.querySelector('.ai-hover-slider-container-{{ ai_gen_id }}');
+        this.slides = this.querySelectorAll('.ai-hover-slider-slide-{{ ai_gen_id }}');
+        this.dots = this.querySelectorAll('.ai-hover-slider-dot-{{ ai_gen_id }}');
+
+        if (this.slides.length === 0) return;
+
+        this.setupEventListeners();
+        this.startAutoplay();
+      }
+
+      setupEventListeners() {
+        this.dots.forEach((dot, index) => {
+          dot.addEventListener('click', () => {
+            this.goToSlide(index);
+            this.resetAutoplay();
+          });
+        });
+
+        this.slides.forEach((slide) => {
+          slide.addEventListener('mouseenter', () => {
+            this.pauseAutoplay();
+          });
+
+          slide.addEventListener('mouseleave', () => {
+            this.startAutoplay();
+          });
+        });
+      }
+
+      goToSlide(index) {
+        this.currentSlide = index;
+        const offset = -index * 100;
+        this.container.style.transform = `translateX(${offset}%)`;
+
+        this.dots.forEach((dot, i) => {
+          if (i === index) {
+            dot.classList.add('active');
+          } else {
+            dot.classList.remove('active');
+          }
+        });
+      }
+
+      nextSlide() {
+        const nextIndex = (this.currentSlide + 1) % this.slides.length;
+        this.goToSlide(nextIndex);
+      }
+
+      startAutoplay() {
+        if (this.autoplayInterval) return;
+        this.autoplayInterval = setInterval(() => {
+          this.nextSlide();
+        }, {{ block.settings.autoplay_duration | times: 1000 }});
+      }
+
+      pauseAutoplay() {
+        if (this.autoplayInterval) {
+          clearInterval(this.autoplayInterval);
+          this.autoplayInterval = null;
+        }
+      }
+
+      resetAutoplay() {
+        this.pauseAutoplay();
+        this.startAutoplay();
+      }
+
+      disconnectedCallback() {
+        this.pauseAutoplay();
+      }
+    }
+
+    customElements.define('hover-slider-{{ ai_gen_id }}', HoverSlider{{ ai_gen_id }});
+  })();
+</script>
+
 {% schema %}
- {
-   "name": "AI_Block",
-   "tag": "shopify-ai-generated-block"
- }
+{
+  "name": "Premium hover slider",
+  "tag": null,
+  "settings": [
+    {
+      "type": "header",
+      "content": "Slider settings"
+    },
+    {
+      "type": "range",
+      "id": "slider_height",
+      "min": 300,
+      "max": 800,
+      "step": 50,
+      "unit": "px",
+      "label": "Slider height",
+      "default": 600
+    },
+    {
+      "type": "range",
+      "id": "desktop_width_percent",
+      "label": "Desktop width",
+      "min": 50,
+      "max": 100,
+      "step": 5,
+      "unit": "%",
+      "default": 100
+    },
+    {
+      "type": "range",
+      "id": "zoom_scale",
+      "min": 1,
+      "max": 1.5,
+      "step": 0.1,
+      "label": "Hover zoom scale",
+      "default": 1.1
+    },
+    {
+      "type": "range",
+      "id": "autoplay_duration",
+      "min": 3,
+      "max": 10,
+      "step": 1,
+      "unit": "s",
+      "label": "Autoplay duration",
+      "default": 5
+    },
+    {
+      "type": "range",
+      "id": "border_radius",
+      "min": 0,
+      "max": 40,
+      "step": 4,
+      "unit": "px",
+      "label": "Border radius",
+      "default": 16
+    },
+    {
+      "type": "header",
+      "content": "Content style"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "range",
+      "id": "content_padding",
+      "min": 20,
+      "max": 80,
+      "step": 10,
+      "unit": "px",
+      "label": "Content padding",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "title_size",
+      "min": 24,
+      "max": 72,
+      "step": 4,
+      "unit": "px",
+      "label": "Title size",
+      "default": 48
+    },
+    {
+      "type": "range",
+      "id": "description_size",
+      "min": 12,
+      "max": 24,
+      "step": 2,
+      "unit": "px",
+      "label": "Description size",
+      "default": 16
+    },
+    {
+      "type": "header",
+      "content": "Button style"
+    },
+    {
+      "type": "color",
+      "id": "button_background",
+      "label": "Background",
+      "default": "#020082"
+    },
+    {
+      "type": "color",
+      "id": "button_text_color",
+      "label": "Text color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "button_hover_background",
+      "label": "Hover background",
+      "default": "#000000"
+    },
+    {
+      "type": "range",
+      "id": "button_border_radius",
+      "min": 0,
+      "max": 40,
+      "step": 4,
+      "unit": "px",
+      "label": "Border radius",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "button_font_size",
+      "min": 12,
+      "max": 20,
+      "step": 2,
+      "unit": "px",
+      "label": "Font size",
+      "default": 14
+    },
+    {
+      "type": "header",
+      "content": "Navigation"
+    },
+    {
+      "type": "color",
+      "id": "nav_active_color",
+      "label": "Active dot color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "header",
+      "content": "Slide 1"
+    },
+    {
+      "type": "checkbox",
+      "id": "slide_1_enabled",
+      "label": "Enable slide 1",
+      "default": true
+    },
+    {
+      "type": "image_picker",
+      "id": "slide_1_image",
+      "label": "Image"
+    },
+    {
+      "type": "text",
+      "id": "slide_1_title",
+      "label": "Title",
+      "default": "Premium Audio Experience"
+    },
+    {
+      "type": "textarea",
+      "id": "slide_1_description",
+      "label": "Description",
+      "default": "Discover our latest collection of high-quality audio devices"
+    },
+    {
+      "type": "text",
+      "id": "slide_1_button_text",
+      "label": "Button text",
+      "default": "Shop Now"
+    },
+    {
+      "type": "url",
+      "id": "slide_1_button_link",
+      "label": "Button link"
+    },
+    {
+      "type": "paragraph",
+      "content": "Gradient overlay settings"
+    },
+    {
+      "type": "checkbox",
+      "id": "slide_1_overlay_enabled",
+      "label": "Enable gradient overlay",
+      "default": true
+    },
+    {
+      "type": "color",
+      "id": "slide_1_overlay_color",
+      "label": "Overlay color",
+      "default": "#0e2041"
+    },
+    {
+      "type": "range",
+      "id": "slide_1_overlay_opacity",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "%",
+      "label": "Overlay opacity",
+      "default": 70
+    },
+    {
+      "type": "range",
+      "id": "slide_1_overlay_height",
+      "min": 30,
+      "max": 100,
+      "step": 5,
+      "unit": "%",
+      "label": "Overlay height",
+      "default": 60
+    },
+    {
+      "type": "header",
+      "content": "Slide 2"
+    },
+    {
+      "type": "checkbox",
+      "id": "slide_2_enabled",
+      "label": "Enable slide 2",
+      "default": true
+    },
+    {
+      "type": "image_picker",
+      "id": "slide_2_image",
+      "label": "Image"
+    },
+    {
+      "type": "text",
+      "id": "slide_2_title",
+      "label": "Title",
+      "default": "Charging Solutions"
+    },
+    {
+      "type": "textarea",
+      "id": "slide_2_description",
+      "label": "Description",
+      "default": "Fast and reliable charging for all your devices"
+    },
+    {
+      "type": "text",
+      "id": "slide_2_button_text",
+      "label": "Button text",
+      "default": "Explore"
+    },
+    {
+      "type": "url",
+      "id": "slide_2_button_link",
+      "label": "Button link"
+    },
+    {
+      "type": "paragraph",
+      "content": "Gradient overlay settings"
+    },
+    {
+      "type": "checkbox",
+      "id": "slide_2_overlay_enabled",
+      "label": "Enable gradient overlay",
+      "default": true
+    },
+    {
+      "type": "color",
+      "id": "slide_2_overlay_color",
+      "label": "Overlay color",
+      "default": "#0e2041"
+    },
+    {
+      "type": "range",
+      "id": "slide_2_overlay_opacity",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "%",
+      "label": "Overlay opacity",
+      "default": 70
+    },
+    {
+      "type": "range",
+      "id": "slide_2_overlay_height",
+      "min": 30,
+      "max": 100,
+      "step": 5,
+      "unit": "%",
+      "label": "Overlay height",
+      "default": 60
+    },
+    {
+      "type": "header",
+      "content": "Slide 3"
+    },
+    {
+      "type": "checkbox",
+      "id": "slide_3_enabled",
+      "label": "Enable slide 3",
+      "default": true
+    },
+    {
+      "type": "image_picker",
+      "id": "slide_3_image",
+      "label": "Image"
+    },
+    {
+      "type": "text",
+      "id": "slide_3_title",
+      "label": "Title",
+      "default": "Lifestyle Tech"
+    },
+    {
+      "type": "textarea",
+      "id": "slide_3_description",
+      "label": "Description",
+      "default": "Modern accessories for your everyday life"
+    },
+    {
+      "type": "text",
+      "id": "slide_3_button_text",
+      "label": "Button text",
+      "default": "View Collection"
+    },
+    {
+      "type": "url",
+      "id": "slide_3_button_link",
+      "label": "Button link"
+    },
+    {
+      "type": "paragraph",
+      "content": "Gradient overlay settings"
+    },
+    {
+      "type": "checkbox",
+      "id": "slide_3_overlay_enabled",
+      "label": "Enable gradient overlay",
+      "default": true
+    },
+    {
+      "type": "color",
+      "id": "slide_3_overlay_color",
+      "label": "Overlay color",
+      "default": "#0e2041"
+    },
+    {
+      "type": "range",
+      "id": "slide_3_overlay_opacity",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "%",
+      "label": "Overlay opacity",
+      "default": 70
+    },
+    {
+      "type": "range",
+      "id": "slide_3_overlay_height",
+      "min": 30,
+      "max": 100,
+      "step": 5,
+      "unit": "%",
+      "label": "Overlay height",
+      "default": 60
+    }
+  ],
+  "presets": [
+    {
+      "name": "Premium hover slider"
+    }
+  ]
+}
 {% endschema %}
