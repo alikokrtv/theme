@@ -140,3 +140,29 @@ product-card sale-price {
   margin-left: auto;
   margin-right: auto;
 }
+
+
+/* === PRODUCT CARD ALIGN HARD FIX === */
+
+/* Product card içindeki v-stack her zaman ortalansın */
+.product-card__info .v-stack {
+  display: block !important;          /* grid mantığını iptal et */
+  text-align: center !important;      /* içindeki her şeyi ortala */
+  width: 100% !important;
+}
+
+/* İçteki elemanları da ortala */
+.product-card__info .v-stack > * {
+  margin-left: auto !important;
+  margin-right: auto !important;
+  text-align: center !important;
+}
+
+/* Fiyat ve alt satır tam ortada kalsın */
+.product-card__info .price-list,
+.product-card__info .product-card__aside,
+.product-card__info .product-card__color-count {
+  text-align: center !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
