@@ -107,6 +107,37 @@ product-card sale-price {
   }
 }
 
+/* HİZA SABİTLEYİCİ 👇 */
+
+/* Info bloğundaki her şeyi yatayda ortala */
+.product-card__info {
+  align-items: center !important;
+  text-align: center !important;
+}
+
+/* Başlık + fiyatın durduğu v-stack'i flex yap ve ortala */
+.product-card__info > .v-stack {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  width: 100% !important;
+}
+
+/* Başlık satırı her zaman kart genişliğinde ve ortalı olsun */
+.product-card__title,
+.product-card__title a {
+  display: block !important;
+  width: 100% !important;
+  text-align: center !important;
+}
+
+/* “X colors available” kısmını da ortala */
+.product-card__aside,
+.product-card__color-count {
+  width: 100% !important;
+  text-align: center !important;
+}
+
 
 
 
