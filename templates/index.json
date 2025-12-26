@@ -987,72 +987,6 @@
         "chart_text_color": "",
         "chart_true_false_color": ""
       }
-    },
-    "17665770814b91b084": {
-      "type": "_blocks",
-      "blocks": {
-        "ai_gen_block_e0cfcf1_XbCmaK": {
-          "type": "ai_gen_block_e0cfcf1",
-          "settings": {
-            "heading": "Merry Christmas!",
-            "heading_size": 60,
-            "heading_color": "#ffffff",
-            "subheading": "Celebrate the season with our special holiday collection",
-            "subheading_size": 24,
-            "subheading_color": "#ffffff",
-            "text": "<p>Discover magical gifts and festive deals that bring joy to your loved ones this Christmas season.</p>",
-            "text_size": 16,
-            "text_color": "#ffffff",
-            "text_alignment": "center",
-            "spacing_between_elements": 20,
-            "button_text": "Shop holiday collection",
-            "button_link": "",
-            "button_text_size": 16,
-            "button_background": "#ffffff",
-            "button_text_color": "#c41e3a",
-            "button_hover_background": "#ffd700",
-            "button_hover_text_color": "#c41e3a",
-            "button_border_radius": 30,
-            "button_padding_vertical": 16,
-            "button_padding_horizontal": 40,
-            "background_color_1": "#c41e3a",
-            "background_color_2": "#8b0000",
-            "enable_twinkling": true,
-            "light_count": 50,
-            "light_size": 8,
-            "light_color_1": "#ffd700",
-            "light_color_2": "#ffffff",
-            "light_color_3": "#00ff00",
-            "light_color_4": "#ff0000",
-            "enable_glow": true,
-            "glow_intensity": 15,
-            "enable_sparkles": true,
-            "sparkle_count": 30,
-            "sparkle_color": "#ffffff",
-            "enable_snow": true,
-            "snow_count": 25,
-            "snow_color": "#ffffff",
-            "content_width": 800,
-            "padding_top": 100,
-            "padding_bottom": 100,
-            "padding_horizontal": 30,
-            "desktop_width_percent": 100
-          },
-          "blocks": {}
-        }
-      },
-      "block_order": [
-        "ai_gen_block_e0cfcf1_XbCmaK"
-      ],
-      "settings": {
-        "full_width": false,
-        "remove_vertical_spacing": false,
-        "remove_horizontal_spacing": false,
-        "content_alignment": "center",
-        "background": "",
-        "background_gradient": "",
-        "text_color": ""
-      }
     }
   },
   "order": [
@@ -1076,7 +1010,6 @@
     "newsletter_BCzMcx",
     "blocks_TYkdXj",
     "d2b15a90-7a7a-4203-843c-e2e06f00055e",
-    "feature-chart",
-    "17665770814b91b084"
+    "feature-chart"
   ]
 }
