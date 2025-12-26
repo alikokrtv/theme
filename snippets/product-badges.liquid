@@ -40,9 +40,19 @@ Supported variables
           </span>
         {%- endif -%}
 
-      {%- when 'sold_out' -%}
+       {%- when 'sold_out' -%}
         {%- if settings.show_sold_out_badge -%}
           {%- if variant.available == false -%}
+
+            {%- comment -%}
+              ÜRÜN TAG'İNDE "new" VARSA, STOĞU YOKKEN BİLE NEW ARRIVAL GÖRÜNSÜN
+            {%- endcomment -%}
+            {%- if product.tags contains 'new' -%}
+              <span class="badge badge--new-arrival">
+                New Arrival
+              </span>
+            {%- endif -%}
+
             <sold-out-badge class="badge badge--sold-out">
               {{- 'product.general.sold_out_badge' | t -}}
             </sold-out-badge>
