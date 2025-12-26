@@ -256,7 +256,7 @@
 
 {%- for p in sorted_products -%}
   {%- if p.id == product.id -%}{%- continue -%}{%- endif -%}
-  {%- if shown >= 6 -%}{%- break -%}{%- endif -%}
+  {%- if shown >= 20 -%}{%- break -%}{%- endif -%}
   {%- assign shown = shown | plus: 1 -%}
 
   <a class="product-related-sidebar__item" href="{{ p.url }}">
