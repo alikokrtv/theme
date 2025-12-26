@@ -562,7 +562,7 @@
           "type": "rich-text",
           "name": "Rich text",
           "settings": {
-            "text": "<p>Non-Stop Music All Day Long</p>",
+            "text": "<p>Your Daily Tech Essentials</p>",
             "content_width": "large",
             "text_alignment": "center"
           },
