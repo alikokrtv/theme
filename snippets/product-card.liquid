@@ -54,9 +54,9 @@ Supported variables
   --------------------------------------------------------------------------------------------------------------------
   {%- endcomment -%}
 
-  {%- if show_badges and product.media.size > 0 and product.available -%}
-    {%- render 'product-badges', product: product, context: 'card', class: 'product-card__badge-list' -%}
-  {%- endif -%}
+  {%- if show_badges and product.media.size > 0 -%}
+  {%- render 'product-badges', product: product, context: 'card', class: 'product-card__badge-list' -%}
+{%- endif -%}
 
   {%- comment -%}
   --------------------------------------------------------------------------------------------------------------------
