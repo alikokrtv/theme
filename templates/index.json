@@ -158,6 +158,7 @@
       "block_order": [
         "button_P6LRdW"
       ],
+      "disabled": true,
       "custom_css": [
         "a {background-color: white; color: #0e2041; font-weight: bold;}"
       ],
