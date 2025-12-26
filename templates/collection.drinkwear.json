@@ -300,12 +300,7 @@
     },
     "featured_collection_DM9G3C": {
       "type": "featured-collection",
-      "custom_css": [
-        "img {transform: scale(0.7);}",
-        " {font-size: 16px; font-family: manrope; margin-top: 10px;}",
-        "@media (min-width: 768px) {img {transform: scale(1); box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px; border-radius: 10px; padding: 10px; }}",
-        " {}"
-      ],
+      "custom_css": [],
       "name": "Featured collection",
       "settings": {
         "collection": "drinkwear",
@@ -332,15 +327,7 @@
     },
     "main": {
       "type": "main-collection",
-      "custom_css": [
-        "product-list > product-card div {justify-content: center; text-align: center; align-content: center; margin: auto; font-size: 16px;}",
-        " {margin-top: 50px;}",
-        "#accordion-filter-v-option-color {display: none;}",
-        "@media (min-width: 768px) {img {transform: scale(1); box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px; border-radius: 10px; padding: 10px; }}",
-        " {}",
-        ".prudcut-card a {text-align: left !important;}",
-        "div.product-card__aside > p {display: none;}"
-      ],
+      "custom_css": [],
       "settings": {
         "products_per_page": 24,
         "products_per_row_mobile": "2",
