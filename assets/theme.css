@@ -166,3 +166,40 @@ product-card sale-price {
   margin-left: auto !important;
   margin-right: auto !important;
 }
+
+/* === PRODUCT CARD TEXT ALIGN FINAL FIX === */
+
+/* Info bloğu genel olarak ortalı olsun */
+.product-card__info {
+  text-align: center !important;
+}
+
+/* Başlık tam genişlikte ve ortalı olsun */
+.product-card__title,
+.product-card__title a {
+  display: block !important;
+  width: 100% !important;
+  text-align: center !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+/* Fiyat satırı da blok gibi davransın ve ortalansın */
+.product-card__info .price-list {
+  display: block !important;
+  width: 100% !important;
+  text-align: center !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+/* Alt satır: "X colors available" */
+.product-card__info .product-card__aside,
+.product-card__info .product-card__color-count {
+  display: block !important;
+  width: 100% !important;
+  text-align: center !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
