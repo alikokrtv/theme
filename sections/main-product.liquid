@@ -234,17 +234,39 @@
         product_form_id: product_form_id,
         context: 'main_product'
       -%}
-      {%- comment -%}
+     {%- comment -%}
   Right sidebar: Same collection (category) products
 {%- endcomment -%}
 
-{%- assign picked_collection = collection -%}
+{%- assign picked_collection = blank -%}
+
+/* Önce ürünün koleksiyonları arasından "gerçek" bir koleksiyon bulmaya çalış */
+{%- if product.collections.size > 0 -%}
+  {%- for c in product.collections -%}
+    {%- unless c.handle == 'all'
+      or c.handle == 'frontpage'
+      or c.handle contains 'best-seller'
+      or c.handle contains 'bestseller'
+      or c.handle contains 'best-sellers'
+    -%}
+      {%- assign picked_collection = c -%}
+      {%- break -%}
+    {%- endunless -%}
+  {%- endfor -%}
+
+  {%- if picked_collection == blank -%}
+    {%- assign picked_collection = product.collections | first -%}
+  {%- endif -%}
+{%- endif -%}
+
+/* Hâlâ boşsa, eski davranışa dön: URL’den gelen collection’ı kullan */
 {%- if picked_collection == blank -%}
-  {%- assign picked_collection = product.collections.first -%}
+  {%- assign picked_collection = collection -%}
 {%- endif -%}
 
 {%- if picked_collection != blank and picked_collection.products_count > 1 -%}
   <aside class="product-related-sidebar" aria-label="Same category products">
+
     <p class="product-related-sidebar__title">
       More from {{ picked_collection.title }}
     </p>
