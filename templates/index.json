@@ -601,10 +601,10 @@
         "slide_dyJCjw": {
           "type": "slide",
           "settings": {
-            "image": "shopify://shop_images/DYNMAIC.jpg",
-            "title": "Dynamic Ambient Light",
-            "subtitle": "Create the perfect ambiance for your mood with the Nautica Urban SP600's dynamic light bar. Transform the rhythm of your music into colors with 5 different lighting effect options.",
-            "link": "shopify://products/portable-bluetooth-speaker"
+            "image": "shopify://shop_images/Turan_Core_20_white_10.png",
+            "title": "Charge with Confidence",
+            "subtitle": "Advanced safety featuresdeliver worry-free charging.",
+            "link": "shopify://products/nautica-turan-core-20-charging-bundle-2-20w-wall-chargers-2-usb-c-to-usb-c-cables"
           }
         },
         "slide_nWharW": {
@@ -643,7 +643,7 @@
         "slide_VGBqYW"
       ],
       "custom_css": [
-        "* {text-shadow: 8px 8px 20px black !important;}"
+        "h3,p {text-shadow: 2px 2px 5px black !important; font-weight: bold !important; /* 'width' yerine doğrusu budur */ color: white !important; /* Siyah gölgeyle en iyi kontrastı beyaz verir */}"
       ],
       "name": "Hover Expand Slider",
       "settings": {}
