@@ -57,52 +57,6 @@
       {{ 'lifestyle-1' | placeholder_svg_tag: 'placeholder' | replace: '<svg', '<svg preserveAspectRatio="xMinYMin slice"' }}
     {%- endif -%}
 
-    {%- if section.blocks.size > 0 -%}
-      <div class="{{ section.settings.mobile_text_position }} {{ section.settings.desktop_text_position }}">
-        <div class="prose">
-          {%- for block in section.blocks -%}
-            {%- case block.type -%}
-              {%- when 'subheading' -%}
-                {%- if block.settings.text != blank -%}
-                  <p class="bold" {{ block.shopify_attributes }}>{{ block.settings.text | escape }}</p>
-                {%- endif -%}
-
-              {%- when 'heading' -%}
-                {%- if block.settings.text != blank -%}
-                  <p class="{{ block.settings.heading_tag }}" {% if settings.heading_apparition != 'none' %}reveal-on-scroll="true"{% endif %} {{ block.shopify_attributes }}>
-                    {%- render 'styled-text', content: block.settings.text, apparition_effect: true -%}
-                  </p>
-                {%- endif -%}
-
-              {%- when 'richtext' -%}
-                {%- if block.settings.content != blank -%}
-                  <div {{ block.shopify_attributes }}>
-                    {{- block.settings.content -}}
-                  </div>
-                {%- endif -%}
-
-              {%- when 'liquid' -%}
-                {%- if block.settings.liquid != blank -%}
-                  <div {{ block.shopify_attributes }}>
-                    {{- block.settings.liquid -}}
-                  </div>
-                {%- endif -%}
-
-              {%- when 'button' -%}
-                {%- if block.settings.text != blank -%}
-                  {% render 'button', content: block.settings.text, href: block.settings.url, size: block.settings.size, style: block.settings.style, background: block.settings.background, text_color: block.settings.text_color, block: block %}
-                {%- endif -%}
-
-              {%- when 'marquee_item' -%}
-                {% comment %}
-bunlar marquee kısmında render edilecek
-{% endcomment %}
-
-            {%- endcase -%}
-          {%- endfor -%}
-        </div>
-      </div>
-    {%- endif -%}
   </image-banner>
 
 {%- if section.settings.show_marquee -%}
