@@ -111,11 +111,6 @@
           "greeting_message": ""
         }
       },
-      "16160716078332068383": {
-        "type": "shopify://apps/rubik-variant-images/blocks/rubik-variant-images/e684282e-1343-4a60-8fa2-6393aded15f6",
-        "disabled": true,
-        "settings": {}
-      },
       "18194548382691877002": {
         "type": "shopify://apps/smps-google-customer-reviews/blocks/gcr_block/b8ef3a86-e7fc-44e2-9d94-227e6b8ca222",
         "disabled": true,
@@ -148,6 +143,11 @@
       },
       "8419966592507824873": {
         "type": "shopify://apps/seolab/blocks/app_embed/faf700f6-3b71-45c3-86d4-83ea9f7d9216",
+        "disabled": false,
+        "settings": {}
+      },
+      "16160716078332068383": {
+        "type": "shopify://apps/rubik-variant-images/blocks/rubik-variant-images/e684282e-1343-4a60-8fa2-6393aded15f6",
         "disabled": false,
         "settings": {}
       }
